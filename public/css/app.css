@@ -1,4 +1,6 @@
-body, input, textarea {
+body,
+input,
+textarea {
   font-family: "Poppins", "Raleway", sans-serif;
   background: var(--bg);
   color: var(--color);
@@ -6,4 +8,9 @@ body, input, textarea {
 
 .font-raleway {
   font-family: "Raleway"
+}
+
+.letter {
+  display: inline-block;
+  /* line-height: 1em; */
 }

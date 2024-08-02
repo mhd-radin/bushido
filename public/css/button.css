@@ -1,0 +1,15 @@
+button {
+  margin: 5px;
+  padding: 13px 23px;
+  border-radius: 25px;
+  background: var(--theme-color);
+  color: var(--apt-color);
+  border: 0px;
+  outline: none;
+  transition: 200ms;
+  font-family: "Rubik", "Raleway", "Poppins", "sans-serif";
+}
+
+button:hover {
+  background: var(--sec-theme-color);
+}

@@ -1,0 +1,39 @@
+body {
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.large-title {
+  overflow-wrap: break-word;
+  margin: 5px;
+  font-size: 50px;
+  font-family: "Poppins";
+  line-height: 55px;
+}
+
+.welcome-text {
+  font-size: 33px;
+  font-family: "Raleway", "Poppins", sans-serif;
+  color: var(--theme-color);
+}
+
+.indro-text {
+  margin: 10px;
+  margin-left: 5px;
+  margin-top: 20px;
+  animation: fadeInUp 500ms 1;
+}
+
+.reg-btn {
+  color: var(--color);
+  margin-top: 20px;
+  text-decoration: none;
+  animation: fadeInUp 1000ms 1;
+  animation-delay: 00ms;
+  display: inline-block;
+}
+
+.reg-btn button {
+  font-size: 15px;
+  font-family: "Rubik"
+}

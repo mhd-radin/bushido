@@ -1,0 +1,9 @@
+body, input, textarea {
+  font-family: "Poppins", "Raleway", sans-serif;
+  background: var(--bg);
+  color: var(--color);
+}
+
+.font-raleway {
+  font-family: "Raleway"
+}

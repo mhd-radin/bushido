@@ -1,0 +1,13 @@
+{
+  "files": [
+    "/",
+    "/index.html",
+    "/public/css/link.css",
+    "/public/css/app.css",
+    "/started/css/get_started.css",
+    "/public/css/colors.css",
+    "/public/css/button.css",
+    "/public/css/spinner.css",
+    "/cdn_modules/animate.css@4.1.1/animate.min.css"
+    ]
+}

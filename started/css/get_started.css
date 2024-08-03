@@ -3,8 +3,10 @@
 body {
   padding: 20px;
   border-radius: 8px;
-  background: linear-gradient(to bottom, #FFFFFF, #27AC6B4F);
-  height: calc(100vh - 60px);
+  /* background: linear-gradient(to bottom, #FFFFFF, #27AC6B4F); */
+  height: calc(100vh - 40px);
+  background: url("../../assets/bg/01.jpg") center center;
+  backdrop-filter: blur(2px);
 }
 
 .large-title, .large-text {
@@ -57,6 +59,10 @@ body {
   background: var(--bg);
   padding: 13px;
   overflow: hidden;
+  overflow-y: scroll;
+  max-height: 85vh;
+  z-index: 99;
+  margin: 10px;
 }
 
 @media screen and (min-width: 650px){

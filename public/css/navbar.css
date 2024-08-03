@@ -1,0 +1,18 @@
+nav {
+  background: var(--sec-bg);
+  color: var(--color);
+  display: flex;flex-direction:row ;
+  padding: 10px;
+  padding-left: 15px;
+  position: relative;
+}
+
+.nav-title-image img {
+  width: 160px;
+}
+
+.nav-right {
+  position: absolute;
+  right: 10px;
+  font-size: 32px;
+}

@@ -6,6 +6,10 @@ textarea {
   color: var(--color);
 }
 
+body {
+  margin: 0;
+}
+
 .font-raleway {
   font-family: "Raleway"
 }

@@ -5,8 +5,12 @@ function pageonload() {
         onpageloadin()
       }
     })
-  } else if (typeof onpageloadin == 'function'){
+  } else if (typeof onpageloadin == 'function') {
     onpageloadin()
+  }
+  
+  if (eva){
+    eva.replace()
   }
 }
 
@@ -17,17 +21,21 @@ const app = {
     elem.innerHTML = elem.innerHTML.replace(/\S/g, '<span class="letter">$&</span>');
     return elem;
   },
-  preventLetters(elem){
+  preventLetters(elem) {
     elem.innerHTML = elem.innerText;
-  }, 
-  redirectWithPreloader(path){
-    if (spinner){
+  },
+  redirectWithPreloader(path) {
+    if (spinner) {
       spinner.showPreloader();
-      setTimeout(function(){
+      setTimeout(function() {
         window.location.href = path
       }, 800)
     } else {
       window.location.href = path
     }
   }
+}
+
+if (eva){
+  eva.replace()
 }

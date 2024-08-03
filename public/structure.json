@@ -12,6 +12,12 @@
     "/public/js/app.js",
     "/public/js/spinner_ui.js",
     "/public/js/tagstring.js",
-    "/started/js/get_started.js"
+    "/started/js/get_started.js",
+    "/assets/bg/01.jpg",
+    "/assets/logos/bbc_01.png",
+    "/assets/logos/bbc_02.png",
+    "/public/css/navbar.css",
+    "/register",
+    "/register/index.html"
     ]
 }

@@ -35,11 +35,13 @@ function onpageloadin() {
     opacity: [0, 1],
     scaleX: [0.4, 1],
     complete: function() {
-      app.preventLetters(document.querySelector('.large-text'))
+      setTimeout(function() {
+        app.preventLetters(document.querySelector('.large-text'))
+      }, 200)
     }
   })
 }
 
 function started() {
-  app.redirectWithPreloader('/')
+  app.redirectWithPreloader('register')
 }

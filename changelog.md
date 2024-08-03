@@ -6,3 +6,8 @@
 - formated files structure 
 - added preloader
 - added `TagString`
+
+### A02
+- animations on redirect
+- button ui improvements
+- background colour change

@@ -39,3 +39,7 @@ function onpageloadin() {
     }
   })
 }
+
+function started() {
+  app.redirectWithPreloader('/')
+}

@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Exo:400,700');
+
 body {
   padding: 20px;
   border-radius: 8px;
-  background: linear-gradient(to bottom, #FFFFFF, #DFA44754);
+  background: linear-gradient(to bottom, #FFFFFF, #27AC6B4F);
   height: calc(100vh - 60px);
 }
 
@@ -17,10 +19,12 @@ body {
 
 .welcome-text {
   font-size: 33px;
-  display: inline-block;
+  display: inline-flexbox;
   font-family: "Raleway", "Poppins", sans-serif;
   color: var(--theme-color);
   overflow: hidden;
+  margin: 3px;
+  margin-left: 8px;
 }
 
 .indro-text {
@@ -30,6 +34,7 @@ body {
   animation: fadeInUp 500ms 1;
   animation-delay: 00ms;
   animation-play-state: paused;
+  font-family: "Exo"
 }
 
 .reg-btn {
@@ -44,7 +49,14 @@ body {
 
 .reg-btn button {
   font-size: 15px;
-  font-family: "Rubik"
+  font-family: "Rubik";
+}
+
+.main-section {
+  border-radius: 10px;
+  background: var(--bg);
+  padding: 13px;
+  overflow: hidden;
 }
 
 @media screen and (min-width: 650px){
@@ -53,10 +65,9 @@ body {
     left: 50%;
     top: 50%;
     width: 75%;
-    transform: translate(-50%, -50%)
+    transform: translate(-50%, -50%);
+    padding: 16px;
   }
 }
-
-
 
 

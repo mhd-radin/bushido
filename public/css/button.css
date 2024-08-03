@@ -2,7 +2,7 @@ button {
   margin: 5px;
   padding: 13px 23px;
   border-radius: 25px;
-  background: var(--theme-color);
+  background: linear-gradient(to top, var(--theme-color), var(--sec-theme-color));
   color: var(--apt-color);
   border: 0px;
   outline: none;

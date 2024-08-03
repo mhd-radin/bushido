@@ -19,5 +19,15 @@ const app = {
   },
   preventLetters(elem){
     elem.innerHTML = elem.innerText;
+  }, 
+  redirectWithPreloader(path){
+    if (spinner){
+      spinner.showPreloader();
+      setTimeout(function(){
+        window.location.href = path
+      }, 800)
+    } else {
+      window.location.href = path
+    }
   }
 }

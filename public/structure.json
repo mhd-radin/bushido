@@ -18,6 +18,8 @@
     "/assets/logos/bbc_02.png",
     "/public/css/navbar.css",
     "/register",
-    "/register/index.html"
+    "/register/index.html",
+    "/public/css/menubox.css",
+    "/register/css/register.css"
     ]
 }

@@ -1,0 +1,85 @@
+.menubox {
+  display: flex;
+  flex-direction: row;
+  background: var(--third-bg);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: calc(100% - 60px);
+  padding: 6px 30px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.menubox,
+.menubox * {
+  /* border: 1px solid red; */
+  transition: 0.2s;
+}
+
+.menu-item {
+  margin: 3px auto;
+  padding: 4px;
+  padding-left: 10px;
+  padding-right: 10px;
+  display: flex;
+  flex-direction: row;
+  border-radius: 20px;
+}
+
+.menu-item-text {
+  display: none;
+}
+
+.menu-item .eva {
+  font-size: 20px;
+}
+
+.menu-item.active {
+  background: var(--theme-color);
+  color: var(--apt-color);
+}
+
+.menu-item.preview {
+  background: var(--sec-bg);
+  color: var(--color);
+}
+
+.menu-item.active .menu-item-text,
+.menu-item.preview .menu-item-text {
+  display: block;
+  font-size: 12px;
+  margin: auto 5px;
+}
+
+.menu-item.active .eva,
+.menu-item.preview .eva {
+  border-radius: 50%;
+  padding: 5px;
+  background: var(--sec-theme-color);
+}
+
+.menu-item.preview .eva {
+  background: var(--sec-bg);
+}
+
+@media screen and (min-width: 650px) {
+  .menubox {
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: auto;
+    left: auto;
+    background: transparent;
+    width: 50%;
+    transform: translate(0, 0);
+    justify-content: flex-end;
+    align-items: flex-end;
+    overflow-x: scroll;
+  }
+
+  .menu-item {
+    margin: 3px 8px;
+  }
+}

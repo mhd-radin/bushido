@@ -1,0 +1,99 @@
+.reg-body {
+  padding: 20px;
+  margin: 5px;
+}
+
+.reg-body h2 {
+  font-family: "Poppins";
+}
+
+.reg-body p {
+  color: var(--theme-color);
+  font-family: "Rubik"
+}
+
+.form {
+  padding: 10px;
+  margin: 5px;
+}
+
+.input-box {
+  margin: 5px;
+  margin-top: 12px;
+  padding: 3px;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-box label {
+  font-size: 13px;
+  margin-left: 3px;
+}
+
+.input-seg {
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+  padding: 0;
+}
+
+.input-icon {
+  padding: 3px;
+  border: 2px solid #ccc;
+  margin-left: 0;
+  margin: 3px;
+  margin-right: 1px;
+  right: 0;
+  border-radius: 5px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.input-icon .eva {
+  margin: 0 auto;
+  font-size: 20px;
+  padding: 2px 6px;
+  width: max-content;
+  color: var(--theme-color);
+}
+
+.form input {
+  padding: 8px 8px;
+  border-radius: 5px;
+  border: 2px solid #ccc;
+  outline: none;
+  background: var(--bg);
+  font-weight: bold;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  color: var(--sec-color);
+  margin: 3px;
+  width: calc(80%);
+  margin-left: 0;
+}
+
+.form input::placeholder {
+  font-weight: normal;
+}
+
+.form input:active,
+.form input:hover {
+  border: 2px solid var(--theme-color);
+}
+
+
+.right-elems {
+  position: absolute;
+  right: 40px;
+  margin-top: 10px;
+}
+
+@media screen and (min-width: 650px) {
+  .reg-body {
+    width: 72%;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%)
+  }
+}

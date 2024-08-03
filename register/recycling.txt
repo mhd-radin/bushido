@@ -1,0 +1,18 @@
+  <div class="menubox">
+    <div class="menu-item active">
+      <i class="eva eva-compass-outline"></i>
+      <div class="menu-item-text">Events</div>
+    </div>
+    <div class="menu-item">
+      <i class="eva eva-message-circle-outline"></i>
+      <div class="menu-item-text">Messages</div>
+    </div>
+    <div class="menu-item">
+      <i class="eva eva-bell-outline"></i>
+      <div class="menu-item-text">Notifications</div>
+    </div>
+    <div class="menu-item">
+      <i class="eva eva-person-outline"></i>
+      <div class="menu-item-text">Profile</div>
+    </div>
+  </div>

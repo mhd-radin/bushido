@@ -37,6 +37,6 @@ const app = {
   }
 }
 
-if (eva){
+if (typeof eva != 'undefined'){
   eva.replace()
 }

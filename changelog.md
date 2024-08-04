@@ -38,3 +38,7 @@
 - fixed errors at `app.js`
 - animations added on register page ( with css and js);
 - started page animation bug fixes
+
+### A07 
+- undefined error fix on eva
+- animation script bug fix

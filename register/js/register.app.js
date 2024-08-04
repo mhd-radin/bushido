@@ -45,11 +45,8 @@ function onpageloadin() {
         var currentDelay = elemStyle.getPropertyValue('animation-delay');
         
         elem.style.animationDelay = ((parseInt(currentDelay.replace('s', ''))*1000) + (delayScale * eIndex)+'ms');
-        console.log(currentDelay)
         elem.style.animationPlayState = 'running';
       })
     }
   })
 }
-
-onpageloadin()

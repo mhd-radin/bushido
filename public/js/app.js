@@ -1,5 +1,5 @@
 function pageonload() {
-  if (spinner) {
+  if (typeof spinner != 'undefined') {
     spinner.removePreloader().then(() => {
       if (typeof onpageloadin == 'function') {
         onpageloadin()
@@ -9,12 +9,13 @@ function pageonload() {
     onpageloadin()
   }
   
-  if (eva){
+  if (typeof eva != 'undefined'){
     eva.replace()
   }
 }
 
 document.body.onload = pageonload;
+//window.onload = pageonload;
 
 const app = {
   lettersToElem(elem) {

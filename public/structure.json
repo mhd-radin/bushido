@@ -20,6 +20,7 @@
     "/register",
     "/register/index.html",
     "/public/css/menubox.css",
-    "/register/css/register.css"
+    "/register/css/register.css",
+    "/register/js/register.app.js"
     ]
 }

@@ -33,3 +33,8 @@
 - `recycling.txt` for recovering code
 - new style file for register page
 - code formated
+
+### A06
+- fixed errors at `app.js`
+- animations added on register page ( with css and js);
+- started page animation bug fixes

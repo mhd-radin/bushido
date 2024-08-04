@@ -22,10 +22,10 @@
   -webkit-animation: fadeInUp 500ms 1;
   -o-animation: fadeInUp 500ms 1;
   animation: fadeInUp 500ms 1;
-  -webkit-animation-delay: 00ms;
-  -moz-animation-delay: 00ms;
-  -o-animation-delay: 00ms;
-  animation-delay: 00ms;
+  -webkit-animation-delay: 200ms;
+  -moz-animation-delay: 200ms;
+  -o-animation-delay: 200ms;
+  animation-delay: 200ms;
 
   -webkit-animation-timing-function: ease-out;
   -moz-animation-timing-function: ease-out;
@@ -54,10 +54,10 @@
   -webkit-animation: fadeInUp 500ms 1;
   -o-animation: fadeInUp 500ms 1;
   animation: fadeInUp 500ms 1;
-  -webkit-animation-delay: 00ms;
-  -moz-animation-delay: 00ms;
-  -o-animation-delay: 00ms;
-  animation-delay: 00ms;
+  -webkit-animation-delay: 1200ms;
+  -moz-animation-delay: 1200ms;
+  -o-animation-delay: 1200ms;
+  animation-delay: 1200ms;
 
   -webkit-animation-timing-function: ease-out;
   -moz-animation-timing-function: ease-out;
@@ -88,10 +88,10 @@
   -webkit-animation: backInLeft 700ms 1;
   -o-animation: backInLeft 700ms 1;
   animation: backInLeft 700ms 1;
-  -webkit-animation-delay: 0ms;
-  -moz-animation-delay: 0ms;
-  -o-animation-delay: 0ms;
-  animation-delay: 0ms;
+  -webkit-animation-delay: 850ms;
+  -moz-animation-delay: 850ms;
+  -o-animation-delay: 850ms;
+  animation-delay: 850ms;
 
   -webkit-animation-timing-function: ease-out;
   -moz-animation-timing-function: ease-out;
@@ -111,10 +111,10 @@
   -webkit-animation: fadeIn 1000ms 1;
   -o-animation: fadeIn 1000ms 1;
   animation: fadeIn 1000ms 1;
-  -webkit-animation-delay: 0ms;
-  -moz-animation-delay: 0ms;
-  -o-animation-delay: 0ms;
-  animation-delay: 0ms;
+  -webkit-animation-delay: 1250ms;
+  -moz-animation-delay: 1250ms;
+  -o-animation-delay: 1250ms;
+  animation-delay: 1250ms;
 
   -webkit-animation-timing-function: ease-out;
   -moz-animation-timing-function: ease-out;
@@ -141,10 +141,10 @@
   -webkit-animation: fadeInUp 500ms 1;
   -o-animation: fadeInUp 500ms 1;
   animation: fadeInUp 500ms 1;
-  -webkit-animation-delay: 0ms;
-  -moz-animation-delay: 0ms;
-  -o-animation-delay: 0ms;
-  animation-delay: 0ms;
+  -webkit-animation-delay: 450ms;
+  -moz-animation-delay: 450ms;
+  -o-animation-delay: 450ms;
+  animation-delay: 450ms;
 
   -webkit-animation-timing-function: ease-out;
   -moz-animation-timing-function: ease-out;
@@ -172,10 +172,10 @@
   -webkit-animation: backInUp 700ms 1;
   -o-animation: backInUp 700ms 1;
   animation: backInUp 700ms 1;
-  -webkit-animation-delay: 0ms;
-  -moz-animation-delay: 0ms;
-  -o-animation-delay: 0ms;
-  animation-delay: 0ms;
+  -webkit-animation-delay: 850ms;
+  -moz-animation-delay: 850ms;
+  -o-animation-delay: 850ms;
+  animation-delay: 850ms;
 
   -webkit-animation-timing-function: ease-out;
   -moz-animation-timing-function: ease-out;

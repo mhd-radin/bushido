@@ -1,5 +1,4 @@
 function onpageloadin() {
-  console.log(4)
   const cssAnimListQuery = [
     '.reg-body h2',
     '.reg-body p',

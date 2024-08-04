@@ -42,3 +42,7 @@
 ### A07 
 - undefined error fix on eva
 - animation script bug fix
+
+### A08 
+- meta tags added
+- logos added (192x192 - 256x256)

@@ -54,3 +54,8 @@
 - input font weight decreased 
 
 > A Recovery Update [ A09 ]
+
+### A10
+- in register page, added full inputs
+- styling bug fix
+- Animation improvements

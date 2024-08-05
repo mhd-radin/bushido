@@ -19,6 +19,11 @@ function onpageloadin() {
       translateY: ["1.1em", 0],
       translateZ: 0,
       duration: 700,
+      keyframes: [{
+        filter: 'blur(3px)'
+      }, {
+        filter: 'blur(0px)'
+      }],
       easing: "easeOutExpo",
     }).add({
       targets: '.welcome-text',
@@ -33,6 +38,11 @@ function onpageloadin() {
       easing: "easeOutExpo",
       opacity: [0, 1],
       scale: [0.4, 1],
+      keyframes: [{
+        filter: 'blur(1px)'
+      }, {
+        filter: 'blur(0px)'
+      }],
       complete: function() {
         setTimeout(function() {
           app.preventLetters(document.querySelector('.large-text'))

@@ -39,7 +39,7 @@
   <div class="reg-body">
     <h2>Start Your Boxing Journey with <br> Bushido Boxers Club</h2>
     <p>Fill the form for register</p>
-    <div class="form">
+    <div class="form" id="form_1">
       <div class="input-box">
         <label for="fullname">Your Full Name</label>
         <div class="input-seg">
@@ -64,15 +64,82 @@
         <label for="email">Email</label>
         <div class="input-seg">
           <div class="input-icon">
-            <i class="eva eva-inbox-outline"></i>
+            <i class="eva eva-email-outline"></i>
           </div>
           <input type="email" name="email" id="email" value="" placeholder="Your Email ( eg:- example@gmail.com )" required />
         </div>
       </div>
 
     </div>
+
+    <div class="form" id="form_2">
+      <div class="input-box">
+        <label for="password">To Secure</label>
+        <div class="input-seg">
+          <div class="input-icon">
+            <i class="eva eva-shield-outline"></i>
+          </div>
+          <input type="password" name="password" id="password" placeholder="Password" required />
+        </div>
+      </div>
+
+      <div class="input-box">
+        <label for="dob">Date Of Birth</label>
+        <div class="input-seg">
+          <div class="input-icon">
+            <i class="eva eva-calendar-outline"></i>
+          </div>
+          <input type="date" name="dob" id="dob" value="" placeholder="Date Of Birth" required />
+        </div>
+      </div>
+
+    </div>
+    <div class="form" id="form_3">
+      <div class="input-box">
+        <label for="address">Your Address</label>
+        <div class="input-seg">
+          <div class="input-icon">
+            <i class="eva eva-pin-outline"></i>
+          </div>
+          <textarea type="text" name="address" id="address" placeholder="Address" required></textarea>
+        </div>
+      </div>
+
+      <div class="input-box">
+        <label for="height">Height</label>
+        <div class="input-seg">
+          <div class="input-icon">
+            <i class="eva eva-upload-outline"></i>
+          </div>
+          <input type="number" name="height" id="height" value="" placeholder="Your Height ( in Meter )" required />
+        </div>
+      </div>
+
+      <div class="input-box">
+        <label for="weight">Weight</label>
+        <div class="input-seg">
+          <div class="input-icon">
+            <i class="eva eva-cube-outline"></i>
+          </div>
+          <input type="number" name="weight" id="weight" value="" placeholder="Your Weight ( in KG )" required />
+        </div>
+      </div>
+
+    </div>
+    <div class="form" id="form_4">
+      <div class="input-box">
+        <label for="goal">Whats is Your Goal?</label>
+        <div class="input-seg">
+          <div class="input-icon">
+            <i class="eva eva-award-outline"></i>
+          </div>
+          <textarea type="text" name="goal" id="goal" placeholder="Describe about your goal in shortly" required rows="3" />
+        </div>
+      </div>
+
+    </div>
     <div class="right-elems">
-      <button>Continue</button>
+      <button id="nextBtn">Continue</button>
     </div>
   </div>
 
@@ -96,7 +163,7 @@
   <script src="../public/js/spinner_ui.js"></script>
   <script src="../public/js/menubox.js"></script>
   <script src="js/register.app.js"></script>
-  
+
 </body>
 
 </html>

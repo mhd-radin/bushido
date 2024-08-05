@@ -1,6 +1,7 @@
 .reg-body {
   padding: 20px;
   margin: 5px;
+  padding-bottom: 164px;
 }
 
 .reg-body h2 {
@@ -84,6 +85,7 @@
   border-radius: 5px;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
+  max-height: 35px;
 
   -webkit-animation: backInLeft 700ms 1;
   -o-animation: backInLeft 700ms 1;
@@ -124,7 +126,8 @@
   animation-play-state: paused;
 }
 
-.form input {
+.form input,
+.form textarea {
   padding: 8px 8px;
   border-radius: 5px;
   border: 2px solid #ccc;
@@ -154,12 +157,15 @@
   animation-play-state: paused;
 }
 
-.form input::placeholder {
+.form input::placeholder,
+.form textarea::placeholder {
   font-weight: normal;
 }
 
 .form input:active,
-.form input:hover {
+.form input:hover,
+.form textarea:active,
+.form textarea:hover {
   border: 2px solid var(--theme-color);
 }
 

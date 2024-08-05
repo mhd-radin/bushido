@@ -39,7 +39,7 @@
 ### A06
 - fixed errors at `app.js`
 - animations added on register page ( with css and js);
-- started page animation bug fixes
+- `started` page animation bug fixes
 
 ### A07 
 - undefined error fix on eva
@@ -59,3 +59,9 @@
 - in register page, added full inputs
 - styling bug fix
 - Animation improvements
+
+### A11 
+- enabled developer for debugging 
+- fixed z index styling issues 
+- fixed position of navigation bar
+- animated functions added 

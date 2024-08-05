@@ -1,5 +1,4 @@
-function onpageloadin() {
-  const cssAnimListQuery = [
+const cssAnimListQuery = [
     '.reg-body h2',
     '.reg-body p',
     '.input-box label',
@@ -8,7 +7,7 @@ function onpageloadin() {
     '.form input, .form textarea',
     '.right-elems'
     ]
-  const delayScaleChild = [
+const delayScaleChild = [
     0,
     0,
     1,
@@ -18,7 +17,7 @@ function onpageloadin() {
     1
     ]
 
-  const baseDelayChild = [
+const baseDelayChild = [
      0,
      200,
      1200,
@@ -28,7 +27,9 @@ function onpageloadin() {
      850
     ]
 
-  const delayScale = 80;
+const delayScale = 80;
+
+function onpageloadin() {
 
   cssAnimListQuery.forEach(function(query, i) {
     var delayScalePos = delayScaleChild[i];
@@ -61,7 +62,7 @@ const formsID = [
 
 
 class FormSet {
-  constructor(state = formsID[0], data = {}) {
+  constructor(state = formsID[0], data = { phone: '+91' }) {
     this.state = state;
     this.data = data;
     this.completed = false;
@@ -105,29 +106,107 @@ function saveForm() {
 
 function showForm(form) {
   document.querySelectorAll('#' + formsID.join(', #')).forEach(function(elem) {
-    console.log(form.id, currentFormSet.state, elem.id)
     if (form.id == elem.id) {
       elem.style.display = 'block'
     } else {
       elem.style.display = 'none'
     }
   })
+  if (form.id === formsID[1]){
+    changeTitle('Boxing is Martial Art')
+    changeLog('for secure your account')
+  }
 }
+
+function changeLog(log) {
+  document.getElementById('logger').innerHTML = log;
+  app.lettersToElem(document.getElementById('logger'))
+  anime.timeline({ loop: false }).add({
+    targets: '#logger .letter',
+    duration: 450,
+    delay: (el, i) => (40 * i),
+    easing: "easeOutExpo",
+    opacity: [0, 1],
+    scale: [0.4, 1],
+    keyframes: [{
+      filter: 'blur(1px)'
+      }, {
+      filter: 'blur(0px)'
+      }],
+    complete: function() {
+      setTimeout(function() {
+        app.preventLetters(document.querySelector('#logger'))
+      }, 50)
+    }
+  })
+}
+
+function changeTitle(msg) {
+  document.getElementById('title').innerHTML = msg;
+  app.lettersToElem(document.getElementById('title'))
+  anime.timeline({ loop: false }).add({
+    targets: '#title .letter',
+    duration: 450,
+    delay: (el, i) => (40 * i),
+    easing: "easeOutExpo",
+    opacity: [0, 1],
+    scale: [0.4, 1],
+    keyframes: [{
+      filter: 'blur(1px)'
+      }, {
+      filter: 'blur(0px)'
+      }],
+    complete: function() {
+      setTimeout(function() {
+        app.preventLetters(document.querySelector('#title'))
+      }, 50)
+    }
+  })
+}
+
 
 function changeState(nextState) {
   var currentSate = currentFormSet.state;
   switch (currentSate) {
     case formsID[0]:
-      currentFormSet.state = nextState;
-      showForm(document.getElementById(nextState))
+      var fullname = document.getElementById('fullname'),
+        email = document.getElementById('email'),
+        phone = document.getElementById('phone');
+
+      if (!fullname.value) {
+        changeLog('name is blank, please fill the form correctly');
+      } else if (!email.value) {
+        changeLog('email is blank, please fill the form correctly');
+      } else if (!email.value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+        changeLog('email is not valid')
+      } else if (!phone.value) {
+        changeLog('phone number is blank, please fill the form correctly')
+      } else {
+        changeLog('Checking availability, please wait...')
+        closeForm(function() {
+          currentFormSet.state = nextState;
+          saveForm();
+          showForm(document.getElementById(nextState))
+        })
+      }
       break;
     case formsID[1]:
-      currentFormSet.state = nextState;
-      showForm(document.getElementById(nextState))
+      closeForm(function() {
+        currentFormSet.state = nextState;
+        saveForm();
+        showForm(document.getElementById(nextState))
+      })
       break;
     case formsID[2]:
-      currentFormSet.state = nextState;
-      showForm(document.getElementById(nextState))
+      closeForm(function() {
+        currentFormSet.state = nextState;
+        saveForm();
+        showForm(document.getElementById(nextState))
+      })
+      break;
+    case formsID[3]:
+      currentFormSet.completed = true;
+      alert(JSON.stringify(currentFormSet))
       break;
   }
 
@@ -136,4 +215,32 @@ function changeState(nextState) {
 
 document.getElementById('nextBtn').onclick = function() {
   changeState(formsID[currentFormSet.index() + 1])
+}
+
+function closeForm(finish) {
+  let query = [
+      '#' + document.getElementById(currentFormSet.state).id + ' input',
+      '#' + document.getElementById(currentFormSet.state).id + ' textarea',
+      '#' + document.getElementById(currentFormSet.state).id + ' .input-box label',
+      '#' + document.getElementById(currentFormSet.state).id + ' .eva',
+      '#' + document.getElementById(currentFormSet.state).id + ' .input-icon',
+    ];
+
+  document.querySelectorAll(query.join(', ')).forEach(function(elem) {
+    elem.style.animationDirection = 'reverse'
+    var snapshotStyle = window.getComputedStyle(elem).getPropertyValue('animation')
+
+    elem.style.animation = 'none';
+    setTimeout(function() {
+      elem.style.animation = snapshotStyle;
+     //elem.style.animationDelay = '0s';
+      elem.onanimationend = function() {
+        elem.style.display = 'none';
+        elem.style.animationDirection = 'forward';
+        if (typeof finish == 'function') {
+          finish()
+        }
+      }
+    }, 100)
+  })
 }

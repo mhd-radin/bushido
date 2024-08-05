@@ -12,6 +12,8 @@ function pageonload() {
   if (typeof eva != 'undefined'){
     eva.replace()
   }
+  
+  document.querySelectorAll('*').forEach(function(elem){elem.onerror = handleError})
 }
 
 document.body.onload = pageonload;
@@ -40,3 +42,9 @@ const app = {
 if (typeof eva != 'undefined'){
   eva.replace()
 }
+
+function handleError(err) {
+  alert(err)
+}
+
+window.onerror = handleError;

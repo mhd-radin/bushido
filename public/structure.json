@@ -21,6 +21,7 @@
     "/register/index.html",
     "/public/css/menubox.css",
     "/register/css/register.css",
-    "/register/js/register.app.js"
+    "/register/js/register.app.js",
+    "/public/js/menubox.js"
     ]
 }

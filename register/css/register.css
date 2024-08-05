@@ -130,7 +130,7 @@
   border: 2px solid #ccc;
   outline: none;
   background: var(--bg);
-  font-weight: bold;
+  font-weight: 600;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
   color: var(--sec-color);

@@ -48,4 +48,6 @@ function onpageloadin() {
       })
     }
   })
+  
+  //menu.close(document.querySelector('.menubox .menu-item'), 'preview')
 }

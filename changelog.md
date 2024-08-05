@@ -1,4 +1,6 @@
-# Changelog
+# Changelog ( for Developers )
+
+> ℹ this changelog created for Developers. may contain grammar mistakes
 
 ## Common updates
 - structure json updates
@@ -46,3 +48,9 @@
 ### A08 
 - meta tags added
 - logos added (192x192 - 256x256)
+
+### A09
+- created new file for menu box / bar 
+- input font weight decreased 
+
+> A Recovery Update [ A09 ]

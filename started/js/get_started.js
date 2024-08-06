@@ -1,8 +1,9 @@
 function onpageloadin() {
+  anime.set('.large-text', {
+    visibility: 'hidden'
+  })
+
   setTimeout(function() {
-    document.querySelectorAll('.indro-text, .reg-btn').forEach(function(elem) {
-      elem.style.animationPlayState = 'running';
-    })
 
     var welcomeTextElem = app.lettersToElem(document.querySelector('.welcome-text'))
     anime.timeline({
@@ -28,25 +29,34 @@ function onpageloadin() {
     }).add({
       targets: '.welcome-text',
       duration: 50,
-    })
-
-    app.lettersToElem(document.querySelector('.large-text'))
-    anime.timeline({ loop: false }).add({
-      targets: '.large-text .letter',
-      duration: 450,
-      delay: (el, i) => (80 * i),
-      easing: "easeOutExpo",
-      opacity: [0, 1],
-      scale: [0.4, 1],
-      keyframes: [{
-        filter: 'blur(1px)'
-      }, {
-        filter: 'blur(0px)'
-      }],
-      complete: function() {
-        setTimeout(function() {
-          app.preventLetters(document.querySelector('.large-text'))
-        }, 50)
+      begin: () => {
+        anime.set('.large-text', {
+          visibility: 'visible'
+        })
+      },
+      complete: () => {
+        app.lettersToElem(document.querySelector('.large-text'))
+        anime.timeline({ loop: false }).add({
+          targets: '.large-text .letter',
+          duration: 450,
+          delay: (el, i) => (80 * i),
+          easing: "easeOutExpo",
+          opacity: [0, 1],
+          scale: [0.4, 1],
+          keyframes: [{
+            filter: 'blur(1px)'
+          }, {
+            filter: 'blur(0px)'
+          }],
+          complete: function() {
+            setTimeout(function() {
+              document.querySelectorAll('.indro-text, .reg-btn').forEach(function(elem) {
+                elem.style.animationPlayState = 'running';
+              })
+              app.preventLetters(document.querySelector('.large-text'))
+            }, 50)
+          }
+        })
       }
     })
   }, 200)

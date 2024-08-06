@@ -87,10 +87,11 @@ let currentFormSet = new FormSet(formsID[0], {});
 
 if (localStorage.getItem('form_set')) {
   var currentForm = JSON.parse(localStorage.getItem('form_set'));
-  currentFormSet = new FormSet(currentForm.state, currentForm.data);
+  currentFormSet = new FormSet(currentForm.state = formsID[0], currentForm.data);
 }
 
-showForm(document.getElementById(currentFormSet.state))
+//showForm(document.getElementById(currentFormSet.state))
+showForm(document.getElementById(formsID[0]))
 
 document.querySelectorAll('input, textarea').forEach((input, index) => {
   input.onchange = function(e) {
@@ -112,9 +113,15 @@ function showForm(form) {
       elem.style.display = 'none'
     }
   })
-  if (form.id === formsID[1]){
-    changeTitle('Boxing is Martial Art')
-    changeLog('for secure your account')
+  if (form.id === formsID[1]) {
+    changeTitle('Step Into the Ring with Bushido Boxers Club.')
+    changeLog('');
+  } else if (form.id === formsID[2]) {
+    changeTitle('Begin Your Training at Bushido Boxers Club')
+    changeLog('');
+  } else if (form.id === formsID[3]) {
+    changeTitle('Your Fitness Adventure Begins Here');
+    changeLog('');
   }
 }
 
@@ -174,13 +181,13 @@ function changeState(nextState) {
         phone = document.getElementById('phone');
 
       if (!fullname.value) {
-        changeLog('name is blank, please fill the form correctly');
+        changeLog('Name input is blank, please fill the form correctly');
       } else if (!email.value) {
-        changeLog('email is blank, please fill the form correctly');
+        changeLog('Email input is blank, please fill the form correctly');
       } else if (!email.value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
-        changeLog('email is not valid')
+        changeLog('Invalid email. ( eg:- example@gmail.com )')
       } else if (!phone.value) {
-        changeLog('phone number is blank, please fill the form correctly')
+        changeLog('Phone number input is blank, please fill the form correctly')
       } else {
         changeLog('Checking availability, please wait...')
         closeForm(function() {
@@ -191,22 +198,55 @@ function changeState(nextState) {
       }
       break;
     case formsID[1]:
-      closeForm(function() {
-        currentFormSet.state = nextState;
-        saveForm();
-        showForm(document.getElementById(nextState))
-      })
+      var password = document.getElementById('password'),
+        dob = document.getElementById('dob');
+
+      if (!password.value) {
+        changeLog('Password input is blank, please fill the form correctly');
+      } else if (password.value.length <= 8) {
+        changeLog('Password require minimum 8 letters');
+      } else if (!dob.value) {
+        changeLog('Date of birth input is blank, please fill the form correctly');
+      } else {
+        closeForm(function() {
+          currentFormSet.state = nextState;
+          saveForm();
+          showForm(document.getElementById(nextState))
+        })
+      }
       break;
     case formsID[2]:
-      closeForm(function() {
-        currentFormSet.state = nextState;
-        saveForm();
-        showForm(document.getElementById(nextState))
-      })
+      var address = document.getElementById('address'),
+        height = document.getElementById('height'),
+        weight = document.getElementById('weight');
+
+      if (!address.value) {
+        changeLog('Address input is blank, please fill the form correctly...');
+      } else if (address.value.length <= 10) {
+        changeLog('Address require minimum 10 letters');
+      } else if (!height.value) {
+        changeLog('Height input is blank. please tell about your height in centimetres');
+      } else if (height.value < 15 || height.value > 400) {
+        changeLog('Wrong height, please tell your height in centimetres ');
+      } else if (!weight.value) {
+        changeLog('Weight input is blank. please tell about your weight in Kilogram');
+      } else {
+        closeForm(function() {
+          currentFormSet.state = nextState;
+          saveForm();
+          showForm(document.getElementById(nextState))
+        });
+      }
       break;
     case formsID[3]:
-      currentFormSet.completed = true;
-      alert(JSON.stringify(currentFormSet))
+      var goal = document.getElementById('goal');
+
+      if (!goal.value || goal.value < 8) {
+        changeLog('Goal input is blank or require minimum 8 letters');
+      } else {
+        currentFormSet.completed = true;
+        alert(JSON.stringify(currentFormSet))
+      }
       break;
   }
 
@@ -217,7 +257,7 @@ document.getElementById('nextBtn').onclick = function() {
   changeState(formsID[currentFormSet.index() + 1])
 }
 
-function closeForm(finish) {
+function closeForm(onfinish) {
   let query = [
       '#' + document.getElementById(currentFormSet.state).id + ' input',
       '#' + document.getElementById(currentFormSet.state).id + ' textarea',
@@ -233,12 +273,12 @@ function closeForm(finish) {
     elem.style.animation = 'none';
     setTimeout(function() {
       elem.style.animation = snapshotStyle;
-     //elem.style.animationDelay = '0s';
+      //elem.style.animationDelay = '0s';
       elem.onanimationend = function() {
         elem.style.display = 'none';
         elem.style.animationDirection = 'forward';
-        if (typeof finish == 'function') {
-          finish()
+        if (typeof onfinish == 'function') {
+          onfinish()
         }
       }
     }, 100)

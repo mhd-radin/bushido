@@ -41,7 +41,7 @@ body {
   color: var(--color);
   margin-top: 20px;
   text-decoration: none;
-  animation: fadeInUp 1000ms 1;
+  animation: backInUp 1000ms 1;
   animation-play-state: paused;
   animation-delay: 00ms;
   display: inline-block;

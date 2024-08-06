@@ -65,3 +65,9 @@
 - fixed z index styling issues 
 - fixed position of navigation bar
 - animated functions added 
+
+### A12 
+- structure bug fixes
+- added more rules on registration 
+- animations updated
+- animation delay bug fix

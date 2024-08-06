@@ -71,3 +71,8 @@
 - added more rules on registration 
 - animations updated
 - animation delay bug fix
+
+### A13 
+- in dev version A12, removed debugging on register page
+- back to button added
+- styling bug fix

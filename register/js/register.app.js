@@ -87,11 +87,10 @@ let currentFormSet = new FormSet(formsID[0], {});
 
 if (localStorage.getItem('form_set')) {
   var currentForm = JSON.parse(localStorage.getItem('form_set'));
-  currentFormSet = new FormSet(currentForm.state = formsID[0], currentForm.data);
+  currentFormSet = new FormSet(currentForm.state, currentForm.data);
 }
 
-//showForm(document.getElementById(currentFormSet.state))
-showForm(document.getElementById(formsID[0]))
+showForm(document.getElementById(currentFormSet.state))
 
 document.querySelectorAll('input, textarea').forEach((input, index) => {
   input.onchange = function(e) {
@@ -122,6 +121,12 @@ function showForm(form) {
   } else if (form.id === formsID[3]) {
     changeTitle('Your Fitness Adventure Begins Here');
     changeLog('');
+  }
+
+  if (form.id !== formsID[3]) {
+    document.getElementById('backBtn').style.display = 'none';
+  } else {
+    document.getElementById('backBtn').style.display = 'block';
   }
 }
 
@@ -173,8 +178,8 @@ function changeTitle(msg) {
 
 
 function changeState(nextState) {
-  var currentSate = currentFormSet.state;
-  switch (currentSate) {
+  var currentState = currentFormSet.state;
+  switch (currentState) {
     case formsID[0]:
       var fullname = document.getElementById('fullname'),
         email = document.getElementById('email'),
@@ -184,8 +189,8 @@ function changeState(nextState) {
         changeLog('Name input is blank, please fill the form correctly');
       } else if (!email.value) {
         changeLog('Email input is blank, please fill the form correctly');
-      } else if (!email.value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
-        changeLog('Invalid email. ( eg:- example@gmail.com )')
+      } else if (!email.value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/) || email.value.includes(' ')) {
+        changeLog('Invalid email, email format incorrect or contains space. ( eg:- example@gmail.com )')
       } else if (!phone.value) {
         changeLog('Phone number input is blank, please fill the form correctly')
       } else {
@@ -253,8 +258,21 @@ function changeState(nextState) {
   saveForm()
 }
 
+
 document.getElementById('nextBtn').onclick = function() {
-  changeState(formsID[currentFormSet.index() + 1])
+  changeState(formsID[currentFormSet.index() + 1]);
+}
+
+document.getElementById('backBtn').onclick = function() {
+  currentFormSet.state = formsID[0];
+  saveForm();
+  if (spinner) {
+    spinner.showPreloader()
+  }
+
+  setTimeout(function() {
+    window.location.reload()
+  }, 200)
 }
 
 function closeForm(onfinish) {

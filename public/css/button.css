@@ -13,3 +13,12 @@ button {
 button:hover {
   background: var(--sec-theme-color);
 }
+
+.sec-btn {
+  background: var(--sec-bg);
+  color: var(--color);
+}
+
+.sec-btn:hover {
+  background: var(--third-bg);
+}

@@ -252,6 +252,7 @@ function changeState(nextState) {
         changeLog('Goal input is blank or require minimum 8 letters');
       } else {
         currentFormSet.completed = true;
+        alert('Registration success [Developer Mode]')
         alert(JSON.stringify(currentFormSet))
       }
       break;

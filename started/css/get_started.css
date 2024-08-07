@@ -1,9 +1,9 @@
 body {
   padding: 20px;
   border-radius: 8px;
-  /* background: linear-gradient(to bottom, #FFFFFF, #27AC6B4F); */
+  background: linear-gradient(to bottom, #FFFFFF, #27AC6B4F);
   height: calc(100vh - 40px);
-  background: url("../../assets/bg/members.jpg") center center;
+  /* background: url("../../assets/bg/01.jpg") center center; */
   backdrop-filter: blur(2px);
   background-repeat: no-repeat;
 }

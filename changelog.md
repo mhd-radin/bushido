@@ -97,3 +97,9 @@
 
 ### A17
 - new file for todo and another one for configuration
+
+### A18
+- get started page background changed
+- admin session started
+- admin registration page basic page completed 
+- pages title updated 

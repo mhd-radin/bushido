@@ -94,3 +94,6 @@
 
 ### A16
 - styling bug fix on pc 
+
+### A17
+- new file for todo and another one for configuration

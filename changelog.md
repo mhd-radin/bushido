@@ -76,3 +76,8 @@
 - in dev version A12, removed debugging on register page
 - back to button added
 - styling bug fix
+
+### A14 
+- loading bug fix 
+- css import issues
+- status: 304 issues

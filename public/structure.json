@@ -22,6 +22,10 @@
     "/public/css/menubox.css",
     "/register/css/register.css",
     "/register/js/register.app.js",
-    "/public/js/menubox.js"
+    "/public/js/menubox.js",
+    "/assets/bg/members.jpg",
+    "/login/css/login.css",
+    "/login/js/login.app.js", 
+    "/login/index.html"
     ]
 }

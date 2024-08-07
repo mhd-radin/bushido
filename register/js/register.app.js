@@ -125,8 +125,10 @@ function showForm(form) {
 
   if (form.id !== formsID[3]) {
     document.getElementById('backBtn').style.display = 'none';
+    document.getElementById('nextBtn').innerHTML = 'Continue';
   } else {
     document.getElementById('backBtn').style.display = 'block';
+    document.getElementById('nextBtn').innerHTML = 'Register';
   }
 }
 
@@ -273,6 +275,15 @@ document.getElementById('backBtn').onclick = function() {
   setTimeout(function() {
     window.location.reload()
   }, 200)
+}
+
+document.getElementById('login').onclick = function() {
+  menu.close(document.querySelector('#register')).then(function() {
+    spinner.showPreloader();
+    setTimeout(function() {
+      window.location.href = '../login';
+    }, 200)
+  })
 }
 
 function closeForm(onfinish) {

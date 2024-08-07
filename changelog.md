@@ -81,3 +81,13 @@
 - loading bug fix 
 - css import issues
 - status: 304 issues
+
+### A15 (Major Update)
+- added bushido members background photo
+- implemented menubox promise
+- updated content of title and subtitle on register page 
+- subtitle font changed 
+- decreased width of secondary body for desktop browsers
+- linked login page / register page with menu button
+- started page animation updated
+- created new page for login and basic completed 

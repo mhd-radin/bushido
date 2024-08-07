@@ -42,7 +42,8 @@ function onpageloadin() {
           delay: (el, i) => (80 * i),
           easing: "easeOutExpo",
           opacity: [0, 1],
-          scale: [0.4, 1],
+          scaleY: [0.4, 1],
+          translateY: ['30px', '0px'],
           keyframes: [{
             filter: 'blur(1px)'
           }, {

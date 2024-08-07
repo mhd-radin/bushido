@@ -91,3 +91,6 @@
 - linked login page / register page with menu button
 - started page animation updated
 - created new page for login and basic completed 
+
+### A16
+- styling bug fix on pc 

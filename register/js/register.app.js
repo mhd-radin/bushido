@@ -124,11 +124,15 @@ function showForm(form) {
   }
 
   if (form.id !== formsID[3]) {
-    document.getElementById('backBtn').style.display = 'none';
     document.getElementById('nextBtn').innerHTML = 'Continue';
   } else {
-    document.getElementById('backBtn').style.display = 'block';
     document.getElementById('nextBtn').innerHTML = 'Register';
+  }
+
+  if (form.id != formsID[0]) {
+    document.getElementById('backBtn').style.display = 'block';
+  } else {
+    document.getElementById('backBtn').style.display = 'none';
   }
 }
 

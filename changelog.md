@@ -103,3 +103,9 @@
 - admin session started
 - admin registration page basic page completed 
 - pages title updated 
+
+### A19
+- text content updated admin registration page 
+- `structure.json` updated
+- blue colour theme on admin
+- `To Back` button bug fixed

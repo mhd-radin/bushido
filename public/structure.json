@@ -25,8 +25,14 @@
     "/public/js/menubox.js",
     "/assets/bg/members.jpg",
     "/login/css/login.css",
-    "/login/js/login.app.js", 
+    "/login/js/login.app.js",
     "/login/index.html",
-    "local.config.js"
+    "/login",
+    "/local.config.js",
+    "/Admin/public.admin.css",
+    "/Admin/register/index.html",
+    "/Admin/register",
+    "/Admin/register/admin.register.js",
+    "/Admin/register/admin.register.css"
     ]
 }

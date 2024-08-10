@@ -128,3 +128,23 @@ function closeForm(onfinish) {
     }, 100)
   })
 }
+
+
+document.getElementById('nextBtn').onclick = function() {
+  const key = 'ADMN_' + Math.floor(Math.random() * 9999) + '_AG' + (['ABV', 'AKC', 'ZSO', 'KML', 'OPT'][Math.floor(Math.random() * 5)]) + '_AWq67/' + (['Uwes5', 'Ksn74', 'amFw8n', 'Wesy6', '7she73'][Math.floor(Math.random() * 5)]);
+  
+  caches.open('admin').then(function(cache) {
+    cache.put('admin-access-key', new Response(JSON.stringify({ key }), {
+      headers: { 'Content-type': 'application/json' }
+    })).catch((err) => {
+      alert(err)
+    }).then(() => {
+      cache.keys('admin-access-key').then(function(t) {
+        localStorage.setItem('adminUrl', t[0].url)
+      })
+    })
+  }).catch((err) => {
+    alert(err)
+  });
+  localStorage.setItem('adminKey', key)
+}

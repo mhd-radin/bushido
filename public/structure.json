@@ -36,6 +36,12 @@
     "/Admin/register/admin.register.css",
     "/public/css/forms.template.css",
     "/Admin/attendance/index.html",
-    "/Admin/attendance/css/attendance.css"
+    "/Admin/attendance",
+    "/Admin/attendance/css/attendance.css",
+    "/public/css/usersbox.css",
+    "/Admin/users/index.html",
+    "/Admin/users",
+    "/Admin/users/css/users.admin.css",
+    "/Admin/valid.admin.js"
     ]
 }

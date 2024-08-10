@@ -1,0 +1,34 @@
+.body {
+  padding: 10px;
+  padding-bottom: 100px;
+}
+
+.body-header h4 {
+  font-weight: 600;
+  margin: 8px;
+}
+
+.display-box {
+  background: var(--sec-bg);
+  color: var(--color);
+  font-family: "Rubik";
+  padding: 5px;
+  padding-left: 8px;
+  font-size: 15px;
+  position: relative;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: row;
+}
+
+.display-box-right {
+  margin-left: auto;
+  margin-right: 3px;
+}
+
+.display-box-right input {
+  border: none;
+  background: transparent;
+  color: var(--theme-color);
+  outline: none;
+}

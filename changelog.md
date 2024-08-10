@@ -121,3 +121,8 @@
 - menubox and navbar desktop bug fix
 - added favicon icon 
 - structure json updated
+
+### B01 
+- new page for admin to get users list
+- united usersbox stylings
+- admin validation added

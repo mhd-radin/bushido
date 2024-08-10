@@ -1,6 +1,6 @@
 const config = {
   FCM_KEY: 'BDAxbWE--q8hHkKSus9Bd47ijSG07V_RhL4HmzbrQN0CpEP4L_Hx6SJsfQ75SHmesXWZq7_NIt0X4vRrkR75_yw',
-  firebaseConfig = {
+  firebaseConfig: {
     apiKey: "AIzaSyB_y27g51gE8HwwypZsRExzK8f0HsvEZ6U",
     authDomain: "bushido-2024.firebaseapp.com",
     projectId: "bushido-2024",

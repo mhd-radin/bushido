@@ -42,6 +42,9 @@
     "/Admin/users/index.html",
     "/Admin/users",
     "/Admin/users/css/users.admin.css",
-    "/Admin/valid.admin.js"
+    "/Admin/valid.admin.js",
+    "/assets/logos/bbc_w.png",
+    "/assets/logos/bbc_b.png",
+    "/public/js/bushido.js"
     ]
 }

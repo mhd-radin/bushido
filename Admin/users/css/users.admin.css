@@ -32,3 +32,25 @@
   color: var(--theme-color);
   outline: none;
 }
+
+.info-user {
+  display: none;
+  border-radius: 10px;
+  padding: 5px;
+  margin: 8px;
+}
+
+@media screen  and (min-width: 650px) {
+.bodybox {
+  display: flex;flex-direction: row;
+}
+.users-list {
+  display: flex;flex-direction: column;
+  width: 40%;
+}
+.info-user {
+  width: 50%;
+  display: block;
+  background: var(--sec-bg);
+}
+}

@@ -11,6 +11,7 @@
   z-index: 999999;
   animation: fadeIn 350ms 1;
   background: var(--bg);
+  font-family: "Poppins";
   text-align: center;
 }
 
@@ -33,7 +34,7 @@
   display: inline-block;
   position: absolute;
   top: 0;
-  background-color: #333;
+  background-color: #DB3737;
   border-radius: 100%;
 
   -webkit-animation: sk-bounce 2.0s infinite ease-in-out;
@@ -45,6 +46,7 @@
   bottom: 0;
   -webkit-animation-delay: -1.0s;
   animation-delay: -1.0s;
+  background: #E8AE48;
 }
 
 

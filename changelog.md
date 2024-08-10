@@ -126,3 +126,10 @@
 - new page for admin to get users list
 - united usersbox stylings
 - admin validation added
+
+### B02 
+- `local.config.js` error fix
+- new desktop ui in users list page
+- assets updated
+- implemented server api (`bushido.js`)
+- spinner background color changed ( before: `#ccc` )

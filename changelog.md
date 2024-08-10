@@ -109,3 +109,15 @@
 - `structure.json` updated
 - blue colour theme on admin
 - `To Back` button bug fixed
+
+### A20 ( Major Update )
+- added firebase config 
+- Attendance page created and basic completed 
+- united form pages to public forms template 
+- new two color formation. alpha and border
+- common flex layouts added to app css
+- temporary, non visible scroll bar
+- new fonts added
+- menubox and navbar desktop bug fix
+- added favicon icon 
+- structure json updated

@@ -28,3 +28,16 @@ p {
   display: inline-block;
   /* line-height: 1em; */
 }
+
+.row-box {
+  display: flex;flex-direction: row;
+}
+
+.column-box {
+  display: flex;flex-direction: column;
+}
+
+.right-10px {
+  position: absolute;
+  right: 10px;
+}

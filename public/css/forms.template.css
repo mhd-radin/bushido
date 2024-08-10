@@ -1,0 +1,210 @@
+.reg-body {
+  padding: 20px;
+  margin: 5px;
+  padding-bottom: 140px;
+}
+
+.reg-body h2 {
+  font-family: "Poppins";
+  -webkit-animation: fadeInUp 500ms 1;
+  -o-animation: fadeInUp 500ms 1;
+  animation: fadeInUp 500ms 1;
+  -webkit-animation-timing-function: ease-out;
+  -moz-animation-timing-function: ease-out;
+  -o-animation-timing-function: ease-out;
+  animation-timing-function: ease-out;
+
+  animation-play-state: paused;
+}
+
+
+.reg-body p {
+  color: var(--theme-color);
+  font-family: "Rubik";
+  -webkit-animation: fadeInUp 500ms 1;
+  -o-animation: fadeInUp 500ms 1;
+  animation: fadeInUp 500ms 1;
+  -webkit-animation-delay: 00ms;
+  -moz-animation-delay: 00ms;
+  -o-animation-delay: 00ms;
+  animation-delay: 00ms;
+  font-size: 14px;
+
+  -webkit-animation-timing-function: ease-out;
+  -moz-animation-timing-function: ease-out;
+  -o-animation-timing-function: ease-out;
+  animation-timing-function: ease-out;
+
+  animation-play-state: paused;
+}
+
+.form {
+  padding: 10px;
+  margin: 5px;
+}
+
+.input-box {
+  margin: 5px;
+  margin-top: 12px;
+  padding: 3px;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-box label {
+  font-size: 13px;
+  font-family: "Rubik";
+  margin-left: 3px;
+  -webkit-animation: fadeInUp 500ms 1;
+  -o-animation: fadeInUp 500ms 1;
+  animation: fadeInUp 500ms 1;
+  -webkit-animation-delay: 00ms;
+  -moz-animation-delay: 00ms;
+  -o-animation-delay: 00ms;
+  animation-delay: 00ms;
+
+  -webkit-animation-timing-function: ease-out;
+  -moz-animation-timing-function: ease-out;
+  -o-animation-timing-function: ease-out;
+  animation-timing-function: ease-out;
+
+  animation-play-state: paused;
+}
+
+.input-seg {
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+  padding: 0;
+}
+
+.input-icon {
+  padding: 3px;
+  border: 2px solid #eee;
+  margin-left: 0;
+  margin: 3px;
+  margin-right: 1px;
+  right: 0;
+  border-radius: 5px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  max-height: 35px;
+
+  -webkit-animation: backInLeft 700ms 1;
+  -o-animation: backInLeft 700ms 1;
+  animation: backInLeft 700ms 1;
+  -webkit-animation-delay: 0ms;
+  -moz-animation-delay: 0ms;
+  -o-animation-delay: 0ms;
+  animation-delay: 0ms;
+
+  -webkit-animation-timing-function: ease-out;
+  -moz-animation-timing-function: ease-out;
+  -o-animation-timing-function: ease-out;
+  animation-timing-function: ease-out;
+
+  animation-play-state: paused;
+}
+
+.input-icon .eva {
+  margin: 0 auto;
+  font-size: 20px;
+  padding: 2px 6px;
+  width: max-content;
+  color: var(--theme-color);
+
+  -webkit-animation: fadeIn 1000ms 1;
+  -o-animation: fadeIn 1000ms 1;
+  animation: fadeIn 1000ms 1;
+  -webkit-animation-delay: 0ms;
+  -moz-animation-delay: 0ms;
+  -o-animation-delay: 0ms;
+  animation-delay: 0ms;
+
+  -webkit-animation-timing-function: ease-out;
+  -moz-animation-timing-function: ease-out;
+  -o-animation-timing-function: ease-out;
+  animation-timing-function: ease-out;
+
+  animation-play-state: paused;
+}
+
+.form input,
+.form textarea {
+  padding: 8px 8px;
+  border-radius: 5px;
+  border: 2px solid #eee;
+  outline: none;
+  background: var(--bg);
+  font-weight: 600;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  color: var(--sec-color);
+  margin: 3px;
+  width: calc(80%);
+  margin-left: 0;
+
+  -webkit-animation: fadeInUp 500ms 1;
+  -o-animation: fadeInUp 500ms 1;
+  animation: fadeInUp 500ms 1;
+  -webkit-animation-delay: 0ms;
+  -moz-animation-delay: 0ms;
+  -o-animation-delay: 0ms;
+  animation-delay: 0ms;
+
+  -webkit-animation-timing-function: ease-out;
+  -moz-animation-timing-function: ease-out;
+  -o-animation-timing-function: ease-out;
+  animation-timing-function: ease-out;
+
+  animation-play-state: paused;
+}
+
+.form input::placeholder,
+.form textarea::placeholder {
+  font-weight: normal;
+}
+
+.form input:active,
+.form input:hover,
+.form textarea:active,
+.form textarea:hover,
+.form textarea:focus,
+.form textarea:focus {
+  border: 2px solid var(--theme-color);
+}
+
+
+.right-elems {
+  position: absolute;
+  right: 40px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+
+  -webkit-animation: backInUp 700ms 1;
+  -o-animation: backInUp 700ms 1;
+  animation: backInUp 700ms 1;
+  -webkit-animation-delay: 0ms;
+  -moz-animation-delay: 0ms;
+  -o-animation-delay: 0ms;
+  animation-delay: 0ms;
+
+  -webkit-animation-timing-function: ease-out;
+  -moz-animation-timing-function: ease-out;
+  -o-animation-timing-function: ease-out;
+  animation-timing-function: ease-out;
+
+  animation-play-state: paused;
+}
+
+@media screen and (min-width: 650px) {
+  .reg-body {
+    width: 60%;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding-bottom: 15px;
+  }
+}

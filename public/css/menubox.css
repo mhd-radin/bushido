@@ -82,6 +82,10 @@
   }
 
   .menu-item {
-    margin: 3px 8px;
+    margin: auto 5px;
+  }
+  
+  .menu-item.active, .menu-item.preview {
+    margin: 5px;
   }
 }

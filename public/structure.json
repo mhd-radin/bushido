@@ -33,6 +33,9 @@
     "/Admin/register/index.html",
     "/Admin/register",
     "/Admin/register/admin.register.js",
-    "/Admin/register/admin.register.css"
+    "/Admin/register/admin.register.css",
+    "/public/css/forms.template.css",
+    "/Admin/attendance/index.html",
+    "/Admin/attendance/css/attendance.css"
     ]
 }

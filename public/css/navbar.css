@@ -21,3 +21,9 @@ nav {
   right: 10px;
   font-size: 32px;
 }
+
+@media screen  and (min-width: 650px){
+  .nav-right {
+    display: none;
+  }
+}

@@ -1,10 +1,12 @@
 :root {
   --theme-color: #DB4060;
   --sec-theme-color: #FF819B;
+  --theme-color-alpha: #DB4060;
   --apt-color: #fff;
   --color: #050505;
   --sec-color: #313131;
   --bg: #ffffff;
   --sec-bg: #eee;
   --third-bg: #DBDBDB;
+  --border-color: #ccc;
 }

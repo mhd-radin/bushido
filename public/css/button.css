@@ -2,7 +2,7 @@ button {
   margin: 5px;
   padding: 13px 23px;
   border-radius: 25px;
-  background: linear-gradient(to top, var(--theme-color), var(--sec-theme-color));
+  background: linear-gradient(to top, var(--theme-color), var(--theme-color-alpha));
   color: var(--apt-color);
   border: 0px;
   outline: none;
@@ -21,4 +21,11 @@ button:hover {
 
 .sec-btn:hover {
   background: var(--third-bg);
+}
+
+*::-webkit-scrollbar, ::-webkit-scrollbar {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: none;
 }

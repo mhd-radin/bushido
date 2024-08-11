@@ -151,3 +151,7 @@
 - scrolling bug fix
 - for sample, retrieving users list from server
 - bug fixes
+
+### B06
+- background image added
+- stylings bug fix

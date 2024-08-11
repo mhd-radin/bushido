@@ -176,3 +176,8 @@
 
 ### B12
 - in get started page, new background for secondary body 
+
+### B13
+- admin registration completed
+- updated special access of admin
+- registration bug fixes of FormSet

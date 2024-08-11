@@ -7,9 +7,9 @@ function onpageloadin() {
       var data = item.data();
       elem.appendChild(userboxUI.create(
         data.fullname,
-        data.email,
+        (data.isAdmin == true ? 'Special Access' : data.email),
         'https://api.dicebear.com/9.x/initials/svg?seed=' + data.fullname + '&radius=40',
-        userboxUI.input(item.id)).parseElement()[0])
+        (data.isAdmin == true ? userboxUI.tag('Admin') : userboxUI.input(item.id) )).parseElement()[0])
     })
     document.getElementById('userTotalInfo').innerHTML = 'no one registered ( Total: ' + arr.length + ', Registered: 0 )'
   })

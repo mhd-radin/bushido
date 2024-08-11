@@ -73,6 +73,15 @@ class FormSet {
   constructor(state = formsID[0], data = { phone: '+91' }, completed = false) {
     this.state = state;
     this.data = data;
+    if (!this.data.phone){
+      this.set('phone', '+91')
+    }
+    if (!this.data.isAdmin){
+      this.set('isAdmin', false)
+    } 
+    if (!this.data.isPermanent) {
+      this.set('isPermanent', false)
+    }
     this.completed = completed;
   }
 

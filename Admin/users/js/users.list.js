@@ -7,9 +7,10 @@ function onpageloadin() {
       var data = item.data();
       elem.appendChild(userboxUI.create(
         data.fullname,
-        data.email,
-        'https://api.dicebear.com/9.x/initials/svg?seed=' + data.fullname + '&radius=40').parseElement()[0])
+        (data.isAdmin == true ? 'Special Access' : data.email),
+        'https://api.dicebear.com/9.x/initials/svg?seed=' + data.fullname + '&radius=40',
+        (data.isAdmin == true ? userboxUI.tag('Admin') : '')).parseElement()[0])
     })
-    document.getElementById('bodyTitle').innerHTML = 'Total '+arr.length+' users'
+    document.getElementById('bodyTitle').innerHTML = 'Total ' + arr.length + ' users'
   })
 }

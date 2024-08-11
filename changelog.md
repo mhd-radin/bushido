@@ -173,3 +173,6 @@
 
 ### B11
 - attendance demo chart added 
+
+### B12
+- in get started page, new background for secondary body 

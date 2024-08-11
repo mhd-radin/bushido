@@ -122,10 +122,7 @@
         <div class="subtext">Current month statistics</div>
       </div>
       <div class="card-box-body">
-        <img src="https://api.dicebear.com/9.x/shapes/svg?seed=NO&radius=10&size=96" alt="https://api.dicebear.com/9.x/initials/svg?seed=Felix">
-        <img src="https://api.dicebear.com/9.x/shapes/svg?seed=AB&radius=10&size=96" alt="https://api.dicebear.com/9.x/initials/svg?seed=Felix">
-        <img src="https://api.dicebear.com/9.x/shapes/svg?seed=Ca&radius=10&size=96" alt="https://api.dicebear.com/9.x/initials/svg?seed=Felix">
-        <img src="https://api.dicebear.com/9.x/shapes/svg?seed=A5&radius=10&size=96" alt="https://api.dicebear.com/9.x/initials/svg?seed=Felix">
+        <canvas id="attendanceChart" width="400" height="200"></canvas>
       </div>
     </div>
   </div>
@@ -155,6 +152,7 @@
 
   <!-- cdn scripts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <!-- custom scripts -->
   <script src="../../public/js/app.js"></script>

@@ -170,3 +170,6 @@
 ### B10
 - input bug fix on attendance 
 - styling bugs fix
+
+### B11
+- attendance demo chart added 

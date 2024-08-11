@@ -155,3 +155,6 @@
 ### B06
 - background image added
 - stylings bug fix
+
+### B07
+- animation bug fix

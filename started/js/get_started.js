@@ -4,7 +4,6 @@ function onpageloadin() {
   })
 
   setTimeout(function() {
-
     var welcomeTextElem = app.lettersToElem(document.querySelector('.welcome-text'))
     anime.timeline({
       loop: false
@@ -35,6 +34,9 @@ function onpageloadin() {
         })
       },
       complete: () => {
+        anime.set('.large-text', {
+          visibility: 'visible'
+        });
         app.lettersToElem(document.querySelector('.large-text'))
         anime.timeline({ loop: false }).add({
           targets: '.large-text .letter',

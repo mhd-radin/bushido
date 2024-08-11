@@ -41,7 +41,7 @@ if (bushido){
       })
     })
   },
-  getCollection(collection, name) {
+  getCollection(collection) {
     return new Promise((resolve, reject) => {
       bushido.access().then(function() {
         bushido.sdk.getDocs(bushido.sdk.collection(bushido.db, collection)).then(resolve)

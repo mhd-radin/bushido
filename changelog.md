@@ -146,3 +146,8 @@
 
 ### B04
 - login and sign up pages completed
+
+### B05
+- scrolling bug fix
+- for sample, retrieving users list from server
+- bug fixes

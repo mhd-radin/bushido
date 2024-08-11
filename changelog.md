@@ -133,3 +133,13 @@
 - assets updated
 - implemented server api (`bushido.js`)
 - spinner background color changed ( before: `#ccc` )
+
+### B03
+- new key added
+- helper function in bushido api
+- changeable text on preloader
+- styling bug fix
+- linked bushido api on login page
+- cryptojs added
+- registration page estimately completed
+- started sign in methods

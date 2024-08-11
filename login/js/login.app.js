@@ -51,6 +51,18 @@ function onpageloadin() {
   })
 
   //menu.close(document.querySelector('.menubox .menu-item'), 'preview')
+  var params = location.search.replace('?', '');
+  var paramsString = '{"' + params.replaceAll("&", '","').replaceAll('=', '":"') + '"}';
+  if (params == '') {} else {
+    var objectParams = JSON.parse(paramsString);
+    objectParams = objectParams
+    if (objectParams.email == undefined || objectParams.pw == undefined || objectParams.enc == undefined) {
+
+    } else {
+      spinner.showPreloader('Setting up...')
+      signIn(objectParams.email, objectParams.pw)
+    }
+  }
 }
 
 
@@ -135,5 +147,31 @@ document.getElementById('register').onclick = function() {
     setTimeout(function() {
       window.location.href = '../register';
     }, 200)
+  })
+}
+
+function signIn(email, pw) {
+  bushido.useQuery('accounts', [
+    ['email', '==', email],
+    ['password', '==', pw]
+    ]).then(function(snapshot) {
+    var arr = bushido.toData(snapshot);
+    if (arr.length == 0) {
+      alert('Sign in faild...');
+    } else {
+      var data = arr[0].data();
+      caches.open('user').then(function(cache) {
+        cache.put('about-user', new Response(JSON.stringify(data), {
+          headers: { 'Content-type': 'application/json' }
+        })).catch((err) => {
+          alert(err)
+        }).then(() => {
+          cache.keys('admin-access-key').then(function(t) {
+            alert(t[0].url)
+            localStorage.setItem('userUrl', t[0].url);
+          })
+        })
+      })
+    }
   })
 }

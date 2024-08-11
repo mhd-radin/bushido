@@ -50,6 +50,14 @@ function onpageloadin() {
     }
   })
 
+  if (
+    (typeof currentFormSet.completed != 'undefined' && currentFormSet.completed == true )|| (localStorage.getItem('form_set') && JSON.parse(localStorage.getItem('form_set')).completed)) {
+    spinner.showPreloader('you also registered on Bushido. so site will be redirect to default page')
+    setTimeout(function() {
+      window.location.href = '../'
+    }, 2000)
+  }
+
   //menu.close(document.querySelector('.menubox .menu-item'), 'preview')
 }
 
@@ -62,10 +70,10 @@ const formsID = [
 
 
 class FormSet {
-  constructor(state = formsID[0], data = { phone: '+91' }) {
+  constructor(state = formsID[0], data = { phone: '+91' }, completed = false) {
     this.state = state;
     this.data = data;
-    this.completed = false;
+    this.completed = completed;
   }
 
   set(key, name) {
@@ -87,10 +95,10 @@ let currentFormSet = new FormSet(formsID[0], {});
 
 if (localStorage.getItem('form_set')) {
   var currentForm = JSON.parse(localStorage.getItem('form_set'));
-  currentFormSet = new FormSet(currentForm.state, currentForm.data);
+  currentFormSet = new FormSet(currentForm.state, currentForm.data, currentFormSet.completed);
 }
 
-showForm(document.getElementById(currentFormSet.state))
+showForm(document.getElementById(currentFormSet.state));
 
 document.querySelectorAll('input, textarea').forEach((input, index) => {
   input.onchange = function(e) {
@@ -201,10 +209,29 @@ function changeState(nextState) {
         changeLog('Phone number input is blank, please fill the form correctly')
       } else {
         changeLog('Checking availability, please wait...')
-        closeForm(function() {
-          currentFormSet.state = nextState;
-          saveForm();
-          showForm(document.getElementById(nextState))
+        if (typeof spinner != 'undefined') {
+          spinner.showPreloader('Checking availability....');
+        }
+        bushido.useQuery('accounts', [
+          ['email', '==', email.value]
+        ]).then(function(snapshot) {
+          var data = [];
+          snapshot.forEach(function(item) {
+            data.push(item)
+          })
+          if (data.length == 0) {
+            spinner.removePreloader().then(function() {
+              closeForm(function() {
+                currentFormSet.state = nextState;
+                saveForm();
+                showForm(document.getElementById(nextState))
+              })
+            })
+          } else {
+            spinner.removePreloader().then(function() {
+              changeLog('Not available this email or phone!')
+            })
+          }
         })
       }
       break;
@@ -214,7 +241,7 @@ function changeState(nextState) {
 
       if (!password.value) {
         changeLog('Password input is blank, please fill the form correctly');
-      } else if (password.value.length <= 8) {
+      } else if (password.value.length <= 7) {
         changeLog('Password require minimum 8 letters');
       } else if (!dob.value) {
         changeLog('Date of birth input is blank, please fill the form correctly');
@@ -256,6 +283,19 @@ function changeState(nextState) {
         changeLog('Goal input is blank or require minimum 8 letters');
       } else {
         currentFormSet.completed = true;
+        saveForm();
+        if (CryptoJS) {
+          currentFormSet.set('password', CryptoJS.AES.encrypt(currentFormSet.data.password, config.ENC_KEY + 'Password').toString());
+          currentFormSet.set('email', CryptoJS.AES.encrypt(currentFormSet.data.email, config.ENC_KEY + 'Email').toString());
+        }
+        spinner.showPreloader('Completing, Please wait...');
+        bushido.set('accounts/user_' + Math.floor(Math.random() * 9999999) + '_' + Math.floor(Math.random() * 99999), currentFormSet.data).then(function() {
+          spinner.changeText('Server connected successfully...')
+          setTimeout(function() {
+            spinner.changeText('Signing your account');
+            window.location.href = '../login?email=' + currentFormSet.get('email') + '&pw=' + currentFormSet.get('password') + '&enc=true';
+          }, 500)
+        })
         alert('Registration success [Developer Mode]')
         alert(JSON.stringify(currentFormSet))
       }

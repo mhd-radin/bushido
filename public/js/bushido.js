@@ -74,10 +74,12 @@ if (bushido){
         })
       })
     })
+  },
+  toData(snapshot) {
+    var data = [];
+    snapshot.forEach(function(item) {
+      data.push(item)
+    })
+    return data;
   }
 }
-
-
-bushido.useQuery('accounts', [
-  ['title', '==', 'qwerty']
-  ])

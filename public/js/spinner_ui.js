@@ -1,23 +1,27 @@
 const spinner = {
   elem: document.querySelector('.preloader'),
-  create() {
+  create(text) {
     return new TagString(`<div class="preloader">
     <div class="spinner">
       <div class="dot1"></div>
       <div class="dot2"></div>
     </div>
-    <p>Loading...</p>
+    <p>${text}</p>
   </div>`)
   },
-  showPreloader() {
+  showPreloader(text = 'Loading...') {
     var self = this
     this.elem = document.querySelector('.preloader');
     if (!this.elem) {
-      var box = this.create()
-      document.body.appendChild(box.parseElement()[0])
-      this.elem = box.parseElement()[0];
+      var box = this.create(text)
+      var parsedElem = box.parseElement()[0];
+      document.body.appendChild(parsedElem)
+      this.elem = parsedElem;
     }
     this.elem.style.display = 'flex';
+  },
+  changeText(text){
+    this.elem.querySelector('p').innerHTML = text;
   },
   removePreloader() {
     return new Promise((resolve) => {

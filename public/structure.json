@@ -45,6 +45,7 @@
     "/Admin/valid.admin.js",
     "/assets/logos/bbc_w.png",
     "/assets/logos/bbc_b.png",
-    "/public/js/bushido.js"
+    "/public/js/bushido.js",
+    "/Admin/attendance/js/attendance.admin.js"
     ]
 }

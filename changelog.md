@@ -161,3 +161,8 @@
 
 ### B08
 - menubox redirection updated
+
+### B09
+- removed unwanted (demo) contents
+- for sample, retrieving users list from server on attendance record 
+- bug fixes

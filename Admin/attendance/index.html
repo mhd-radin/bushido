@@ -15,6 +15,10 @@
 
   <script src="../valid.admin.js"></script>
   <!-- min required scripts & css -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js" integrity="sha512-a+SUDuwNzXDvz4XrIcXHuCf089/iJAoN4lmrXJg18XnduKK6YlDHNRalv4yd1N40OKI80tFidF+rqTFKGPoWFQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/aes.min.js" integrity="sha512-UOtWWEXoMk1WLeC873Gmrkb2/dZMwvN1ViM9C1mNvNmQSeXpEr8sRzXLmUSha1X4x5V892uFmEjiZzUsYiHYiw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="../../local.config.js"></script>
+  <script src="../../public/js/bushido.js"></script>
   <script src="https://unpkg.com/eva-icons"></script>
   <link rel="stylesheet" href="https://unpkg.com/eva-icons@1.1.3/style/eva-icons.css">
 </head>
@@ -55,17 +59,17 @@
     <div class="card-box">
       <div class="card-box-head">
         <p>Mark attendances</p>
-        <div class="subtext">no one registered ( Total: 35, Registered: 0 )</div>
+        <div class="subtext" id="userTotalInfo">Connecting server, please wait...</div>
       </div>
-      <div class="card-box-body">
+      <div class="card-box-body" id="userslist">
         <div class="user-box">
           <div class="user-row">
             <div class="user-icon">
-              <img src="https://api.dicebear.com/9.x/initials/svg?seed=Felix&radius=40" alt="" class="user-image">
+              <img src="https://api.dicebear.com/9.x/shapes/svg?seed=Felix&radius=40" alt="" class="user-image">
             </div>
             <div class="user-body">
-              <div class="user-name">Demo User</div>
-              <div class="user-subtext">Hello Admin</div>
+              <div class="user-name">Loading...</div>
+              <div class="user-subtext"></div>
               <div class="user-right">
                 <input type="checkbox">
               </div>
@@ -76,11 +80,11 @@
         <div class="user-box">
           <div class="user-row">
             <div class="user-icon">
-              <img src="https://api.dicebear.com/9.x/initials/svg?seed=Fa&radius=40" alt="" class="user-image">
+              <img src="https://api.dicebear.com/9.x/shapes/svg?seed=Felix1&radius=40" alt="" class="user-image">
             </div>
             <div class="user-body">
-              <div class="user-name">Demo User 02</div>
-              <div class="user-subtext">Hello Admin 3883</div>
+              <div class="user-name">Loading...</div>
+              <div class="user-subtext"></div>
               <div class="user-right">
                 <input type="checkbox">
               </div>
@@ -91,71 +95,11 @@
         <div class="user-box">
           <div class="user-row">
             <div class="user-icon">
-              <img src="https://api.dicebear.com/9.x/initials/svg?seed=Kai&radius=40" alt="" class="user-image">
+              <img src="https://api.dicebear.com/9.x/shapes/svg?seed=Felix2&radius=40" alt="" class="user-image">
             </div>
             <div class="user-body">
-              <div class="user-name">Demo User 02</div>
-              <div class="user-subtext">Hello Admin 3883</div>
-              <div class="user-right">
-                <input type="checkbox">
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="user-box">
-          <div class="user-row">
-            <div class="user-icon">
-              <img src="https://api.dicebear.com/9.x/initials/svg?seed=Tahwo&radius=40" alt="" class="user-image">
-            </div>
-            <div class="user-body">
-              <div class="user-name">Demo User 02</div>
-              <div class="user-subtext">Hello Admin 3883</div>
-              <div class="user-right">
-                <input type="checkbox">
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="user-box">
-          <div class="user-row">
-            <div class="user-icon">
-              <img src="https://api.dicebear.com/9.x/shapes/svg?seed=Mrdin&radius=40" alt="" class="user-image">
-            </div>
-            <div class="user-body">
-              <div class="user-name">Demo User 02</div>
-              <div class="user-subtext">Hello Admin 3883</div>
-              <div class="user-right">
-                <input type="checkbox">
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="user-box">
-          <div class="user-row">
-            <div class="user-icon">
-              <img src="https://api.dicebear.com/9.x/shapes/svg?seed=s6&radius=40" alt="" class="user-image">
-            </div>
-            <div class="user-body">
-              <div class="user-name">Demo User 02</div>
-              <div class="user-subtext">Hello Admin 3883</div>
-              <div class="user-right">
-                <input type="checkbox">
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="user-box">
-          <div class="user-row">
-            <div class="user-icon">
-              <img src="https://api.dicebear.com/9.x/initials/svg?seed=A&radius=40" alt="" class="user-image">
-            </div>
-            <div class="user-body">
-              <div class="user-name">Demo User 02</div>
-              <div class="user-subtext">Hello Admin 3883</div>
+              <div class="user-name">Loading...</div>
+              <div class="user-subtext"></div>
               <div class="user-right">
                 <input type="checkbox">
               </div>
@@ -217,7 +161,8 @@
   <script src="../../public/js/tagstring.js"></script>
   <script src="../../public/js/spinner_ui.js"></script>
   <script src="../../public/js/menubox.js"></script>
-
+  <script src="../../public/js/user.structure.js"></script>
+  <script src="js/attendance.admin.js"></script>
 </body>
 
 </html>

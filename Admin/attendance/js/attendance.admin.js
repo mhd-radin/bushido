@@ -8,7 +8,8 @@ function onpageloadin() {
       elem.appendChild(userboxUI.create(
         data.fullname,
         data.email,
-        'https://api.dicebear.com/9.x/initials/svg?seed=' + data.fullname + '&radius=40').parseElement()[0])
+        'https://api.dicebear.com/9.x/initials/svg?seed=' + data.fullname + '&radius=40',
+        userboxUI.input(item.id)).parseElement()[0])
     })
     document.getElementById('userTotalInfo').innerHTML = 'no one registered ( Total: ' + arr.length + ', Registered: 0 )'
   })

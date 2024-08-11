@@ -166,3 +166,7 @@
 - removed unwanted (demo) contents
 - for sample, retrieving users list from server on attendance record 
 - bug fixes
+
+### B10
+- input bug fix on attendance 
+- styling bugs fix

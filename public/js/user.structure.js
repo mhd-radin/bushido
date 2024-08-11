@@ -20,5 +20,8 @@ const userboxUI = {
   },
   icon(iconNameWithoutEva){
     return new TagString(`<i class="eva eva-${iconNameWithoutEva}"></i>`)
+  },
+  input(id=''){
+    return new TagString(`<input type="checkbox" id="${id}">`);
   }
 }

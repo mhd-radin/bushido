@@ -36,6 +36,17 @@ const app = {
     } else {
       window.location.href = path
     }
+  },
+   getQueryParams(href = window.location.href) {
+    const url = new URL(href);
+    const params = new URLSearchParams(url.search);
+    const queryObject = {};
+  
+    for (const [key, value] of params) {
+      queryObject[key] = value;
+    }
+  
+    return queryObject;
   }
 }
 

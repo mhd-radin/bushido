@@ -50,19 +50,14 @@ function onpageloadin() {
     }
   })
 
-  //menu.close(document.querySelector('.menubox .menu-item'), 'preview')
-  var params = location.search.replace('?', '');
-  var paramsString = '{"' + params.replaceAll("&", '","').replaceAll('=', '":"') + '"}';
-  if (params == '') {} else {
-    var objectParams = JSON.parse(paramsString);
-    objectParams = objectParams
-    if (objectParams.email == undefined || objectParams.pw == undefined || objectParams.enc == undefined) {
+  var objectParams = app.getQueryParams()
+  if (objectParams.email == undefined || objectParams.pw == undefined) {} else {
+    spinner.showPreloader('Auto signing...')
+    alert(objectParams.email + '-  :  -'+objectParams.pw)
+    signIn(objectParams.email, objectParams.pw)
+  };
 
-    } else {
-      spinner.showPreloader('Setting up...')
-      signIn(objectParams.email, objectParams.pw)
-    }
-  }
+  //menu.close(document.querySelector('.menubox .menu-item'), 'preview')
 }
 
 
@@ -166,9 +161,10 @@ function signIn(email, pw) {
         })).catch((err) => {
           alert(err)
         }).then(() => {
-          cache.keys('admin-access-key').then(function(t) {
-            alert(t[0].url)
+          cache.keys('about-user').then(function(t) {
             localStorage.setItem('userUrl', t[0].url);
+            spinner.removePreloader();
+            window.location.href = '../events'
           })
         })
       })

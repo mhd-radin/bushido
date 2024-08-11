@@ -54,7 +54,7 @@ function onpageloadin() {
     (typeof currentFormSet.completed != 'undefined' && currentFormSet.completed == true )|| (localStorage.getItem('form_set') && JSON.parse(localStorage.getItem('form_set')).completed)) {
     spinner.showPreloader('you also registered on Bushido. so site will be redirect to default page')
     setTimeout(function() {
-      window.location.href = '../'
+      window.location.href = '../login/?email=' + currentFormSet.get('email') + '&pw=' + currentFormSet.get('password') + '&enc=true';
     }, 2000)
   }
 
@@ -283,17 +283,16 @@ function changeState(nextState) {
         changeLog('Goal input is blank or require minimum 8 letters');
       } else {
         currentFormSet.completed = true;
-        saveForm();
         if (CryptoJS) {
           currentFormSet.set('password', CryptoJS.AES.encrypt(currentFormSet.data.password, config.ENC_KEY + 'Password').toString());
-          currentFormSet.set('email', CryptoJS.AES.encrypt(currentFormSet.data.email, config.ENC_KEY + 'Email').toString());
         }
+        saveForm();
         spinner.showPreloader('Completing, Please wait...');
         bushido.set('accounts/user_' + Math.floor(Math.random() * 9999999) + '_' + Math.floor(Math.random() * 99999), currentFormSet.data).then(function() {
           spinner.changeText('Server connected successfully...')
           setTimeout(function() {
             spinner.changeText('Signing your account');
-            window.location.href = '../login?email=' + currentFormSet.get('email') + '&pw=' + currentFormSet.get('password') + '&enc=true';
+            window.location.href = '../login/?email=' + currentFormSet.get('email') + '&pw=' + currentFormSet.get('password') + '&enc=true';
           }, 500)
         })
         alert('Registration success [Developer Mode]')

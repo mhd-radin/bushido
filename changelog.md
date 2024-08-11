@@ -143,3 +143,6 @@
 - cryptojs added
 - registration page estimately completed
 - started sign in methods
+
+### B04
+- login and sign up pages completed

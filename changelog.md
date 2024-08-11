@@ -158,3 +158,6 @@
 
 ### B07
 - animation bug fix
+
+### B08
+- menubox redirection updated

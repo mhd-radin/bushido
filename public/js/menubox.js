@@ -1,5 +1,16 @@
 if (document.querySelector('.menubox')) {
-
+  var menubox = document.querySelector('.menubox');
+  menubox.querySelectorAll('.menu-item').forEach(function (menuItem, index) {
+    if (menuItem.dataset.url){
+      var url = menuItem.dataset.url
+      menuItem.onclick = function () {
+        if (spinner){
+          spinner.showPreloader()
+        }
+        window.location.href = url;
+      }
+    }
+  })
 }
 
 const menu = {

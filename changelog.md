@@ -181,3 +181,7 @@
 - admin registration completed
 - updated special access of admin
 - registration bug fixes of FormSet
+
+### B14
+- in admin users page, added information about user or admin
+- a demo update 

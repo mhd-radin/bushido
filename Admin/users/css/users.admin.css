@@ -41,14 +41,87 @@
 .info-user {
   display: none;
   border-radius: 10px;
-  padding: 5px;
+  padding: 8px;
   margin: 8px;
+  animation: fadeInRight 1s 1;
+  position: relative;
+  overflow: scroll;
+  max-height: calc(100vh - 120px);
+}
+
+.info-header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 95%;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.info-header img {
+  width: 80px;
+  margin: 5px;
+}
+
+.info-header .info-name {
+  margin-top: 10px;
+}
+
+.info-header .info-email {
+  color: var(--sec-color);
+  font-size: 12px;
+  font-family: "Montserrat";
+  font-weight: 550;
+}
+
+.info-body {
+  padding: 5px;
+  margin-top: 7px;
+}
+
+.info-body .info-prop {
+  margin: 3px;
+  position: relative;
+  font-weight: 600;
+  font-size: 13px;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 9px;
+}
+
+.info-prop .eva {
+  padding: 3px;
+  color: var(--sec-color);
+  padding-right: 7px;
+}
+
+.info-right {
+  position: absolute;
+  right: 10px;
+  top: 3px;
+  margin: 0;
+  padding: 0;
+}
+
+.info-right a {
+  margin: 0;
+  padding: 0;
+}
+
+.mobile-off {
+  display: none;
 }
 
 @media screen and (min-width: 650px) {
   .bodybox {
     display: flex;
     flex-direction: row;
+  }
+
+  .mobile-off {
+    display: block;
   }
 
   .users-list {
@@ -61,5 +134,6 @@
     width: 50%;
     display: block;
     background: var(--sec-bg);
+    max-height: calc(100vh - 170px);
   }
 }

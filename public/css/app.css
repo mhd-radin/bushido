@@ -20,6 +20,11 @@ p {
   margin: 5px;
 }
 
+a {
+  text-decoration: none;
+  color: var(--theme-color);
+}
+
 .font-raleway {
   font-family: "Raleway"
 }

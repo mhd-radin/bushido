@@ -291,7 +291,6 @@ function changeState(nextState) {
       if (!goal.value || goal.value < 8) {
         changeLog('Goal input is blank or require minimum 8 letters');
       } else {
-        currentFormSet.completed = true;
         if (CryptoJS) {
           currentFormSet.set('password', CryptoJS.AES.encrypt(currentFormSet.data.password, config.ENC_KEY + 'Password').toString());
         }
@@ -299,6 +298,8 @@ function changeState(nextState) {
         spinner.showPreloader('Completing, Please wait...');
         bushido.set('accounts/user_' + Math.floor(Math.random() * 9999999) + '_' + Math.floor(Math.random() * 99999), currentFormSet.data).then(function() {
           spinner.changeText('Server connected successfully...')
+          currentFormSet.completed = true;
+          saveForm()
           setTimeout(function() {
             spinner.changeText('Signing your account');
             window.location.href = '../login/?email=' + currentFormSet.get('email') + '&pw=' + currentFormSet.get('password') + '&enc=true';

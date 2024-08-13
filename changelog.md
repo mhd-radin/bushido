@@ -185,3 +185,6 @@
 ### B14
 - in admin users page, added information about user or admin
 - a demo update 
+
+### B15
+- a small bug fix 

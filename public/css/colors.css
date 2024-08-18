@@ -10,3 +10,32 @@
   --third-bg: #DBDBDB;
   --border-color: #ccc;
 }
+
+/*
+:root {
+  --theme-color: #6482AD;
+  --sec-theme-color: #7FA1C3;
+  --theme-color-alpha: #6482AD;
+  --apt-color: #fff;
+  --color: #050505;
+  --sec-color: #313131;
+  --bg: #fff;
+  --sec-bg: #EBF4F6;
+  --third-bg: #D4ECEE;
+  --border-color: #ccc;
+}
+
+:root {
+  --theme-color: #6482AD;
+  --sec-theme-color: #7FA1C3;
+  --theme-color-alpha: #6482AD;
+  --apt-color: #fff;
+  --color: #050505;
+  --sec-color: #313131;
+  --bg: #fff;
+  --sec-bg: #F5EDED;
+  --third-bg: #E2DAD6;
+  --border-color: #7FA1C3;
+}
+
+*/

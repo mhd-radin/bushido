@@ -51,7 +51,7 @@ a {
   right: 10px;
 }
 
-input {
+input[type="checkbox"] {
   min-width: 16px;
   min-height: 16px;
   -webkit-appearance: none;
@@ -64,6 +64,6 @@ input {
   outline-offset: 1.5px;
 }
 
-input:checked {
+input[type="checkbox"]:checked {
   background: var(--theme-color);
 }

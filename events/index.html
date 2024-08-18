@@ -3,12 +3,90 @@
 
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title></title>
+  <title>Events of Bushido Fit & Fight Club</title>
+
+  <link rel="shortcut icon" type="image/png" href="../assets/logos/bbc256.png">
+  <!-- custom css -->
+  <link rel="stylesheet" href="../public/css/link.css">
+
+  <!-- min required scripts & css -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js" integrity="sha512-a+SUDuwNzXDvz4XrIcXHuCf089/iJAoN4lmrXJg18XnduKK6YlDHNRalv4yd1N40OKI80tFidF+rqTFKGPoWFQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/aes.min.js" integrity="sha512-UOtWWEXoMk1WLeC873Gmrkb2/dZMwvN1ViM9C1mNvNmQSeXpEr8sRzXLmUSha1X4x5V892uFmEjiZzUsYiHYiw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="../local.config.js"></script>
+  <script src="../public/js/bushido.js"></script>
+  <script src="https://unpkg.com/eva-icons"></script>
+  <link rel="stylesheet" href="https://unpkg.com/eva-icons@1.1.3/style/eva-icons.css">
 </head>
 
 <body>
-  <h1>Development mode</h1>
+
+  <div class="preloader">
+    <div class="spinner">
+      <div class="dot1"></div>
+      <div class="dot2"></div>
+    </div>
+    <p>Loading...</p>
+  </div>
+
+  <div class="modal-back">
+    <div class="modal modal-bottom">
+      <div class="modal-head">
+        <div class="modal-title">A Demo modal</div>
+      </div>
+      <div class="modal-body coated">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus, quia.</p>
+      </div>
+      <div class="modal-footer">
+        <div class="modal-right">
+          <button class="sec-btn">Close</button>
+          <button class="">Open</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <nav>
+    <div class="nav-title">
+      <div class="nav-title-image">
+        <img src="../assets/logos/bbc_b.png" alt="">
+      </div>
+    </div>
+    <div class="nav-right">
+      <i class="eva eva-settings-2-outline"></i>
+    </div>
+  </nav>
+
+  <div class="menubox">
+    <div class="menu-item active" data-url="./">
+      <i class="eva eva-compass-outline"></i>
+      <div class="menu-item-text">Events</div>
+    </div>
+    <div class="menu-item" data-url="./">
+      <i class="eva eva-message-circle-outline"></i>
+      <div class="menu-item-text">Messages</div>
+    </div>
+    <div class="menu-item" data-url="./">
+      <i class="eva eva-bell-outline"></i>
+      <div class="menu-item-text">Notifications</div>
+    </div>
+    <div class="menu-item" data-url="./">
+      <i class="eva eva-person-outline"></i>
+      <div class="menu-item-text">Profile</div>
+    </div>
+  </div>
+
+  <!-- cdn scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+
+  <!-- custom scripts -->
+  <script src="../public/js/app.js"></script>
+  <script src="../public/js/tagstring.js"></script>
+  <script src="../public/js/spinner_ui.js"></script>
+  <script src="../public/js/menubox.js"></script>
+  <script src="../public/js/modal.js"></script>
+
 </body>
 
 </html>

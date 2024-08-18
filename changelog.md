@@ -199,3 +199,11 @@
 - started page animation added
 - spinner ui updated 
 - extra key removed at `ENC`
+
+### B17
+- recycling tested colors 
+- navbar color bug fix
+- new font ( open sans )
+- styling bug fix 
+- updated events page structures
+- new custom modal 

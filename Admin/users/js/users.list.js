@@ -22,12 +22,16 @@ function onpageloadin() {
 function createUserInfo(name, email, body) {
   return new TagString(`
   <div class="info-header">
-          <img src="https://api.dicebear.com/9.x/initials/svg?seed=${name}&radius=50" alt="" />
+          <img src="https://api.dicebear.com/9.x/initials/svg?seed=${name}&radius=40" alt="" />
           <h2 class="info-name">${name}</h2>
           <p class="info-email">${email}</p>
         </div>
         <div class="info-body">
           ${body}
+        </div>
+        <div class="info-right-foot">
+          <button class="sec-btn" onclick="closeAboutUserPanel()">Close</button>
+          <button>Update</button>
         </div>
   `)
 }
@@ -58,19 +62,42 @@ function openAboutUserPanel(item) {
   var data = item.data()
   var elem = document.querySelector('.info-user');
   if (elem) {
-    if (window.innerWidth < 650) {
-      document.querySelector('.users-list').style.display = 'none';
-    }
+    //if (window.innerWidth < 650) {
+    document.querySelector('.users-list').classList.remove('mobile-on');
+    document.querySelector('.body-header').classList.remove('mobile-on');
+    document.querySelector('.users-list').classList.add('mobile-off');
+    document.querySelector('.body-header').classList.add('mobile-off');
+
+    document.querySelector('.info-user').classList.remove('mobile-off');
+    document.querySelector('.info-user').classList.add('mobile-on');
+    //}
     elem.style.display = 'block';
-    
+
     var pr = '';
     Object.keys(data).forEach(function(key) {
-      if (key == 'password' || key == "adminKey") {
-        
-      } else {
-      pr += createUserInfoProp(key +'  : '+data[key], iconKeys[key])
-      }
+     // if (key != 'password' || key != "adminKey") {
+
+      //} else {
+        var rightStr = '';
+        if (key == 'isPermanent') {
+          rightStr = new TagString('<input type="checkbox" />').setAttributes({
+            id: 'isPermanent'
+          })
+        }
+        pr += createUserInfoProp(key + '  : ' + data[key], iconKeys[key], rightStr)
+     // }
     })
     elem.innerHTML = createUserInfo(data.fullname, data.email, pr)
   }
+}
+
+
+function closeAboutUserPanel() {
+  document.querySelector('.users-list').classList.replace('mobile-off', 'mobile-on');
+  document.querySelector('.body-header').classList.replace('mobile-off', 'mobile-on');
+  document.querySelector('.users-list').classList.add('mobile-on');
+  document.querySelector('.body-header').classList.add('mobile-on');
+
+  document.querySelector('.info-user').classList.replace('mobile-on', 'mobile-off');
+  document.querySelector('.info-user').classList.add('mobile-off');
 }

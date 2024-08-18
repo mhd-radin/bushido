@@ -8,6 +8,10 @@ textarea {
 
 body {
   margin: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 h1,
@@ -29,7 +33,7 @@ a {
   font-family: "Raleway"
 }
 
-.letter {
+.letter, .word {
   display: inline-block;
   /* line-height: 1em; */
 }
@@ -45,4 +49,21 @@ a {
 .right-10px {
   position: absolute;
   right: 10px;
+}
+
+input {
+  min-width: 16px;
+  min-height: 16px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: var(--sec-bg);
+  color: #3FCD85;
+  border-radius: 5px;
+  outline: 2px solid var(--theme-color);
+  outline-offset: 1.5px;
+}
+
+input:checked {
+  background: var(--theme-color);
 }

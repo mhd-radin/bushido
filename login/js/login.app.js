@@ -50,15 +50,20 @@ function onpageloadin() {
     }
   })
 
+
   var objectParams = app.getQueryParams()
   if (objectParams.email == undefined || objectParams.pw == undefined) {} else {
     spinner.showPreloader('Auto signing...')
-    alert(objectParams.email + '-  :  -'+objectParams.pw)
-    signIn(objectParams.email, objectParams.pw)
+    alert(objectParams.email + '-  :  -' + objectParams.pw)
+    signIn(objectParams.email, objectParams.pw, true)
   };
 
   //menu.close(document.querySelector('.menubox .menu-item'), 'preview')
 }
+
+app.validUser().then(() => {
+  window.location.href = '../events'
+})
 
 
 function changeLog(log) {
@@ -145,29 +150,62 @@ document.getElementById('register').onclick = function() {
   })
 }
 
-function signIn(email, pw) {
-  bushido.useQuery('accounts', [
+document.getElementById('nextBtn').onclick = function() {
+  var email = document.getElementById('email');
+  var password = document.getElementById('password');
+  // var encrypted = CryptoJS.AES.encrypt(password.value, config.ENC_KEY + 'Password').toString();
+  spinner.showPreloader('Connecting...')
+  signIn(email.value, password.value, false)
+}
+
+function signIn(email, pw, enc = false) {
+  return new Promise((resolve, reject) => {
+
+    bushido.useQuery('accounts', [
     ['email', '==', email],
-    ['password', '==', pw]
     ]).then(function(snapshot) {
-    var arr = bushido.toData(snapshot);
-    if (arr.length == 0) {
-      alert('Sign in faild...');
-    } else {
-      var data = arr[0].data();
-      caches.open('user').then(function(cache) {
-        cache.put('about-user', new Response(JSON.stringify(data), {
-          headers: { 'Content-type': 'application/json' }
-        })).catch((err) => {
-          alert(err)
-        }).then(() => {
-          cache.keys('about-user').then(function(t) {
-            localStorage.setItem('userUrl', t[0].url);
-            spinner.removePreloader();
-            window.location.href = '../events'
+      var arr = bushido.toData(snapshot);
+      if (arr.length == 0) {
+        var err = 'Sign in faild, credentials are wrong...'
+        alert(err);
+        reject(err);
+        spinner.removePreloader();
+      } else {
+        var data = arr[0].data();
+        var decryptedPassCode = CryptoJS.AES.decrypt(data.password, (config.ENC_KEY));
+        var decryptedPass = decryptedPassCode.toString(CryptoJS.enc.Utf8);
+        var decryptedPWCode = CryptoJS.AES.decrypt(pw, (config.ENC_KEY))
+        var decryptedPW = decryptedPWCode.toString(CryptoJS.enc.Utf8);
+        if (
+          pw == decryptedPass ||
+          enc && decryptedPW == decryptedPass
+        ) {
+          caches.open('user').then(function(cache) {
+            cache.put('about-user', new Response(JSON.stringify(data), {
+              headers: { 'Content-type': 'application/json' }
+            })).catch((err) => {
+              alert(err);
+              reject(err);
+            }).then(() => {
+              resolve()
+              cache.keys('about-user').then(function(t) {
+                localStorage.setItem('userUrl', t[0].url);
+                spinner.removePreloader();
+                window.location.href = '../events'
+              })
+            })
           })
-        })
-      })
-    }
+        } else {
+          var err = "password doesn't match"
+          alert(err);
+          reject(err);
+          spinner.removePreloader();
+        }
+      }
+    }).catch(err => {
+      alert(err);
+      alert('try refresh the app')
+      reject(err);
+    })
   })
 }

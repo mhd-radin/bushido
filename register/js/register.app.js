@@ -51,7 +51,7 @@ function onpageloadin() {
   })
 
   if (
-    (typeof currentFormSet.completed != 'undefined' && currentFormSet.completed == true )|| (localStorage.getItem('form_set') && JSON.parse(localStorage.getItem('form_set')).completed)) {
+    (typeof currentFormSet.completed != 'undefined' && currentFormSet.completed == true) || (localStorage.getItem('form_set') && JSON.parse(localStorage.getItem('form_set')).completed)) {
     spinner.showPreloader('you also registered on Bushido. so site will be redirect to default page')
     setTimeout(function() {
       window.location.href = '../login/?email=' + currentFormSet.get('email') + '&pw=' + currentFormSet.get('password') + '&enc=true';
@@ -73,12 +73,12 @@ class FormSet {
   constructor(state = formsID[0], data = { phone: '+91' }, completed = false) {
     this.state = state;
     this.data = data;
-    if (!this.data.phone){
+    if (!this.data.phone) {
       this.set('phone', '+91')
     }
-    if (!this.data.isAdmin){
+    if (!this.data.isAdmin) {
       this.set('isAdmin', false)
-    } 
+    }
     if (!this.data.isPermanent) {
       this.set('isPermanent', false)
     }
@@ -212,11 +212,12 @@ function changeState(nextState) {
         changeLog('Name input is blank, please fill the form correctly');
       } else if (!email.value) {
         changeLog('Email input is blank, please fill the form correctly');
-      } else if (!email.value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/) || email.value.includes(' ')) {
+      } else if ((!email.value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) || (email.value.includes(' ')) || (email.value[email.value.length - 1] == ' ')) {
         changeLog('Invalid email, email format incorrect or contains space. ( eg:- example@gmail.com )')
       } else if (!phone.value) {
         changeLog('Phone number input is blank, please fill the form correctly')
       } else {
+        email.value = email.value.replaceAll(' ', '');
         changeLog('Checking availability, please wait...')
         if (typeof spinner != 'undefined') {
           spinner.showPreloader('Checking availability....');
@@ -291,8 +292,9 @@ function changeState(nextState) {
       if (!goal.value || goal.value < 8) {
         changeLog('Goal input is blank or require minimum 8 letters');
       } else {
+        var PWS = currentFormSet.get('password');
         if (CryptoJS) {
-          currentFormSet.set('password', CryptoJS.AES.encrypt(currentFormSet.data.password, config.ENC_KEY + 'Password').toString());
+          currentFormSet.set('password', CryptoJS.AES.encrypt(currentFormSet.data.password, config.ENC_KEY).toString());
         }
         saveForm();
         spinner.showPreloader('Completing, Please wait...');
@@ -305,8 +307,8 @@ function changeState(nextState) {
             window.location.href = '../login/?email=' + currentFormSet.get('email') + '&pw=' + currentFormSet.get('password') + '&enc=true';
           }, 500)
         })
-        alert('Registration success [Developer Mode]')
-        alert(JSON.stringify(currentFormSet))
+        //alert('Registration success [Developer Mode]')
+        //alert(JSON.stringify(currentFormSet))
       }
       break;
   }

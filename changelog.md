@@ -188,3 +188,14 @@
 
 ### B15
 - a small bug fix 
+
+### B16 
+- bug fix attempt on admin users page ( not completed )
+- login issues fixed
+- security improvements
+- transparent background on nav at forms page
+- decreased layer index of spinner 
+- user validation method added
+- started page animation added
+- spinner ui updated 
+- extra key removed at `ENC`

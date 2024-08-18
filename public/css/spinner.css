@@ -8,7 +8,7 @@
   top: 0;
   width: 100%;
   height: 100vh;
-  z-index: 99999999;
+  z-index: 999;
   animation: fadeIn 350ms 1;
   background: var(--bg);
   font-family: "Poppins";
@@ -17,6 +17,8 @@
 
 .preloader p {
   padding: 20px;
+  font-family: "Rubik";
+  font-size: 14.5px;
 }
 
 .spinner {

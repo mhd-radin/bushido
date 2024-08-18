@@ -4,6 +4,15 @@
   padding-bottom: 140px;
 }
 
+nav {
+  background: transparent !important;
+  /* text-align: center; */
+  padding: 20px;
+  display: flex;
+  /* justify-content: center;
+  align-items: center; */
+}
+
 .reg-body h2 {
   font-family: "Poppins";
   -webkit-animation: fadeInUp 500ms 1;

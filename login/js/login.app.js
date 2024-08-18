@@ -54,7 +54,7 @@ function onpageloadin() {
   var objectParams = app.getQueryParams()
   if (objectParams.email == undefined || objectParams.pw == undefined) {} else {
     spinner.showPreloader('Auto signing...')
-    alert(objectParams.email + '-  :  -' + objectParams.pw)
+    alert(objectParams.email + '-  :  -' + objectParams.pw);
     signIn(objectParams.email, objectParams.pw, true)
   };
 
@@ -167,18 +167,21 @@ function signIn(email, pw, enc = false) {
       var arr = bushido.toData(snapshot);
       if (arr.length == 0) {
         var err = 'Sign in faild, credentials are wrong...'
-        alert(err);
-        reject(err);
-        spinner.removePreloader();
+        modal.alert('Sign Faild!', err, '').then(function() {
+          reject(err);
+          spinner.removePreloader();
+        })
       } else {
         var data = arr[0].data();
         var decryptedPassCode = CryptoJS.AES.decrypt(data.password, (config.ENC_KEY));
         var decryptedPass = decryptedPassCode.toString(CryptoJS.enc.Utf8);
         var decryptedPWCode = CryptoJS.AES.decrypt(pw, (config.ENC_KEY))
         var decryptedPW = decryptedPWCode.toString(CryptoJS.enc.Utf8);
+        alert(decryptedPW)
         if (
           pw == decryptedPass ||
-          enc && decryptedPW == decryptedPass
+          enc && decryptedPW == decryptedPass ||
+          pw == data.password
         ) {
           caches.open('user').then(function(cache) {
             cache.put('about-user', new Response(JSON.stringify(data), {
@@ -196,10 +199,11 @@ function signIn(email, pw, enc = false) {
             })
           })
         } else {
-          var err = "password doesn't match"
-          alert(err);
-          reject(err);
-          spinner.removePreloader();
+          var err = "password doesn't match or autologin didn't get match able password, try manual login"
+          modal.alert('Autologin Faild...', err, '').then(function() {
+            reject(err);
+            spinner.removePreloader();
+          })
         }
       }
     }).catch(err => {

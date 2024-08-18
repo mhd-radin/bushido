@@ -52,11 +52,14 @@ function onpageloadin() {
 
   if (
     (typeof currentFormSet.completed != 'undefined' && currentFormSet.completed == true) || (localStorage.getItem('form_set') && JSON.parse(localStorage.getItem('form_set')).completed)) {
-    spinner.showPreloader('you also registered on Bushido. so site will be redirect to default page')
-    setTimeout(function() {
-      window.location.href = '../login/?email=' + currentFormSet.get('email') + '&pw=' + currentFormSet.get('password') + '&enc=true';
-    }, 2000)
+    spinner.showPreloader('you also registered on Bushido. so site will be redirect to default page');
+    modal.alert('Registration found.', 'you also registered on Bushido. so site will be redirect to default page', '').then(() => {
+      setTimeout(function() {
+        window.location.href = '../login/?email=' + currentFormSet.get('email') + '&pw=' + currentFormSet.get('password') + '&enc=true';
+      }, 2000)
+    })
   }
+
 
   //menu.close(document.querySelector('.menubox .menu-item'), 'preview')
 }
@@ -307,8 +310,6 @@ function changeState(nextState) {
             window.location.href = '../login/?email=' + currentFormSet.get('email') + '&pw=' + currentFormSet.get('password') + '&enc=true';
           }, 500)
         })
-        //alert('Registration success [Developer Mode]')
-        //alert(JSON.stringify(currentFormSet))
       }
       break;
   }

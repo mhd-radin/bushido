@@ -93,3 +93,9 @@
     -webkit-transform: scale(1.0);
   }
 }
+
+@media screen and (min-width: 600px){
+  .preloader {
+    z-index: 99999;
+  }
+}

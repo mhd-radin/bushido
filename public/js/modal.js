@@ -46,10 +46,51 @@ const modal = {
       this.add(tagstr)
       document.getElementById(ID).onclick = function() {
         if (document.getElementById(mainID)) {
-          document.getElementById(mainID).remove()
-          resolve()
+          document.getElementById(mainID).children[0].style.animation = 'bounceOut 0.5s 1';
+          document.getElementById(mainID).children[0].onanimationend = function() {
+            document.getElementById(mainID).remove()
+            resolve()
+          }
         }
       }
+    })
+  },
+  confirm(title, body) {
+    return new Promise((resolve, reject) => {
+
+      var ID = 'CNFRM_' + Math.floor(Math.random() * 888);
+      var mainID = ID + '_MAIN';
+      var tagstr = this.create(this.title(title),
+        body,
+        this.rightElem(
+          this.button('Close', 'sec-btn', ID) +
+          this.button('Continue', '', ID+'200')),
+        '',
+        '',
+        mainID
+      );
+
+
+      this.add(tagstr)
+      document.getElementById(ID).onclick = function() {
+        if (document.getElementById(mainID)) {
+          document.getElementById(mainID).children[0].style.animation = 'bounceOut 0.5s 1';
+          document.getElementById(mainID).children[0].onanimationend = function() {
+            document.getElementById(mainID).remove()
+            resolve(false)
+          }
+        }
+      }
+      document.getElementById(ID+'200').onclick = function() {
+        if (document.getElementById(mainID)) {
+          document.getElementById(mainID).children[0].style.animation = 'bounceOut 0.5s 1';
+          document.getElementById(mainID).children[0].onanimationend = function() {
+            document.getElementById(mainID).remove()
+            resolve(true)
+          }
+        }
+      }
+      
     })
   }
 }

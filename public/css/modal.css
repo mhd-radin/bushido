@@ -13,7 +13,7 @@
 
 .modal {
   /* position: absolute; */
-  z-index: 999999;
+  z-index: 999999999999;
   /*left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);*/
@@ -24,7 +24,7 @@
   width: 80%;
   box-shadow: 2px 0px 14px #DFDFDF;
   max-height: 50vh;
-  animation: rollIn 1s 1;
+  animation: bounceIn 1s 1;
 }
 
 .modal-head {

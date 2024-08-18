@@ -207,3 +207,10 @@
 - styling bug fix 
 - updated events page structures
 - new custom modal 
+
+### B18
+- modal and spinner layer issues fixed
+- improvemed information about error at login pages
+- implemented confirm modal
+- removed demo mode structures
+- linked with modal api in some pages

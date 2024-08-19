@@ -39,8 +39,8 @@ function onpageloadin() {
         app.wordsToElem(document.querySelector('.large-text'))
         anime.timeline({ loop: false }).add({
           targets: '.large-text .word',
-          duration: 450,
-          delay: (el, i) => (80 * i),
+          duration: 950,
+          delay: (el, i) => (200 * i),
           easing: "easeOutExpo",
           opacity: [0, 1],
           //scaleY: [0.4, 1],

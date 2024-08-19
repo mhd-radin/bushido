@@ -51,6 +51,10 @@ a {
   right: 10px;
 }
 
+.eva.large-icon-x2 {
+  font-size: 35px;
+}
+
 input[type="checkbox"] {
   min-width: 16px;
   min-height: 16px;

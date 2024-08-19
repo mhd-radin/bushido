@@ -1,6 +1,6 @@
 # Changelog ( for Developers )
 
-> ℹ this changelog created for Developers. may contain grammar mistakes
+> ℹ this changelog created for Developers.
 
 ## Common updates
 - structure json updates
@@ -214,3 +214,9 @@
 - implemented confirm modal
 - removed demo mode structures
 - linked with modal api in some pages
+
+### B19 
+- started page ui updated ( removed white background )
+- new color themes
+- new spinner colour variables
+- new page for chatting 

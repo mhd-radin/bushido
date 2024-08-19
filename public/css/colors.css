@@ -1,4 +1,4 @@
-:root {
+/* :root {
   --theme-color: #DB4060;
   --sec-theme-color: #FF819B;
   --theme-color-alpha: #DB4060;
@@ -9,9 +9,12 @@
   --sec-bg: #eee;
   --third-bg: #DBDBDB;
   --border-color: #ccc;
-}
+    --spinner-one: #DB3737;
+    --spinner-two: #E8AE48;
+} */
 
-/*
+
+
 :root {
   --theme-color: #6482AD;
   --sec-theme-color: #7FA1C3;
@@ -24,7 +27,7 @@
   --third-bg: #D4ECEE;
   --border-color: #ccc;
 }
-
+/*
 :root {
   --theme-color: #6482AD;
   --sec-theme-color: #7FA1C3;
@@ -39,3 +42,18 @@
 }
 
 */
+/*
+:root {
+  --theme-color: #3EBA6C;
+  --sec-theme-color: #42AF3A;
+  --theme-color-alpha: #56D786;
+  --apt-color: #fff;
+  --color: #050505;
+  --sec-color: #313131;
+  --bg: #ffffff;
+  --sec-bg: #EEEEEE;
+  --third-bg: #F4FFE9;
+  --border-color: #DFFFC3;
+  --spinner-one: #5BDB61;
+  --spinner-two: #35B12C;
+}*/

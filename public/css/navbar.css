@@ -12,6 +12,10 @@ nav {
   z-index: 99;
 }
 
+.nav-title {
+  font-size: 25px;
+}
+
 .nav-title-image img {
   width: 160px;
 }

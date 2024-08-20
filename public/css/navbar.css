@@ -1,6 +1,6 @@
 nav {
   background: var(--third-bg);
-  color: var(--color);
+  color: var(--apt-third-color);
   display: flex;flex-direction:row ;
   padding: 10px;
   padding-left: 15px;
@@ -14,6 +14,14 @@ nav {
 
 .nav-title {
   font-size: 25px;
+}
+
+.nav-title {
+  color: var(--color);
+}
+
+.nav-title b {
+  color: var(--spinner-one);
 }
 
 .nav-title-image img {

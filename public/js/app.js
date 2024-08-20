@@ -33,6 +33,10 @@ const app = {
   preventLetters(elem) {
     elem.innerHTML = elem.innerText;
   },
+  getDayDate(){
+    var dt = new Date();
+    return dt.getDay().toLocaleString('in', {minimumIntegerDigits: 2})+'-'+dt.getMonth().toLocaleString('in', {minimumIntegerDigits: 2})+'-'+dt.getFullYear();
+  },
   redirectWithPreloader(path) {
     if (spinner) {
       spinner.showPreloader();

@@ -220,3 +220,13 @@
 - new color themes
 - new spinner colour variables
 - new page for chatting 
+
+### B20 ( Major Update )
+- new color variables
+- admin users page styling bug fix
+- new font 'Nunito'
+- attendance saves on server
+- attendance page styling bugs fix 
+- set default and classic theme
+- new navbar ui
+- checkbox color bug fix

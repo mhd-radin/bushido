@@ -21,6 +21,7 @@ button:hover {
 
 .sec-btn:hover {
   background: var(--third-bg);
+  color: var(--apt-third-color);
 }
 
 *::-webkit-scrollbar, ::-webkit-scrollbar {

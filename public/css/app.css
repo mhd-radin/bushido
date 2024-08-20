@@ -61,7 +61,7 @@ input[type="checkbox"] {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background: var(--sec-bg);
+  background: var(--bg);
   color: #3FCD85;
   border-radius: 5px;
   outline: 2px solid var(--theme-color);

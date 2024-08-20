@@ -1,4 +1,4 @@
-/* :root {
+:root {
   --theme-color: #DB4060;
   --sec-theme-color: #FF819B;
   --theme-color-alpha: #DB4060;
@@ -7,13 +7,15 @@
   --sec-color: #313131;
   --bg: #ffffff;
   --sec-bg: #eee;
+  --apt-sec-color: #050505;
+  --apt-third-color: #050505;
   --third-bg: #DBDBDB;
   --border-color: #ccc;
-    --spinner-one: #DB3737;
-    --spinner-two: #E8AE48;
-} */
+  --spinner-one: #DB3737;
+  --spinner-two: #E8AE48;
+}
 
-
+/*
 
 :root {
   --theme-color: #6482AD;
@@ -26,7 +28,10 @@
   --sec-bg: #EBF4F6;
   --third-bg: #D4ECEE;
   --border-color: #ccc;
-}
+  --spinner-one: #2E6A89;
+  --spinner-two: #4AB8F1;
+}*/
+
 /*
 :root {
   --theme-color: #6482AD;
@@ -39,6 +44,8 @@
   --sec-bg: #F5EDED;
   --third-bg: #E2DAD6;
   --border-color: #7FA1C3;
+    --spinner-one: #5BDB61;
+  --spinner-two: #35B12C;
 }
 
 */

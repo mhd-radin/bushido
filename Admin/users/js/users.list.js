@@ -58,26 +58,25 @@ const iconKeys = {
   address: 'pin'
 }
 
+var userslistElem = document.querySelector('.users-list')
+var bodyHeaderElem = document.querySelector('.body-header')
+var infoUserElem = document.querySelector('.info-user');
+
 function openAboutUserPanel(item) {
   var data = item.data()
   var elem = document.querySelector('.info-user');
   if (elem) {
-    //if (window.innerWidth < 650) {
-    document.querySelector('.users-list').classList.remove('mobile-on');
-    document.querySelector('.body-header').classList.remove('mobile-on');
-    document.querySelector('.users-list').classList.add('mobile-off');
-    document.querySelector('.body-header').classList.add('mobile-off');
-
-    document.querySelector('.info-user').classList.remove('mobile-off');
-    document.querySelector('.info-user').classList.add('mobile-on');
-    //}
-    elem.style.display = 'block';
-
+    if (window.innerWidth < 650) {
+      elem.style.display = 'block';
+      document.scrollingElement.scrollTop = 0;
+      userslistElem.style.display = 'none'
+      bodyHeaderElem.style.display = 'none'
+    }
     var pr = '';
     Object.keys(data).forEach(function(key) {
-     // if (key != 'password' || key != "adminKey") {
+      if (key == 'password' || key == "adminKey") {
 
-      //} else {
+      } else {
         var rightStr = '';
         if (key == 'isPermanent') {
           rightStr = new TagString('<input type="checkbox" />').setAttributes({
@@ -85,7 +84,7 @@ function openAboutUserPanel(item) {
           })
         }
         pr += createUserInfoProp(key + '  : ' + data[key], iconKeys[key], rightStr)
-     // }
+      }
     })
     elem.innerHTML = createUserInfo(data.fullname, data.email, pr)
   }
@@ -93,11 +92,10 @@ function openAboutUserPanel(item) {
 
 
 function closeAboutUserPanel() {
-  document.querySelector('.users-list').classList.replace('mobile-off', 'mobile-on');
-  document.querySelector('.body-header').classList.replace('mobile-off', 'mobile-on');
-  document.querySelector('.users-list').classList.add('mobile-on');
-  document.querySelector('.body-header').classList.add('mobile-on');
-
-  document.querySelector('.info-user').classList.replace('mobile-on', 'mobile-off');
-  document.querySelector('.info-user').classList.add('mobile-off');
+  if (window.innerWidth < 650) {
+    infoUserElem.style.display = 'none';
+    document.scrollingElement.scrollTop = 0;
+    userslistElem.style.display = 'block'
+    bodyHeaderElem.style.display = 'block'
+  }
 }

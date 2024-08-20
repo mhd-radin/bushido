@@ -10,7 +10,7 @@
 
 .display-box {
   background: var(--sec-bg);
-  color: var(--color);
+  color: var(--apt-sec-color);
   font-family: "Rubik";
   padding: 5px;
   padding-left: 8px;
@@ -36,8 +36,9 @@
 .card-box {
   padding: 10px 13px;
   background: var(--sec-bg);
+  color: var(--apt-sec-color);
   border-radius: 10px;
-  margin: 4px 8px;
+  margin: 7px 12px;
   margin-top: 15px;
 }
 
@@ -46,11 +47,13 @@
   font-size: 15px;
   margin: 3px 0px;
   padding: 5px 10px;
+  color: var(--theme-color);
+  font-weight: 600;
 }
 
 .card-box-head .subtext {
-  font-size: 11px;
-  font-family: "Raleway";
+  font-size: 12px;
+  font-family: "Nunito";
   color: var(--sec-color);
 }
 
@@ -65,4 +68,17 @@
   overflow-y: scroll;
   border-radius: 10px;
   padding: 8px 2px;
+}
+
+
+
+/* userbox */
+
+.user-box {
+  padding: 4px;
+}
+
+
+.users-name {
+  width: 60%;
 }

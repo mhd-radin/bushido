@@ -13,6 +13,7 @@
 
 .modal {
   /* position: absolute; */
+  position: relative;
   z-index: 999999999999;
   /*left: 50%;
   top: 50%;
@@ -52,10 +53,15 @@
   color: var(--sec-color);
   font-family: "Open Sans", sans-serif;
   border-radius: 8px;
+  overflow: scroll;
+  display: inline-block;
+  width: 95%;
+  max-height: 30vh;
 }
 
 .modal-body.coated {
   background: var(--sec-bg);
+  color: var(--apt-sec-color);
 }
 
 .modal-footer {

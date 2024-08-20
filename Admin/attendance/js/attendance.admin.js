@@ -1,4 +1,9 @@
 function onpageloadin() {
+
+  var attendanceData = [
+
+        ]
+
   bushido.getCollection('accounts').then(function(snapshot) {
     var arr = bushido.toData(snapshot)
     var elem = document.querySelector('.card-box-body#userslist');
@@ -11,8 +16,27 @@ function onpageloadin() {
         'https://api.dicebear.com/9.x/initials/svg?seed=' + data.fullname + '&radius=40',
         (data.isAdmin == true ? userboxUI.tag('Admin') : userboxUI.input(item.id) )).parseElement()[0])
     })
+
     document.getElementById('userTotalInfo').innerHTML = 'no one registered ( Total: ' + arr.length + ', Registered: 0 )'
-  })
+  });
+
+  document.getElementById('updateBtn').onclick = function() {
+    attendanceData = []
+    document.querySelectorAll('.user-box').forEach(function(elem) {
+      var input = elem.querySelector('input[type="checkbox"]');
+      if (input && input.checked == true) {
+        attendanceData.push({
+          id: elem.id,
+          value: input.checked,
+          data: app.getDayDate(),
+        })
+      }
+    })
+
+    modal.alert('Att Data',
+      '' + JSON.stringify(attendanceData) + '');
+    bushido.set('attendance/' + app.getDayDate(), attendanceData)
+  }
 
   const ctx = document.getElementById('attendanceChart').getContext('2d');
 

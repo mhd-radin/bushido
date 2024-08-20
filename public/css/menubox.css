@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: row;
   background: var(--third-bg);
+  color: var(--apt-third-color);
   position: fixed;
   bottom: 0;
   left: 0;
@@ -41,11 +42,13 @@
 .menu-item.active {
   background: var(--theme-color);
   color: var(--apt-color);
+  padding-left: 5px;
 }
 
 .menu-item.preview {
   background: var(--sec-bg);
-  color: var(--color);
+  color: var(--apt-sec-color);
+  padding-left: 5px;
 }
 
 .menu-item.active .menu-item-text,
@@ -84,8 +87,9 @@
   .menu-item {
     margin: auto 5px;
   }
-  
-  .menu-item.active, .menu-item.preview {
+
+  .menu-item.active,
+  .menu-item.preview {
     margin: 5px;
   }
 }

@@ -99,9 +99,9 @@ nav {
   border-bottom-right-radius: 0;
   max-height: 35px;
 
-  -webkit-animation: backInLeft 700ms 1;
-  -o-animation: backInLeft 700ms 1;
-  animation: backInLeft 700ms 1;
+  -webkit-animation: fadeInRight 700ms 1;
+  -o-animation: fadeInRight 700ms 1;
+  animation: fadeInRight 700ms 1;
   -webkit-animation-delay: 0ms;
   -moz-animation-delay: 0ms;
   -o-animation-delay: 0ms;

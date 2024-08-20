@@ -14,7 +14,9 @@ function onpageloadin() {
         data.fullname,
         (data.isAdmin == true ? 'Special Access' : data.email),
         'https://api.dicebear.com/9.x/initials/svg?seed=' + data.fullname + '&radius=40',
-        (data.isAdmin == true ? userboxUI.tag('Admin') : userboxUI.input(item.id) )).parseElement()[0])
+        (data.isAdmin == true ? userboxUI.tag('Admin') : userboxUI.input(item.id) )).setOptions({
+          id: item.id
+        }).parseElement()[0])
     })
 
     document.getElementById('userTotalInfo').innerHTML = 'no one registered ( Total: ' + arr.length + ', Registered: 0 )'

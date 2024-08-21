@@ -55,21 +55,26 @@ if (bushido){
       })
     })
   },
-  useQuery(collectionName, where) {
+  useQuery(collectionName, where, orderBy = []) {
     return new Promise((resolve, reject) => {
 
       var wh = [];
+      var ordBy = [];
 
       bushido.access().then(function() {
         where.forEach(function(item) {
           wh.push(bushido.sdk.where(item[0], item[1], item[2]));
+        });
+        
+        orderBy.forEach(function(item) {
+          ordBy.push(bushido.sdk.orderBy(item[0], item[1]));
         });
 
 
         bushido.sdk.getDocs(
           bushido.sdk.query(bushido.sdk.collection(
               bushido.db, collectionName),
-            ...wh)).then(function(item) {
+            ...wh, ...ordBy)).then(function(item) {
           resolve(item)
         })
       })

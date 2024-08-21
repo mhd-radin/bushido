@@ -1,8 +1,23 @@
 function onpageloadin() {
+  dayjs.extend(window.dayjs_plugin_weekday)
 
   var attendanceData = [
 
         ]
+  let currentDate = app.getDayDate();
+  let dateInp = document.getElementById('date');
+  dateInp.value = dayjs().format('YYYY-MM-DD');
+
+  dateInp.onchange = function(param) {
+    console.log(dateInp.value)
+    var dt = dayjs(dateInp.value).format('DD-MM-YYYY');
+    if (!app.isDate1Later(dt, dayjs().format('DD-MM-YYYY'))) {
+      currentDate = dt;
+    } else {
+      modal.alert('Invalid Date Used!', 'selected date too early. check and confirm', '');
+      dateInp.value = dayjs().format('YYYY-MM-DD');
+    }
+  }
 
   bushido.getCollection('accounts').then(function(snapshot) {
     var arr = bushido.toData(snapshot)
@@ -14,9 +29,9 @@ function onpageloadin() {
         data.fullname,
         (data.isAdmin == true ? 'Special Access' : data.email),
         'https://api.dicebear.com/9.x/initials/svg?seed=' + data.fullname + '&radius=40',
-        (data.isAdmin == true ? userboxUI.tag('Admin') : userboxUI.input(item.id) )).setOptions({
-          id: item.id
-        }).parseElement()[0])
+        (data.isAdmin == true ? userboxUI.tag('Admin') : userboxUI.input(item.id))).setOptions({
+        id: item.id
+      }).parseElement()[0])
     })
 
     document.getElementById('userTotalInfo').innerHTML = 'no one registered ( Total: ' + arr.length + ', Registered: 0 )'
@@ -30,57 +45,157 @@ function onpageloadin() {
         attendanceData.push({
           id: elem.id,
           value: input.checked,
-          data: app.getDayDate(),
+          data: currentDate,
         })
       }
     })
 
-    modal.alert('Att Data',
-      '' + JSON.stringify(attendanceData) + '');
-    bushido.set('attendance/' + app.getDayDate(), attendanceData)
+    /*modal.alert('Att Data',
+      '' + JSON.stringify(attendanceData) + '');*/
+    bushido.set('attendance/' + currentDate, { users: attendanceData })
   }
 
-  const ctx = document.getElementById('attendanceChart').getContext('2d');
+  bushido.getCollection('attendance').then(function(snapshot) {
+    var arr = bushido.toData(snapshot);
+    arr.sort((a, b) => {
+      const [dayA, monthA, yearA] = a.id.split('-').map(Number);
+      const [dayB, monthB, yearB] = b.id.split('-').map(Number);
 
-  const attendanceChart = new Chart(ctx, {
-    type: 'line',
-    data: {
-      labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sta', 'Sun'], // Months
-      datasets: [{
-        label: 'Attendance per day (demo)',
-        data: [5, 2, 7, 3, 7, 8, 0], // Attendance data
-        borderColor: 'rgba(75, 192, 192, 1)',
-        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-        fill: true,
-        tension: 0.3
-          }]
-    },
-    options: {
-      responsive: true,
-      scales: {
-        x: {
-          beginAtZero: true
-        },
-        y: {
-          beginAtZero: true,
-          title: {
-            display: true,
-            text: 'Attendance'
+      const dateA = new Date(yearA, monthA - 1, dayA);
+      const dateB = new Date(yearB, monthB - 1, dayB);
+
+      return dateB - dateA;
+    });
+    var dates = arr.slice(0, 7);
+    let selectedDates = [];
+    let days = [];
+    let attendanceDataLength = [];
+
+    function zeroPush() {
+      selectedDates.push(null);
+      attendanceDataLength.push(0)
+    }
+
+    for (var i = 0; i < 7; i += 1) {
+      var day = dayjs().subtract(i, 'day');
+      var week = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sta'];
+
+      days.push(week[day.day()]);
+      var isPushed = false;
+
+
+      dates.forEach((date, index) => {
+        if (
+          (date.id.match(/\W/g) && date.data().users && typeof date.data().users.length != 'undefined') || i == 0) {
+          if (day.format('DD-MM-YYYY') == date.id || i == 0) {
+            selectedDates.push(date.id);
+            attendanceDataLength.push(date.data().users.length);
+            isPushed = true;
           }
         }
-      },
-      plugins: {
-        legend: {
-          position: 'top'
+      });
+
+      if (isPushed == false) {
+        zeroPush();
+      }
+
+    }
+
+    if (selectedDates.length > 0) {
+      let attendanceChartUp = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: days.reverse(), // Months
+          datasets: [{
+            label: 'Attendance per Day',
+            data: attendanceDataLength.reverse(), // Attendance data
+            borderColor: app.getCSSProp('--theme-color'),
+            backgroundColor: app.getCSSProp('--theme-color') + '50',
+            fill: true,
+            tension: 0.2,
+            color: app.getCSSProp('--color')
+          }]
         },
-        tooltip: {
-          callbacks: {
-            label: function(tooltipItem) {
-              return `Attendance: ${tooltipItem.raw}`;
+        options: {
+          responsive: true,
+          color: app.getCSSProp('--color'),
+          scales: {
+            x: {
+              beginAtZero: true,
+              ticks: {
+                color: app.getCSSProp('--sec-theme-color'),
+              }
+            },
+            y: {
+              beginAtZero: true,
+              title: {
+                display: true,
+                text: 'Presented',
+                color: app.getCSSProp('--color')
+              },
+              ticks: {
+                color: app.getCSSProp('--color')
+              }
+            }
+          },
+          plugins: {
+            legend: {
+              position: 'top'
+            },
+            tooltip: {
+              callbacks: {
+                label: function(tooltipItem) {
+                  return `Attendance: ${tooltipItem.raw}`;
+                }
+              }
+            }
+          }
+        }
+      });
+    }
+  })
+
+  const ctx = document.getElementById('attendanceChart').getContext('2d');
+  /*
+    const attendanceChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sta', 'Sun'], // Months
+        datasets: [{
+          label: 'Attendance per day (demo)',
+          data: [5, 2, 7, 3, 7, 8, 0], // Attendance data
+          borderColor: 'rgba(75, 192, 192, 1)',
+          backgroundColor: 'rgba(75, 192, 192, 0.2)',
+          fill: true,
+          tension: 0.3
+            }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          x: {
+            beginAtZero: true
+          },
+          y: {
+            beginAtZero: true,
+            title: {
+              display: true,
+              text: 'Attendance'
+            }
+          }
+        },
+        plugins: {
+          legend: {
+            position: 'top'
+          },
+          tooltip: {
+            callbacks: {
+              label: function(tooltipItem) {
+                return `Attendance: ${tooltipItem.raw}`;
+              }
             }
           }
         }
       }
-    }
-  });
+    });*/
 }

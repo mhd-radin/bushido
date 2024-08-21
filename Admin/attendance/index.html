@@ -17,6 +17,9 @@
   <!-- min required scripts & css -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js" integrity="sha512-a+SUDuwNzXDvz4XrIcXHuCf089/iJAoN4lmrXJg18XnduKK6YlDHNRalv4yd1N40OKI80tFidF+rqTFKGPoWFQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/aes.min.js" integrity="sha512-UOtWWEXoMk1WLeC873Gmrkb2/dZMwvN1ViM9C1mNvNmQSeXpEr8sRzXLmUSha1X4x5V892uFmEjiZzUsYiHYiw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/relativeTime.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.13/plugin/weekday.min.js" integrity="sha512-+EJ/Ed/UbhfSypwkMnTIxgJ3izeQNc5655zPTlVqcgJ4Zd4K++JYUyg4Jy5rnKX9MfoIyfXJsu5N30MRHnShYw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="../../local.config.js"></script>
   <script src="../../public/js/bushido.js"></script>
   <script src="https://unpkg.com/eva-icons"></script>
@@ -45,7 +48,7 @@
   <div class="display-box">
     <div class="display-box-text">Today Attendance</div>
     <div class="display-box-right">
-      <input type="date" name="<date></date>" id="date">
+      <input type="date" name="" id="date">
     </div>
   </div>
 
@@ -117,7 +120,7 @@
     <div class="card-box">
       <div class="card-box-head">
         <p>Attendances Statistics</p>
-        <div class="subtext">Current month statistics</div>
+        <div class="subtext">Current week statistics</div>
       </div>
       <div class="card-box-body">
         <canvas id="attendanceChart" width="400" height="200"></canvas>
@@ -159,7 +162,7 @@
   <script src="../../public/js/menubox.js"></script>
   <script src="../../public/js/user.structure.js"></script>
   <script src="../../public/js/modal.js"></script>
-   
+
   <script src="js/attendance.admin.js"></script>
 </body>
 

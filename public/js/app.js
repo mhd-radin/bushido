@@ -33,9 +33,28 @@ const app = {
   preventLetters(elem) {
     elem.innerHTML = elem.innerText;
   },
-  getDayDate(){
+  getDayDate() {
     var dt = new Date();
-    return dt.getDay().toLocaleString('in', {minimumIntegerDigits: 2})+'-'+dt.getMonth().toLocaleString('in', {minimumIntegerDigits: 2})+'-'+dt.getFullYear();
+    return dt.getDay().toLocaleString('in', { minimumIntegerDigits: 2 }) + '-' + dt.getMonth().toLocaleString('in', { minimumIntegerDigits: 2 }) + '-' + dt.getFullYear();
+  },
+  parseDate(dateStr) {
+    const [day, month, year] = dateStr.split('-').map(Number);
+    return new Date(year, month - 1, day);
+  },
+  getCSSProp(prop, root = document.documentElement){
+    var style = getComputedStyle(root);
+    return style.getPropertyValue(prop).trim();
+  },
+  isDate1Later(dateStr1, dateStr2) {
+    const parseDate = (dateStr) => {
+      const [day, month, year] = dateStr.split('-').map(Number);
+      return new Date(year, month - 1, day);
+    };
+
+    const date1 = parseDate(dateStr1);
+    const date2 = parseDate(dateStr2);
+
+    return date1 > date2;
   },
   redirectWithPreloader(path) {
     if (spinner) {
@@ -58,24 +77,24 @@ const app = {
 
     return queryObject;
   },
-  validUser(){
+  validUser() {
     return new Promise((resolve, reject) => {
-      if (localStorage.getItem('userUrl')){
-        caches.open('user').then((cache)=>{
-          cache.match(localStorage.getItem('userUrl')).then(function (res){
-            if (res){
-              res.json().then((obj)=>{
-                if (obj){
+      if (localStorage.getItem('userUrl')) {
+        caches.open('user').then((cache) => {
+          cache.match(localStorage.getItem('userUrl')).then(function(res) {
+            if (res) {
+              res.json().then((obj) => {
+                if (obj) {
                   resolve()
                 } else {
                   reject('404: user not found')
                 }
-              }).catch(err=>reject(err))
+              }).catch(err => reject(err))
             } else {
               reject('404: user not found')
             }
-          }).catch(err=>reject(err))
-        }).catch(err=>reject(err))
+          }).catch(err => reject(err))
+        }).catch(err => reject(err))
       } else {
         reject('user not found')
       }

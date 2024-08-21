@@ -56,8 +56,12 @@
 
 .user-right {
   position: absolute;
-  right: 15px;
+  right: 0px;
   top: 12px;
+}
+
+.users-name {
+  width: 60%;
 }
 
 .user-box:last-child {

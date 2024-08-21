@@ -234,3 +234,12 @@
 ### C01
 - in form pages, animations updated
 - in admin attendance, input bug fix
+
+### C02 ( Major Update )
+- updated navbars
+- new theme for admin
+- dayjs added
+- attendance page basic completed
+- styling bugs fix
+- new colour variable for shadow
+- started page ui updated 

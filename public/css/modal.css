@@ -23,7 +23,7 @@
   border-radius: 15px;
   font-size: 13px;
   width: 80%;
-  box-shadow: 2px 0px 14px #DFDFDF;
+  box-shadow: 2px 0px 14px var(--shadow);
   max-height: 50vh;
   animation: bounceIn 1s 1;
 }

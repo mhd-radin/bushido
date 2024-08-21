@@ -9,9 +9,10 @@ function onpageloadin() {
       loop: false
     }).add({
       targets: '.welcome-text',
-      duration: 100,
+      duration: 200,
       easing: 'easeOutExpo',
-      opacity: [0, 1],
+      scaleY: [0, 1],
+      opacity: [0, 1]
     }).add({
       targets: '.welcome-text .letter',
       delay: (el, i) => (50 * i),

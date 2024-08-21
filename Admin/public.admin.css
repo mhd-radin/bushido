@@ -1,5 +1,17 @@
 :root {
-  --theme-color: #4576B4;
-  --sec-theme-color: #669DE3;
-  --theme-color-alpha: #4576B4;
+  --theme-color: #3BAC3B;
+  --sec-theme-color: #59DB59;
+  --theme-color-alpha: #60C660;
+  --apt-color: #fff;
+  --color: #FFFFFF;
+  --shadow: #1C1C1C;
+  --sec-color: #C4C4C4;
+  --bg: #272727;
+  --sec-bg: #4A4A4A;
+  --apt-sec-color: #FFFFFF;
+  --apt-third-color: #FFFFFF;
+  --third-bg: #1D1C1C;
+  --border-color: #747474;
+  --spinner-one: #3BAC3B;
+  --spinner-two: #50C750;
 }

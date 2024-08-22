@@ -80,6 +80,12 @@ if (bushido){
       })
     })
   },
+  onSet(ref, handle, type = 'collection'){
+    bushido.access().then(function(){
+      var orgRef = bushido.sdk[type](bushido.db, ref);
+      bushido.sdk.onSnapshot(orgRef, handle)
+    })
+  },
   toData(snapshot) {
     var data = [];
     snapshot.forEach(function(item) {
@@ -88,3 +94,4 @@ if (bushido){
     return data;
   }
 }
+

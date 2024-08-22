@@ -45,17 +45,15 @@ function onpageloadin() {
         attendanceData.push({
           id: elem.id,
           value: input.checked,
-          data: currentDate,
+          date: currentDate,
         })
       }
     })
 
-    /*modal.alert('Att Data',
-      '' + JSON.stringify(attendanceData) + '');*/
     bushido.set('attendance/' + currentDate, { users: attendanceData })
   }
 
-  bushido.getCollection('attendance').then(function(snapshot) {
+  bushido.onSet('attendance', function(snapshot) {
     var arr = bushido.toData(snapshot);
     arr.sort((a, b) => {
       const [dayA, monthA, yearA] = a.id.split('-').map(Number);
@@ -89,7 +87,7 @@ function onpageloadin() {
           (date.id.match(/\W/g) && date.data().users)) {
           if (day.format('DD-MM-YYYY') == date.id || i == 0 && isPushed == false) {
             selectedDates.push(date.id);
-            if(i == 0)console.log(date.data().users.length);
+            if (i == 0) console.log(date.data().users.length);
             attendanceDataLength.push(date.data().users.length);
             isPushed = true;
           }
@@ -103,100 +101,68 @@ function onpageloadin() {
     }
 
     if (selectedDates.length > 0) {
-      let attendanceChartUp = new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: days.reverse(), // Months
-          datasets: [{
-            label: 'Attendance per Day',
-            data: attendanceDataLength.reverse(), // Attendance data
-            borderColor: app.getCSSProp('--theme-color'),
-            backgroundColor: app.getCSSProp('--theme-color') + '50',
-            fill: true,
-            tension: 0.2,
-            color: app.getCSSProp('--color')
-          }]
-        },
-        options: {
-          responsive: true,
-          color: app.getCSSProp('--color'),
-          scales: {
-            x: {
-              beginAtZero: true,
-              ticks: {
-                color: app.getCSSProp('--sec-theme-color'),
-              }
-            },
-            y: {
-              beginAtZero: true,
-              title: {
-                display: true,
-                text: 'Presented',
-                color: app.getCSSProp('--color')
-              },
-              ticks: {
-                color: app.getCSSProp('--color')
-              }
-            }
-          },
-          plugins: {
-            legend: {
-              position: 'top'
-            },
-            tooltip: {
-              callbacks: {
-                label: function(tooltipItem) {
-                  return `Attendance: ${tooltipItem.raw}`;
-                }
-              }
-            }
-          }
-        }
-      });
+      attendanceChartUp.data.labels = days.reverse();
+      attendanceChartUp.data.datasets[0].data = attendanceDataLength.reverse();
+      attendanceChartUp.update();
     }
-  })
+  }, 'collection')
 
   const ctx = document.getElementById('attendanceChart').getContext('2d');
-  /*
-    const attendanceChart = new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sta', 'Sun'], // Months
-        datasets: [{
-          label: 'Attendance per day (demo)',
-          data: [5, 2, 7, 3, 7, 8, 0], // Attendance data
-          borderColor: 'rgba(75, 192, 192, 1)',
-          backgroundColor: 'rgba(75, 192, 192, 0.2)',
-          fill: true,
-          tension: 0.3
-            }]
-      },
-      options: {
-        responsive: true,
-        scales: {
-          x: {
-            beginAtZero: true
-          },
-          y: {
-            beginAtZero: true,
-            title: {
-              display: true,
-              text: 'Attendance'
+  let attendanceChartUp = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: [], // Months
+      datasets: [{
+        label: 'Attendance per Day',
+        data: [], // Attendance data
+        borderColor: app.getCSSProp('--theme-color'),
+        backgroundColor: app.getCSSProp('--theme-color') + '50',
+        fill: true,
+        tension: 0.2,
+        color: app.getCSSProp('--color')
+          }]
+    },
+    options: {
+      responsive: true,
+      color: app.getCSSProp('--color'),
+      scales: {
+        x: {
+          beginAtZero: true,
+          ticks: {
+            color: function(context) {
+              var index = context.tick.index;
+              if (index == (context.chart.data.labels.length - 1)) {
+                return app.getCSSProp('--spinner-one');
+              } else {
+                return app.getCSSProp('--theme-color');
+              }
             }
           }
         },
-        plugins: {
-          legend: {
-            position: 'top'
+        y: {
+          beginAtZero: true,
+          title: {
+            display: true,
+            text: 'Presented',
+            color: app.getCSSProp('--color')
           },
-          tooltip: {
-            callbacks: {
-              label: function(tooltipItem) {
-                return `Attendance: ${tooltipItem.raw}`;
-              }
+          ticks: {
+            color: app.getCSSProp('--color')
+          }
+        }
+      },
+      plugins: {
+        legend: {
+          position: 'top'
+        },
+        tooltip: {
+          callbacks: {
+            label: function(tooltipItem) {
+              return `Attendance: ${tooltipItem.raw}`;
             }
           }
         }
       }
-    });*/
+    }
+  });
 }

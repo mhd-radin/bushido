@@ -246,3 +246,9 @@
 
 ### C03
 - in attendance page, graph chart bug fix
+
+### C04
+- temporary redirection on back button at chat page
+- cleared spelling mistakes
+- added server event on bushido api
+- live chart updations 

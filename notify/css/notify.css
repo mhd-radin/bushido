@@ -1,0 +1,50 @@
+.body {
+  height: calc(100vh - 180px);
+  overflow-y: scroll;
+}
+
+.breaker {
+  margin: 5px;
+  padding: 3px;
+}
+
+.breaker {
+  color: var(--sec-color);
+  font-weight: 600;
+  font-size: 19px;
+}
+
+.notify-box {
+  padding: 15px;
+  background: var(--bg);
+  position: relative;
+  font-size: 14px;
+  border-top: 1px solid var(--border-color);
+}
+
+.notify-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.notify-box .icon {
+  font-size: 20px;
+  color: var(--sec-theme-color);
+  padding: 6px;
+}
+
+.notify-body {
+  font-family: "Nunito";
+  padding: 6px;
+  width: 75%;
+}
+
+.notify-box .right {
+  position: absolute;
+  right: 5px;
+  margin: 5px;
+  padding: 4px;
+  bottom: 0;
+  font-weight: 500;
+  color: var(--theme-color)
+}

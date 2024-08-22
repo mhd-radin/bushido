@@ -252,3 +252,6 @@
 - cleared spelling mistakes
 - added server event on bushido api
 - live chart updations 
+
+### C05 
+- new page for notifications

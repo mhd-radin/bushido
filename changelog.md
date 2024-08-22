@@ -243,3 +243,6 @@
 - styling bugs fix
 - new colour variable for shadow
 - started page ui updated 
+
+### C03
+- in attendance page, graph chart bug fix

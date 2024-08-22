@@ -4,7 +4,7 @@ function onpageloadin() {
   var attendanceData = [
 
         ]
-  let currentDate = app.getDayDate();
+  let currentDate = dayjs().format('DD-MM-YYYY');
   let dateInp = document.getElementById('date');
   dateInp.value = dayjs().format('YYYY-MM-DD');
 
@@ -76,8 +76,8 @@ function onpageloadin() {
       attendanceDataLength.push(0)
     }
 
-    for (var i = 0; i < 7; i += 1) {
-      var day = dayjs().subtract(i, 'day');
+    for (var i = 0; i < 7; i++) {
+      var day = dayjs().subtract((i), 'day');
       var week = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sta'];
 
       days.push(week[day.day()]);
@@ -86,9 +86,10 @@ function onpageloadin() {
 
       dates.forEach((date, index) => {
         if (
-          (date.id.match(/\W/g) && date.data().users && typeof date.data().users.length != 'undefined') || i == 0) {
-          if (day.format('DD-MM-YYYY') == date.id || i == 0) {
+          (date.id.match(/\W/g) && date.data().users)) {
+          if (day.format('DD-MM-YYYY') == date.id || i == 0 && isPushed == false) {
             selectedDates.push(date.id);
+            if(i == 0)console.log(date.data().users.length);
             attendanceDataLength.push(date.data().users.length);
             isPushed = true;
           }

@@ -62,7 +62,7 @@
 .menu-item.preview .eva {
   border-radius: 50%;
   padding: 5px;
-  background: var(--sec-theme-color);
+  background: var(--theme-color-alpha);
 }
 
 .menu-item.preview .eva {

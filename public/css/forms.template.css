@@ -89,7 +89,7 @@ nav {
 
 .input-icon {
   padding: 3px;
-  border: 2px solid #eee;
+  border: 2px solid var(--border-color);
   margin-left: 0;
   margin: 3px;
   margin-right: 1px;
@@ -142,7 +142,7 @@ nav {
 .form textarea {
   padding: 8px 8px;
   border-radius: 5px;
-  border: 2px solid #eee;
+  border: 2px solid var(--border-color);
   outline: none;
   background: var(--bg);
   font-weight: 600;

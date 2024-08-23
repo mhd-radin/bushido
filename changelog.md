@@ -255,3 +255,10 @@
 
 ### C05 
 - new page for notifications
+
+### C06
+- new page for notification management 
+- scrolling bug fix
+- changed color theme ( secondary theme color )
+- animation variable when app loaded
+- started page animation updated

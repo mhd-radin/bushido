@@ -21,13 +21,13 @@ body {
 
 .welcome-text {
   font-size: 33px;
-  display: inline-flexbox;
+  display: inline-block;
   font-family: "Raleway", "Poppins", sans-serif;
   color: #A52424;
   overflow: hidden;
   /* text-shadow: 0 0 2px #A52424; */
   background: #FFFFFFE6;
-  padding: 7px;
+  padding: 0px 15px;
   margin: 3px;
   margin-left: 8px;
 }

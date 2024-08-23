@@ -1,0 +1,108 @@
+:root {
+  --animation-state: paused;
+}
+
+.body {
+  height: calc(100vh - 140px);
+  padding: 10px;
+  overflow-y: scroll;
+}
+
+.breaker {
+  margin: 5px;
+  padding: 3px;
+}
+
+.breaker {
+  color: var(--sec-color);
+  font-weight: 600;
+  font-size: 19px;
+}
+
+.notify-box {
+  padding: 15px;
+  background: var(--bg);
+  position: relative;
+  font-size: 14px;
+  border-top: 1px solid var(--border-color);
+}
+
+.notify-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.notify-box .icon {
+  font-size: 20px;
+  color: var(--sec-theme-color);
+  padding: 6px;
+}
+
+.notify-body {
+  font-family: "Nunito";
+  padding: 6px;
+  width: 75%;
+}
+
+.notify-box .right {
+  position: absolute;
+  right: 5px;
+  margin: 5px;
+  padding: 4px;
+  bottom: 0;
+  font-weight: 500;
+  color: var(--theme-color);
+}
+
+.floating-btn {
+  position: fixed;
+  bottom: 80px;
+  right: 25px;
+  z-index: 99;
+  padding: 10px;
+  border-radius: 20px;
+  display: flex;
+  box-shadow: 3px 3px 10px 5px var(--shadow);
+  animation: bounceIn 2s 1;
+  animation-delay: 1050ms;
+  animation-play-state: var(--animation-state)
+}
+
+.floating-btn i {
+  padding: 2px 6px;
+  margin: 3px auto;
+  font-size: 20px;
+}
+
+
+.ripple-effect-side {
+  position: fixed;
+  background: var(--theme-color);
+  border-radius: 50%;
+  z-index: 999;
+  right: 68px;
+  bottom: 118px;
+  width: 100px;
+  height: 100px;
+  opacity: 0;
+  transform: translate(50%, 50%);
+  animation: rippleSide 1s 1 ease-in;
+}
+
+@keyframes rippleSide {
+  0% {
+    /* width: 0;
+    height: 0; */
+    opacity: 1;
+    transform: translate(50%, 50%) scale(0);
+
+  }
+
+  100% {
+    /* width: 2000px;
+    height: 2000px; */
+    transform: translate(50%, 50%) scale(20);
+
+    opacity: 0;
+  }
+}

@@ -29,21 +29,28 @@ a {
   color: var(--theme-color);
 }
 
+:root {
+  --animation-state: paused;
+}
+
 .font-raleway {
   font-family: "Raleway"
 }
 
-.letter, .word {
+.letter,
+.word {
   display: inline-block;
   /* line-height: 1em; */
 }
 
 .row-box {
-  display: flex;flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 .column-box {
-  display: flex;flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .right-10px {

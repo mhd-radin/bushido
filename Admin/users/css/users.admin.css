@@ -1,6 +1,8 @@
 .body {
   padding: 10px;
-  padding-bottom: 100px;
+  /* padding-bottom: 100px; */
+  height: calc(100vh - 180px);
+  overflow-y: scroll;
 }
 
 .users-list {

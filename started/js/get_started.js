@@ -9,15 +9,17 @@ function onpageloadin() {
       loop: false
     }).add({
       targets: '.welcome-text',
-      duration: 200,
+      delay: 200,
+      duration: 500,
       easing: 'easeOutExpo',
-      scaleY: [0, 1],
+      scaleY: [1, 1],
+      translateX: ['-80%', 0],
       opacity: [0, 1]
     }).add({
       targets: '.welcome-text .letter',
       delay: (el, i) => (50 * i),
       opacity: [0, 1],
-      translateZ: 0,
+      translateY: ['-40px', 0],
       duration: 700,
       keyframes: [{
         filter: 'blur(1px)'

@@ -262,3 +262,7 @@
 - changed color theme ( secondary theme color )
 - animation variable when app loaded
 - started page animation updated
+
+### C07
+- admin secondary theme color changed
+- notifier page ui completed

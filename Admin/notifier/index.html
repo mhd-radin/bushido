@@ -96,14 +96,21 @@
       </div>
     </div>
   </div>
-  
-  <button class="floating-btn">
+
+  <button class="floating-btn" id="floater">
     <i class="eva eva-paper-plane-outline"></i>
   </button>
   
+  <div class="form-display">
   <div class="ripple-effect-side"></div>
   <div class="form">
-    
+    <i class="close-btn eva eva-close-outline"></i>
+    <div class="form-center">
+      <p>Enter title for notification</p>
+      <input type="text" name="title" id="title" value="" placeholder="Enter Title" />
+    </div>
+  </div>
+  <div class="ripple-effect-lay"></div>
   </div>
 
   <div class="menubox">
@@ -137,8 +144,8 @@
   <script src="../../public/js/tagstring.js"></script>
   <script src="../../public/js/spinner_ui.js"></script>
   <script src="../../public/js/menubox.js"></script>
-  <script src="../../public/js/user.structure.js"></script>
-  <script src="js/users.list.js"></script>
+  <script src="../../public/js/modal.js"></script>
+  <script src="js/notifier.js"></script>
 </body>
 
 </html>

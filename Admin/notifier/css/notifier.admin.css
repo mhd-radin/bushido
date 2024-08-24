@@ -68,6 +68,12 @@
   animation-play-state: var(--animation-state)
 }
 
+.floating-btn p {
+  font-size: 15px;
+  padding: 5px 10px;
+  margin: 2px;
+}
+
 .floating-btn i {
   padding: 2px 6px;
   margin: 3px auto;
@@ -75,7 +81,8 @@
 }
 
 
-.ripple-effect-side {
+.ripple-effect-side,
+.ripple-effect-lay {
   position: fixed;
   background: var(--theme-color);
   border-radius: 50%;
@@ -89,20 +96,115 @@
   animation: rippleSide 1s 1 ease-in;
 }
 
+.form {
+  background: var(--bg);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 100%;
+  height: 100vh;
+  animation: layIn 1250ms 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  animation-play-state: var(--animation-state)
+}
+
+.ripple-effect-lay {
+  background: transparent;
+  border: 10px solid var(--apt-color);
+  animation: rippleSideLay 1s 1 ease-in;
+  animation-delay: 500ms;
+  z-index: 9999;
+}
+
+.close-btn {
+  font-size: 25px !important;
+  color: var(--color);
+  border: 2px solid var(--sec-color);
+  padding: 8px;
+  border-radius: 50%;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  margin: 10px;
+}
+
+.form-center {
+  width: 90%;
+  padding: 17px;
+  position: relative;
+}
+
+.form-center p {
+  font-style: 20px;
+  width: 95%;
+  animation: fadeInDown 1s 1;
+}
+
+.form-center input,
+.form-center textarea,
+.form-center select {
+  border: 0;
+  outline: none;
+  font-size: 35px;
+  background: var(--bg);
+  width: 95%;
+  padding: 5px;
+  animation: slideInDown 1s 1;
+}
+
+.form-center textarea {
+  font-size: 20px;
+  resize: none;
+}
+
+.form-center select {
+  color: var(--sec-theme-color);
+}
+
+.form-display {
+  display: none;
+}
+
 @keyframes rippleSide {
   0% {
-    /* width: 0;
-    height: 0; */
     opacity: 1;
     transform: translate(50%, 50%) scale(0);
 
   }
 
   100% {
-    /* width: 2000px;
-    height: 2000px; */
     transform: translate(50%, 50%) scale(20);
+    opacity: 1;
+  }
+}
 
+@keyframes rippleSideLay {
+  0% {
+    opacity: 1;
+    transform: translate(50%, 50%) scale(0);
+
+  }
+
+  100% {
+    transform: translate(50%, 50%) scale(20);
+    opacity: 1;
+  }
+}
+
+@keyframes layIn {
+  0% {
     opacity: 0;
+  }
+
+  80% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
   }
 }

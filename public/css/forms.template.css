@@ -174,12 +174,9 @@ nav {
   font-weight: normal;
 }
 
-.form input:active,
-.form input:hover,
-.form textarea:active,
-.form textarea:hover,
-.form textarea:focus,
-.form textarea:focus {
+
+input:focus,
+textarea:focus {
   border: 2px solid var(--theme-color);
 }
 
@@ -215,5 +212,9 @@ nav {
     top: 50%;
     transform: translate(-50%, -50%);
     padding-bottom: 15px;
+  }
+
+  .right-elems {
+    right: 90px;
   }
 }

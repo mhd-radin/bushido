@@ -269,3 +269,11 @@
 
 ### C08 
 - updated modal and notifier page
+
+### C09
+- files formated with prettier
+- responsive styling bug fixed ( attendance, notifier, userslist admin, united forms style )
+- new loading spinner added
+- changed navbar headings
+- input focus bug fixed
+- redirecting urls from menubox fixed at admin

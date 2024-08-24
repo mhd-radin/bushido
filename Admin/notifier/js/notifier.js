@@ -71,7 +71,7 @@ floater.onclick = function() {
               floater.onclick = function() {
 
                 modal.alert('Select user to send', () => {
-                  userboxUI.create('Name', 'subname', 'https://api.dicebear.com/9.x/shapes/svg?seed=Bjrt&radius=50&size=58', userboxUI.input('648'))
+                  return userboxUI.create('Name', 'subname', 'https://api.dicebear.com/9.x/shapes/svg?seed=Bjrt&radius=50&size=58', userboxUI.input('648'))
                 }, '')
               }
             }

@@ -1,2 +1,2 @@
-background image change
-admin
+remove demo mode 
+scroll bug fix

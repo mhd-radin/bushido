@@ -116,7 +116,8 @@
   background: transparent;
   border: 10px solid var(--apt-color);
   animation: rippleSideLay 1s 1 ease-in;
-  animation-delay: 500ms;
+  animation-delay: 450ms;
+  display: block;
   z-index: 9999;
 }
 
@@ -178,7 +179,7 @@
 
   100% {
     transform: translate(50%, 50%) scale(20);
-    opacity: 1;
+    opacity: 0.3;
   }
 }
 
@@ -191,7 +192,7 @@
 
   100% {
     transform: translate(50%, 50%) scale(20);
-    opacity: 1;
+    opacity: 0.2;
   }
 }
 

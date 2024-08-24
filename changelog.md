@@ -266,3 +266,6 @@
 ### C07
 - admin secondary theme color changed
 - notifier page ui completed
+
+### C08 
+- updated modal and notifier page

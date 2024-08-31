@@ -3,7 +3,7 @@
 }
 
 .body {
-  height: calc(100vh - 140px);
+  height: calc(100vh - 180px);
   padding: 10px;
   overflow-y: scroll;
 }

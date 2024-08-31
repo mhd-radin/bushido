@@ -79,13 +79,17 @@
 }
 
 @media screen and (min-width: 650px ) {
+  .body {
+    padding-bottom: 10px;
+  }
   .card-box {
-    width: 450px;
+    width: 500px;
   }
 
   .cards-container {
     flex-direction: row;
     flex-wrap: wrap;
     display: flex;
+    height: max-content;
   }
 }

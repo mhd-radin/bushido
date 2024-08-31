@@ -149,7 +149,7 @@
   .users-list {
     display: flex;
     flex-direction: column;
-    width: 40%;
+    width: 45%;
     overflow: scroll;
     max-height: calc(100vh - 200px);
   }

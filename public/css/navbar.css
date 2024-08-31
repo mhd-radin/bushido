@@ -1,7 +1,8 @@
 nav {
   background: var(--third-bg);
   color: var(--apt-third-color);
-  display: flex;flex-direction:row ;
+  display: flex;
+  flex-direction: row;
   padding: 10px;
   padding-left: 15px;
   /* position: relative; */
@@ -35,7 +36,7 @@ nav {
   color: var(--sec-color);
 }
 
-@media screen  and (min-width: 650px){
+@media screen and (min-width: 650px) {
   .nav-right {
     display: none;
   }

@@ -1,7 +1,7 @@
 :root {
-  --theme-color: #DB4060;
-  --sec-theme-color: #FF819B;
-  --theme-color-alpha: #F1617E;
+  --theme-color: #db4060;
+  --sec-theme-color: #ff819b;
+  --theme-color-alpha: #f1617e;
   --apt-color: #fff;
   --color: #050505;
   --sec-color: #313131;
@@ -9,60 +9,27 @@
   --sec-bg: #eee;
   --apt-sec-color: #050505;
   --apt-third-color: #050505;
-  --third-bg: #DBDBDB;
+  --third-bg: #dbdbdb;
   --border-color: #ccc;
-  --spinner-one: #DB3737;
-  --spinner-two: #E8AE48;
-  --shadow: #DFDFDF;
+  --spinner-one: #db3737;
+  --spinner-two: #e8ae48;
+  --shadow: #dfdfdf;
 }
 
-
-/*
-
 :root {
-  --theme-color: #6482AD;
-  --sec-theme-color: #7FA1C3;
-  --theme-color-alpha: #6482AD;
-  --apt-color: #fff;
-  --color: #050505;
-  --sec-color: #313131;
-  --bg: #fff;
-  --sec-bg: #EBF4F6;
-  --third-bg: #D4ECEE;
-  --border-color: #ccc;
-  --spinner-one: #2E6A89;
-  --spinner-two: #4AB8F1;
-}*/
-
-/*
-:root {
-  --theme-color: #6482AD;
-  --sec-theme-color: #7FA1C3;
-  --theme-color-alpha: #6482AD;
-  --apt-color: #fff;
-  --color: #050505;
-  --sec-color: #313131;
-  --bg: #fff;
-  --sec-bg: #F5EDED;
-  --third-bg: #E2DAD6;
-  --border-color: #7FA1C3;
-    --spinner-one: #5BDB61;
-  --spinner-two: #35B12C;
+  --theme-color: #40b5db;
+  --sec-theme-color: #16595f;
+  --theme-color-alpha: #40b5db;
+  --apt-color: #000;
+  --color: #eee4e4;
+  --sec-color: #ccbbbb;
+  --bg: #26393e;
+  --sec-bg: #376266;
+  --apt-sec-color: #f4ecec;
+  --apt-third-color: #fbf7f7;
+  --third-bg: #0d101e;
+  --border-color: #474c53;
+  --spinner-one: #f74545;
+  --spinner-two: #e8ae48;
+  --shadow: #1b1e22;
 }
-
-*/
-/*
-:root {
-  --theme-color: #3EBA6C;
-  --sec-theme-color: #42AF3A;
-  --theme-color-alpha: #56D786;
-  --apt-color: #fff;
-  --color: #050505;
-  --sec-color: #313131;
-  --bg: #ffffff;
-  --sec-bg: #EEEEEE;
-  --third-bg: #F4FFE9;
-  --border-color: #DFFFC3;
-  --spinner-one: #5BDB61;
-  --spinner-two: #35B12C;
-}*/

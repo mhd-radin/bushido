@@ -1,11 +1,11 @@
 .body {
-  height: calc(100vh - 140px);
+  height: calc(100vh - 10px);
   overflow-y: scroll;
 }
 
 .breaker {
   margin: 5px;
-  padding: 3px;
+  padding: 3px 12px;
 }
 
 .breaker {
@@ -46,5 +46,11 @@
   padding: 4px;
   bottom: 0;
   font-weight: 500;
-  color: var(--theme-color)
+  color: var(--theme-color);
+}
+
+@media (max-width: 650px) {
+  .body {
+    height: calc(100vh - 115px);
+  }
 }

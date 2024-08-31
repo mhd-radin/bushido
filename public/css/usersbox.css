@@ -17,11 +17,21 @@
   padding: 10px;
 }
 
-.user-tag {
+.user-tag, .user-tag-num {
   border: 2px solid;
   color: var(--theme-color);
   padding: 3px 9px;
   border-radius: 20px
+}
+
+.user-tag-num {
+  font-size: 12px;
+  border-radius: 50%;
+}
+
+.user-tag-icon {
+  color: var(--theme-color);
+  padding: 3px 5px
 }
 
 .user-right .eva {

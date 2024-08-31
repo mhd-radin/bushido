@@ -2,12 +2,26 @@ body {
   width: 100%;
 }
 
-.body {
-  /* height: calc(100vh + 78px); */
-  position: relative;
-  padding-top: 20px;
-  padding-bottom: 120px;
+.body-layout {
+  display: flex;
+  flex-direction: row;
+}
+
+.users-list {
+  width: 40%;
+  background: var(--third-bg);
+  height: calc(100vh - 58px);
+  border: 1px solid var(--border-color);
+  border-left: 1px solid transparent;
+  border-top: 1px solid transparent;
   overflow-y: scroll;
+}
+
+.body {
+  max-height: calc(100vh - 200px);
+  padding-top: 20px;
+  position: relative;
+  width: 60%;
 }
 
 .chat-layout {
@@ -15,7 +29,6 @@ body {
   padding: 5px;
   margin: 5px;
   margin-bottom: 8px;
-  animation: fadeInUp 1s 1;
 }
 
 .chat-container {
@@ -42,16 +55,9 @@ body {
   padding: 8px;
   margin: 5px;
   padding-bottom: 18px;
-  min-width: 50vw;
-  overflow-wrap: break-word;
   border-radius: 9px;
   position: relative;
   box-shadow: 2px 0 0px var(--sec-bg);
-}
-
-.chat-bubble img {
-  width: 100%;
-  border-radius: 10px;
 }
 
 .chat-bubble * {
@@ -76,14 +82,10 @@ body {
 .next-chat {
   margin-top: 0;
   padding-top: 0;
-  margin: 0;
-  padding: 0;
 }
 
-.next-chat .chat-container {
-  margin-top: 0;
-  margin-bottom: 0;
-  padding: 0;
+.next-chat .chat-bubble {
+  margin-top: 8px;
 }
 
 .next-chat .chat-bubble b {
@@ -108,7 +110,6 @@ body {
   padding: 5px 10px;
   color: var(--theme-color);
   font-weight: 600;
-  z-index: 9;
 }
 
 .chat-bubble .info-chat {
@@ -155,10 +156,10 @@ body {
   color: var(--apt-sec-color);
   position: fixed;
   z-index: 9999;
-  left: 0;
+  right: 0;
   bottom: 0;
   padding: 5px;
-  width: calc(100% - 10px);
+  width: calc(60% - 10px);
   max-height: 100px;
 }
 
@@ -198,7 +199,7 @@ body {
 }
 
 .chatter .icon i {
-  color: var(--theme-color);
+  color: var(--sec-theme-color);
   margin: 3px;
   margin-left: 3px;
   margin-right: 3px;
@@ -207,14 +208,21 @@ body {
 @media screen and (min-width: 650px) {
   .chat-container {
     width: 400px;
-    min-width: 400px;
   }
 
   .desktop {
     display: flex;
   }
+}
 
-  .chat-bubble {
-    min-width: 30vw;
+@media screen and (max-width: 650px) {
+  .users-list {
+    display: block;
+    width: 100%;
+  }
+
+  .body,
+  .footer {
+    display: none;
   }
 }

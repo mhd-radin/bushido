@@ -6,11 +6,10 @@
 
 nav {
   background: transparent !important;
-  /* text-align: center; */
   padding: 20px;
   display: flex;
-  /* justify-content: center;
-  align-items: center; */
+  justify-content: start;
+  align-items: start;
 }
 
 .reg-body h2 {
@@ -25,7 +24,6 @@ nav {
 
   animation-play-state: paused;
 }
-
 
 .reg-body p {
   color: var(--theme-color);
@@ -174,12 +172,10 @@ nav {
   font-weight: normal;
 }
 
-
 input:focus,
 textarea:focus {
   border: 2px solid var(--theme-color);
 }
-
 
 .right-elems {
   position: absolute;
@@ -216,5 +212,32 @@ textarea:focus {
 
   .right-elems {
     right: 90px;
+  }
+}
+
+@media screen and (min-width: 950px) {
+  .reg-body {
+    width: 43%;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  body {
+    padding-bottom: 10px;
+    padding-top: 0;
+    margin-top: 0;
+    height: calc(100vh - 80px);
+  }
+
+  nav {
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 3px;
+    margin-bottom: 0;
+  }
+
+  .reg-body {
+    margin-top: 0px;
+    padding-top: 6px;
   }
 }

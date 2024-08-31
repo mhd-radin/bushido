@@ -28,7 +28,7 @@ const modal = {
   add(tag) {
     document.body.appendChild(tag.parseElement()[0])
   },
-  alert(title, body, bodyClass = 'coated') {
+  alert(title, body, bodyClass = '') {
     return new Promise((resolve, reject) => {
 
       var ID = 'ALRT_' + Math.floor(Math.random() * 888);

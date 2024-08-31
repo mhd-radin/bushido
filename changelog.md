@@ -277,3 +277,20 @@
 - changed navbar headings
 - input focus bug fixed
 - redirecting urls from menubox fixed at admin
+
+### C10 ( Major Update )
+- desktop and mobile styling bug fix
+- new page for chat and profile 
+- formated files 
+- admin security verfication updated 
+- ionic icon on attendance page - admin
+- mini loader added
+- renamed chat to messages in admin
+- new mini loader added
+- new bg image
+- chat ui added
+- chat page client completed
+- new cards and designs on event page
+- new saving method on app
+- another bug fix and styling updates
+- designing basic completed

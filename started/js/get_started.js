@@ -1,73 +1,88 @@
 function onpageloadin() {
-  anime.set('.large-text', {
-    visibility: 'hidden'
-  })
+  anime.set(".large-text", {
+    visibility: "hidden",
+  });
 
-  setTimeout(function() {
-    var welcomeTextElem = app.lettersToElem(document.querySelector('.welcome-text'))
-    anime.timeline({
-      loop: false
-    }).add({
-      targets: '.welcome-text',
-      delay: 200,
-      duration: 500,
-      easing: 'easeOutExpo',
-      scaleY: [1, 1],
-      translateX: ['-80%', 0],
-      opacity: [0, 1]
-    }).add({
-      targets: '.welcome-text .letter',
-      delay: (el, i) => (50 * i),
-      opacity: [0, 1],
-      translateY: ['-40px', 0],
-      duration: 700,
-      keyframes: [{
-        filter: 'blur(1px)'
-      }, {
-        filter: 'blur(0px)'
-      }],
-      easing: "easeOutExpo",
-    }).add({
-      targets: '.welcome-text',
-      duration: 50,
-      begin: () => {
-        anime.set('.large-text', {
-          visibility: 'visible'
-        })
-      },
-      complete: () => {
-        anime.set('.large-text', {
-          visibility: 'visible'
-        });
-        app.wordsToElem(document.querySelector('.large-text'))
-        anime.timeline({ loop: false }).add({
-          targets: '.large-text .word',
-          duration: 950,
-          delay: (el, i) => (200 * i),
-          easing: "easeOutExpo",
-          opacity: [0, 1],
-          //scaleY: [0.4, 1],
-          translateY: ['30px', '0px'],
-          keyframes: [{
-            filter: 'blur(1px)'
-          }, {
-            filter: 'blur(0px)'
-          }],
-          complete: function() {
-            setTimeout(function() {
-              document.querySelectorAll('.indro-text, .reg-btn').forEach(function(elem) {
-                elem.style.animationPlayState = 'running';
-              })
-              setTimeout(function(){
-              app.preventLetters(document.querySelector('.large-text'))},1000)
-            }, 50)
-          }
-        })
-      }
-    })
-  }, 200)
+  setTimeout(function () {
+    var welcomeTextElem = app.lettersToElem(
+      document.querySelector(".welcome-text")
+    );
+    anime
+      .timeline({
+        loop: false,
+      })
+      .add({
+        targets: ".welcome-text",
+        delay: 200,
+        duration: 500,
+        easing: "easeOutExpo",
+        scaleY: [1, 1],
+        translateX: ["-80%", 0],
+        opacity: [0, 1],
+      })
+      .add({
+        targets: ".welcome-text .letter",
+        delay: (el, i) => 50 * i,
+        opacity: [0, 1],
+        translateY: ["-40px", 0],
+        duration: 700,
+        keyframes: [
+          {
+            filter: "blur(1px)",
+          },
+          {
+            filter: "blur(0px)",
+          },
+        ],
+        easing: "easeOutExpo",
+      })
+      .add({
+        targets: ".welcome-text",
+        duration: 50,
+        begin: () => {
+          anime.set(".large-text", {
+            visibility: "visible",
+          });
+        },
+        complete: () => {
+          anime.set(".large-text", {
+            visibility: "visible",
+          });
+          app.wordsToElem(document.querySelector(".large-text"));
+          anime.timeline({ loop: false }).add({
+            targets: ".large-text .word",
+            duration: 950,
+            delay: (el, i) => 200 * i,
+            easing: "easeOutExpo",
+            opacity: [0, 1],
+            // scale: [0.4, 1],
+            translateY: ["30px", "0px"],
+            keyframes: [
+              {
+                filter: "blur(1px)",
+              },
+              {
+                filter: "blur(0px)",
+              },
+            ],
+            complete: function () {
+              setTimeout(function () {
+                document
+                  .querySelectorAll(".indro-text, .reg-btn")
+                  .forEach(function (elem) {
+                    elem.style.animationPlayState = "running";
+                  });
+                setTimeout(function () {
+                  app.preventLetters(document.querySelector(".large-text"));
+                }, 1000);
+              }, 50);
+            },
+          });
+        },
+      });
+  }, 200);
 }
 
 function started() {
-  app.redirectWithPreloader('register')
+  app.redirectWithPreloader("register");
 }

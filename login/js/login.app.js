@@ -49,9 +49,12 @@ function onpageloadin() {
   //menu.close(document.querySelector('.menubox .menu-item'), 'preview')
 }
 
-app.validUser().then(() => {
-  window.location.href = "../events";
-});
+app
+  .validUser()
+  .then(() => {
+    window.location.href = "../events";
+  })
+  .catch((err) => err);
 
 function changeLog(log) {
   document.getElementById("logger").innerHTML = log;
@@ -161,56 +164,68 @@ function signIn(email, pw, enc = false) {
       .then(function (snapshot) {
         var arr = bushido.toData(snapshot);
         if (arr.length == 0) {
-          var err = "Sign in faild, credentials are wrong...";
+          var err =
+            "Sorry, no account found in this email. credientails are wrong, check the email and password. or check your internet connection";
           modal.alert("Sign Faild!", err, "").then(function () {
             reject(err);
             spinner.removePreloader();
           });
         } else {
-          var data = arr[0].data();
-          var decryptedPassCode = CryptoJS.AES.decrypt(
+          const data = arr[0].data();
+          const decryptedPassCode = CryptoJS.AES.decrypt(
             data.password,
             config.ENC_KEY
           );
-          var decryptedPass = decryptedPassCode.toString(CryptoJS.enc.Utf8);
-          var decryptedPWCode = CryptoJS.AES.decrypt(pw, config.ENC_KEY);
-          var decryptedPW = decryptedPWCode.toString(CryptoJS.enc.Utf8);
-          alert(decryptedPW);
+          const decryptedPass = decryptedPassCode.toString(CryptoJS.enc.Utf8);
+          const decryptedPWCode = CryptoJS.AES.decrypt(pw, config.ENC_KEY);
+          alert("decrypted server pw " + decryptedPass);
+          setTimeout(function () {
+            const decryptedPW = decryptedPWCode.toString(CryptoJS.enc.Utf8);
+            console.log("completed pw", decryptedPW);
 
-          if (
-            pw == decryptedPass ||
-            (enc == true && decryptedPW == decryptedPass) ||
-            pw == data.password
-          ) {
-            caches.open("user").then(function (cache) {
-              cache
-                .put(
-                  "about-user",
-                  new Response(JSON.stringify(data), {
-                    headers: { "Content-type": "application/json" },
-                  })
-                )
-                .catch((err) => {
-                  alert(err);
-                  reject(err);
-                })
-                .then(() => {
-                  resolve();
-                  cache.keys("about-user").then(function (t) {
-                    localStorage.setItem("userUrl", t[0].url);
-                    spinner.removePreloader();
-                    window.location.href = "../events";
-                  });
-                });
-            });
-          } else {
-            var err =
-              "password doesn't match or autologin didn't get match able password, try manual login";
-            reject(err);
-            modal.alert("Autologin Faild...", err, "").then(function () {
-              spinner.removePreloader();
-            });
-          }
+            alert(decryptedPW);
+
+            if (
+              pw == decryptedPass ||
+              decryptedPW == decryptedPass ||
+              pw == data.password ||
+              decryptedPW == data.password
+            ) {
+
+              app.saveData('user', 'about-user', data, 'userUrl').then(()=>{
+                spinner.removePreloader();
+                window.location.href = "../events";
+              })
+              // caches.open("user").then(function (cache) {
+              //   cache
+              //     .put(
+              //       "about-user",
+              //       new Response(JSON.stringify(data), {
+              //         headers: { "Content-type": "application/json" },
+              //       })
+              //     )
+              //     .catch((err) => {
+              //       alert(err);
+              //       reject(err);
+              //     })
+              //     .then(() => {
+              //       resolve();
+              //       cache.keys("about-user").then(function (t) {
+              //         localStorage.setItem("userUrl", t[0].url);
+              //         spinner.removePreloader();
+              //         window.location.href = "../events";
+              //       });
+              //     });
+              // });
+            } else {
+              var err =
+                "password doesn't match or autologin didn't get match able password, try manual login";
+              reject(err);
+              modal.alert("Autologin Faild...", err, "").then(function () {
+                spinner.removePreloader();
+              });
+            }
+          }, 1000);
         }
       })
       .catch((err) => {

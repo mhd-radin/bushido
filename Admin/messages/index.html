@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chatting & Feedback | Bushido Fit & Fight Club</title>
+
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="../assets/logos/bbc256.png"
+    />
+    <!-- custom css -->
+    <link rel="stylesheet" href="../../public/css/link.css" />
+    <link rel="stylesheet" href="../public.admin.css" />
+    <link rel="stylesheet" href="css/chat.css" />
+
+    <!-- min required scripts & css -->
+    <script src="../valid.admin.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"
+      integrity="sha512-a+SUDuwNzXDvz4XrIcXHuCf089/iJAoN4lmrXJg18XnduKK6YlDHNRalv4yd1N40OKI80tFidF+rqTFKGPoWFQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/aes.min.js"
+      integrity="sha512-UOtWWEXoMk1WLeC873Gmrkb2/dZMwvN1ViM9C1mNvNmQSeXpEr8sRzXLmUSha1X4x5V892uFmEjiZzUsYiHYiw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="../local.config.js"></script>
+    <script src="../public/js/bushido.js"></script>
+    <script src="https://unpkg.com/eva-icons"></script>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/eva-icons@1.1.3/style/eva-icons.css"
+    />
+  </head>
+
+  <body>
+    <div class="preloader">
+      <span class="loader"></span>
+      <p>Loading...</p>
+    </div>
+
+    <nav>
+      <div class="nav-title">
+        <b>Bushido</b> Chatting
+        <!--div class="nav-title-image">
+        <img src="../assets/logos/bbc_b.png" alt="">
+      </div-->
+      </div>
+      <div class="nav-right">
+        <i
+          class="eva eva-chevron-left-outline large-icon-x2"
+          onclick="window.history.back()"
+        ></i>
+      </div>
+    </nav>
+
+    <div class="body-layout">
+      <div class="users-list">
+        <div class="user-box">
+          <div class="user-row">
+            <div class="user-icon">
+              <img
+                src="https://api.dicebear.com/9.x/initials/svg?seed=Felix&radius=40"
+                alt=""
+                class="user-image"
+              />
+            </div>
+            <div class="user-body">
+              <div class="user-name">A Guy</div>
+              <div class="user-subtext">+91 9645523737</div>
+              <div class="user-right">
+                <div class="user-tag">4</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="user-box">
+          <div class="user-row">
+            <div class="user-icon">
+              <img
+                src="https://api.dicebear.com/9.x/initials/svg?seed=Felix&radius=40"
+                alt=""
+                class="user-image"
+              />
+            </div>
+            <div class="user-body">
+              <div class="user-name">A Guy</div>
+              <div class="user-subtext">+91 9645523737</div>
+              <div class="user-right">
+                <!-- <div class="user-tag"> -->
+                <i class="eva eva-info user-tag-icon"></i>
+                <!-- </div> -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="user-box">
+          <div class="user-row">
+            <div class="user-icon">
+              <img
+                src="https://api.dicebear.com/9.x/initials/svg?seed=Felix&radius=40"
+                alt=""
+                class="user-image"
+              />
+            </div>
+            <div class="user-body">
+              <div class="user-name">A Guy</div>
+              <div class="user-subtext">+91 9645523737</div>
+              <div class="user-right"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="body">
+        <div class="chat-layout">
+          <div class="chat-container">
+            <div class="chat-img">
+              <img
+                src="https://api.dicebear.com/9.x/shapes/svg?seed=Bjrt&radius=0&size=25"
+                alt=""
+              />
+            </div>
+            <div class="chat-bubble">
+              <b>Bushido Team</b>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Consequatur, ipsum!
+              </p>
+              <div class="time">12:00 PM</div>
+              <div class="info-chat">last seen on 12:29 AM</div>
+            </div>
+            <div class="icon-chat">
+              <i class="eva eva-done-all"></i>
+            </div>
+          </div>
+        </div>
+        <div class="chat-layout next-chat">
+          <div class="chat-container">
+            <div class="chat-img">
+              <img
+                src="https://api.dicebear.com/9.x/shapes/svg?seed=Bjrt&radius=0&size=25"
+                alt=""
+              />
+            </div>
+            <div class="chat-bubble">
+              <b>Bushido Team</b>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Consequatur, ipsum!
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="chat-layout">
+          <div class="chat-container right-item">
+            <div class="chat-img">
+              <img
+                src="https://api.dicebear.com/9.x/shapes/svg?seed=Bjrt&radius=0&size=25"
+                alt=""
+              />
+            </div>
+            <div class="chat-bubble">
+              <b>Bushido Team</b>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Consequatur, ipsum!
+              </p>
+              <div class="time">12:00 PM</div>
+              <div class="info-chat">last seen on 12:29 AM</div>
+            </div>
+            <div class="icon-chat">
+              <i class="eva eva-checkmark"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="chatter">
+        <textarea class="chat-input" placeholder="Text to message"></textarea>
+        <div class="icon">
+          <i class="eva eva-paper-plane-outline"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="menubox desktop">
+      <div class="menu-item" data-url="../users">
+        <i class="eva eva-person-outline"></i>
+        <div class="menu-item-text">Users</div>
+      </div>  
+      <div class="menu-item" data-url="../attendance">
+        <i class="eva eva-calendar-outline"></i>
+        <div class="menu-item-text">Date</div>
+      </div>
+      <div class="menu-item" data-url="#">
+        <i class="eva eva-plus-outline"></i>
+        <div class="menu-item-text">Events</div>
+      </div>
+      <div class="menu-item" data-url="../notifier">
+        <i class="eva eva-bell-outline"></i>
+        <div class="menu-item-text">Notifications</div>
+      </div>
+      <div class="menu-item active" data-url="./">
+        <i class="eva eva-message-circle-outline"></i>
+        <div class="menu-item-text">Chat</div>
+      </div>
+    </div>
+
+    <!-- cdn scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+
+    <!-- custom scripts -->
+    <script src="../../public/js/app.js"></script>
+    <script src="../../public/js/tagstring.js"></script>
+    <script src="../../public/js/spinner_ui.js"></script>
+    <script src="../../public/js/menubox.js"></script>
+    <script src="../../public/js/modal.js"></script>
+    <script src="../../public/js/user.structure.js"></script>
+  </body>
+</html>

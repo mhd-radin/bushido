@@ -6,6 +6,7 @@ textarea {
   color: var(--color);
 }
 
+
 body {
   margin: 0;
   -webkit-user-select: none;
@@ -77,4 +78,8 @@ input[type="checkbox"] {
 
 input[type="checkbox"]:checked {
   background: var(--theme-color);
+}
+
+.eva:hover ~ .body {
+  background: #000 !important;
 }

@@ -37,7 +37,10 @@ function onpageloadin() {
     document.getElementById('userTotalInfo').innerHTML = 'no one registered ( Total: ' + arr.length + ', Registered: 0 )'
   });
 
+
   document.getElementById('updateBtn').onclick = function() {
+    document.querySelector(".svg-mini-loader").style.display = 'block'
+
     attendanceData = []
     document.querySelectorAll('.user-box').forEach(function(elem) {
       var input = elem.querySelector('input[type="checkbox"]');
@@ -166,3 +169,6 @@ function onpageloadin() {
     }
   });
 }
+
+
+document.querySelector(".svg-mini-loader").style.display = 'none'

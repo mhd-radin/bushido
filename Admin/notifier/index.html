@@ -26,10 +26,7 @@
 <body>
 
   <div class="preloader">
-    <div class="spinner">
-      <div class="dot1"></div>
-      <div class="dot2"></div>
-    </div>
+    <span class="loader"></span>
     <p>Loading...</p>
   </div>
 
@@ -98,7 +95,7 @@
   </div>
 
   <button class="floating-btn" id="floater">
-    <i class="eva eva-paper-plane-outline"></i>
+    <i class="eva eva-paper-plane-outline" onclick="notificationUI.closeForms()"></i>
   </button>
   
   <div class="form-display">
@@ -130,7 +127,7 @@
       <i class="eva eva-bell-outline"></i>
       <div class="menu-item-text">Notifier</div>
     </div>
-    <div class="menu-item" data-url="#">
+    <div class="menu-item" data-url="../chat">
       <i class="eva eva-message-circle-outline"></i>
       <div class="menu-item-text">Chat</div>
     </div>
@@ -147,6 +144,7 @@
   <script src="../../public/js/modal.js"></script>
   <script src="../../public/js/user.structure.js"></script>
   <script src="js/notifier.js"></script>
+  <script src="js/notifier.str.js"></script>
 </body>
 
 </html>

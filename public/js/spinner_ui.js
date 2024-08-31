@@ -2,10 +2,7 @@ const spinner = {
   elem: document.querySelector('.preloader'),
   create(text) {
     return new TagString(`<div class="preloader">
-    <div class="spinner">
-      <div class="dot1"></div>
-      <div class="dot2"></div>
-    </div>
+    <span class="loader"></span>
     <p>${text}</p>
   </div>`)
   },
@@ -24,9 +21,13 @@ const spinner = {
     this.elem.querySelector('p').innerHTML = text;
   },
   removePreloader() {
+    const spinnerOneElem = getComputedStyle(this.elem, ':after');
+    const spinnerTwoElem = getComputedStyle(this.elem, ':before');
+    // spinnerOneElem
+    const self = this;
     return new Promise((resolve) => {
-      if (this.elem) {
-        var elem = this.elem;
+      if (self.elem) {
+        var elem = self.elem;
         var a = anime({
           targets: '.preloader p',
           duration: 500,
@@ -34,7 +35,7 @@ const spinner = {
           easing: 'easeInOutQuad'
         }).finished.then(() => {
           anime({
-            targets: '.preloader .dot1, .preloader .dot2',
+            targets: '.preloader .loader',
             easing: 'easeInOutQuad',
             duration: 500,
             loop: false,

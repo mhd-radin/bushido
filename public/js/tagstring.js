@@ -53,4 +53,24 @@ class TagString extends String {
     }
     return this;
   }
+
+  eval(obj = window) {
+    
+    var str = new TagString(this.replace(/#\(([^)]+)\)/g, function(match, variableName) {
+      // Access the variable value using eval (use with caution)
+      return obj[variableName];
+    }))
+    
+    var str = new TagString(str.replace(/&\(([^)]+)\)/g, function(match, variableName) {
+      // Access the variable value using eval (use with caution)
+      return eval(variableName);
+    }))
+    
+    return str
+  }
+  
+  fixOutput(){
+    var str = this.replaceAll('"', "'");
+    return new TagString(str)
+  }
 }

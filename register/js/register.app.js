@@ -14,7 +14,7 @@ const baseDelayChild = [0, 200, 1200, 850, 1250, 450, 850];
 const delayScale = 80;
 
 function onpageloadin() {
-  cssAnimListQuery.forEach(function (query, i) {
+  cssAnimListQuery.forEach(function(query, i) {
     var delayScalePos = delayScaleChild[i];
     var baseDelayPos = baseDelayChild[i];
 
@@ -25,7 +25,7 @@ function onpageloadin() {
     } else {
       var elems = document
         .querySelectorAll(query)
-        .forEach(function (elem, eIndex) {
+        .forEach(function(elem, eIndex) {
           var elemStyle = window.getComputedStyle(elem, null);
           var currentDelay = elemStyle.getPropertyValue("animation-delay");
 
@@ -54,7 +54,7 @@ function onpageloadin() {
         ""
       )
       .then(() => {
-        setTimeout(function () {
+        setTimeout(function() {
           window.location.href =
             "../login/?email=" +
             currentFormSet.get("email") +
@@ -115,14 +115,14 @@ if (localStorage.getItem("form_set")) {
 showForm(document.getElementById(currentFormSet.state));
 
 document.querySelectorAll("input, textarea").forEach((input, index) => {
-  input.onchange = function (e) {
+  input.onchange = function(e) {
     currentFormSet.set(input.id, input.value);
     saveForm();
   };
   input.value =
-    typeof currentFormSet.get(input.id) != "undefined"
-      ? currentFormSet.get(input.id)
-      : "";
+    typeof currentFormSet.get(input.id) != "undefined" ?
+    currentFormSet.get(input.id) :
+    "";
 });
 
 function saveForm() {
@@ -130,7 +130,7 @@ function saveForm() {
 }
 
 function showForm(form) {
-  document.querySelectorAll("#" + formsID.join(", #")).forEach(function (elem) {
+  document.querySelectorAll("#" + formsID.join(", #")).forEach(function(elem) {
     if (form.id == elem.id) {
       elem.style.display = "block";
     } else {
@@ -179,8 +179,8 @@ function changeLog(log) {
         filter: "blur(0px)",
       },
     ],
-    complete: function () {
-      setTimeout(function () {
+    complete: function() {
+      setTimeout(function() {
         app.preventLetters(document.querySelector("#logger"));
       }, 50);
     },
@@ -205,8 +205,8 @@ function changeTitle(msg) {
         filter: "blur(0px)",
       },
     ],
-    complete: function () {
-      setTimeout(function () {
+    complete: function() {
+      setTimeout(function() {
         app.preventLetters(document.querySelector("#title"));
       }, 50);
     },
@@ -245,21 +245,21 @@ function changeState(nextState) {
         }
         bushido
           .useQuery("accounts", [["email", "==", email.value]])
-          .then(function (snapshot) {
+          .then(function(snapshot) {
             var data = [];
-            snapshot.forEach(function (item) {
+            snapshot.forEach(function(item) {
               data.push(item);
             });
             if (data.length == 0) {
-              spinner.removePreloader().then(function () {
-                closeForm(function () {
+              spinner.removePreloader().then(function() {
+                closeForm(function() {
                   currentFormSet.state = nextState;
                   saveForm();
                   showForm(document.getElementById(nextState));
                 });
               });
             } else {
-              spinner.removePreloader().then(function () {
+              spinner.removePreloader().then(function() {
                 changeLog("Not available this email or phone!");
               });
             }
@@ -270,6 +270,7 @@ function changeState(nextState) {
       var password = document.getElementById("password"),
         dob = document.getElementById("dob");
 
+
       if (!password.value) {
         changeLog("Password input is blank, please fill the form correctly");
       } else if (password.value.length <= 7) {
@@ -279,7 +280,7 @@ function changeState(nextState) {
           "Date of birth input is blank, please fill the form correctly"
         );
       } else {
-        closeForm(function () {
+        closeForm(function() {
           currentFormSet.state = nextState;
           saveForm();
           showForm(document.getElementById(nextState));
@@ -306,7 +307,7 @@ function changeState(nextState) {
           "Weight input is blank. please tell about your weight in Kilogram"
         );
       } else {
-        closeForm(function () {
+        closeForm(function() {
           currentFormSet.state = nextState;
           saveForm();
           showForm(document.getElementById(nextState));
@@ -340,11 +341,11 @@ function changeState(nextState) {
 
         bushido
           .set("accounts/" + userID, currentFormSet.data)
-          .then(function () {
+          .then(function() {
             spinner.changeText("Server connected successfully...");
             currentFormSet.completed = true;
             saveForm();
-            setTimeout(function () {
+            setTimeout(function() {
               spinner.changeText("Signing your account");
               window.location.href =
                 "../login/?email=" +
@@ -361,26 +362,26 @@ function changeState(nextState) {
   saveForm();
 }
 
-document.getElementById("nextBtn").onclick = function () {
+document.getElementById("nextBtn").onclick = function() {
   changeState(formsID[currentFormSet.index() + 1]);
 };
 
-document.getElementById("backBtn").onclick = function () {
+document.getElementById("backBtn").onclick = function() {
   currentFormSet.state = formsID[0];
   saveForm();
   if (spinner) {
     spinner.showPreloader();
   }
 
-  setTimeout(function () {
+  setTimeout(function() {
     window.location.reload();
   }, 200);
 };
 
-document.getElementById("login").onclick = function () {
-  menu.close(document.querySelector("#register")).then(function () {
+document.getElementById("login").onclick = function() {
+  menu.close(document.querySelector("#register")).then(function() {
     spinner.showPreloader();
-    setTimeout(function () {
+    setTimeout(function() {
       window.location.href = "../login";
     }, 200);
   });
@@ -397,17 +398,17 @@ function closeForm(onfinish) {
     "#" + document.getElementById(currentFormSet.state).id + " .input-icon",
   ];
 
-  document.querySelectorAll(query.join(", ")).forEach(function (elem) {
+  document.querySelectorAll(query.join(", ")).forEach(function(elem) {
     elem.style.animationDirection = "reverse";
     var snapshotStyle = window
       .getComputedStyle(elem)
       .getPropertyValue("animation");
 
     elem.style.animation = "none";
-    setTimeout(function () {
+    setTimeout(function() {
       elem.style.animation = snapshotStyle;
       //elem.style.animationDelay = '0s';
-      elem.onanimationend = function () {
+      elem.onanimationend = function() {
         elem.style.display = "none";
         elem.style.animationDirection = "forward";
         if (typeof onfinish == "function") {

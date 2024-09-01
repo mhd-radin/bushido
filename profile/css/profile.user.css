@@ -126,7 +126,7 @@
 }
 
 .danger-opt-item{
-  background: #e72c2c;
+  background: #F35959;
   color: #fff;
 }
 
@@ -163,7 +163,7 @@
 }
 
 .danger-opt-item:hover, .danger-opt-item:hover * {
-  background: #f35959;
+  background: #FF7979;
   color: #fff;
 }
 

@@ -63,7 +63,8 @@ a {
   font-size: 35px;
 }
 
-input[type="checkbox"] {
+input[type="checkbox"], 
+input[type="radio"]{
   min-width: 16px;
   min-height: 16px;
   -webkit-appearance: none;
@@ -76,9 +77,11 @@ input[type="checkbox"] {
   outline-offset: 1.5px;
 }
 
-input[type="checkbox"]:checked {
+input[type="checkbox"]:checked,
+input[type="radio"]:checked {
   background: var(--theme-color);
 }
+
 
 .eva:hover ~ .body {
   background: #000 !important;

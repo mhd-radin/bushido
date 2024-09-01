@@ -1,5 +1,5 @@
 function onpageloadin() {
-  dayjs.extend(window.dayjs_plugin_weekday)
+  dayjs.extend(window.dayjs_plugin_weekday);
 
   var attendanceData = [
 

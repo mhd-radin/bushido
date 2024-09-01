@@ -178,12 +178,9 @@ function signIn(email, pw, enc = false) {
           );
           const decryptedPass = decryptedPassCode.toString(CryptoJS.enc.Utf8);
           const decryptedPWCode = CryptoJS.AES.decrypt(pw, config.ENC_KEY);
-          alert("decrypted server pw " + decryptedPass);
+          
           setTimeout(function () {
             const decryptedPW = decryptedPWCode.toString(CryptoJS.enc.Utf8);
-            console.log("completed pw", decryptedPW);
-
-            alert(decryptedPW);
 
             if (
               pw == decryptedPass ||

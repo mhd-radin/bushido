@@ -9,8 +9,8 @@
 }
 
 .primary-card {
-  background: var(--third-bg);
-  color: var(--apt-third-color);
+  background: var(--sec-bg);
+  color: var(--apt-sec-color);
   margin: 8px;
   border-radius: 10px;
   width: min-content;
@@ -21,7 +21,7 @@
   border-radius: 10px;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
-  background: var(--sec-bg);
+  background: var(--third-bg);
   min-width: calc(100vw - 20px);
   min-height: 200px;
 }
@@ -54,7 +54,7 @@
   box-shadow: 0 0 10px var(--apt-color);
   outline: 4px solid var(--apt-color);
   outline-offset: 3px;
-  background: var(--third-bg);
+  background: var(--sec-bg);
   right: 20px;
 }
 
@@ -82,7 +82,7 @@
   display: block;
   width: 66px;
   height: 68px;
-  background: var(--third-bg);
+  background: var(--sec-bg);
   position: absolute;
   right: -5px;
   top: -54px;

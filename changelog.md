@@ -297,3 +297,7 @@
 
 ### C11 
 - linking bug fix at menubox
+
+### C12
+- modal updations 
+- other updates ( non noted )

@@ -7,8 +7,8 @@ function handleFloaterClick() {
   document.querySelector(".form-display").style.display = "block";
   floater.style.display = "none";
   floater.style.animationDelay = "0ms";
-  document.querySelector(".form-display").onanimationend = function () {
-    setTimeout(function () {
+  document.querySelector(".form-display").onanimationend = function() {
+    setTimeout(function() {
       floater.style.display = "block";
     }, 500);
   };
@@ -17,7 +17,7 @@ function handleFloaterClick() {
   floater.style.right = "30px";
   floater.innerHTML = "<p>Next</p>";
 
-  floater.onclick = function () {
+  floater.onclick = function() {
     let titleInp = document.getElementById("title");
     if (titleInp.value) {
       var form = document.querySelector(".form");
@@ -31,7 +31,7 @@ function handleFloaterClick() {
           opacity: [1, 0],
           delay: (el, i) => i * 200,
           duration: 850,
-          complete: function () {
+          complete: function() {
             form.innerHTML = notificationUI.createForm(
               "Enter description for notification",
               notificationUI.createInput("des", true).setAttributes({
@@ -44,7 +44,7 @@ function handleFloaterClick() {
               opacity: 1,
             });
 
-            floater.onclick = function () {
+            floater.onclick = function() {
               let desInp = document.getElementById("des");
               if (desInp.value) {
                 var form = document.querySelector(".form");
@@ -58,7 +58,7 @@ function handleFloaterClick() {
                     opacity: [1, 0],
                     delay: (el, i) => i * 200,
                     duration: 850,
-                    complete: function () {
+                    complete: function() {
                       let optionsStr = "";
                       let optData = [
                         {
@@ -112,7 +112,7 @@ function handleFloaterClick() {
                         opacity: 1,
                       });
 
-                      floater.onclick = function () {
+                      floater.onclick = function() {
                         let cateInp = document.getElementById("cate");
                         if (cate.value) {
                           modal.alert(

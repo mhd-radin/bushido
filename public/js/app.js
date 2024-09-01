@@ -13,10 +13,36 @@ function pageonload() {
     eva.replace();
   }
 
-  document.querySelectorAll("*").forEach(function (elem) {
+  document.querySelectorAll("*").forEach(function(elem) {
     elem.onerror = handleError;
   });
   document.documentElement.style.setProperty("--animation-state", "running");
+
+  // document.querySelector('input[type="date"]').onclick = function(param) {
+  //   var elem = document.querySelector('input[type="date"]');
+  //   if (elem.roll != 'static') elem.type = 'text';
+  //   modal.optionsPicker([{
+  //     value: 'sys',
+  //     inputId: 'sys',
+  //     attr: {},
+  //     name: 'System Date Selector',
+  //     des: 'default date selector of your device'
+  //     }, {
+  //     value: 'cus',
+  //     inputId: 'cus',
+  //     attr: {},
+  //     name: 'Bushido Date Selector',
+  //     des: 'for easly select the date'
+  //     }], true, userboxUI.create('#(name)', '#(des)', '', userboxUI.input('#(inputId)', true)), 'Choose a method for selecting date').then(function(val) {
+  //     elem.type = 'date'
+  //     elem.roll = 'static'
+  //     if (val == 'sys') {
+  //       elem.click()
+  //     } else {
+
+  //     }
+  //   })
+  // }
 }
 
 document.body.onload = pageonload;
@@ -31,7 +57,7 @@ const app = {
     return elem;
   },
   wordsToElem(elem) {
-    elem.innerHTML = elem.innerHTML.replace(/\b\w+\b/g, function (match) {
+    elem.innerHTML = elem.innerHTML.replace(/\b\w+\b/g, function(match) {
       return `<span class="word">${match}</span>`;
     });
     return elem;
@@ -71,7 +97,7 @@ const app = {
   redirectWithPreloader(path) {
     if (spinner) {
       spinner.showPreloader();
-      setTimeout(function () {
+      setTimeout(function() {
         window.location.href = path;
       }, 800);
     } else {
@@ -93,13 +119,13 @@ const app = {
     return `https://api.dicebear.com/9.x/${type}/svg?seed=${seed}${urlOpt}`;
   },
   validUser() {
-    return  app.getData('user', 'about-user', 'userUrl');
-    
+    return app.getData('user', 'about-user', 'userUrl');
+
   },
   saveData(db, key, data, saveKey, enc = true) {
     return new Promise((resolve, reject) => {
       if ("caches" in window) {
-        caches.open(db).then(function (cache) {
+        caches.open(db).then(function(cache) {
           cache
             .put(
               key,
@@ -111,7 +137,7 @@ const app = {
               reject(err);
             })
             .then(() => {
-              cache.keys(key).then(function (t) {
+              cache.keys(key).then(function(t) {
                 localStorage.setItem(saveKey, t[0].url);
                 resolve();
               });
@@ -120,7 +146,7 @@ const app = {
       } else {
         if (enc) {
           data = CryptoJS.AES.encrypt(JSON.stringify(data), saveKey).toString();
-        } 
+        }
         localStorage.setItem(
           db + "_" + key,
           data
@@ -138,7 +164,7 @@ const app = {
             .then((cache) => {
               cache
                 .match(localStorage.getItem(saveKey))
-                .then(function (res) {
+                .then(function(res) {
                   if (res) {
                     res
                       .json()

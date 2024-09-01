@@ -61,7 +61,7 @@ class Message {
 
 const messanger = {
   message_started: false,
-  room_id: "common_room_04",
+  room_id: "common_room_34",
   is_first_time: localStorage.getItem("is_first_time"),
   before_send_by: null,
   before_send_time: null,

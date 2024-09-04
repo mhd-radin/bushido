@@ -61,7 +61,8 @@ class TagString extends String {
       return obj[variableName];
     }))
     
-    var str = new TagString(str.replace(/&\(([^)]+)\)/g, function(match, variableName) {
+    str = str.replaceAll('&amp;', '&')
+    str = new TagString(str.replace(/&\((.*?)\)&/g, function(match, variableName) {
       // Access the variable value using eval (use with caution)
       return eval(variableName);
     }))
@@ -74,3 +75,4 @@ class TagString extends String {
     return new TagString(str)
   }
 }
+

@@ -1,4 +1,4 @@
-{
+const STRUCTURE_SW = {
   "files": [
     "/",
     "/index.html",
@@ -52,3 +52,36 @@
     "/events/index.html"
   ]
 }
+
+self.addEventListener('install', function(e) {
+  e.waitUntil(
+    caches.open('files_v1').then((cache) => {
+      cache.addAll(STRUCTURE_SW.files)
+    })
+  )
+})
+
+self.addEventListener('fetch', (event) => {
+  event.respondWith(
+    caches.match(event.request).then((response) => {
+      // Cache hit - return response
+      return response || fetch(event.request)
+    })
+  );
+});
+
+// Activate Service Worker
+self.addEventListener('activate', (event) => {
+  const cacheWhitelist = ["files_v1"];
+  event.waitUntil(
+    caches.keys().then((cacheNames) => {
+      return Promise.all(
+        cacheNames.map((cacheName) => {
+          if (!cacheWhitelist.includes(cacheName)) {
+            return caches.delete(cacheName);
+          }
+        })
+      );
+    })
+  );
+});

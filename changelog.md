@@ -298,6 +298,14 @@
 ### C11 
 - linking bug fix at menubox
 
-### C12
+### C12 ( Unnoticed )
 - modal updations 
-- other updates ( non noted )
+- other updates 
+- ... 
+
+### C13
+- user validation updated
+- sample sw started for offline 
+- bug fix at tagstring eval
+- customised options picker modal
+- in register page, custom dob selector added

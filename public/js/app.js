@@ -17,32 +17,6 @@ function pageonload() {
     elem.onerror = handleError;
   });
   document.documentElement.style.setProperty("--animation-state", "running");
-
-  // document.querySelector('input[type="date"]').onclick = function(param) {
-  //   var elem = document.querySelector('input[type="date"]');
-  //   if (elem.roll != 'static') elem.type = 'text';
-  //   modal.optionsPicker([{
-  //     value: 'sys',
-  //     inputId: 'sys',
-  //     attr: {},
-  //     name: 'System Date Selector',
-  //     des: 'default date selector of your device'
-  //     }, {
-  //     value: 'cus',
-  //     inputId: 'cus',
-  //     attr: {},
-  //     name: 'Bushido Date Selector',
-  //     des: 'for easly select the date'
-  //     }], true, userboxUI.create('#(name)', '#(des)', '', userboxUI.input('#(inputId)', true)), 'Choose a method for selecting date').then(function(val) {
-  //     elem.type = 'date'
-  //     elem.roll = 'static'
-  //     if (val == 'sys') {
-  //       elem.click()
-  //     } else {
-
-  //     }
-  //   })
-  // }
 }
 
 document.body.onload = pageonload;
@@ -210,3 +184,11 @@ function handleError(err) {
 }
 
 window.onerror = handleError;
+
+/* cache */
+if ("caches" in window){
+  navigator.serviceWorker.register('../public/csw.js', 
+  ).then(function(registration){
+    
+  })
+}

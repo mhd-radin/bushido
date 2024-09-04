@@ -1,3 +1,8 @@
+app.validUser().catch(() => {
+  app.redirectWithPreloader('../register')
+})
+
+
 function onpageloadin() {
   document.querySelector(".body").innerHTML = "";
   messanger.reciveMessages();

@@ -140,6 +140,46 @@ function showForm(form) {
   if (form.id === formsID[1]) {
     changeTitle("Step Into the Ring with Bushido Boxers Club.");
     changeLog("");
+
+    var dobInp = document.getElementById('dob');
+    dobInp.type = ''
+    dobInp.onclick = function(param) {
+      dobInp.disabled = true
+      modal.datePicker([{
+        format: 'YYYY',
+        type: 'year',
+        subtract: 50,
+        title: 'Pick your year of birth'
+      }, {
+        format: 'MM',
+        type: 'month',
+        subtract: 12,
+        title: 'Pick your month of birth'
+      }, {
+        format: 'DD',
+        type: 'day',
+        subtract: 31,
+        title: 'Pick your day of birth'
+      }], true, dayjs('2020-01-01'), (data) => {
+        if (data.format === 'YYYY') {
+          return userboxUI.create('#(value)', '&(if ("#(format)" == "YYYY"){ ' + dayjs().format("YYYY") + ' - #(value) +" Years old" })&', '', userboxUI.input('#(inputId)', true))
+        } else if (data.format === 'MM') {
+          const months = [
+  "January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+];
+          return userboxUI.create(months[parseInt(data.value) - 1], '#(value)', '', userboxUI.input('#(inputId)', true))
+        } else {
+          return userboxUI.create('#(value)', 'i born on #(value) th day', '', userboxUI.input('#(inputId)', true))
+        }
+      }).then(function(arr) {
+        dob.value = arr.join('-')
+        dob.type = 'date';
+        dobInp.disabled = false;
+        currentFormSet.set(dobInp.id, dobInp.value);
+        saveForm()
+      })
+    }
   } else if (form.id === formsID[2]) {
     changeTitle("Begin Your Training at Bushido Boxers Club");
     changeLog("");

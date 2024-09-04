@@ -136,17 +136,21 @@ const modal = {
   }
   ], single = false, tagstring = new TagString(), title = 'Select a value') {
     return new Promise((resolve, reject) => {
-      var strResult = ''
+      var strResult = '';
       values.forEach(function(data) {
+        var finalTagstring = tagstring
+        if (typeof tagstring == 'function'){
+          finalTagstring = tagstring(data);
+        }
         if (single && data.attr) {
           data.attr.name = 'single';
         }
-        var elem = tagstring.parseElement()[0]
+        var elem = finalTagstring.parseElement()[0]
         Object.keys(data.attr).forEach((att) => {
           elem.querySelector('input').setAttribute(att, data.attr[att]);
         })
-        tagstring = new TagString(elem.outerHTML);
-        strResult += tagstring.eval(data).setAttributes(data.attr);
+        finalTagstring = new TagString(elem.outerHTML);
+        strResult += finalTagstring.eval(data).setAttributes(data.attr);
       })
 
       var ID = 'OPTPICKER_' + Math.floor(Math.random() * 888);
@@ -154,7 +158,7 @@ const modal = {
       var tagstr = this.create(this.title(title),
         strResult,
         this.rightElem(
-          this.button('Close', '', ID)),
+          this.button('Select', '', ID)),
         '',
         '',
         mainID
@@ -210,6 +214,9 @@ const modal = {
               attr: {},
               inputId: dt,
               value: dt,
+              type: data.type,
+              format: data.format,
+              index: i,
             })
           }
         }
@@ -221,6 +228,9 @@ const modal = {
               attr: {},
               inputId: dt,
               value: dt,
+              type: data.type,
+              format: data.format,
+              index: i,
             })
           }
         }

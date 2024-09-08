@@ -37,7 +37,7 @@ class Message {
     return newOne;
   }
 
-  export() {
+  export () {
     return {
       messsage_id: this.messsage_id,
       user_id: this.user_id,
@@ -78,7 +78,33 @@ const messanger = {
       Math.floor(Math.random() * 999999)
     );
   },
-  send(msg) {
+  join() {
+    return new Promise((resolve, reject) => {
+
+      app.validUser().then((user) => {
+        if (user.id) {
+          bushido.realtime.get('chat/' + user.id).then(function(snapshot) {
+            if (!snapshot.exists()) {
+              var data = user;
+              bushido.realtime.set('chat/' + user.id, {
+                messages: [],
+                unseen_messages: [],
+                last_message: {},
+                date: new Date(),
+                user_id: data.id,
+                user_name: data.fullname,
+                email: data.email,
+                phone: data.phone,
+              }).then(r => resolve(true))
+            } else {
+              resolve(false)
+            }
+          })
+        }
+      })
+    })
+  },
+  send(msg, id) {
     localStorage.setItem("is_first_time", true);
     this.is_first_time = true;
     return new Promise((resolve, reject) => {
@@ -86,40 +112,45 @@ const messanger = {
         .validUser()
         .then((data) => {
           if (data.id) {
-            bushido
+            const msgID = id ? id : messanger.id();
+            const messageModal = new Message(
+              data.id,
+              msg,
+              "unseen",
+              data.fullname,
+              data.email,
+              data.phone,
+              msgID
+            );
+
+            var promises = [bushido.realtime
               .set(
-                "chat/" + messanger.room_id,
-                function () {
-                  const messageModal = new Message(
-                    data.id,
-                    msg,
-                    "unseen",
-                    data.fullname,
-                    data.email,
-                    data.phone
-                  );
-                  const modifiedMessageModal = messageModal
-                    .modify("status", "seen")
-                    .export();
-
-                  const arrayUnion =
-                    bushido.sdk.arrayUnion(modifiedMessageModal);
-
-                  return {
-                    messages: arrayUnion,
-                    unseen_message: messageModal.export(),
-                    date: messageModal.date,
-                    user_id: data.id,
-                    user_name: data.fullname,
-                    email: data.email,
-                    phone: data.phone,
-                  };
+                "chat/" + data.id + '/messages/' + msgID,
+                function() {
+                  return messageModal.export();
                 },
-                {
-                  merge: true,
-                }
-              )
-              .then(resolve);
+              ), bushido.realtime
+                .set(
+                "chat/" + data.id + '/unseen_messages/' + msgID,
+                function() {
+                  return messageModal.export();
+                },
+              ), bushido.realtime
+                .set(
+                "chat/" + data.id + '/last_message',
+                function() {
+                  return messageModal.export();
+                },
+              ), bushido.realtime
+                  .set(
+                "chat/" + data.id + '/date',
+                function() {
+                  return messageModal.date;
+                },
+              )];
+
+            Promise.all(promises).then(resolve).catch(reject)
+
           }
         })
         .catch(reject);
@@ -138,34 +169,36 @@ const messanger = {
   reciveMessages() {
     app
       .validUser()
-      .then(function (data) {
-        bushido.onSet(
-          "chat/" + messanger.room_id,
-          //data.id,
+      .then(function(data) {
+        bushido.realtime.onSet(
+          "chat/" + data.id,
           (snapshot) => {
             if (snapshot.exists()) {
-              var msgData = snapshot.data();
-              var msg = msgData.unseen_message;
+              var msgData = snapshot.val();
+              console.log(msgData)
+              var msg = msgData.unseen_messages;
 
-              if (messanger.message_started == false) {
-                messanger.message_started = true;
-                msgData.messages.forEach((item, index) => {
-                  messanger.addToBody(item, data);
-                });
-                document.querySelector("html").scrollTop += 9999999;
-              }
-              if (msg && msg.email) {
-                messanger.addToBody(msg, data);
-              }
-              bushido.set(
-                "chat/" + messanger.room_id,
-                {
-                  unseen_message: null,
-                },
-                {
-                  merge: true,
+              messanger.message_started = true;
+              var sortedArr = Object.entries(msgData.messages).sort((a, b) => {
+                var extA = a[1].date;
+                var extB = b[1].date;
+                console.log('dt', extA, a)
+                const dateA = new Date(extA);
+                const dateB = new Date(extB);
+
+                return dateB - dateA;
+              });
+
+              sortedArr.reverse().forEach((item, index) => {
+                console.log(item)
+                var item = item[1];
+                messanger.addToBody(item, data);
+                if (item.email == 'bushidosupport@gmail.com' || item.email != data.email) {
+                  bushido.realtime.set(`chat/${data.id}/messages/${item.messsage_id}/status`, 'seen')
                 }
-              );
+              });
+
+              document.querySelector("html").scrollTop += 9999999;
             } else {
               if (!messanger.is_first_time && !messanger.message_started) {
                 messanger.is_first_time = true;
@@ -222,7 +255,7 @@ const messanger = {
   },
   addToBody(msg, data, icon = "checkmark", infoAboutMessage = "") {
     console.log(msg.email, messanger.before_send_by);
-    
+
     let isMe =
       msg.email == data.email || msg.id == data.id || msg.phone == data.phone;
     let formattedTime = dayjs(new Date(msg.date)).format("hh:mm A");
@@ -235,7 +268,7 @@ const messanger = {
         msg.message,
         formattedTime == messanger.before_send_time ? "" : formattedTime,
         infoAboutMessage,
-        icon,
+        msg.status == 'unseen' ? 'checkmark' : 'done-all',
         isMe,
         messanger.before_send_by == msg.email
       )
@@ -252,25 +285,44 @@ const messanger = {
   },
 };
 
+var userData = {}
+
 app
   .validUser()
   .then((data) => {
+    userData = data;
     if (data.id) {
-      bushido.set("chat/" + data.id, {
-        id: "FS",
-      });
+      messanger.is_first_time
     }
   })
-  .catch(() => {
+  .catch((err) => {
     app.redirectWithPreloader("../");
   });
 
-document.getElementById("sendBtn").onclick = function () {
-  document.getElementById("sendBtn").disabled = true;
+document.getElementById("sendBtn").onclick = function() {
+  document.getElementById("sendBtn").focus()
   var inputValue = document.getElementById("chatInp").value;
+  document.getElementById("chatInp").value = "";
 
-  messanger.send(inputValue).then(function () {
-    document.getElementById("chatInp").value = "";
-    document.getElementById("sendBtn").disabled = false;
-  });
+  if (inputValue) {
+    var id = messanger.id();
+    let msg = new Message(userData.id, inputValue, 'sending', userData.name, userData.email, userData.phone, id);
+    let formattedTime = dayjs(new Date(msg.date)).format("hh:mm A");
+
+    document.querySelector(".body").appendChild(
+      messanger.structure.createBubble(
+        msg.user_name,
+        msg.messsage_id,
+        app.avatarUrl(msg.user_name),
+        msg.message,
+        formattedTime == messanger.before_send_time ? "" : formattedTime,
+        'sending...',
+        'clock-outline',
+        true,
+        messanger.before_send_by == msg.email).parseElement()[0]);
+
+    messanger.send(inputValue, id).then(function() {
+      document.getElementById("sendBtn").disabled = false;
+    });
+  }
 };

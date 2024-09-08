@@ -146,6 +146,14 @@ body {
   color: var(--apt-color);
 }
 
+.icon-chat {
+  display: none;
+}
+
+.chat-container.right-item .icon-chat {
+  display: block;
+}
+
 .desktop {
   display: none;
 }

@@ -21,7 +21,7 @@ if (bushido){
   bushido.loaded = true;
   }`;
 
-        var timer = setInterval(function () {
+        var timer = setInterval(function() {
           if (bushido.loaded) {
             resolve();
             clearInterval(timer);
@@ -36,7 +36,7 @@ if (bushido){
   },
   set(collection, data, opt) {
     return new Promise((resolve, reject) => {
-      bushido.access().then(function () {
+      bushido.access().then(function() {
         data = typeof data == "function" ? data() : data;
         bushido.sdk
           .setDoc(bushido.sdk.doc(bushido.db, collection), data, opt)
@@ -46,7 +46,7 @@ if (bushido){
   },
   getCollection(collection) {
     return new Promise((resolve, reject) => {
-      bushido.access().then(function () {
+      bushido.access().then(function() {
         bushido.sdk
           .getDocs(bushido.sdk.collection(bushido.db, collection))
           .then(resolve);
@@ -55,7 +55,7 @@ if (bushido){
   },
   get(collection, name) {
     return new Promise((resolve, reject) => {
-      bushido.access().then(function () {
+      bushido.access().then(function() {
         bushido.sdk
           .getDoc(bushido.sdk.doc(bushido.db, collection, name))
           .then(resolve);
@@ -67,12 +67,12 @@ if (bushido){
       var wh = [];
       var ordBy = [];
 
-      bushido.access().then(function () {
-        where.forEach(function (item) {
+      bushido.access().then(function() {
+        where.forEach(function(item) {
           wh.push(bushido.sdk.where(item[0], item[1], item[2]));
         });
 
-        orderBy.forEach(function (item) {
+        orderBy.forEach(function(item) {
           ordBy.push(bushido.sdk.orderBy(item[0], item[1]));
         });
 
@@ -84,23 +84,110 @@ if (bushido){
               ...ordBy
             )
           )
-          .then(function (item) {
+          .then(function(item) {
             resolve(item);
           });
       });
     });
   },
   onSet(ref, handle, type = "collection") {
-    bushido.access().then(function () {
+    bushido.access().then(function() {
       var orgRef = bushido.sdk[type](bushido.db, ref);
       bushido.sdk.onSnapshot(orgRef, handle);
     });
   },
   toData(snapshot) {
     var data = [];
-    snapshot.forEach(function (item) {
+    snapshot.forEach(function(item) {
       data.push(item);
     });
     return data;
   },
+  realtime: {
+    inited: false,
+    api: null,
+    db: null,
+    setup() {
+      var self = this;
+      return new Promise((resolve, reject) => {
+        if (bushido.realtime.inited == false || bushido.realtime.api == null) {
+          var script = document.createElement("script");
+          script.type = "module";
+          script.textContent = `
+//import { getFirestore, collection, addDoc, getDocs, doc, deleteDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js"
+import * as rt from "https://www.gstatic.com/firebasejs/10.12.5/firebase-database.js";
+
+if (bushido){
+  bushido.realtime.api = rt;
+  bushido.realtime.inited = true;
+  bushido.realtime.db = rt.getDatabase(bushido.firebaseApp);
+  }`;
+
+          var timer = setInterval(function() {
+            if (bushido.realtime.inited) {
+              resolve();
+              clearInterval(timer);
+            }
+          });
+
+          document.head.appendChild(script);
+        } else {
+          resolve();
+        }
+      });
+    },
+    set(path, data) {
+      return new Promise((resolve, reject) => {
+        bushido.access().then(() => {
+          bushido.realtime.setup().then(() => {
+            const sdk = bushido.realtime.api;
+            const db = bushido.realtime.db;
+
+            var ref = sdk.ref(db, path);
+            sdk.set(ref, (typeof data == 'function' ? data() : data)).then(resolve)
+          })
+        })
+      })
+    },
+    get(path) {
+      return new Promise((resolve, reject) => {
+        bushido.access().then(() => {
+          bushido.realtime.setup().then(() => {
+            const sdk = bushido.realtime.api;
+            const db = bushido.realtime.db;
+            var ref = sdk.ref(db, path);
+
+            sdk.get(ref).then(resolve)
+          })
+        })
+      })
+    },
+    onSet(path, handler, opt = {}) {
+      return new Promise((resolve, reject) => {
+        bushido.access().then(() => {
+          bushido.realtime.setup().then(() => {
+            const sdk = bushido.realtime.api;
+            const db = bushido.realtime.db;
+            var ref = sdk.ref(db, path);
+
+            sdk.onValue(ref, handler, opt)
+          })
+        })
+      })
+    },
+    push(path, data) {
+      return new Promise((resolve, reject) => {
+        bushido.access().then(() => {
+          bushido.realtime.setup().then(() => {
+            const sdk = bushido.realtime.api;
+            const db = bushido.realtime.db;
+    
+            var ref = sdk.ref(db, path);
+            sdk.push(ref, (typeof data == 'function' ? data() : data)).then(resolve)
+          })
+        })
+      })
+    },
+  }
 };
+

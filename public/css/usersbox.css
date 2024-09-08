@@ -84,7 +84,7 @@
   border-top-right-radius: 8px;
 }
 
-.user-box:hover {
+.user-box:hover, .user-box-active {
   background: var(--sec-bg);
   color: var(--apt-sec-color);
 }

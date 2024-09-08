@@ -12,9 +12,11 @@
   --third-bg: #dbdbdb;
   --border-color: #ccc;
   --spinner-one: #db3737;
-  --spinner-two: #e8ae48;
+  --spinner-two: #E87E48;
   --shadow: #dfdfdf;
 }
+
+/*
 
 :root {
   --theme-color: #40b5db;

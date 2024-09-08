@@ -22,6 +22,10 @@ body {
   padding-top: 20px;
   position: relative;
   width: 60%;
+  
+  
+  padding-bottom: 120px;
+  overflow-y: scroll;
 }
 
 .chat-layout {
@@ -29,6 +33,7 @@ body {
   padding: 5px;
   margin: 5px;
   margin-bottom: 8px;
+  animation: fadeInUp 1s 1;
 }
 
 .chat-container {
@@ -55,6 +60,8 @@ body {
   padding: 8px;
   margin: 5px;
   padding-bottom: 18px;
+  min-width: 50vw;
+  overflow-wrap: break-word;
   border-radius: 9px;
   position: relative;
   box-shadow: 2px 0 0px var(--sec-bg);
@@ -147,6 +154,14 @@ body {
   color: var(--apt-color);
 }
 
+.icon-chat {
+  display: none;
+}
+
+.chat-container.right-item .icon-chat {
+  display: block;
+}
+
 .desktop {
   display: none;
 }
@@ -208,12 +223,18 @@ body {
 @media screen and (min-width: 650px) {
   .chat-container {
     width: 400px;
+    min-width: 400px;
   }
 
   .desktop {
     display: flex;
   }
+
+  .chat-bubble {
+    min-width: 30vw;
+  }
 }
+
 
 @media screen and (max-width: 650px) {
   .users-list {
@@ -224,5 +245,6 @@ body {
   .body,
   .footer {
     display: none;
+    width: calc(100% - 10px);
   }
 }

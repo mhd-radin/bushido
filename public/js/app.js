@@ -185,10 +185,11 @@ function handleError(err) {
 
 window.onerror = handleError;
 
-/* cache */
+/* cache 
 if ("caches" in window){
   navigator.serviceWorker.register('../public/csw.js', 
   ).then(function(registration){
     
   })
 }
+*/

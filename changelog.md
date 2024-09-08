@@ -309,3 +309,12 @@
 - bug fix at tagstring eval
 - customised options picker modal
 - in register page, custom dob selector added
+
+### C14
+- chatting completed
+- implemented realtime db 
+- chat to admin started 
+- common room deleted
+- admin bug fix
+- renamed css on admin chat
+- color updated

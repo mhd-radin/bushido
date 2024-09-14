@@ -119,6 +119,12 @@ button .svg-mini-loader {
   color: #000 !important;
 }
 
+.loader-x2 {
+  width: 45px;
+  height: 45px;
+  margin: 5px;
+}
+
 /* second */
 /* 
 .loader {
@@ -203,6 +209,7 @@ button .svg-mini-loader {
   background-color: var(--spinner-one);
   box-shadow: 30px 0 0 var(--spinner-two);
 }
+
 
 @keyframes rotate {
   0% {

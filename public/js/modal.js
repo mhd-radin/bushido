@@ -34,7 +34,7 @@ const modal = {
       var ID = 'ALRT_' + Math.floor(Math.random() * 888);
       var mainID = ID + '_MAIN';
       var tagstr = this.create(this.title(title),
-        (typeof body == 'function' ? body() : body),
+        (typeof body == 'function' ? body(mainID, ID) : body),
         this.rightElem(
           this.button('Close', '', ID)),
         '',

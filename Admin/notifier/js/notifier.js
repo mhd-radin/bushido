@@ -114,16 +114,45 @@ function handleFloaterClick() {
 
                       floater.onclick = function() {
                         let cateInp = document.getElementById("cate");
+
                         if (cate.value) {
+                          let modalDivId;
+
                           modal.alert(
                             "Select user to send",
-                            () => {
-                              return userboxUI.create(
-                                "Name",
-                                "subname",
-                                "https://api.dicebear.com/9.x/shapes/svg?seed=Bjrt&radius=50&size=58",
-                                userboxUI.input("648")
-                              );
+                            (divId, buttonId) => {
+                              modalDivId = divId
+                              bushido.getCollection('accounts').then(function(snapshot) {
+                                var arr = bushido.toData(snapshot)
+                                var elem = document.getElementById(divId).querySelector('.modal-body');
+                                var selectAll = userboxUI.create(
+                                  'Select All',
+                                  'Send notification to all users',
+                                  'https://api.dicebear.com/9.x/initials/svg?seed=ALL&radius=40',
+                                  userboxUI.input(divId + '_all_user_INP')).parseElement()[0];
+                                elem.innerHTML = selectAll.innerHTML;
+
+                                var selectAllElem = selectAll;
+                                document.getElementById(divId + '_all_user_INP').onchange = function() {
+                                  console.log(55555555)
+                                  elem.querySelectorAll('input').forEach(function(el) {
+                                    el.checked = document.getElementById(divId + '_all_user_INP').checked;
+                                  })
+                                }
+                                elem.innerHTML += '<hr />'
+
+
+                                arr.forEach(function(item, index) {
+                                  var data = item.data();
+                                  var userItemElem = userboxUI.create(
+                                    data.fullname,
+                                    data.email,
+                                    'https://api.dicebear.com/9.x/initials/svg?seed=' + data.fullname + '&radius=40',
+                                    userboxUI.input(divId + '_INP')).parseElement()[0];
+                                  elem.appendChild(userItemElem);
+                                })
+                              })
+                              return '<center><img src="../../assets/spinner/ring-resize.svg" class="svg-mini-loader loader-x2"></img></center>'
                             },
                             ""
                           );

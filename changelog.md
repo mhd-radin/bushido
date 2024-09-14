@@ -318,3 +318,10 @@
 - admin bug fix
 - renamed css on admin chat
 - color updated
+
+### C15
+- new file for input styling 
+- user profile editing started
+- listing users in admin at notifier 
+- modal script improvement
+- changed default user theme to darkmoon

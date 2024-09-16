@@ -331,3 +331,6 @@
 - added more prompts on profile page
 - bug fix at modal
 - new modal structure for selector
+
+### C17
+- password input bug fix at profile

@@ -96,7 +96,7 @@ app.validUser().then((user) => {
     valueMatchRule: null,
     isTextarea: false
   }, {
-    type: 'password',
+    type: 'text',
     default: CryptoJS.AES.decrypt(user.password, config.ENC_KEY).toString(CryptoJS.enc.Utf8),
     min: 8,
     clkId: 'password',

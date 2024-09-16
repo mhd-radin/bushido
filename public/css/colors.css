@@ -17,20 +17,4 @@
 }
 
 
-:root {
-  --theme-color: #40b5db;
-  --sec-theme-color: #16595f;
-  --theme-color-alpha: #40b5db;
-  --apt-color: #000;
-  --color: #eee4e4;
-  --sec-color: #ccbbbb;
-  --bg: #26393e;
-  --sec-bg: #376266;
-  --apt-sec-color: #f4ecec;
-  --apt-third-color: #fbf7f7;
-  --third-bg: #0d101e;
-  --border-color: #474c53;
-  --spinner-one: #f74545;
-  --spinner-two: #e8ae48;
-  --shadow: #1b1e22;
-}
+

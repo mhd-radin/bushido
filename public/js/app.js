@@ -94,7 +94,6 @@ const app = {
   },
   validUser() {
     return app.getData('user', 'about-user', 'userUrl');
-
   },
   saveData(db, key, data, saveKey, enc = true) {
     return new Promise((resolve, reject) => {
@@ -175,9 +174,40 @@ const app = {
   },
 };
 
+const themeManager = {
+  currentTheme: 'blueocean-theme',
+  themes: [
+    "darkmoon-theme",
+    "blueocean-theme",
+    "redhouse-theme",
+    "classic-theme"
+    ],
+  setTheme(theme) {
+    this.resetTheme();
+    document.body.classList.add(theme);
+    this.currentTheme = theme;
+  },
+  resetTheme() {
+    document.body.classList.forEach((item) => {
+      document.body.classList.remove(item)
+    })
+  },
+  useStoredTheme() {
+    if (localStorage.getItem('app-theme')) {
+      this.resetTheme();
+      this.setTheme(localStorage.getItem('app-theme'))
+    }
+  },
+  storeCurrentTheme(){
+    localStorage.setItem('app-theme', this.currentTheme);
+  }
+}
+
 if (typeof eva != "undefined") {
   eva.replace();
 }
+
+themeManager.useStoredTheme();
 
 function handleError(err) {
   alert(err);

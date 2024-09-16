@@ -1,0 +1,76 @@
+.blueocean-theme {
+  --theme-color: #40b5db;
+  --sec-theme-color: #16595f;
+  --theme-color-alpha: #40b5db;
+  --apt-color: #000;
+  --color: #eee4e4;
+  --sec-color: #ccbbbb;
+  --bg: #26393e;
+  --sec-bg: #376266;
+  --apt-sec-color: #f4ecec;
+  --apt-third-color: #fbf7f7;
+  --third-bg: #0d101e;
+  --border-color: #474c53;
+  --spinner-one: #f74545;
+  --spinner-two: #e8ae48;
+  --shadow: #1b1e22;
+}
+
+.darkmoon-theme {
+  --theme-color: #40b5db;
+  --sec-theme-color: #16595f;
+  --theme-color-alpha: #40b5db;
+  --apt-color: #000;
+  --color: #EEE4E4;
+  --sec-color: #ccbbbb;
+  --bg: #1E2122;
+  --sec-bg: #2B2E2E;
+  --apt-sec-color: #f4ecec;
+  --apt-third-color: #fbf7f7;
+  --third-bg: #0E0F12;
+  --border-color: #474c53;
+  --spinner-one: #FF9494;
+  --spinner-two: #FF3931;
+  --shadow: #1b1e22;
+}
+
+.classic-theme {
+  --theme-color: #407EDB;
+  --sec-theme-color: #163F5F;
+  --theme-color-alpha: #407EDB;
+  --apt-color: #FFFFFF;
+  --color: #212121;
+  --sec-color: #242323;
+  --bg: #FFFFFF;
+  --sec-bg: #E7F4FF;
+  --apt-sec-color: #1D1D1D;
+  --apt-third-color: #272727;
+  --third-bg: #A7DDFF;
+  --border-color: #474C53;
+  --spinner-one: #FF2222;
+  --spinner-two: #FFD1D1;
+  --shadow: #1B1E22;
+}
+
+.classic-theme .menubox, 
+.classic-theme nav {
+  background: var(--theme-color);
+  color: var(--apt-color) !important;
+} 
+.classic-theme .nav-title {
+  color: var(--apt-color);
+}
+
+.classic-theme nav b {
+  color: var(--spinner-two);
+}
+
+.classic-theme .menubox .active {
+  background: var(--bg);
+  color: var(--color);
+}
+
+.classic-theme .menubox .active .eva {
+background: var(--sec-bg);
+  color: var(--apt-sec-color);
+}

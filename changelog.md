@@ -325,3 +325,9 @@
 - listing users in admin at notifier 
 - modal script improvement
 - changed default user theme to darkmoon
+
+### C16 
+- themes chooser and default theme completed
+- added more prompts on profile page
+- bug fix at modal
+- new modal structure for selector

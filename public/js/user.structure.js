@@ -23,5 +23,20 @@ const userboxUI = {
   },
   input(id='', isRadio = false){
     return new TagString(`<input type="${isRadio ? 'radio' : 'checkbox'}" id="${id}" />`);
+  },
+  pickerBox(id, title, subtext, isRadio) {
+    return new TagString(
+      `<div class="user-box user-select">
+    <div class="user-row">
+      <div class="user-icon user-left-input">
+        <input type="${isRadio ? 'radio' : 'checkbox'}" name="" id="${id}" value="" />
+      </div>
+      <div class="user-body">
+        <div class="user-name">${title}</div>
+        <div class="user-subtext">${subtext}</div>
+      </div>
+    </div>
+  </div>`
+    )
   }
 }

@@ -116,6 +116,7 @@ const modal = {
 
 
       this.add(tagstr)
+      document.getElementById(ID+ 'INP').focus()
       document.getElementById(ID).onclick = function() {
         if (document.getElementById(mainID)) {
           document.getElementById(mainID).children[0].style.animation = 'bounceOut 0.5s 1';
@@ -150,7 +151,7 @@ const modal = {
           elem.querySelector('input').setAttribute(att, data.attr[att]);
         })
         finalTagstring = new TagString(elem.outerHTML);
-        strResult += finalTagstring.eval(data).setAttributes(data.attr);
+        strResult += finalTagstring.eval(data)
       })
 
       var ID = 'OPTPICKER_' + Math.floor(Math.random() * 888);

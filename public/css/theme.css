@@ -29,7 +29,7 @@
   --apt-third-color: #fbf7f7;
   --third-bg: #0E0F12;
   --border-color: #474c53;
-  --spinner-one: #FF9494;
+  --spinner-one: #FF3F3F;
   --spinner-two: #FF3931;
   --shadow: #1b1e22;
 }
@@ -41,14 +41,14 @@
   --apt-color: #FFFFFF;
   --color: #212121;
   --sec-color: #242323;
-  --bg: #FFFFFF;
-  --sec-bg: #E7F4FF;
+  --bg: #E7F4FF;
+  --sec-bg: #FFFFFF;
   --apt-sec-color: #1D1D1D;
   --apt-third-color: #272727;
   --third-bg: #A7DDFF;
   --border-color: #474C53;
   --spinner-one: #FF2222;
-  --spinner-two: #FFD1D1;
+  --spinner-two: #FFFFFF;
   --shadow: #1B1E22;
 }
 

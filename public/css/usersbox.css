@@ -88,3 +88,11 @@
   background: var(--sec-bg);
   color: var(--apt-sec-color);
 }
+
+label.user-box {
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}

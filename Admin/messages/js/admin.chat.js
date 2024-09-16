@@ -253,12 +253,19 @@ function handleItemClick(data) {
   }
 }
 
-bushido.onSet('chat', function(snapshot) {
-  var arr = bushido.toData(snapshot)
+bushido.realtime.onSet('chat', function(snapshot) {
+  //var arr = bushido.toData(snapshot)
+  var arr = [];
+  var obj = snapshot.val();
+  Object.keys(obj).forEach(function(key){
+    arr.push(obj[key])
+  })
   var elem = document.querySelector('.users-list');
   elem.innerHTML = ''
+  console.log(obj)
   arr.forEach(function(item, index) {
-    var data = item.data();
+    var data = item
+    //.data();
 
     if (!data.isAdmin) {
       var userItemElem = userboxUI.create(

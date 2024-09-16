@@ -334,3 +334,8 @@
 
 ### C17
 - password input bug fix at profile
+
+### C18
+- theme bug fix 
+- improved chatting 
+- register page nav and style updated

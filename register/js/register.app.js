@@ -162,15 +162,15 @@ function showForm(form) {
         title: 'Pick your day of birth'
       }], true, dayjs('2020-01-01'), (data) => {
         if (data.format === 'YYYY') {
-          return userboxUI.create('#(value)', '&(if ("#(format)" == "YYYY"){ ' + dayjs().format("YYYY") + ' - #(value) +" Years old" })&', '', userboxUI.input('#(inputId)', true))
+          return userboxUI.pickerBox('#(inputId)', '#(value)', '&(if ("#(format)" == "YYYY"){ ' + dayjs().format("YYYY") + ' - #(value) +" Years old" })&', true)
         } else if (data.format === 'MM') {
           const months = [
   "January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December"
 ];
-          return userboxUI.create(months[parseInt(data.value) - 1], '#(value)', '', userboxUI.input('#(inputId)', true))
+          return userboxUI.pickerBox('#(inputId)', months[parseInt(data.value) - 1], '#(value)',  true)
         } else {
-          return userboxUI.create('#(value)', 'i born on #(value) th day', '', userboxUI.input('#(inputId)', true))
+          return userboxUI.pickerBox('#(inputId)', '#(value)', 'i born on #(value) th day', true)
         }
       }).then(function(arr) {
         dob.value = arr.join('-')

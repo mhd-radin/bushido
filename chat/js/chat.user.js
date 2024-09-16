@@ -175,33 +175,38 @@ const messanger = {
           (snapshot) => {
             if (snapshot.exists()) {
               var msgData = snapshot.val();
-              console.log(msgData)
-              var msg = msgData.unseen_messages;
+              if (msgData.messages && msgData.unseen_messages) {
+                console.log(msgData)
+                var msg = msgData.unseen_messages;
 
-              messanger.message_started = true;
-              var sortedArr = Object.entries(msgData.messages).sort((a, b) => {
-                var extA = a[1].date;
-                var extB = b[1].date;
-                console.log('dt', extA, a)
-                const dateA = new Date(extA);
-                const dateB = new Date(extB);
+                messanger.message_started = true;
+                var sortedArr = Object.entries(msgData.messages).sort((a, b) => {
+                  var extA = a[1].date;
+                  var extB = b[1].date;
+                  console.log('dt', extA, a)
+                  const dateA = new Date(extA);
+                  const dateB = new Date(extB);
 
-                return dateB - dateA;
-              });
+                  return dateB - dateA;
+                });
 
-              sortedArr.reverse().forEach((item, index) => {
-                console.log(item)
-                var item = item[1];
-                messanger.addToBody(item, data);
-                if (item.email == 'bushidosupport@gmail.com' || item.email != data.email) {
-                  bushido.realtime.set(`chat/${data.id}/messages/${item.messsage_id}/status`, 'seen')
-                }
-              });
+                sortedArr.reverse().forEach((item, index) => {
+                  console.log(item)
+                  var item = item[1];
+                  messanger.addToBody(item, data);
+                  if (item.email == 'bushidosupport@gmail.com' || item.email != data.email) {
+                    bushido.realtime.set(`chat/${data.id}/messages/${item.messsage_id}/status`, 'seen')
+                  }
+                });
 
-              document.querySelector("html").scrollTop += 9999999;
+                document.querySelector("html").scrollTop += 9999999;
+              }
             } else {
               if (!messanger.is_first_time && !messanger.message_started) {
                 messanger.is_first_time = true;
+                messanger.join().then(function() {
+                  alert()
+                })
                 messanger.send("hi, i am using this software...");
               } else {
                 modal.alert(
@@ -306,7 +311,7 @@ document.getElementById("sendBtn").onclick = function() {
 
   if (inputValue) {
     var id = messanger.id();
-    let msg = new Message(userData.id, inputValue, 'sending', userData.name, userData.email, userData.phone, id);
+    let msg = new Message(userData.id, inputValue, 'sending', userData.fullname, userData.email, userData.phone, id);
     let formattedTime = dayjs(new Date(msg.date)).format("hh:mm A");
 
     document.querySelector(".body").appendChild(

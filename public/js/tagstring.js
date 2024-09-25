@@ -1,6 +1,6 @@
 class TagString extends String {
-  constructor(code) {
-    super(code);
+  constructor(code, isTag = false) {
+    super((isTag ? '<'+code+'></'+code+'>' : code));
   }
 
   parse(next) {

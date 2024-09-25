@@ -1,10 +1,10 @@
 if (document.querySelector('.menubox')) {
   var menubox = document.querySelector('.menubox');
-  menubox.querySelectorAll('.menu-item').forEach(function (menuItem, index) {
-    if (menuItem.dataset.url){
+  menubox.querySelectorAll('.menu-item').forEach(function(menuItem, index) {
+    if (menuItem.dataset.url) {
       var url = menuItem.dataset.url
-      menuItem.onclick = function () {
-        if (spinner){
+      menuItem.onclick = function() {
+        if (spinner) {
           spinner.showPreloader()
         }
         window.location.href = url;
@@ -76,5 +76,41 @@ const menu = {
         }
       }
     })
+  },
+  create(data = [{
+    name: '',
+    id: '',
+    icon: '',
+    status: '',
+    clkAction: null,
+  }]) {
+    const str =
+      new TagString('<div></div>').setAttributes({
+        'class': 'menubox'
+      }).child(
+        (function() {
+          var items = [];
+          data.forEach(function(itemData) {
+            items.push(
+              new TagString('div', true).setOptions({
+                className: 'menu-item ' + itemData.status,
+                id: itemData.id,
+              }).child(
+                [
+                  new TagString('i', true).setAttributes({
+                    "class": 'eva eva-' + itemData.icon
+                  }),
+                  new TagString('div', true).setAttributes({
+                   "class": 'menu-item-text'
+                  }).child(itemData.name)
+                ].join('')
+              )
+            )
+          })
+          return items.join(' ');
+        })()
+      )
+    return str;
   }
 }
+

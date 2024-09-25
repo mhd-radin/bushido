@@ -339,3 +339,9 @@
 - theme bug fix 
 - improved chatting 
 - register page nav and style updated
+
+### C19
+- fixed spelling mistakes on codes
+- menubox with tagstring 
+- tagstring features are improved 
+- spinner ui updated

@@ -5,14 +5,14 @@ app.validUser().catch(() => {
 
 function onpageloadin() {
   document.querySelector(".body").innerHTML = "";
-  messanger.reciveMessages();
+  messenger.reciveMessages();
 }
 
 dayjs.extend(window.dayjs_plugin_relativeTime);
 
 class Message {
   constructor(userid, msg, status, name, email, phone, msgID = false) {
-    this.messsage_id = msgID ? msgID : messanger.id();
+    this.messsage_id = msgID ? msgID : messenger.id();
     // convert commented data into contructor
     this.user_id = userid;
     this.message = msg;
@@ -53,7 +53,7 @@ class Message {
 }
 
 // {
-//   messsage_id: messanger.id(),
+//   messsage_id: messenger.id(),
 //   user_id: data.id,
 //   message: msg,
 //   date: new Date(),
@@ -64,7 +64,7 @@ class Message {
 //   type: 'msg'
 // }
 
-const messanger = {
+const messenger = {
   message_started: false,
   room_id: "common_room_34",
   is_first_time: localStorage.getItem("is_first_time"),
@@ -112,7 +112,7 @@ const messanger = {
         .validUser()
         .then((data) => {
           if (data.id) {
-            const msgID = id ? id : messanger.id();
+            const msgID = id ? id : messenger.id();
             const messageModal = new Message(
               data.id,
               msg,
@@ -176,14 +176,14 @@ const messanger = {
             if (snapshot.exists()) {
               var msgData = snapshot.val();
               if (msgData.messages && msgData.unseen_messages) {
-                console.log(msgData)
+                //console.log(msgData)
                 var msg = msgData.unseen_messages;
 
-                messanger.message_started = true;
+                messenger.message_started = true;
                 var sortedArr = Object.entries(msgData.messages).sort((a, b) => {
                   var extA = a[1].date;
                   var extB = b[1].date;
-                  console.log('dt', extA, a)
+                  //console.log('dt', extA, a)
                   const dateA = new Date(extA);
                   const dateB = new Date(extB);
 
@@ -191,9 +191,9 @@ const messanger = {
                 });
 
                 sortedArr.reverse().forEach((item, index) => {
-                  console.log(item)
+                  //console.log(item)
                   var item = item[1];
-                  messanger.addToBody(item, data);
+                  messenger.addToBody(item, data);
                   if (item.email == 'bushidosupport@gmail.com' || item.email != data.email) {
                     bushido.realtime.set(`chat/${data.id}/messages/${item.messsage_id}/status`, 'seen')
                   }
@@ -202,12 +202,12 @@ const messanger = {
                 document.querySelector("html").scrollTop += 9999999;
               }
             } else {
-              if (!messanger.is_first_time && !messanger.message_started) {
-                messanger.is_first_time = true;
-                messanger.join().then(function() {
+              if (!messenger.is_first_time && !messenger.message_started) {
+                messenger.is_first_time = true;
+                messenger.join().then(function() {
                   alert()
                 })
-                messanger.send("hi, i am using this software...");
+                messenger.send("hi, i am using this software...");
               } else {
                 modal.alert(
                   "Something went wrong.!",
@@ -259,23 +259,23 @@ const messanger = {
     },
   },
   addToBody(msg, data, icon = "checkmark", infoAboutMessage = "") {
-    console.log(msg.email, messanger.before_send_by);
+    //console.log(msg.email, messenger.before_send_by);
 
     let isMe =
       msg.email == data.email || msg.id == data.id || msg.phone == data.phone;
     let formattedTime = dayjs(new Date(msg.date)).format("hh:mm A");
 
-    const msgElem = messanger.structure
+    const msgElem = messenger.structure
       .createBubble(
         msg.user_name,
         msg.messsage_id,
         app.avatarUrl(msg.user_name),
         msg.message,
-        formattedTime == messanger.before_send_time ? "" : formattedTime,
+        formattedTime == messenger.before_send_time ? "" : formattedTime,
         infoAboutMessage,
         msg.status == 'unseen' ? 'checkmark' : 'done-all',
         isMe,
-        messanger.before_send_by == msg.email
+        messenger.before_send_by == msg.email
       )
       .parseElement()[0];
 
@@ -285,8 +285,8 @@ const messanger = {
       document.querySelector(".body").appendChild(msgElem);
     }
 
-    messanger.before_send_by = msg.email;
-    messanger.before_send_time = formattedTime;
+    messenger.before_send_by = msg.email;
+    messenger.before_send_time = formattedTime;
   },
 };
 
@@ -297,37 +297,39 @@ app
   .then((data) => {
     userData = data;
     if (data.id) {
-      messanger.is_first_time
+      messenger.is_first_time
     }
   })
   .catch((err) => {
     app.redirectWithPreloader("../");
   });
 
-document.getElementById("sendBtn").onclick = function() {
-  document.getElementById("sendBtn").focus()
-  var inputValue = document.getElementById("chatInp").value;
-  document.getElementById("chatInp").value = "";
+if (document.getElementById("sendBtn")) {
+  document.getElementById("sendBtn").onclick = function() {
+    document.getElementById("sendBtn").focus()
+    var inputValue = document.getElementById("chatInp").value;
+    document.getElementById("chatInp").value = "";
 
-  if (inputValue) {
-    var id = messanger.id();
-    let msg = new Message(userData.id, inputValue, 'sending', userData.fullname, userData.email, userData.phone, id);
-    let formattedTime = dayjs(new Date(msg.date)).format("hh:mm A");
+    if (inputValue) {
+      var id = messenger.id();
+      let msg = new Message(userData.id, inputValue, 'sending', userData.fullname, userData.email, userData.phone, id);
+      let formattedTime = dayjs(new Date(msg.date)).format("hh:mm A");
 
-    document.querySelector(".body").appendChild(
-      messanger.structure.createBubble(
-        msg.user_name,
-        msg.messsage_id,
-        app.avatarUrl(msg.user_name),
-        msg.message,
-        formattedTime == messanger.before_send_time ? "" : formattedTime,
-        'sending...',
-        'clock-outline',
-        true,
-        messanger.before_send_by == msg.email).parseElement()[0]);
+      document.querySelector(".body").appendChild(
+        messenger.structure.createBubble(
+          msg.user_name,
+          msg.messsage_id,
+          app.avatarUrl(msg.user_name),
+          msg.message,
+          formattedTime == messenger.before_send_time ? "" : formattedTime,
+          'sending...',
+          'clock-outline',
+          true,
+          messenger.before_send_by == msg.email).parseElement()[0]);
 
-    messanger.send(inputValue, id).then(function() {
-      document.getElementById("sendBtn").disabled = false;
-    });
-  }
-};
+      messenger.send(inputValue, id).then(function() {
+        document.getElementById("sendBtn").disabled = false;
+      });
+    }
+  };
+}

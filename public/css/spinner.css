@@ -182,82 +182,51 @@ button .svg-mini-loader {
 } */
 
 .loader {
-  animation: rotate 1s infinite;
-  height: 50px;
-  width: 50px;
-  margin: 0 auto;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  position: relative;
+  margin: 10px auto;
+  animation: rotate 1s linear infinite
 }
 
-.loader:before,
-.loader:after {
-  border-radius: 40%;
+.loader::before,
+.loader::after {
   content: "";
-  display: block;
-  height: 20px;
-  width: 20px;
+  box-sizing: border-box;
+  position: absolute;
+  inset: 0px;
+  border-radius: 50%;
+  border: 8px solid var(--spinner-one);
+  animation: prixClipFix 2s linear infinite;
 }
 
-.loader:before {
-  animation: ball1 1s infinite;
-  background-color: var(--spinner-two);
-  box-shadow: 30px 0 0 var(--spinner-one);
-  margin-bottom: 10px;
+.loader::after {
+  transform: rotate3d(90, 90, 0, 180deg);
+  border-color: var(--spinner-two);
 }
-
-.loader:after {
-  animation: ball2 1s infinite;
-  background-color: var(--spinner-one);
-  box-shadow: 30px 0 0 var(--spinner-two);
-}
-
 
 @keyframes rotate {
   0% {
-    transform: rotate(0deg) scale(0.8);
-    opacity: 1;
-  }
-
-  50% {
-    transform: rotate(360deg) scale(1.2);
-    opacity: 0.4;
+    transform: rotate(0deg)
   }
 
   100% {
-    transform: rotate(720deg) scale(0.8);
-    opacity: 1;
+    transform: rotate(360deg)
   }
 }
 
-@keyframes ball1 {
+@keyframes prixClipFix {
   0% {
-    box-shadow: 30px 0 0 var(--spinner-one);
+    clip-path: polygon(50% 50%, 0 0, 0 0, 0 0, 0 0, 0 0)
   }
 
   50% {
-    box-shadow: 0 0 0 var(--spinner-one);
-    margin-bottom: 0;
-    transform: translate(15px, 15px);
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 0, 100% 0, 100% 0)
   }
 
+  75%,
   100% {
-    box-shadow: 30px 0 0 var(--spinner-one);
-    margin-bottom: 10px;
-  }
-}
-
-@keyframes ball2 {
-  0% {
-    box-shadow: 30px 0 0 var(--spinner-two);
-  }
-
-  50% {
-    box-shadow: 0 0 0 var(--spinner-two);
-    margin-top: -20px;
-    transform: translate(15px, 15px);
-  }
-
-  100% {
-    box-shadow: 30px 0 0 var(--spinner-two);
-    margin-top: 0;
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%)
   }
 }

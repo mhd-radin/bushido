@@ -345,3 +345,11 @@
 - menubox with tagstring 
 - tagstring features are improved 
 - spinner ui updated
+
+### C20 ( Major Update)
+- new page for creating new post
+- sample card images
+- frontend of post page completed 
+- spinner changed
+- themes updated
+- formated cards

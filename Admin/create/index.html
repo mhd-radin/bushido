@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin Create | Bushido Fit & Fight Club - Admin</title>
+
+  <link rel="shortcut icon" type="image/png" href="../../assets/logos/bbc256.png">
+  <!-- custom css -->
+  <link rel="stylesheet" href="../../public/css/link.css">
+  <link rel="stylesheet" href="../public.admin.css">
+  <link rel="stylesheet" href="css/create.css">
+  <link rel="stylesheet" href="../../events/css/cards.css">
+
+  <script src="../valid.admin.js"></script>
+  <!-- min required scripts & css -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js" integrity="sha512-a+SUDuwNzXDvz4XrIcXHuCf089/iJAoN4lmrXJg18XnduKK6YlDHNRalv4yd1N40OKI80tFidF+rqTFKGPoWFQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/aes.min.js" integrity="sha512-UOtWWEXoMk1WLeC873Gmrkb2/dZMwvN1ViM9C1mNvNmQSeXpEr8sRzXLmUSha1X4x5V892uFmEjiZzUsYiHYiw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="../../local.config.js"></script>
+  <script src="../../public/js/bushido.js"></script>
+  <script src="https://unpkg.com/eva-icons"></script>
+  <link rel="stylesheet" href="https://unpkg.com/eva-icons@1.1.3/style/eva-icons.css">
+</head>
+
+<body>
+
+  <div class="preloader">
+    <span class="loader"></span>
+    <p>Loading...</p>
+  </div>
+
+  <nav>
+    <div class="nav-title">
+      <b>Bushido</b> Post
+    </div>
+    <div class="nav-right">
+      <i class="eva eva-code-outline"></i>
+    </div>
+  </nav>
+
+
+  <div class="body">
+    <div class="title" id="title">Choose design of card</div>
+    <div class="form" id="form_1">
+      <div class="form-input">
+        <label for="pageCard">
+          <img src="../../assets/sample/page_card.png" alt="">
+          <input type="radio" name="cards" id="pageCard" checked />
+          Share able card with image
+        </label>
+      </div>
+      <div class="form-input">
+        <label for="imgCard">
+          <img src="../../assets/sample/image_card.png" alt="">
+          <input type="radio" name="cards" id="imgCard" />
+          Attached on image
+        </label>
+      </div>
+    </div>
+
+    <div class="form" id="form_2">
+      <div class="input-box">
+        <label for="post_title">Title of Post</label>
+        <div class="input-seg">
+          <div class="input-icon">
+            <i class="eva eva-hash-outline"></i>
+          </div>
+          <input type="text" name="post_title" id="post_title" value="" placeholder="Post Title" required />
+        </div>
+      </div>
+      <div class="input-box">
+        <label for="des">Short Description</label>
+        <div class="input-seg">
+          <div class="input-icon">
+            <i class="eva eva-text-outline"></i>
+          </div>
+          <textarea type="number" name="des" id="des" value="" placeholder="short description" required></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="form" id="form_3">
+      <div class="form-input">
+        <label for="isImgUrl">
+          <input type="checkbox" name="" id="isImgUrl" checked />
+          Use image from url ( save server storage )
+        </label>
+      </div>
+
+      <div class="input-box">
+        <label for="imgUrl">Image url</label>
+        <div class="input-seg">
+          <div class="input-icon">
+            <i class="eva eva-image-outline"></i>
+          </div>
+          <input type="url" name="" id="imgUrl" value="" placeholder="eg:- https://example.com/image.png" required />
+        </div>
+      </div>
+            <div class="input-box">
+        <label for="imgFile">Or upload your image file</label>
+        <div class="input-seg">
+          <div class="input-icon">
+            <i class="eva eva-upload-outline"></i>
+          </div>
+          <input type="file" name="" id="imgFile" value="" placeholder="" disabled />
+        </div>
+      </div>
+    </div>
+    
+    <div class="form" id="form_4">
+      <div class="primary-card">
+        <div class="primary-card-content">
+          <img src="../../assets/bg/boxing-gloves-realistic-composition-with-dark-gradient-background-pair-red-mufflers-hanging-strings-vector-illustration_1284-78726.jpg" alt="" class="primary-card-img" />
+        </div>
+        <div class="primary-card-body">
+          <div class="primary-card-title-tag">
+            <i class="eva eva-done-all"></i>
+            <div class="primary-card-title-tag-text">02:30 PM</div>
+          </div>
+          <div class="primary-card-title">
+            Events of Bushido Fit & Fight Club
+          </div>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel
+            lobortis est, vel condimentum nunc. Donec finibus, sapien vitae
+            ultricies gravida, justo metus fermentum lectus, in convallis arcu
+            nisi non velit. Nam ornare, est vel convallis gravida, felis velit
+            semp
+          </p>
+          <img src="../../assets/logos/bbc192.png" alt="" class="primary-card-logo" />
+        </div>
+        <div class="primary-card-footer">
+          <!-- <button> -->
+          <i class="eva eva-heart-outline"></i>
+          <i class="eva eva-share-outline"></i>
+          <i class="eva eva-message-circle-outline"></i>
+          <i class="eva eva-clock-outline"></i>
+          <!-- </button> -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <button class="sec-btn" id="backBtn">Back</button>
+    <button id="nextBtn">Forward</button>
+  </div>
+
+  <div class="menubox">
+    <div class="menu-item" data-url="../users">
+      <i class="eva eva-person-outline"></i>
+      <div class="menu-item-text">Users</div>
+    </div>
+    <div class="menu-item" data-url="../attendance">
+      <i class="eva eva-calendar-outline"></i>
+      <div class="menu-item-text">Date</div>
+    </div>
+    <div class="menu-item active" data-url="./">
+      <i class="eva eva-plus-outline"></i>
+      <div class="menu-item-text">Post</div>
+    </div>
+    <div class="menu-item" data-url="../notifier">
+      <i class="eva eva-bell-outline"></i>
+      <div class="menu-item-text">Notifier</div>
+    </div>
+    <div class="menu-item" data-url="../messages">
+      <i class="eva eva-message-circle-outline"></i>
+      <div class="menu-item-text">Chat</div>
+    </div>
+  </div>
+
+  <!-- cdn scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+
+  <!-- custom scripts -->
+  <script src="../../public/js/app.js"></script>
+  <script src="../../public/js/tagstring.js"></script>
+  <script src="../../public/js/spinner_ui.js"></script>
+  <script src="../../public/js/menubox.js"></script>
+  <script src="../../public/js/modal.js"></script>
+  <script src="../../public/js/user.structure.js"></script>
+  <script src="js/create.js"></script>
+</body>
+
+</html>

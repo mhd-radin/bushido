@@ -1,0 +1,152 @@
+body {
+    margin-bottom: 100px;
+}
+
+.body {
+  padding: 10px;
+  margin: 10px;
+}
+
+.title {
+  font-size: 28px;
+  font-family: "Open Sans", "Raleway", "Poppins", sans-serif;
+  margin: 5px;
+}
+
+.form {
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.form-input{
+  margin: 3px;
+  padding: 5px;
+  font-family: "Nunito";
+  width: 95%;
+}
+
+.form-input img {
+  width: 100%;
+}
+
+
+.footer {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  padding: 14px;
+  justify-content: end;
+}
+
+
+.input-box {
+  margin: 5px;
+  margin-top: 12px;
+  padding: 3px;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-box label {
+  font-size: 13px;
+  font-family: "Rubik";
+  margin-left: 3px;
+}
+
+.input-seg {
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+  padding: 0;
+}
+
+.input-icon {
+  padding: 3px;
+  border: 2px solid transparent;
+  border-bottom: 2px  solid var(--border-color);
+  margin-left: 0;
+  margin: 3px;
+  margin-right: 1px;
+  right: 0;
+  border-radius: 0px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  max-height: 35px;
+}
+
+.input-icon .eva {
+  margin: 0 auto;
+  font-size: 20px;
+  padding: 2px 6px;
+  width: max-content;
+  color: var(--theme-color);
+}
+
+.form input,
+.form textarea {
+  padding: 8px 8px;
+  border-radius: 0px;
+  border: 2px solid transparent;
+  border-bottom: 2px  solid var(--border-color);
+  outline: none;
+  background: var(--bg);
+  font-weight: 600;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  color: var(--sec-color);
+  margin: 3px;
+  width: calc(80%);
+  margin-left: 0;
+  resize: none
+}
+
+.form input::placeholder,
+.form textarea::placeholder {
+  font-weight: normal;
+}
+
+input:focus,
+textarea:focus {
+  border-bottom: 2px solid var(--theme-color);
+}
+
+@media screen and (min-width: 650px){
+  .form-input {
+    width: 300px;
+  }
+}
+
+input[type="checkbox"], 
+input[type="radio"]{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: var(--bg);
+  color: #3FCD85;
+  outline: 2px solid var(--theme-color);
+  outline-offset: 1.5px;
+  border-radius: 50%;
+  min-width: 10px;
+  min-height: 10px;
+  width: 10px;
+  height: 10px;
+  border: none;
+  margin-right: 10px;
+}
+
+#form_4,
+#form_4 .primary-card {
+  margin: 0 !important;
+}
+
+#form_4 {
+  padding: 0;
+  position: relative;
+  margin: 0;
+  display: flex;
+  overflow: scroll;
+  width: 99%;
+}

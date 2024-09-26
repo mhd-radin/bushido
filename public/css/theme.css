@@ -17,9 +17,9 @@
 }
 
 .darkmoon-theme {
-  --theme-color: #40b5db;
-  --sec-theme-color: #16595f;
-  --theme-color-alpha: #40b5db;
+  --theme-color: #34997D;
+  --sec-theme-color: #FFA02D;
+  --theme-color-alpha: #2B7D66;
   --apt-color: #000;
   --color: #EEE4E4;
   --sec-color: #ccbbbb;
@@ -30,7 +30,7 @@
   --third-bg: #0E0F12;
   --border-color: #474c53;
   --spinner-one: #FF3F3F;
-  --spinner-two: #FF3931;
+  --spinner-two: #FFA02D;
   --shadow: #1b1e22;
 }
 

@@ -1,0 +1,156 @@
+.body{
+  position: relative;
+}
+
+.primary-card {
+  background: var(--sec-bg);
+  color: var(--apt-sec-color);
+  margin: 8px;
+  border-radius: 10px;
+  width: min-content;
+}
+
+.primary-card-img {
+  width: calc(100vw - 20px);
+  border-radius: 10px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  background: var(--third-bg);
+  min-width: calc(100vw - 20px);
+  min-height: 200px;
+}
+
+.primary-card-body {
+  padding: 10px;
+  margin: 5px;
+  font-size: 13px;
+  position: relative;
+  margin-top: 25px;
+}
+
+.primary-card-body p {
+  font-size: 12px;
+  font-family: "Nunito";
+}
+
+.primary-card-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 5px;
+}
+
+.primary-card-logo {
+  width: 60px;
+  border-radius: 50%;
+  position: absolute;
+  top: -65px;
+  /* border: 3px solid var(--apt-color); */
+  box-shadow: 0 0 10px var(--apt-color);
+  outline: 4px solid var(--apt-color);
+  outline-offset: 3px;
+  background: var(--sec-bg);
+  right: 20px;
+}
+
+.primary-card-title-tag {
+  padding: 10px 17px;
+  position: absolute;
+  top: -80px;
+  left: 10px;
+  border-radius: 20px;
+  background: #000;
+  color: #fff;
+  display: flex;
+  flex-direction: row;
+}
+
+.primary-card-title-tag .eva {
+  display: inline-flexbox;
+  margin: auto 10px;
+  margin-left: 1px;
+  font-size: 17px;
+}
+
+.primary-card-body::before {
+  content: "";
+  display: block;
+  width: 66px;
+  height: 68px;
+  background: var(--sec-bg);
+  position: absolute;
+  right: -5px;
+  top: -54px;
+  z-index: 0;
+}
+
+.primary-card-footer {
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  margin: 5px;
+}
+
+.primary-card-footer .eva {
+  padding: 10px;
+  margin: 5px;
+  font-size: 20px;
+  border-radius: 50%;
+}
+
+.image-card {
+  width: min-content;
+  min-height: 150px;
+  background: var(--third-bg);
+  border-radius: 10px;
+  position: relative;
+  margin: 10px;
+  overflow: hidden;
+}
+
+.image-card img {
+  width: 400px;
+  border-radius: 10px;
+}
+
+.image-card-body {
+  position: absolute;
+  bottom: 5px;
+  left: 0px;
+  width: 100%;
+  padding-top: 50px;
+  background: linear-gradient(to top, var(--third-bg) 40%, transparent 100%);
+}
+
+.image-card-title {
+  font-family: "Poppins", sans-serif, serif;
+  font-weight: 600;
+  font-size: 16px;
+  margin: 10px;
+  margin-bottom: 3px;
+}
+
+.image-card-text {
+  font-size: 13px;
+  font-family: "Open Sans", sans-serif;
+  margin: 10px;
+  margin-top: 5px;
+}
+
+.primary-card-footer .eva:hover {
+  color: var(--apt-color);
+  background: var(--theme-color);
+}
+
+@media (max-width: 650px) {
+
+  .image-card img {
+    width: calc(100vw - 20px);
+  }
+}
+
+@media (min-width: 650px) {
+  .primary-card-img {
+    width: 400px;
+    min-width: 400px;
+  }
+}

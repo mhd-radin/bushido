@@ -353,3 +353,6 @@
 - spinner changed
 - themes updated
 - formated cards
+
+### D01
+- bug fixes

@@ -356,3 +356,7 @@
 
 ### D01
 - bug fixes
+
+### D02 
+- changed animation of the starting page
+- ui upadtes

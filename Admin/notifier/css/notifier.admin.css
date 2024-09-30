@@ -60,12 +60,20 @@
   right: 25px;
   z-index: 99;
   padding: 10px;
-  border-radius: 20px;
+  border-radius: 50%;
   display: flex;
   box-shadow: 3px 3px 10px 5px var(--shadow);
   animation: bounceIn 2s 1;
   animation-delay: 1050ms;
+  outline: 3px transparent var(--theme-color);
+  outline-offset: -3px;
+  transition: outline 1s;
   animation-play-state: var(--animation-state)
+}
+
+.floating-btn:hover {
+  outline: 3px solid var(--theme-color);
+  outline-offset: 6px;
 }
 
 .floating-btn p {

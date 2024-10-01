@@ -25,7 +25,7 @@
   width: 80%;
   box-shadow: 2px 0px 14px var(--shadow);
   max-height: 80vh;
-  animation: bounceIn 1s 1;
+  animation: ShowPopup 0.5s 1;
 }
 
 .modal-head {

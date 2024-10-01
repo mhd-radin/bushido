@@ -5,7 +5,7 @@
 }
 
 nav {
-  background: transparent !important;
+  background: var(--bg) !important;
   padding: 20px;
   display: flex;
   justify-content: start;
@@ -83,12 +83,14 @@ nav {
   flex-direction: row;
   margin: 0;
   padding: 0;
+  border-radius: 8px;
+  border: 2px solid var(--border-color);
 }
 
 .input-icon {
   padding: 3px;
-  border: 2px solid transparent;
-  border-bottom: 2px  solid var(--border-color);
+  border: 0px solid transparent;
+  border-bottom: 0px  solid var(--border-color);
   margin-left: 0;
   margin: 3px;
   margin-right: 1px;
@@ -141,8 +143,8 @@ nav {
 .form textarea {
   padding: 8px 8px;
   border-radius: 0px;
-  border: 2px solid transparent;
-  border-bottom: 2px  solid var(--border-color);
+  border: 0px solid transparent;
+  border-bottom: 0px  solid var(--border-color);
   outline: none;
   background: var(--bg);
   font-weight: 600;
@@ -176,7 +178,7 @@ nav {
 
 input:focus,
 textarea:focus {
-  border-bottom: 2px solid var(--theme-color);
+  border-bottom: 0px solid var(--theme-color);
 }
 
 .right-elems {

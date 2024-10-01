@@ -86,3 +86,25 @@ input[type="radio"]:checked {
 .eva:hover ~ .body {
   background: #000 !important;
 }
+
+@keyframes ShowPopup {
+  0% {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes ClosePopup {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+}

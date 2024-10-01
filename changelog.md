@@ -360,3 +360,8 @@
 ### D02 
 - changed animation of the starting page
 - ui upadtes
+
+### D03
+- new animation and input ui
+- styling bug fix 
+- navbar image to text

@@ -27,6 +27,7 @@ const notificationUI = {
     floater.style.zIndex = floatDefualtIndex;
     floater.style.bottom = floatDefualtBottom;
     floater.style.right = floatDefualtRight;
+    floater.style.borderRadius = "50%";
     floater.innerHTML = "<i class='eva eva-paper-plane-outline'></i>";
     floater.onclick = handleFloaterClick;
   },

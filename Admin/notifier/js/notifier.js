@@ -6,6 +6,7 @@ let floatDefualtRight = app.getCSSProp("right", floater);
 function handleFloaterClick() {
   document.querySelector(".form-display").style.display = "block";
   floater.style.display = "none";
+  floater.style.borderRadius = "29px";
   floater.style.animationDelay = "0ms";
   document.querySelector(".form-display").onanimationend = function() {
     setTimeout(function() {

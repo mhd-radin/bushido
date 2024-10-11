@@ -93,7 +93,24 @@ const app = {
     return `https://api.dicebear.com/9.x/${type}/svg?seed=${seed}${urlOpt}`;
   },
   validUser() {
-    return app.getData('user', 'about-user', 'userUrl');
+    return new Promise((resolve, reject) => {
+      function handleReject(err) {
+        localStorage.removeItem('form_set');
+        reject(err)
+      }
+      
+        app.getData('user', 'about-user', 'userUrl').then(function (data){
+          if (typeof bushido != "undefined") {
+            bushido.get('accounts', data.id).then(function (user) {
+              if (user.exists()){
+                resolve(data || user)
+              }
+            }).catch(handleReject)
+          } else {
+            resolve(data)
+          }
+        }).catch(handleReject)
+    })
   },
   saveData(db, key, data, saveKey, enc = true) {
     return new Promise((resolve, reject) => {

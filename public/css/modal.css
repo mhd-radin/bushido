@@ -100,7 +100,7 @@
   /*top: auto;
   bottom: 85px;
   transform: translate(-50%, 0);*/
-  position: absolute;
+  position: relative;
   bottom: 85px;
 
 }

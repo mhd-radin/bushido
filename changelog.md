@@ -210,7 +210,7 @@
 
 ### B18
 - modal and spinner layer issues fixed
-- improvemed information about error at login pages
+- improved information about error at login pages
 - implemented confirm modal
 - removed demo mode structures
 - linked with modal api in some pages
@@ -365,3 +365,8 @@
 - new animation and input ui
 - styling bug fix 
 - navbar image to text
+
+### D04 
+- improved animations
+- styling bug fixs ( responsive )
+- validating users data from server

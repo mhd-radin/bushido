@@ -370,3 +370,6 @@
 - improved animations
 - styling bug fixs ( responsive )
 - validating users data from server
+
+### D05 
+- redesigning events

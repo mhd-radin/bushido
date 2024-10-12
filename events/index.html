@@ -1,57 +1,98 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Events of Bushido Fit & Fight Club</title>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Events of Bushido Fit & Fight Club</title>
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="../assets/logos/bbc256.png"
+    />
+    <!-- custom css -->
+    <link rel="stylesheet" href="../public/css/link.css" />
+    <link rel="stylesheet" href="css/cards.css" />
+    <link rel="stylesheet" href="css/events.style.css" />
 
-  <link rel="shortcut icon" type="image/png" href="../assets/logos/bbc256.png" />
-  <!-- custom css -->
-  <link rel="stylesheet" href="../public/css/link.css" />
-  <link rel="stylesheet" href="css/cards.css" />
-  <link rel="stylesheet" href="css/events.style.css" />
+    <!-- min required scripts & css -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"
+      integrity="sha512-a+SUDuwNzXDvz4XrIcXHuCf089/iJAoN4lmrXJg18XnduKK6YlDHNRalv4yd1N40OKI80tFidF+rqTFKGPoWFQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/aes.min.js"
+      integrity="sha512-UOtWWEXoMk1WLeC873Gmrkb2/dZMwvN1ViM9C1mNvNmQSeXpEr8sRzXLmUSha1X4x5V892uFmEjiZzUsYiHYiw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/relativeTime.js"></script>
+    <script src="../local.config.js"></script>
+    <script src="../public/js/bushido.js"></script>
+    <script src="https://unpkg.com/eva-icons"></script>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/eva-icons@1.1.3/style/eva-icons.css"
+    />
+  </head>
 
-  <!-- min required scripts & css -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js" integrity="sha512-a+SUDuwNzXDvz4XrIcXHuCf089/iJAoN4lmrXJg18XnduKK6YlDHNRalv4yd1N40OKI80tFidF+rqTFKGPoWFQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/aes.min.js" integrity="sha512-UOtWWEXoMk1WLeC873Gmrkb2/dZMwvN1ViM9C1mNvNmQSeXpEr8sRzXLmUSha1X4x5V892uFmEjiZzUsYiHYiw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/relativeTime.js"></script>
-  <script src="../local.config.js"></script>
-  <script src="../public/js/bushido.js"></script>
-  <script src="https://unpkg.com/eva-icons"></script>
-  <link rel="stylesheet" href="https://unpkg.com/eva-icons@1.1.3/style/eva-icons.css" />
-</head>
+  <body>
+    <div class="preloader">
+      <span class="loader"></span>
+      <p>Loading...</p>
+    </div>
 
-<body>
-  <div class="preloader">
-    <span class="loader"></span>
-    <p>Loading...</p>
-  </div>
+    <nav>
+      <div class="nav-title"><b>Bushido</b> Events</div>
+      <div class="nav-right"></div>
+    </nav>
 
-  <nav>
-    <div class="nav-title"><b>Bushido</b> Events</div>
-    <div class="nav-right"></div>
-  </nav>
-
-  <div class="body">
-    <div class="base-layout">
-      <div class="notes"></div>
-      <div class="contents">
-        <div class="videos"></div>
-        <div class="posts" id="posts">
-          <div class="image-card">
-            <img src="" alt="" class="img-content">
-            <div class="image-card-body">
-              <div class="image-card-texts">
-                <div class="image-card-title"></div>
-                <div class="image-card-subtext"></div>
-              </div>
-              <div class="image-card-footer">
-                <div class="card-button">
-                  <i class="eva eva-share-outline"></i>
-                  <div class="card-btn-text">Share</div>
+    <div class="body">
+      <div class="base-layout">
+        <div class="notes">
+          <div class="note-card">
+            <div class="note-title">Try Feedback Our App</div>
+            <div class="note-subtext">Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum aut omnis vitae, cum assumenda, ea perspiciatis in itaque dolor voluptates facere incidunt deleniti nobis sint! Nemo consectetur placeat porro. Quas!</div>
+            <div class="note-buttons">
+              <button>
+                <i class="eva eva-link-outline"></i>
+                <span>Try It</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="contents">
+          <div class="videos"></div>
+          <div class="posts" id="posts">
+            <div class="image-card">
+              <img src="../assets/bg/members.jpg" alt="" class="img-content" />
+              <div class="image-card-body">
+                <div class="image-card-texts">
+                  <div class="image-card-title">Bushido members photo</div>
+                  <div class="image-card-subtext">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Saepe exercitationem, repellat neque eligendi et deserunt
+                    quisquam aliquam nesciunt illum ipsa rerum a nemo debitis.
+                    Eum saepe ex modi omnis enim.
+                  </div>
+                </div>
+                <div class="image-card-footer">
+                  <div class="card-button">
+                    <i class="eva eva-heart-outline"></i>
+                    <div class="card-btn-text">Like</div>
+                  </div>
+                  <div class="card-button">
+                    <i class="eva eva-message-square-outline"></i>
+                    <div class="card-btn-text">Replay</div>
+                  </div>
+                  <div class="card-button">
+                    <i class="eva eva-share-outline"></i>
+                    <div class="card-btn-text">Share</div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -59,37 +100,35 @@
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="menubox">
-    <div class="menu-item active" data-url="./">
-      <i class="eva eva-compass-outline"></i>
-      <div class="menu-item-text">Events</div>
+    <div class="menubox">
+      <div class="menu-item active" data-url="./">
+        <i class="eva eva-compass-outline"></i>
+        <div class="menu-item-text">Events</div>
+      </div>
+      <div class="menu-item" data-url="../chat">
+        <i class="eva eva-message-circle-outline"></i>
+        <div class="menu-item-text">Messages</div>
+      </div>
+      <div class="menu-item" data-url="../notify">
+        <i class="eva eva-bell-outline"></i>
+        <div class="menu-item-text">Notifications</div>
+      </div>
+      <div class="menu-item" data-url="../profile">
+        <i class="eva eva-person-outline"></i>
+        <div class="menu-item-text">Profile</div>
+      </div>
     </div>
-    <div class="menu-item" data-url="../chat">
-      <i class="eva eva-message-circle-outline"></i>
-      <div class="menu-item-text">Messages</div>
-    </div>
-    <div class="menu-item" data-url="../notify">
-      <i class="eva eva-bell-outline"></i>
-      <div class="menu-item-text">Notifications</div>
-    </div>
-    <div class="menu-item" data-url="../profile">
-      <i class="eva eva-person-outline"></i>
-      <div class="menu-item-text">Profile</div>
-    </div>
-  </div>
 
-  <!-- cdn scripts -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+    <!-- cdn scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
 
-  <!-- custom scripts -->
-  <script src="../public/js/app.js"></script>
-  <script src="../public/js/tagstring.js"></script>
-  <script src="../public/js/spinner_ui.js"></script>
-  <script src="../public/js/menubox.js"></script>
-  <script src="../public/js/modal.js"></script>
-  <script src="js/events.client.js"></script>
-</body>
-
+    <!-- custom scripts -->
+    <script src="../public/js/app.js"></script>
+    <script src="../public/js/tagstring.js"></script>
+    <script src="../public/js/spinner_ui.js"></script>
+    <script src="../public/js/menubox.js"></script>
+    <script src="../public/js/modal.js"></script>
+    <script src="js/events.client.js"></script>
+  </body>
 </html>

@@ -1,7 +1,7 @@
 button {
   margin: 5px;
   padding: 13px 23px;
-  border-radius: 25px;
+  border-radius: var(--border-radius);
   background: linear-gradient(to top, var(--theme-color), var(--theme-color-alpha));
   color: var(--apt-color);
   border: 0px;
@@ -24,9 +24,3 @@ button:hover {
   color: var(--apt-third-color);
 }
 
-*::-webkit-scrollbar, ::-webkit-scrollbar {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  display: none;
-}

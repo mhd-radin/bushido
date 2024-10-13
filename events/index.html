@@ -55,10 +55,11 @@
       <div class="base-layout">
         <div class="notes">
           <div class="note-card">
+            <div class="note-ripple"></div>
             <div class="note-title">Try Feedback Our App</div>
             <div class="note-subtext">Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum aut omnis vitae, cum assumenda, ea perspiciatis in itaque dolor voluptates facere incidunt deleniti nobis sint! Nemo consectetur placeat porro. Quas!</div>
             <div class="note-buttons">
-              <button>
+              <button onclick="modal.prompt('Review Our App', '', 'Type your experience in our app', true).then((v)=>{messenger.send('Feedback: '+v, 'MSG_FROM_EVENT_'+Math.floor(Math.random()*9999999)+'__'+Math.floor(Math.random()*9999), {link: '../events', linkText: 'Our App Feedback'})})">
                 <i class="eva eva-link-outline"></i>
                 <span>Try It</span>
               </button>
@@ -68,6 +69,594 @@
         <div class="contents">
           <div class="videos"></div>
           <div class="posts" id="posts">
+            <div class="image-card">
+              <img src="../assets/bg/members.jpg" alt="" class="img-content" />
+              <div class="image-card-body">
+                <div class="image-card-texts">
+                  <div class="image-card-title">Bushido members photo</div>
+                  <div class="image-card-subtext">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Saepe exercitationem, repellat neque eligendi et deserunt
+                    quisquam aliquam nesciunt illum ipsa rerum a nemo debitis.
+                    Eum saepe ex modi omnis enim.
+                  </div>
+                </div>
+                <div class="image-card-footer">
+                  <div class="card-button">
+                    <i class="eva eva-heart-outline"></i>
+                    <div class="card-btn-text">Like</div>
+                  </div>
+                  <div class="card-button">
+                    <i class="eva eva-message-square-outline"></i>
+                    <div class="card-btn-text">Replay</div>
+                  </div>
+                  <div class="card-button">
+                    <i class="eva eva-share-outline"></i>
+                    <div class="card-btn-text">Share</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="image-card">
+              <img src="../assets/bg/01.jpg" alt="" class="img-content" />
+              <div class="image-card-body">
+                <div class="image-card-texts">
+                  <div class="image-card-title">Bushido members photo</div>
+                  <div class="image-card-subtext">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Saepe exercitationem, repellat neque eligendi et deserunt
+                    quisquam aliquam nesciunt illum ipsa rerum a nemo debitis.
+                    Eum saepe ex modi omnis enim.
+                  </div>
+                </div>
+                <div class="image-card-footer">
+                  <div class="card-button">
+                    <i class="eva eva-heart-outline"></i>
+                    <div class="card-btn-text">Like</div>
+                  </div>
+                  <div class="card-button">
+                    <i class="eva eva-message-square-outline"></i>
+                    <div class="card-btn-text">Replay</div>
+                  </div>
+                  <div class="card-button">
+                    <i class="eva eva-share-outline"></i>
+                    <div class="card-btn-text">Share</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="image-card">
+              <img src="../assets/bg/boxing-gloves-realistic-composition-with-dark-gradient-background-pair-red-mufflers-hanging-strings-vector-illustration_1284-78726.jpg" alt="" class="img-content" />
+              <div class="image-card-body">
+                <div class="image-card-texts">
+                  <div class="image-card-title">Bushido members photo</div>
+                  <div class="image-card-subtext">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Saepe exercitationem, repellat neque eligendi et deserunt
+                    quisquam aliquam nesciunt illum ipsa rerum a nemo debitis.
+                    Eum saepe ex modi omnis enim.
+                  </div>
+                </div>
+                <div class="image-card-footer">
+                  <div class="card-button">
+                    <i class="eva eva-heart-outline"></i>
+                    <div class="card-btn-text">Like</div>
+                  </div>
+                  <div class="card-button">
+                    <i class="eva eva-message-square-outline"></i>
+                    <div class="card-btn-text">Replay</div>
+                  </div>
+                  <div class="card-button">
+                    <i class="eva eva-share-outline"></i>
+                    <div class="card-btn-text">Share</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="image-card">
+              <img src="../assets/logos/BBC 2.png" alt="" class="img-content" />
+              <div class="image-card-body">
+                <div class="image-card-texts">
+                  <div class="image-card-title">Bushido members photo</div>
+                  <div class="image-card-subtext">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Saepe exercitationem, repellat neque eligendi et deserunt
+                    quisquam aliquam nesciunt illum ipsa rerum a nemo debitis.
+                    Eum saepe ex modi omnis enim.
+                  </div>
+                </div>
+                <div class="image-card-footer">
+                  <div class="card-button">
+                    <i class="eva eva-heart-outline"></i>
+                    <div class="card-btn-text">Like</div>
+                  </div>
+                  <div class="card-button">
+                    <i class="eva eva-message-square-outline"></i>
+                    <div class="card-btn-text">Replay</div>
+                  </div>
+                  <div class="card-button">
+                    <i class="eva eva-share-outline"></i>
+                    <div class="card-btn-text">Share</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="image-card">
+              <img src="../assets/bg/members.jpg" alt="" class="img-content" />
+              <div class="image-card-body">
+                <div class="image-card-texts">
+                  <div class="image-card-title">Bushido members photo</div>
+                  <div class="image-card-subtext">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Saepe exercitationem, repellat neque eligendi et deserunt
+                    quisquam aliquam nesciunt illum ipsa rerum a nemo debitis.
+                    Eum saepe ex modi omnis enim.
+                  </div>
+                </div>
+                <div class="image-card-footer">
+                  <div class="card-button">
+                    <i class="eva eva-heart-outline"></i>
+                    <div class="card-btn-text">Like</div>
+                  </div>
+                  <div class="card-button">
+                    <i class="eva eva-message-square-outline"></i>
+                    <div class="card-btn-text">Replay</div>
+                  </div>
+                  <div class="card-button">
+                    <i class="eva eva-share-outline"></i>
+                    <div class="card-btn-text">Share</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="image-card">
+              <img src="../assets/bg/members.jpg" alt="" class="img-content" />
+              <div class="image-card-body">
+                <div class="image-card-texts">
+                  <div class="image-card-title">Bushido members photo</div>
+                  <div class="image-card-subtext">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Saepe exercitationem, repellat neque eligendi et deserunt
+                    quisquam aliquam nesciunt illum ipsa rerum a nemo debitis.
+                    Eum saepe ex modi omnis enim.
+                  </div>
+                </div>
+                <div class="image-card-footer">
+                  <div class="card-button">
+                    <i class="eva eva-heart-outline"></i>
+                    <div class="card-btn-text">Like</div>
+                  </div>
+                  <div class="card-button">
+                    <i class="eva eva-message-square-outline"></i>
+                    <div class="card-btn-text">Replay</div>
+                  </div>
+                  <div class="card-button">
+                    <i class="eva eva-share-outline"></i>
+                    <div class="card-btn-text">Share</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="image-card">
+              <img src="../assets/bg/members.jpg" alt="" class="img-content" />
+              <div class="image-card-body">
+                <div class="image-card-texts">
+                  <div class="image-card-title">Bushido members photo</div>
+                  <div class="image-card-subtext">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Saepe exercitationem, repellat neque eligendi et deserunt
+                    quisquam aliquam nesciunt illum ipsa rerum a nemo debitis.
+                    Eum saepe ex modi omnis enim.
+                  </div>
+                </div>
+                <div class="image-card-footer">
+                  <div class="card-button">
+                    <i class="eva eva-heart-outline"></i>
+                    <div class="card-btn-text">Like</div>
+                  </div>
+                  <div class="card-button">
+                    <i class="eva eva-message-square-outline"></i>
+                    <div class="card-btn-text">Replay</div>
+                  </div>
+                  <div class="card-button">
+                    <i class="eva eva-share-outline"></i>
+                    <div class="card-btn-text">Share</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="image-card">
+              <img src="../assets/bg/members.jpg" alt="" class="img-content" />
+              <div class="image-card-body">
+                <div class="image-card-texts">
+                  <div class="image-card-title">Bushido members photo</div>
+                  <div class="image-card-subtext">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Saepe exercitationem, repellat neque eligendi et deserunt
+                    quisquam aliquam nesciunt illum ipsa rerum a nemo debitis.
+                    Eum saepe ex modi omnis enim.
+                  </div>
+                </div>
+                <div class="image-card-footer">
+                  <div class="card-button">
+                    <i class="eva eva-heart-outline"></i>
+                    <div class="card-btn-text">Like</div>
+                  </div>
+                  <div class="card-button">
+                    <i class="eva eva-message-square-outline"></i>
+                    <div class="card-btn-text">Replay</div>
+                  </div>
+                  <div class="card-button">
+                    <i class="eva eva-share-outline"></i>
+                    <div class="card-btn-text">Share</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="image-card">
+              <img src="../assets/bg/members.jpg" alt="" class="img-content" />
+              <div class="image-card-body">
+                <div class="image-card-texts">
+                  <div class="image-card-title">Bushido members photo</div>
+                  <div class="image-card-subtext">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Saepe exercitationem, repellat neque eligendi et deserunt
+                    quisquam aliquam nesciunt illum ipsa rerum a nemo debitis.
+                    Eum saepe ex modi omnis enim.
+                  </div>
+                </div>
+                <div class="image-card-footer">
+                  <div class="card-button">
+                    <i class="eva eva-heart-outline"></i>
+                    <div class="card-btn-text">Like</div>
+                  </div>
+                  <div class="card-button">
+                    <i class="eva eva-message-square-outline"></i>
+                    <div class="card-btn-text">Replay</div>
+                  </div>
+                  <div class="card-button">
+                    <i class="eva eva-share-outline"></i>
+                    <div class="card-btn-text">Share</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="image-card">
+              <img src="../assets/bg/members.jpg" alt="" class="img-content" />
+              <div class="image-card-body">
+                <div class="image-card-texts">
+                  <div class="image-card-title">Bushido members photo</div>
+                  <div class="image-card-subtext">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Saepe exercitationem, repellat neque eligendi et deserunt
+                    quisquam aliquam nesciunt illum ipsa rerum a nemo debitis.
+                    Eum saepe ex modi omnis enim.
+                  </div>
+                </div>
+                <div class="image-card-footer">
+                  <div class="card-button">
+                    <i class="eva eva-heart-outline"></i>
+                    <div class="card-btn-text">Like</div>
+                  </div>
+                  <div class="card-button">
+                    <i class="eva eva-message-square-outline"></i>
+                    <div class="card-btn-text">Replay</div>
+                  </div>
+                  <div class="card-button">
+                    <i class="eva eva-share-outline"></i>
+                    <div class="card-btn-text">Share</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="image-card">
+              <img src="../assets/bg/members.jpg" alt="" class="img-content" />
+              <div class="image-card-body">
+                <div class="image-card-texts">
+                  <div class="image-card-title">Bushido members photo</div>
+                  <div class="image-card-subtext">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Saepe exercitationem, repellat neque eligendi et deserunt
+                    quisquam aliquam nesciunt illum ipsa rerum a nemo debitis.
+                    Eum saepe ex modi omnis enim.
+                  </div>
+                </div>
+                <div class="image-card-footer">
+                  <div class="card-button">
+                    <i class="eva eva-heart-outline"></i>
+                    <div class="card-btn-text">Like</div>
+                  </div>
+                  <div class="card-button">
+                    <i class="eva eva-message-square-outline"></i>
+                    <div class="card-btn-text">Replay</div>
+                  </div>
+                  <div class="card-button">
+                    <i class="eva eva-share-outline"></i>
+                    <div class="card-btn-text">Share</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="image-card">
+              <img src="../assets/bg/members.jpg" alt="" class="img-content" />
+              <div class="image-card-body">
+                <div class="image-card-texts">
+                  <div class="image-card-title">Bushido members photo</div>
+                  <div class="image-card-subtext">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Saepe exercitationem, repellat neque eligendi et deserunt
+                    quisquam aliquam nesciunt illum ipsa rerum a nemo debitis.
+                    Eum saepe ex modi omnis enim.
+                  </div>
+                </div>
+                <div class="image-card-footer">
+                  <div class="card-button">
+                    <i class="eva eva-heart-outline"></i>
+                    <div class="card-btn-text">Like</div>
+                  </div>
+                  <div class="card-button">
+                    <i class="eva eva-message-square-outline"></i>
+                    <div class="card-btn-text">Replay</div>
+                  </div>
+                  <div class="card-button">
+                    <i class="eva eva-share-outline"></i>
+                    <div class="card-btn-text">Share</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="image-card">
+              <img src="../assets/bg/members.jpg" alt="" class="img-content" />
+              <div class="image-card-body">
+                <div class="image-card-texts">
+                  <div class="image-card-title">Bushido members photo</div>
+                  <div class="image-card-subtext">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Saepe exercitationem, repellat neque eligendi et deserunt
+                    quisquam aliquam nesciunt illum ipsa rerum a nemo debitis.
+                    Eum saepe ex modi omnis enim.
+                  </div>
+                </div>
+                <div class="image-card-footer">
+                  <div class="card-button">
+                    <i class="eva eva-heart-outline"></i>
+                    <div class="card-btn-text">Like</div>
+                  </div>
+                  <div class="card-button">
+                    <i class="eva eva-message-square-outline"></i>
+                    <div class="card-btn-text">Replay</div>
+                  </div>
+                  <div class="card-button">
+                    <i class="eva eva-share-outline"></i>
+                    <div class="card-btn-text">Share</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="image-card">
+              <img src="../assets/bg/members.jpg" alt="" class="img-content" />
+              <div class="image-card-body">
+                <div class="image-card-texts">
+                  <div class="image-card-title">Bushido members photo</div>
+                  <div class="image-card-subtext">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Saepe exercitationem, repellat neque eligendi et deserunt
+                    quisquam aliquam nesciunt illum ipsa rerum a nemo debitis.
+                    Eum saepe ex modi omnis enim.
+                  </div>
+                </div>
+                <div class="image-card-footer">
+                  <div class="card-button">
+                    <i class="eva eva-heart-outline"></i>
+                    <div class="card-btn-text">Like</div>
+                  </div>
+                  <div class="card-button">
+                    <i class="eva eva-message-square-outline"></i>
+                    <div class="card-btn-text">Replay</div>
+                  </div>
+                  <div class="card-button">
+                    <i class="eva eva-share-outline"></i>
+                    <div class="card-btn-text">Share</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="image-card">
+              <img src="../assets/bg/members.jpg" alt="" class="img-content" />
+              <div class="image-card-body">
+                <div class="image-card-texts">
+                  <div class="image-card-title">Bushido members photo</div>
+                  <div class="image-card-subtext">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Saepe exercitationem, repellat neque eligendi et deserunt
+                    quisquam aliquam nesciunt illum ipsa rerum a nemo debitis.
+                    Eum saepe ex modi omnis enim.
+                  </div>
+                </div>
+                <div class="image-card-footer">
+                  <div class="card-button">
+                    <i class="eva eva-heart-outline"></i>
+                    <div class="card-btn-text">Like</div>
+                  </div>
+                  <div class="card-button">
+                    <i class="eva eva-message-square-outline"></i>
+                    <div class="card-btn-text">Replay</div>
+                  </div>
+                  <div class="card-button">
+                    <i class="eva eva-share-outline"></i>
+                    <div class="card-btn-text">Share</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="image-card">
+              <img src="../assets/bg/members.jpg" alt="" class="img-content" />
+              <div class="image-card-body">
+                <div class="image-card-texts">
+                  <div class="image-card-title">Bushido members photo</div>
+                  <div class="image-card-subtext">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Saepe exercitationem, repellat neque eligendi et deserunt
+                    quisquam aliquam nesciunt illum ipsa rerum a nemo debitis.
+                    Eum saepe ex modi omnis enim.
+                  </div>
+                </div>
+                <div class="image-card-footer">
+                  <div class="card-button">
+                    <i class="eva eva-heart-outline"></i>
+                    <div class="card-btn-text">Like</div>
+                  </div>
+                  <div class="card-button">
+                    <i class="eva eva-message-square-outline"></i>
+                    <div class="card-btn-text">Replay</div>
+                  </div>
+                  <div class="card-button">
+                    <i class="eva eva-share-outline"></i>
+                    <div class="card-btn-text">Share</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="image-card">
+              <img src="../assets/bg/members.jpg" alt="" class="img-content" />
+              <div class="image-card-body">
+                <div class="image-card-texts">
+                  <div class="image-card-title">Bushido members photo</div>
+                  <div class="image-card-subtext">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Saepe exercitationem, repellat neque eligendi et deserunt
+                    quisquam aliquam nesciunt illum ipsa rerum a nemo debitis.
+                    Eum saepe ex modi omnis enim.
+                  </div>
+                </div>
+                <div class="image-card-footer">
+                  <div class="card-button">
+                    <i class="eva eva-heart-outline"></i>
+                    <div class="card-btn-text">Like</div>
+                  </div>
+                  <div class="card-button">
+                    <i class="eva eva-message-square-outline"></i>
+                    <div class="card-btn-text">Replay</div>
+                  </div>
+                  <div class="card-button">
+                    <i class="eva eva-share-outline"></i>
+                    <div class="card-btn-text">Share</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="image-card">
+              <img src="../assets/bg/members.jpg" alt="" class="img-content" />
+              <div class="image-card-body">
+                <div class="image-card-texts">
+                  <div class="image-card-title">Bushido members photo</div>
+                  <div class="image-card-subtext">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Saepe exercitationem, repellat neque eligendi et deserunt
+                    quisquam aliquam nesciunt illum ipsa rerum a nemo debitis.
+                    Eum saepe ex modi omnis enim.
+                  </div>
+                </div>
+                <div class="image-card-footer">
+                  <div class="card-button">
+                    <i class="eva eva-heart-outline"></i>
+                    <div class="card-btn-text">Like</div>
+                  </div>
+                  <div class="card-button">
+                    <i class="eva eva-message-square-outline"></i>
+                    <div class="card-btn-text">Replay</div>
+                  </div>
+                  <div class="card-button">
+                    <i class="eva eva-share-outline"></i>
+                    <div class="card-btn-text">Share</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="image-card">
+              <img src="../assets/bg/members.jpg" alt="" class="img-content" />
+              <div class="image-card-body">
+                <div class="image-card-texts">
+                  <div class="image-card-title">Bushido members photo</div>
+                  <div class="image-card-subtext">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Saepe exercitationem, repellat neque eligendi et deserunt
+                    quisquam aliquam nesciunt illum ipsa rerum a nemo debitis.
+                    Eum saepe ex modi omnis enim.
+                  </div>
+                </div>
+                <div class="image-card-footer">
+                  <div class="card-button">
+                    <i class="eva eva-heart-outline"></i>
+                    <div class="card-btn-text">Like</div>
+                  </div>
+                  <div class="card-button">
+                    <i class="eva eva-message-square-outline"></i>
+                    <div class="card-btn-text">Replay</div>
+                  </div>
+                  <div class="card-button">
+                    <i class="eva eva-share-outline"></i>
+                    <div class="card-btn-text">Share</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="image-card">
+              <img src="../assets/bg/members.jpg" alt="" class="img-content" />
+              <div class="image-card-body">
+                <div class="image-card-texts">
+                  <div class="image-card-title">Bushido members photo</div>
+                  <div class="image-card-subtext">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Saepe exercitationem, repellat neque eligendi et deserunt
+                    quisquam aliquam nesciunt illum ipsa rerum a nemo debitis.
+                    Eum saepe ex modi omnis enim.
+                  </div>
+                </div>
+                <div class="image-card-footer">
+                  <div class="card-button">
+                    <i class="eva eva-heart-outline"></i>
+                    <div class="card-btn-text">Like</div>
+                  </div>
+                  <div class="card-button">
+                    <i class="eva eva-message-square-outline"></i>
+                    <div class="card-btn-text">Replay</div>
+                  </div>
+                  <div class="card-button">
+                    <i class="eva eva-share-outline"></i>
+                    <div class="card-btn-text">Share</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="image-card">
+              <img src="../assets/bg/members.jpg" alt="" class="img-content" />
+              <div class="image-card-body">
+                <div class="image-card-texts">
+                  <div class="image-card-title">Bushido members photo</div>
+                  <div class="image-card-subtext">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Saepe exercitationem, repellat neque eligendi et deserunt
+                    quisquam aliquam nesciunt illum ipsa rerum a nemo debitis.
+                    Eum saepe ex modi omnis enim.
+                  </div>
+                </div>
+                <div class="image-card-footer">
+                  <div class="card-button">
+                    <i class="eva eva-heart-outline"></i>
+                    <div class="card-btn-text">Like</div>
+                  </div>
+                  <div class="card-button">
+                    <i class="eva eva-message-square-outline"></i>
+                    <div class="card-btn-text">Replay</div>
+                  </div>
+                  <div class="card-button">
+                    <i class="eva eva-share-outline"></i>
+                    <div class="card-btn-text">Share</div>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div class="image-card">
               <img src="../assets/bg/members.jpg" alt="" class="img-content" />
               <div class="image-card-body">
@@ -129,6 +718,7 @@
     <script src="../public/js/spinner_ui.js"></script>
     <script src="../public/js/menubox.js"></script>
     <script src="../public/js/modal.js"></script>
+    <script src="../chat/js/chat.user.js"></script>
     <script src="js/events.client.js"></script>
   </body>
 </html>

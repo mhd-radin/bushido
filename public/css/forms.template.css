@@ -142,7 +142,7 @@ nav {
 .form input,
 .form textarea {
   padding: 8px 8px;
-  border-radius: 0px;
+  border-radius: var(--border-radius-sm);
   border: 0px solid transparent;
   border-bottom: 0px  solid var(--border-color);
   outline: none;
@@ -179,6 +179,7 @@ nav {
 input:focus,
 textarea:focus {
   border-bottom: 0px solid var(--theme-color);
+  background: var(--sec-bg);
 }
 
 .right-elems {

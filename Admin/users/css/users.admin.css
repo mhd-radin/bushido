@@ -130,10 +130,7 @@
 }
 
 
-.users-list {
-  position: absolute;
-  left: 0;
-}
+
 
 @media screen and (min-width: 650px) {
   .bodybox {

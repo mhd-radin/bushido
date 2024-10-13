@@ -119,6 +119,39 @@ body {
   font-weight: 600;
 }
 
+.chat-linked {
+  padding: 10px;
+  margin: 2px;
+  margin-bottom: 7px;
+  background: var(--bg);
+  border-radius: var(--border-radius-sm);
+  width: calc(100% - 20px);
+  display: flex;
+  overflow-wrap: anywhere;
+  font-weight: 600;
+}
+
+
+.breaker-layout {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  margin: 2px;
+  padding: 2px;
+}
+
+.breaker {
+  margin: 5px;
+  margin-top: 0;
+  padding: 3px 14px;
+  font-family: "Exo";
+  background: var(--third-bg);
+  max-width: 45%;
+  border-radius: var(--border-radius-sm);
+  font-size: 14px;
+}
+
+
 .chat-bubble .info-chat {
   position: absolute;
   font-size: 10px;
@@ -198,7 +231,7 @@ body {
   border: 0px;
   border-radius: 6px;
   border-top-right-radius: 0;
-  width: 80%;
+  width: calc(100% - 10px);
 }
 
 .chatter .icon {

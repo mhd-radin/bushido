@@ -29,6 +29,15 @@
   flex-direction: row;
   border-radius: 20px;
   transition: 0.2s !important;
+  cursor: pointer;
+}
+
+.menu-item:hover {
+  color: var(--sec-color);
+}
+
+.menu-item.active:hover {
+  background: var(--sec-theme-color);
 }
 
 .menu-item-text {

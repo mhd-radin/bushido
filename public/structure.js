@@ -52,3 +52,22 @@ const STRUCTURE = {
     "/events/index.html"
   ]
 }
+
+/*
+bushido/
+├─ Admin/
+│  ├─ messages/
+│  ├─ register/
+│  ├─ attendance/
+│  ├─ create/
+│  ├─ users/
+│  ├─ notifier/
+├─ events/
+├─ chat/
+├─ profile/
+├─ notify/
+├─ visiting - Not Available/
+├─ login/
+├─ signup/
+├─ started/
+*/

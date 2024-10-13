@@ -373,3 +373,14 @@
 
 ### D05 
 - redesigning events
+
+### D06 [SKIPPED NOTE]
+- no changes recorderd
+
+### D07 (Major Updated)
+- events page redesigned
+- chat page completed
+- new design for create page as tldr assest
+- styling bug fixes - responsive 
+- scrolling animations
+- user validation from server

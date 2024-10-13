@@ -11,6 +11,24 @@
   width: 289px;
   font-family: "Open Sans";
   height: max-content;
+  opacity: 0;
+  transform: translate(0%) scale(0.8);
+  transition: 0.5s all;
+  filter: blur(5px);
+  /* animation: backInUp 2s 1;
+  animation-play-state: var(--animation-state); */
+}
+
+.image-card.animate-lite {
+  opacity: 0.5;
+  transform: translate(0%) scale(0.8);
+  filter: blur(3px);
+}
+
+.image-card.animate {
+  opacity: 1;
+  transform: translate(0%) scale(1);
+  filter: blur(0);
 }
 
 .image-card .img-content {
@@ -25,15 +43,15 @@
 }
 
 .image-card-title {
-  font-weight: 660;
-  margin: 5px;
+  font-weight: bold;
+  margin: 6px;
   font-size: 18px;
 }
 
 .image-card-subtext {
-  margin: 5px;
+  margin: 6px;
   font-size: 13px;
-  font-family: "Rubik";
+  font-family: "Open Sans";
   height: calc(18px * 3);
   overflow: hidden;
   color: var(--sec-color);
@@ -51,11 +69,13 @@
 .card-button {
   background: var(--sec-bg);
   padding: 5px;
-  border-radius: var(--border-radius-sm);
+  border-radius: var(--border-radius);
   display: flex;
   flex-direction: row;
   margin: 4px;
   font-size: 13px;
+  cursor: pointer;
+  transition: 0.2s all;
 }
 
 .card-button .eva {
@@ -86,31 +106,90 @@
 
 .note-card {
   border-radius: var(--border-radius);
-  color: var(--apt-third-color);
+  color: var(--sec-theme-color);
   padding: 8px;
   margin: 5px;
   height: max-content;
   border: 1px solid var(--theme-color);
+  animation: fadeInUp 1s 1;
+  animation-play-state: var(--animation-state);
+  position: relative;
+  overflow: hidden;
+  transition: 0.2s all;
+
+  opacity: 0;
+  transform: skew(10deg, 10deg);
+  filter: blur(5px);
+}
+
+.note-card.animate {
+  opacity: 1;
+  transform: skew(0, 0);
+  filter: blur(0);
+}
+
+.note-card * {
+  z-index: 99;
+}
+
+.note-ripple {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  /* background: var(--theme-color); */
+  background: radial-gradient(var(--theme-color) 30%, transparent 90%);
+  border-radius: 50%;
+  border-radius: 35%;
+  width: 190px;
+  height: 190px;
+  z-index: 0;
+  mix-blend-mode: overlay;
+  transform: translate(40px, 40px);
+  filter: blur(15px);
+  box-shadow: 200px 200px 140px var(--theme-color);
+  display: none;
 }
 
 .note-title {
   font-size: 17px;
   font-family: "Poppins";
-  font-weight: 600;
-  margin: 4px;
+  font-weight: bold;
+  margin: 6px;
+  color: var(--apt-third-color);
 }
 
 .note-subtext {
   font-size: 12px;
   font-family: "Poppins";
-  margin: 3px;
+  margin: 6px;
   margin-bottom: 8px;
+  color: var(--sec-color);
+}
+
+.note-card:hover {
+  background: var(--theme-color-alpha);
+}
+
+.note-card:hover .note-title,
+.note-card:hover .note-subtext {
+  color: var(--apt-color);
 }
 
 .note-buttons button {
   background: var(--theme-color);
   border-radius: var(--border-radius-sm);
   margin: 4px;
-  padding: 6px 13px;
-  font-size: 15px;
+  padding: 9px 13px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: 0.2s all;
+}
+
+.note-buttons button .eva {
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.note-buttons button:hover {
+  background: var(--sec-theme-color);
 }

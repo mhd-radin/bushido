@@ -31,10 +31,34 @@
   filter: blur(0);
 }
 
+
 .image-card .img-content {
   width: 100%;
   border-radius: var(--border-radius);
 }
+
+.image-card .img-container {
+  position: relative;
+  width: 100%;
+  height: max-content;
+}
+
+.img-container .play-icon {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%) scale(1, 0.1);
+  font-size: 80px;
+  color: #EEE;
+  transition: 0.5s all;
+  opacity: 0.3;
+}
+
+.image-card.animate .play-icon {
+  transform: translate(-50%, -50%) scale(1, 1);
+  opacity: 1;
+}
+
 
 .image-card-body {
   display: flex;

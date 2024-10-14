@@ -48,7 +48,7 @@ class Message {
     return newOne;
   }
 
-  export() {
+  export () {
     return {
       message_id: this.message_id,
       user_id: this.user_id,
@@ -95,7 +95,7 @@ const messenger = {
     return new Promise((resolve, reject) => {
       app.validUser().then((user) => {
         if (user.id) {
-          bushido.realtime.get("chat/" + user.id).then(function (snapshot) {
+          bushido.realtime.get("chat/" + user.id).then(function(snapshot) {
             if (!snapshot.exists()) {
               var data = user;
               bushido.realtime
@@ -149,23 +149,31 @@ const messenger = {
             var promises = [
               bushido.realtime.set(
                 "chat/" + data.id + "/messages/" + msgID,
-                function () {
+                function() {
                   return messageModal.export();
                 }
               ),
               bushido.realtime.set(
                 "chat/" + data.id + "/unseen_messages/" + msgID,
-                function () {
+                function() {
                   return messageModal.export();
                 }
               ),
               bushido.realtime.set(
                 "chat/" + data.id + "/last_message",
-                function () {
+                function() {
                   return messageModal.export();
                 }
               ),
-              bushido.realtime.set("chat/" + data.id + "/date", function () {
+              bushido.realtime.set(
+                "chat/" + data.id + '/user_id', data.id),
+              bushido.realtime.set(
+                "chat/" + data.id + '/email', data.email),
+                bushido.realtime.set(
+                "chat/" + data.id + '/user_name', data.fullname),
+                  bushido.realtime.set(
+                "chat/" + data.id + '/phone', data.phone),
+              bushido.realtime.set("chat/" + data.id + "/date", function() {
                 return messageModal.date;
               }),
             ];
@@ -201,11 +209,11 @@ const messenger = {
           var promises = [
             bushido.realtime.set(
               "chat/" + data.id + "/messages/" + msgID,
-              function () {
+              function() {
                 return messageModal;
               }
             ),
-            bushido.realtime.set("chat/" + data.id + "/date", function () {
+            bushido.realtime.set("chat/" + data.id + "/date", function() {
               return messageModal.date;
             }),
           ];
@@ -218,7 +226,7 @@ const messenger = {
   reciveMessages() {
     app
       .validUser()
-      .then(function (data) {
+      .then(function(data) {
         bushido.realtime.onSet(
           "chat/" + data.id,
           (snapshot) => {
@@ -260,7 +268,7 @@ const messenger = {
                 messenger.is_first_time == true ||
                 messenger.message_started == false
               ) {
-                messenger.join().then(function () {
+                messenger.join().then(function() {
                   alert();
                 });
                 messenger.send("hi, i am using this software...");
@@ -369,8 +377,8 @@ const messenger = {
           .querySelector(".body")
           .appendChild(
             messenger.structure
-              .createBreaker(dayjs(textDate).fromNow(), id)
-              .parseElement()[0]
+            .createBreaker(dayjs(textDate).fromNow(), id)
+            .parseElement()[0]
           );
       }
     }
@@ -405,7 +413,7 @@ app
   });
 
 if (document.getElementById("sendBtn")) {
-  document.getElementById("sendBtn").onclick = function () {
+  document.getElementById("sendBtn").onclick = function() {
     document.getElementById("sendBtn").focus();
     var inputValue = document.getElementById("chatInp").value;
     document.getElementById("chatInp").value = "";
@@ -427,21 +435,21 @@ if (document.getElementById("sendBtn")) {
         .querySelector(".body")
         .appendChild(
           messenger.structure
-            .createBubble(
-              msg.user_name,
-              msg.message_id,
-              app.avatarUrl(msg.user_name),
-              msg.message,
-              formattedTime == messenger.before_send_time ? "" : formattedTime,
-              "sending...",
-              "clock-outline",
-              true,
-              messenger.before_send_by == msg.email
-            )
-            .parseElement()[0]
+          .createBubble(
+            msg.user_name,
+            msg.message_id,
+            app.avatarUrl(msg.user_name),
+            msg.message,
+            formattedTime == messenger.before_send_time ? "" : formattedTime,
+            "sending...",
+            "clock-outline",
+            true,
+            messenger.before_send_by == msg.email
+          )
+          .parseElement()[0]
         );
 
-      messenger.send(inputValue, id).then(function () {
+      messenger.send(inputValue, id).then(function() {
         document.getElementById("sendBtn").disabled = false;
       });
     }

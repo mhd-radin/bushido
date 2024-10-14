@@ -384,3 +384,8 @@
 - styling bug fixes - responsive 
 - scrolling animations
 - user validation from server
+
+### D08
+- Switched ui to basic ui on started pages
+- chat joining bug fix
+- ui updated 

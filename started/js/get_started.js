@@ -24,11 +24,11 @@ function onpageloadin() {
         targets: ".welcome-text .letter",
         delay: (el, i) => 50 * i,
         opacity: [0, 1],
-        translateY: ["-40px", 0],
+        translateX: ["-40px", 0],
         duration: 700,
         keyframes: [
           {
-            filter: "blur(1px)",
+            filter: "blur(2px)",
           },
           {
             filter: "blur(0px)",

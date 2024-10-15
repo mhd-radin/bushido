@@ -77,6 +77,7 @@ const microObserver = new IntersectionObserver(
 
 
 const app = {
+  fisrt_time: localStorage.getItem('first_time'),
   lettersToElem(elem) {
     elem.innerHTML = elem.innerHTML.replace(
       /\S/g,
@@ -301,3 +302,19 @@ if ("caches" in window){
   })
 }
 */
+
+if (!localStorage.getItem('first_time')){
+  localStorage.setItem('first_time', true)
+}
+
+var useNetAlert = true;
+setInterval(function(){
+  if (modal.alert && navigator.onLine === false && useNetAlert === true){
+    modal.alert('Network Disconnected', 'No network found. internet connection change detected. check your internet connection')
+    useNetAlert = false;
+  } 
+  
+  if (navigator.onLine === true && useNetAlert === false ){
+    useNetAlert = true;
+  }
+}, 2500)

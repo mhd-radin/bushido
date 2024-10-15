@@ -1,207 +1,171 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Admin Attendance | Bushido Fit & Fight Club - Admin</title>
 
-    <link
-      rel="shortcut icon"
-      type="image/png"
-      href="../../assets/logos/bbc256.png"
-    />
-    <!-- custom css -->
-    <link rel="stylesheet" href="../../public/css/link.css" />
-    <link rel="stylesheet" href="../public.admin.css" />
-    <link rel="stylesheet" href="css/attendance.css" />
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin Attendance | Bushido Fit & Fight Club - Admin</title>
 
-    <script src="../valid.admin.js"></script>
-    <!-- min required scripts & css -->
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"
-      integrity="sha512-a+SUDuwNzXDvz4XrIcXHuCf089/iJAoN4lmrXJg18XnduKK6YlDHNRalv4yd1N40OKI80tFidF+rqTFKGPoWFQ=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/aes.min.js"
-      integrity="sha512-UOtWWEXoMk1WLeC873Gmrkb2/dZMwvN1ViM9C1mNvNmQSeXpEr8sRzXLmUSha1X4x5V892uFmEjiZzUsYiHYiw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
-    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/relativeTime.js"></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.13/plugin/weekday.min.js"
-      integrity="sha512-+EJ/Ed/UbhfSypwkMnTIxgJ3izeQNc5655zPTlVqcgJ4Zd4K++JYUyg4Jy5rnKX9MfoIyfXJsu5N30MRHnShYw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
-    <script src="../../local.config.js"></script>
-    <script src="../../public/js/bushido.js"></script>
-    <script src="https://unpkg.com/eva-icons"></script>
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/eva-icons@1.1.3/style/eva-icons.css"
-    />
+  <link rel="shortcut icon" type="image/png" href="../../assets/logos/bbc256.png" />
+  <!-- custom css -->
+  <link rel="stylesheet" href="../../public/css/link.css" />
+  <link rel="stylesheet" href="../public.admin.css" />
+  <link rel="stylesheet" href="css/attendance.css" />
 
-    <script
-      type="module"
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
-    ></script>
-    <script
-      nomodule
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
-    ></script>
-  </head>
+  <script src="../valid.admin.js"></script>
+  <!-- min required scripts & css -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js" integrity="sha512-a+SUDuwNzXDvz4XrIcXHuCf089/iJAoN4lmrXJg18XnduKK6YlDHNRalv4yd1N40OKI80tFidF+rqTFKGPoWFQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/aes.min.js" integrity="sha512-UOtWWEXoMk1WLeC873Gmrkb2/dZMwvN1ViM9C1mNvNmQSeXpEr8sRzXLmUSha1X4x5V892uFmEjiZzUsYiHYiw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/relativeTime.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.13/plugin/weekday.min.js" integrity="sha512-+EJ/Ed/UbhfSypwkMnTIxgJ3izeQNc5655zPTlVqcgJ4Zd4K++JYUyg4Jy5rnKX9MfoIyfXJsu5N30MRHnShYw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="../../local.config.js"></script>
+  <script src="../../public/js/bushido.js"></script>
+  <script src="https://unpkg.com/eva-icons"></script>
+  <link rel="stylesheet" href="https://unpkg.com/eva-icons@1.1.3/style/eva-icons.css" />
 
-  <body>
-    <div class="preloader">
-      <span class="loader"></span>
-      <p>Loading...</p>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+
+<body>
+  <div class="preloader">
+    <span class="loader"></span>
+    <p>Loading...</p>
+  </div>
+
+  <nav>
+    <div class="nav-title"><b>Bushido</b> Calendar</div>
+    <div class="nav-right">
+      <i class="eva eva-code-outline"></i>
     </div>
+  </nav>
 
-    <nav>
-      <div class="nav-title"><b>Bushido</b> Calendar</div>
-      <div class="nav-right">
-        <i class="eva eva-code-outline"></i>
-      </div>
-    </nav>
-
-    <div class="display-box">
-      <div class="display-box-text">Today Attendance</div>
-      <div class="display-box-right">
-        <input type="date" name="" id="date" />
-      </div>
+  <div class="display-box">
+    <div class="display-box-text">Today Attendance</div>
+    <div class="display-box-right">
+      <input type="date" name="" id="date" />
     </div>
+  </div>
 
-    <div class="body">
-      <div class="body-header"></div>
+  <div class="body">
+    <div class="body-header"></div>
 
-      <div class="cards-container">
-        <div class="card-box">
-          <div class="card-box-head">
-            <p>Mark attendances</p>
-            <div class="subtext" id="userTotalInfo">
-              Connecting server, please wait...
-            </div>
+    <div class="cards-container">
+      <div class="card-box">
+        <div class="card-box-head">
+          <p>Mark attendances</p>
+          <div class="subtext" id="userTotalInfo">
+            Connecting server, please wait...
           </div>
-          <div class="card-box-body" id="userslist">
-            <div class="user-box">
-              <div class="user-row">
-                <div class="user-icon">
-                  <img
-                    src="https://api.dicebear.com/9.x/shapes/svg?seed=Felix&radius=40"
-                    alt=""
-                    class="user-image"
-                  />
-                </div>
-                <div class="user-body">
-                  <div class="user-name">Loading...</div>
-                  <div class="user-subtext"></div>
-                  <div class="user-right">
-                    <input type="checkbox" />
-                  </div>
-                </div>
+        </div>
+        <div class="card-box-body" id="userslist">
+          <div class="user-box">
+            <div class="user-row">
+              <div class="user-icon">
+                <img src="https://api.dicebear.com/9.x/shapes/svg?seed=Felix&radius=40" alt="" class="user-image" />
               </div>
-            </div>
-
-            <div class="user-box">
-              <div class="user-row">
-                <div class="user-icon">
-                  <img
-                    src="https://api.dicebear.com/9.x/shapes/svg?seed=Felix1&radius=40"
-                    alt=""
-                    class="user-image"
-                  />
-                </div>
-                <div class="user-body">
-                  <div class="user-name">Loading...</div>
-                  <div class="user-subtext"></div>
-                  <div class="user-right">
-                    <input type="checkbox" />
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="user-box">
-              <div class="user-row">
-                <div class="user-icon">
-                  <img
-                    src="https://api.dicebear.com/9.x/shapes/svg?seed=Felix2&radius=40"
-                    alt=""
-                    class="user-image"
-                  />
-                </div>
-                <div class="user-body">
-                  <div class="user-name">Loading...</div>
-                  <div class="user-subtext"></div>
-                  <div class="user-right">
-                    <input type="checkbox" />
-                  </div>
+              <div class="user-body">
+                <div class="user-name">Loading...</div>
+                <div class="user-subtext"></div>
+                <div class="user-right">
+                  <input type="checkbox" />
                 </div>
               </div>
             </div>
           </div>
-          <div class="card-box-footer">
-            <div class="row-box">
-              <button class="sec-btn">Cancel</button>
-              <button id="updateBtn" class="support-mini-loader-btn">
-                <img src="../../assets/spinner/ring-resize.svg" class="svg-mini-loader"></img>
-                Update</button>
+
+          <div class="user-box">
+            <div class="user-row">
+              <div class="user-icon">
+                <img src="https://api.dicebear.com/9.x/shapes/svg?seed=Felix1&radius=40" alt="" class="user-image" />
+              </div>
+              <div class="user-body">
+                <div class="user-name">Loading...</div>
+                <div class="user-subtext"></div>
+                <div class="user-right">
+                  <input type="checkbox" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="user-box">
+            <div class="user-row">
+              <div class="user-icon">
+                <img src="https://api.dicebear.com/9.x/shapes/svg?seed=Felix2&radius=40" alt="" class="user-image" />
+              </div>
+              <div class="user-body">
+                <div class="user-name">Loading...</div>
+                <div class="user-subtext"></div>
+                <div class="user-right">
+                  <input type="checkbox" />
+                </div>
+              </div>
             </div>
           </div>
         </div>
-
-        <div class="card-box">
-          <div class="card-box-head">
-            <p>Attendances Statistics</p>
-            <div class="subtext">Current week statistics</div>
-          </div>
-          <div class="card-box-body">
-            <canvas id="attendanceChart" width="400" height="200"></canvas>
+        <div class="card-box-footer">
+          <div class="row-box">
+            <button class="sec-btn">Cancel</button>
+            <button id="updateBtn" class="support-mini-loader-btn">
+              <img src="../../assets/spinner/ring-resize.svg" class="svg-mini-loader"></img>
+              Update</button>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="menubox">
-      <div class="menu-item" data-url="../users">
-        <i class="eva eva-person-outline"></i>
-        <div class="menu-item-text">Users</div>
-      </div>
-      <div class="menu-item active" data-url="./">
-        <i class="eva eva-calendar-outline"></i>
-        <div class="menu-item-text">Date</div>
-      </div>
-      <div class="menu-item" data-url="#">
-        <i class="eva eva-plus-outline"></i>
-        <div class="menu-item-text">Events</div>
-      </div>
-      <div class="menu-item" data-url="../notifier">
-        <i class="eva eva-bell-outline"></i>
-        <div class="menu-item-text">Notifications</div>
-      </div>
-      <div class="menu-item" data-url="../messages">
-        <i class="eva eva-message-circle-outline"></i>
-        <div class="menu-item-text">Chat</div>
+      <div class="card-box">
+        <div class="card-box-head">
+          <p>Attendances Statistics</p>
+          <div class="subtext">Current week statistics</div>
+        </div>
+        <div class="card-box-body">
+          <canvas id="attendanceChart" width="400" height="200"></canvas>
+        </div>
       </div>
     </div>
+  </div>
 
-    <!-- cdn scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <div class="menubox">
+    <div class="menu-item" data-url="../users">
+      <i class="eva eva-person-outline"></i>
+      <div class="menu-item-text">Users</div>
+    </div>
+    <div class="menu-item active" data-url="./">
+      <i class="eva eva-calendar-outline"></i>
+      <div class="menu-item-text">Date</div>
+    </div>
+    <div class="menu-item" data-url="../create">
+      <i class="eva eva-plus-outline"></i>
+      <div class="menu-item-text">Events</div>
+    </div>
+    <div class="menu-item" data-url="../notifier">
+      <i class="eva eva-bell-outline"></i>
+      <div class="menu-item-text">Notifications</div>
+    </div>
+    <div class="menu-item" data-url="../messages">
+      <i class="eva eva-message-circle-outline"></i>
+      <div class="menu-item-text">Chat</div>
+    </div>
+  </div>
 
-    <!-- custom scripts -->
-    <script src="../../public/js/app.js"></script>
-    <script src="../../public/js/tagstring.js"></script>
-    <script src="../../public/js/spinner_ui.js"></script>
-    <script src="../../public/js/menubox.js"></script>
-    <script src="../../public/js/user.structure.js"></script>
-    <script src="../../public/js/modal.js"></script>
+  <!-- cdn scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <script src="js/attendance.admin.js"></script>
-  </body>
+  <!-- custom scripts -->
+  <script src="../../public/js/app.js"></script>
+  <script src="../../public/js/tagstring.js"></script>
+  <script src="../../public/js/spinner_ui.js"></script>
+  <script src="../../public/js/menubox.js"></script>
+  <script src="../../public/js/user.structure.js"></script>
+  <script src="../../public/js/modal.js"></script>
+  <script src="js/attendance.admin.js"></script>
+  <script src="../admin.public.all.js"></script>
+  <script src="../public.admin.pages.js"></script>
+
+</body>
+
 </html>

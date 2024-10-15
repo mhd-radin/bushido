@@ -389,3 +389,11 @@
 - Switched ui to basic ui on started pages
 - chat joining bug fix
 - ui updated 
+
+### D09
+- logo names corrected
+- united profile page styles
+- public scripts for admin
+- admin menubox links fixed
+- new public notification script 
+- offline dectector added

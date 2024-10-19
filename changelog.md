@@ -406,3 +406,9 @@
 
 ### D11
 - added cookies to validation
+
+### D12
+- new theme added
+- basic theme ( redhouse ) updated
+- removed pointer effect on touch device 
+- special color for navbar and menubox

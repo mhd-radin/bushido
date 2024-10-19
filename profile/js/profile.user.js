@@ -8,14 +8,19 @@ const inputData = [{
   valueMatchRule: null,
   isTextarea: false,
   data: [{
-    title: 'Darkmoon',
-    value: 'darkmoon',
+    title: 'Light Theme',
+    value: 'light',
     attr: {
       checked: true
     }
-  }, {
-    title: 'Red House',
-    value: 'redhouse',
+  },
+  {
+    title: 'Dark Theme',
+    value: 'dark',
+    attr: {}
+  },{
+    title: 'Darkmoon',
+    value: 'darkmoon',
     attr: {}
   }, {
     title: 'Blue Ocean',

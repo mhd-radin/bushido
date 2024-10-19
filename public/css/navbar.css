@@ -1,6 +1,6 @@
 nav {
-  background: var(--third-bg);
-  color: var(--apt-third-color);
+  background: var(--nav-bg);
+  color: var(--apt-nav-color);
   display: flex;
   flex-direction: row;
   padding: 10px;

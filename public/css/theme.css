@@ -1,3 +1,32 @@
+.dark-theme {
+  --theme-color: #BB86FC;
+  --sec-theme-color: #6D03DA;
+  --theme-color-alpha: #BB86FC;
+  --apt-color: #121212;
+  --color: #ffffff;
+  --sec-color: #BCBCBC;
+  --bg: #1c1c1c;
+  --sec-bg: #121212;
+  --apt-sec-color: #e0e0e0;
+  --apt-third-color: #b0b0b0;
+  --third-bg: #2e2e2e;
+  --border-color: #ccc;
+  --spinner-one: #db3737;
+  --spinner-two: #e87e48;
+  --shadow: #dfdfdf;
+  /* other properties */
+  --border-radius: 10px;
+  --curved-radius: 25px;
+  --border-radius-sm: 5px;
+  
+  --spinner-one: #FDFCFF;
+  
+  --nav-bg: #FF1E5F;
+  --menu-bg: var(--sec-bg);
+  --apt-nav-color: #FFF4F4;
+  --apt-menu-color: var(--apt-sec-color);
+}
+
 .blueocean-theme {
   --theme-color: #40b5db;
   --sec-theme-color: #16595f;
@@ -14,12 +43,17 @@
   --spinner-one: #f74545;
   --spinner-two: #e8ae48;
   --shadow: #1b1e22;
+
+  --nav-bg: var(--third-bg);
+  --menu-bg: var(--third-bg);
+  --apt-nav-color: var(--apt-third-color);
+  --apt-menu-color: var(--apt-third-color);
 }
 
 .darkmoon-theme {
-  --theme-color: #34997D;
+  --theme-color: #663499;
   --sec-theme-color: #FFA02D;
-  --theme-color-alpha: #2B7D66;
+  --theme-color-alpha: #4B2B7D;
   --apt-color: #000;
   --color: #EEE4E4;
   --sec-color: #ccbbbb;
@@ -32,12 +66,17 @@
   --spinner-one: #FF3F3F;
   --spinner-two: #FFA02D;
   --shadow: #1b1e22;
+
+  --nav-bg: var(--third-bg);
+  --menu-bg: var(--third-bg);
+  --apt-nav-color: var(--apt-third-color);
+  --apt-menu-color: var(--apt-third-color);
 }
 
 .classic-theme {
-  --theme-color: #407EDB;
+  --theme-color: #398BB2;
   --sec-theme-color: #163F5F;
-  --theme-color-alpha: #407EDB;
+  --theme-color-alpha: #398BB2;
   --apt-color: #FFFFFF;
   --color: #212121;
   --sec-color: #242323;
@@ -52,11 +91,12 @@
   --shadow: #1B1E22;
 }
 
-.classic-theme .menubox, 
+.classic-theme .menubox,
 .classic-theme nav {
   background: var(--theme-color);
   color: var(--apt-color) !important;
-} 
+}
+
 .classic-theme .nav-title {
   color: var(--apt-color);
 }
@@ -71,6 +111,6 @@
 }
 
 .classic-theme .menubox .active .eva {
-background: var(--sec-bg);
+  background: var(--sec-bg);
   color: var(--apt-sec-color);
 }

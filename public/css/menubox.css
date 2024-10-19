@@ -1,8 +1,8 @@
 .menubox {
   display: flex;
   flex-direction: row;
-  background: var(--third-bg);
-  color: var(--apt-third-color);
+  background: var(--menu-bg);
+  color: var(--apt-menu-color);
   position: fixed;
   bottom: 0;
   left: 0;

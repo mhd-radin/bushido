@@ -1,15 +1,15 @@
 :root {
-  --theme-color: #db4060;
-  --sec-theme-color: #ff819b;
-  --theme-color-alpha: #f1617e;
-  --apt-color: #fff;
-  --color: #050505;
+  --theme-color: #4A90E2;
+  --sec-theme-color: #50E3C2;
+  --theme-color-alpha: #4A90E2;
+  --apt-color: #FFFFFF;
+  --color: #1e3a56;
   --sec-color: #747474;
-  --bg: #ffffff;
-  --sec-bg: #eee;
-  --apt-sec-color: #050505;
-  --apt-third-color: #050505;
-  --third-bg: #dbdbdb;
+  --bg: #FFFFFF;
+  --sec-bg: #F0F4F8;
+  --apt-sec-color: #2B2B2B;
+  --apt-third-color: #33475B;
+  --third-bg: #E3EAF0;
   --border-color: #ccc;
   --spinner-one: #db3737;
   --spinner-two: #e87e48;
@@ -18,4 +18,9 @@
   --border-radius: 10px;
   --curved-radius: 25px;
   --border-radius-sm: 5px;
+  
+  --nav-bg: #FCFCFF;
+  --menu-bg: #FCFCFF;
+  --apt-nav-color: #4A4A4A;
+  --apt-menu-color: #4A4A4A;
 }

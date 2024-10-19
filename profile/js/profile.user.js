@@ -42,9 +42,48 @@ function InpDataToOptData(inpData) {
   return arr;
 }
 
+const PropertiesDictionary = {
+  'username': 'fullname',
+  use(propName) {
+    if (this[propName]) {
+      return this[propName]
+    } else return propName;
+  }
+}
+
+
+
 function useInputSelectors(inpData = inputData) {
+  function updateUserProperty(propertyKey, value) {
+    return new Promise(function(resolve, reject) {
+      app.validUser().then(function(data) {
+        if (app.clientID) {
+          if (data[propertyKey] !== value) {
+            data[propertyKey] = value;
+
+            bushido.set('accounts/' + app.clientID, {
+            [propertyKey]: value
+            }, {
+              merge: true
+            }).then(function() {
+              app.saveData('user', 'about-user', data, 'userUrl').then(() => {
+                resolve()
+              })
+            }).catch(reject)
+          } else {
+            resolve()
+          }
+        } else {
+          app.validUser().then((data) => {
+            updateUserProperty(propertyKey, value).then(resolve).catch(reject)
+          })
+        }
+      }).catch(reject)
+    })
+  }
+
   function handleOutput(val, item) {
-    
+
     switch (item.clkId) {
       case 'theme':
         if (val) {
@@ -52,11 +91,40 @@ function useInputSelectors(inpData = inputData) {
           themeManager.storeCurrentTheme()
         }
         break;
+      case 'password':
+        app.validUser().then(function(data) {
+          modal.prompt('New Password', val, 'Password', false, 'text').then(function(enteredPassword) {
+              if (enteredPassword) {
+                var encrypted = CryptoJS.AES.encrypt(enteredPassword, config.ENC_KEY).toString()
+                updateUserProperty(PropertiesDictionary.use(item.clkId), encrypted).then(function() {
+                }).catch((err) => {
+                  modal.alert('ERROR CHANGING PASSWORD: ' + err)
+                })
+              }
+          })
+        })
+        break;
+      default:
+        if (val) {
+          updateUserProperty(PropertiesDictionary.use(item.clkId), val).then(function() {
+            document.getElementById(item.clkId).querySelector('.opt-subtext').innerHTML = val;
+          }).catch((err) => {
+            modal.alert('ERROR: ' + err)
+          })
+        }
+        break;
     }
   }
 
   inpData.forEach((item) => {
     var itemElem = document.getElementById(item.clkId);
+    if (item.default) {
+      var label = item.default;
+      if (item.clkId === 'password') {
+        label = '&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;'
+      }
+      itemElem.querySelector('.opt-subtext').innerHTML = label;
+    }
     if (itemElem) {
       itemElem.onclick = function() {
         var title = itemElem.querySelector('.opt-title').innerText;
@@ -65,9 +133,21 @@ function useInputSelectors(inpData = inputData) {
             handleOutput(val, item)
           })
         } else {
-          modal.prompt(title, item.default, title, false, item.type).then(function(val) {
-            handleOutput(val, item)
-          })
+          if (item.type === 'password') {
+            app.validUser().then(function(data) {
+              modal.prompt('Enter Your Current Password', '', 'Current Password', false, 'password').then(function(enteredPassword) {
+                if (enteredPassword === CryptoJS.AES.decrypt(data.password, config.ENC_KEY).toString(CryptoJS.enc.Utf8)) {
+                  handleOutput(enteredPassword, item)
+                } else {
+                  modal.alert("Password Mismatch", 'Please re-enter your current password to ensure it matches the one we have on record. Make sure to enter it correctly this time. Check for typos and try again!')
+                }
+              })
+            })
+          } else {
+            modal.prompt(title, item.default, title, false, item.type).then(function(val) {
+              handleOutput(val, item)
+            })
+          }
         }
       }
     }
@@ -75,6 +155,7 @@ function useInputSelectors(inpData = inputData) {
 }
 
 app.validUser().then((user) => {
+
   inputData.push({
     type: 'text',
     default: user.fullname,
@@ -96,8 +177,8 @@ app.validUser().then((user) => {
     valueMatchRule: null,
     isTextarea: false
   }, {
-    type: 'text',
-    default: CryptoJS.AES.decrypt(user.password, config.ENC_KEY).toString(CryptoJS.enc.Utf8),
+    type: 'password',
+    default: '', //CryptoJS.AES.decrypt(user.password, config.ENC_KEY).toString(CryptoJS.enc.Utf8),
     min: 8,
     clkId: 'password',
     data: [],

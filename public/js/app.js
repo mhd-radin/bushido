@@ -147,7 +147,9 @@ const app = {
   avatarUrl(seed, type = "initials", urlOpt = "") {
     return `https://api.dicebear.com/9.x/${type}/svg?seed=${seed}${urlOpt}`;
   },
+  clientID: null,
   validUser() {
+    // TODO: make it cookies
     return new Promise((resolve, reject) => {
       function handleReject(err) {
         localStorage.removeItem("form_set");
@@ -157,18 +159,26 @@ const app = {
       app
         .getData("user", "about-user", "userUrl")
         .then(function (data) {
+          app.clientID = data.id;
+          
           if (typeof bushido != "undefined" && !navigator.onLine ) {
-            alert()
+            
             bushido
               .get("accounts", data.id)
               .then(function (user) {
                 if (user.exists()) {
-                  resolve(data || user);
-                } 
+                  app.saveData('user', 'about-user', user, 'userUrl').then(() => {
+                  resolve(user);
+                  })
+                } else {
+                  modal.alert('Account Not Available',"We couldn't find the account you are looking for. It may have been removed or banned. Click here to go back to the login page.").then(function(){
+                    window.location.href = '../login'
+                  })
+                  handleReject()
+                }
               })
               .catch(function (err){
                 console.log(err);
-                
               });
           } else {
             resolve(data);
@@ -309,7 +319,7 @@ if (!localStorage.getItem('first_time')){
 
 var useNetAlert = true;
 setInterval(function(){
-  if (modal.alert && navigator.onLine === false && useNetAlert === true){
+  if (typeof modal != 'undefined' && modal.alert && navigator.onLine === false && useNetAlert === true){
     modal.alert('Network Disconnected', 'No network found. internet connection change detected. check your internet connection')
     useNetAlert = false;
   } 

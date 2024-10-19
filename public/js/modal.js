@@ -108,7 +108,8 @@ const modal = {
       var tagstr = this.create(this.title(title),
         input,
         this.rightElem(
-          this.button('Close', '', ID)),
+          this.button('Cancel', 'sec-btn', ID + '_CLS') +
+          this.button('Submit', '', ID)),
         '',
         '',
         mainID
@@ -116,8 +117,24 @@ const modal = {
 
 
       this.add(tagstr)
-      document.getElementById(ID+ 'INP').focus()
+      // TODO: Merge UNIT A and UNIT B
+      // auto focus
+      document.getElementById(ID + 'INP').focus()
+      // close btn
+      document.getElementById(ID + '_CLS').onclick = function() {
+        // UNIT A
+        if (document.getElementById(mainID)) {
+          document.getElementById(mainID).children[0].style.animation = 'ClosePopup 0.5s 1';
+          document.getElementById(mainID).children[0].onanimationend = function() {
+            var value = document.getElementById(ID + 'INP').value;
+            document.getElementById(mainID).remove()
+            resolve(value)
+          }
+        }
+      }
+      // confirm btn
       document.getElementById(ID).onclick = function() {
+        // UNIT B
         if (document.getElementById(mainID)) {
           document.getElementById(mainID).children[0].style.animation = 'ClosePopup 0.5s 1';
           document.getElementById(mainID).children[0].onanimationend = function() {
@@ -130,17 +147,17 @@ const modal = {
     })
   },
   optionsPicker(values = [
-  {
-    inputId: '',
-    attr: {},
-    value: ''
+    {
+      inputId: '',
+      attr: {},
+      value: ''
   }
   ], single = false, tagstring = new TagString(), title = 'Select a value') {
     return new Promise((resolve, reject) => {
       var strResult = '';
       values.forEach(function(data) {
         var finalTagstring = tagstring
-        if (typeof tagstring == 'function'){
+        if (typeof tagstring == 'function') {
           finalTagstring = tagstring(data);
         }
         if (single && data.attr) {
@@ -251,4 +268,3 @@ const modal = {
     })
   },
 }
-

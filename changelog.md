@@ -397,3 +397,9 @@
 - admin menubox links fixed
 - new public notification script 
 - offline dectector added
+
+### D10
+- user validation updated
+- added close button on modal prompt
+- implemented user properties sending to server in profile page 
+- head tag bug fix at start page

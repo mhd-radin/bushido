@@ -377,7 +377,7 @@
 ### D06 [SKIPPED NOTE]
 - no changes recorderd
 
-### D07 (Major Updated)
+### D07 (Major Update)
 - events page redesigned
 - chat page completed
 - new design for create page as tldr assest
@@ -403,3 +403,6 @@
 - added close button on modal prompt
 - implemented user properties sending to server in profile page 
 - head tag bug fix at start page
+
+### D11
+- added cookies to validation

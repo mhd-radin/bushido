@@ -110,8 +110,8 @@
 .card-btn-text {
   margin: 3px auto;
   padding: 3px;
-  padding-left: 7px;
-  margin-left: 3px;
+  padding-left: 12px;
+  margin-left: 8px;
   border-left: 1px solid var(--border-color);
 }
 

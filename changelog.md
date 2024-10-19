@@ -412,3 +412,7 @@
 - basic theme ( redhouse ) updated
 - removed pointer effect on touch device 
 - special color for navbar and menubox
+
+### D13
+- new themes [ greenleaf and redhouse ]
+- styling bug fix

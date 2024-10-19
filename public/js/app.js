@@ -290,7 +290,9 @@ const themeManager = {
     "blueocean-theme",
     "redhouse-theme",
     "classic-theme",
-    "dark-theme"
+    "dark-theme",
+    "greenleaf-theme",
+    "light-theme"
   ],
   setTheme(theme) {
     this.resetTheme();

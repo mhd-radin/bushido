@@ -23,8 +23,16 @@ const inputData = [{
     value: 'darkmoon',
     attr: {}
   }, {
+    title: 'Redhouse',
+    value: 'redhouse',
+    attr: {}
+  }, {
     title: 'Blue Ocean',
     value: 'blueocean',
+    attr: {}
+  },{
+    title: 'Greenleaf Theme',
+    value: 'greenleaf',
     attr: {}
   }, {
     title: 'Classic',

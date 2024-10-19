@@ -18,9 +18,9 @@
   --border-radius: 10px;
   --curved-radius: 25px;
   --border-radius-sm: 5px;
-  
+
   --spinner-one: #FDFCFF;
-  
+
   --nav-bg: #FF1E5F;
   --menu-bg: var(--sec-bg);
   --apt-nav-color: #FFF4F4;
@@ -48,6 +48,100 @@
   --menu-bg: var(--third-bg);
   --apt-nav-color: var(--apt-third-color);
   --apt-menu-color: var(--apt-third-color);
+}
+
+.redhouse-theme {
+  --theme-color: #B22222;
+  --sec-theme-color: #DAA520;
+  --theme-color-alpha: #B22222;
+  --apt-color: #F5E1B8;
+  --color: #FFDAB9;
+  --sec-color: #747474;
+  --bg: #3C2B2B;
+  --sec-bg: #2B1B1B;
+  --apt-sec-color: #F5E1B8;
+  --apt-third-color: #FFCC99;
+  --third-bg: #442F2F;
+  --border-color: #ccc;
+  --spinner-one: #db3737;
+  --spinner-two: #e87e48;
+  --shadow: #dfdfdf;
+  /* other properties */
+  --border-radius: 10px;
+  --circle-radius: 50%;
+  --curved-radius: 25px;
+  --zero-radius: 10px;
+  --border-radius-sm: 5px;
+  --border-radius-md: 15px;
+
+  --nav-bg: var(--sec-bg);
+  --menu-bg: var(--sec-bg);
+  --apt-nav-color: var(--apt-sec-color);
+  --apt-menu-color: var(--apt-sec-color);
+
+  /* spinner loader colors */
+  --spinner-one: var(--theme-color);
+  --spinner-two: var(--sec-theme-color)
+}
+
+.greenleaf-theme {
+  /* Primary Theme Colors */
+  --theme-color: #28A745;
+  /* Standard green */
+  --sec-theme-color: #218838;
+  /* Darker green */
+  --theme-color-alpha: rgba(40, 167, 69, 0.8);
+  /* Green with transparency */
+  --apt-color: #3D704D;
+  /* Lighter green for content */
+  --color: #FFFFFF;
+  /* White for text */
+  --sec-color: #6C757D;
+  /* Gray for secondary elements */
+  --bg: #1C2F21;
+  /* Dark green background */
+  --sec-bg: #283C30;
+  /* Even darker green for secondary background */
+  --apt-sec-color: #4A8F65;
+  /* Lighter dark green for secondary content */
+  --apt-third-color: #66B489;
+  /* Softer green for tertiary elements */
+  --third-bg: #2B4D35;
+  /* Darker green background for specific elements */
+  --border-color: #CCCCCC;
+  /* Light gray for borders */
+  --shadow: rgba(0, 0, 0, 0.1);
+  /* Light shadow */
+
+  /* Spinner Loader Colors */
+  --spinner-one: #28A745;
+  /* Standard green */
+  --spinner-two: #218838;
+  /* Darker green */
+
+  /* Border Radius for Elements */
+  --border-radius: 8px;
+  --circle-radius: 50%;
+  --curved-radius: 25px;
+  --zero-radius: 8px;
+  --border-radius-sm: 4px;
+  --border-radius-md: 12px;
+
+  /* Navbar and Menu Box Styling */
+  --nav-bg: #34495E;
+  /* Slate gray-blue for navbar */
+  --menu-bg: #2C3E50;
+  /* Dark blue-gray for menu */
+  --apt-nav-color: #4A8F65;
+  /* Lighter green for active menu items */
+  --apt-menu-color: #FFFFFF;
+  /* White for regular menu items */
+
+  /* Spinner Loader */
+  --spinner-one: var(--theme-color);
+  /* Green for spinner */
+  --spinner-two: var(--sec-theme-color);
+  /* Darker green for spinner */
 }
 
 .darkmoon-theme {

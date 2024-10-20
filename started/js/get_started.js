@@ -1,4 +1,7 @@
 function onpageloadin() {
+  anime.set(".large-text", {
+    visibility: "hidden",
+  });
   var logoTxt = document.querySelector('.logo-anim-txt')
   var logoTxtRect = logoTxt.getBoundingClientRect();
   app.lettersToElem(logoTxt)
@@ -83,10 +86,6 @@ function onpageloadin() {
     complete() {
       document.querySelector('.logo-anim-bg').remove();
 
-      anime.set(".large-text", {
-        visibility: "hidden",
-      });
-
       setTimeout(function() {
         var welcomeTextElem = app.lettersToElem(
           document.querySelector(".welcome-text")
@@ -99,7 +98,7 @@ function onpageloadin() {
             targets: ".welcome-text",
             delay: 200,
             duration: 500,
-            easing: "easeOutExpo",
+            easing: "easeInExpo",
             scaleY: [1, 1],
             translateX: ["-80%", 0],
             opacity: [0, 1],
@@ -118,7 +117,7 @@ function onpageloadin() {
                 filter: "blur(0px)",
               },
             ],
-            easing: "easeOutExpo",
+            easing: "easeInExpo",
           })
           .add({
             targets: ".welcome-text",

@@ -22,6 +22,10 @@ body {
   transition: 0.3s;
 }
 
+.large-text {
+  visibility: none;
+}
+
 .welcome-text {
   font-size: 25px;
   /* display: inline-block; */

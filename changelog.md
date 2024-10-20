@@ -419,3 +419,6 @@
 
 ### D14
 - animations on start page
+
+### D15
+- animation glitch bug decreased

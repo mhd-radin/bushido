@@ -422,3 +422,4 @@
 
 ### D15
 - animation glitch bug decreased
+- D15: disabled debugging mode

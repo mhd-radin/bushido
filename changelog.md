@@ -416,3 +416,6 @@
 ### D13
 - new themes [ greenleaf and redhouse ]
 - styling bug fix
+
+### D14
+- animations on start page

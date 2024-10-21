@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shape Mask Animation</title>
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #333;
+    }
+
+    .masked-image {
+      width: 300px;
+      height: 300px;
+      background-image: url('../assets/logos/bbc_b.png');
+      background-size: 100%;
+      -webkit-mask-image: radial-gradient(circle, black 50%, transparent 51%);
+      -webkit-mask-size: 200% 200%;
+      mask-image: radial-gradient(circle, black 50%, transparent 55%);
+      mask-size: 200% 200%;
+      animation: reveal 3s ease-in-out infinite;
+    }
+
+    @keyframes reveal {
+      0% {
+        -webkit-mask-position: 0 50%;
+        mask-position: 50% 50%;
+/*         -webkit-mask-size: 10% 10%;
+mask-size: 10% 10%; */
+      }
+
+      100% {
+        -webkit-mask-position: 100% 50%;
+        mask-position: 100% 100%;
+       /*  -webkit-mask-size: 100% 100%;
+       mask-size: 100% 100%; */
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="masked-image"></div>
+</body>
+
+</html>

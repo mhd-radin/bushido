@@ -6,7 +6,7 @@ const spinner = {
     <p>${text}</p>
   </div>`)
   },
-  showPreloader(text = 'Loading...') {
+  showPreloader(text = '') {
     var self = this
     this.elem = document.querySelector('.preloader');
     if (!this.elem) {

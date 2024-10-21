@@ -46,7 +46,7 @@ function onpageloadin() {
       width: '10px',
       height: '10px',
       left: (logoTxtRect.left + logoTxtRect.width + 5) + 'px',
-      top: (logoTxtRect.top + logoTxtRect.height - 23) + 'px',
+      top: (logoTxtRect.top + logoTxtRect.height - 28) + 'px',
       // scale: '0.3',
       easing: 'easeOutElastic',
       backgroundColor: '#3B4182'
@@ -65,7 +65,8 @@ function onpageloadin() {
   }, '-=700').add({
     targets: '.logo-anim-dot',
     duration: 200,
-    opacity: 0,
+    scale: 0,
+    opacity: [1, 0]
   }).add({
     targets: '.logo-anim-slider',
     width: ['0%', '100%'],
@@ -87,7 +88,7 @@ function onpageloadin() {
       document.querySelector('.logo-anim-bg').remove();
 
       setTimeout(function() {
-        var welcomeTextElem = app.lettersToElem(
+        var welcomeTextElem = app.wordsToElem(
           document.querySelector(".welcome-text")
         );
         anime
@@ -95,19 +96,10 @@ function onpageloadin() {
             loop: false,
           })
           .add({
-            targets: ".welcome-text",
-            delay: 200,
-            duration: 500,
-            easing: "easeInExpo",
-            scaleY: [1, 1],
-            translateX: ["-80%", 0],
+            targets: ".welcome-text .word",
+            delay: (el, i) => 100 * i,
             opacity: [0, 1],
-          })
-          .add({
-            targets: ".welcome-text .letter",
-            delay: (el, i) => 50 * i,
-            opacity: [0, 1],
-            translateX: ["-40px", 0],
+            translateY: ["-40px", 0],
             duration: 700,
             keyframes: [
               {
@@ -117,7 +109,7 @@ function onpageloadin() {
                 filter: "blur(0px)",
               },
             ],
-            easing: "easeInExpo",
+            easing: "easeOutElastic(1, 0.8)",
           })
           .add({
             targets: ".welcome-text",

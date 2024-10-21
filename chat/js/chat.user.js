@@ -391,6 +391,14 @@ const messenger = {
     } else {
       document.querySelector(".body").appendChild(msgElem);
     }
+    
+   // Todo: right click action
+    document.getElementById(msg.message_id).addEventListener('contextmenu', function(event) {
+      event.preventDefault();
+      modal.confirm('Are you sure did you want to delete it?', 'delete this message for all. click to confirm to delete message').then(function (v) {
+        
+      })
+    });
 
     messenger.before_send_by = msg.email;
     messenger.before_send_time = formattedTime;

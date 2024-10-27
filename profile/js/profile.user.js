@@ -8,36 +8,36 @@ const inputData = [{
   valueMatchRule: null,
   isTextarea: false,
   data: [{
-    title: 'Light Theme',
-    value: 'light',
-    attr: {
-      checked: true
-    }
+      title: 'Light Theme',
+      value: 'light',
+      attr: {
+        checked: true
+      }
   },
-  {
-    title: 'Dark Theme',
-    value: 'dark',
-    attr: {}
-  },{
-    title: 'Darkmoon',
-    value: 'darkmoon',
-    attr: {}
+    {
+      title: 'Dark Theme',
+      value: 'dark',
+      attr: {}
   }, {
-    title: 'Redhouse',
-    value: 'redhouse',
-    attr: {}
+      title: 'Darkmoon',
+      value: 'darkmoon',
+      attr: {}
   }, {
-    title: 'Blue Ocean',
-    value: 'blueocean',
-    attr: {}
-  },{
-    title: 'Greenleaf Theme',
-    value: 'greenleaf',
-    attr: {}
+      title: 'Redhouse',
+      value: 'redhouse',
+      attr: {}
   }, {
-    title: 'Classic',
-    value: 'classic',
-    attr: {}
+      title: 'Blue Ocean',
+      value: 'blueocean',
+      attr: {}
+  }, {
+      title: 'Greenleaf Theme',
+      value: 'greenleaf',
+      attr: {}
+  }, {
+      title: 'Classic',
+      value: 'classic',
+      attr: {}
   }]
 }]
 
@@ -63,6 +63,12 @@ const PropertiesDictionary = {
     } else return propName;
   }
 }
+
+
+if (document.getElementById('theme')) {
+  document.getElementById('theme').querySelector('.opt-subtext').innerHTML = 'current theme is ' + themeManager.currentTheme.replace('-theme', '');
+}
+
 
 
 
@@ -102,18 +108,18 @@ function useInputSelectors(inpData = inputData) {
         if (val) {
           themeManager.setTheme(val + '-theme')
           themeManager.storeCurrentTheme()
+          document.getElementById('theme').querySelector('.opt-subtext').innerHTML = 'current theme is ' + val;
         }
         break;
       case 'password':
         app.validUser().then(function(data) {
           modal.prompt('New Password', val, 'Password', false, 'text').then(function(enteredPassword) {
-              if (enteredPassword) {
-                var encrypted = CryptoJS.AES.encrypt(enteredPassword, config.ENC_KEY).toString()
-                updateUserProperty(PropertiesDictionary.use(item.clkId), encrypted).then(function() {
-                }).catch((err) => {
-                  modal.alert('ERROR CHANGING PASSWORD: ' + err)
-                })
-              }
+            if (enteredPassword) {
+              var encrypted = CryptoJS.AES.encrypt(enteredPassword, config.ENC_KEY).toString()
+              updateUserProperty(PropertiesDictionary.use(item.clkId), encrypted).then(function() {}).catch((err) => {
+                modal.alert('ERROR CHANGING PASSWORD: ' + err)
+              })
+            }
           })
         })
         break;
@@ -135,6 +141,16 @@ function useInputSelectors(inpData = inputData) {
       var label = item.default;
       if (item.clkId === 'password') {
         label = '&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;'
+      }
+
+      if (item.clkId === 'theme') {
+        var currentTheme = themeManager.currentTheme;
+        item.data.forEach(function(themeData) {
+          themeData.attr.checked = false;
+          if (themeData.value === currentTheme) {
+            themeData.attr.checked = true;
+          }
+        })
       }
       itemElem.querySelector('.opt-subtext').innerHTML = label;
     }
@@ -168,6 +184,20 @@ function useInputSelectors(inpData = inputData) {
 }
 
 app.validUser().then((user) => {
+
+  if (document.getElementById('email')) {
+    document.getElementById('email').querySelector('.opt-subtext').innerHTML = user.email;
+  }
+  if (document.getElementById('titleName')) {
+    document.getElementById('titleName').innerHTML = user.fullname;
+  }
+  if (document.getElementById('titleEmail')) {
+    document.getElementById('titleEmail').innerHTML = user.email;
+  }
+  if (document.getElementById('avatar')) {
+    document.getElementById('avatar').src = app.avatarUrl(user.fullname);
+  }
+
 
   inputData.push({
     type: 'text',

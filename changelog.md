@@ -426,3 +426,6 @@
 
 ### D16
 - started page ui and animations updated
+
+### D17
+- profile page bug fix

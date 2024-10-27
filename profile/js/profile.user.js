@@ -135,18 +135,16 @@ function useInputSelectors(inpData = inputData) {
     }
   }
 
-  inpData.forEach((item) => {
+  inpData.forEach((item, ind) => {
     var itemElem = document.getElementById(item.clkId);
     if (item.default) {
       var label = item.default;
       if (item.clkId === 'password') {
         label = '&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;'
-      }
-
-      if (item.clkId === 'theme') {
+      } else if (item.clkId === 'theme') {
         var currentTheme = themeManager.currentTheme;
-        item.data.forEach(function(themeData) {
-          themeData.attr.checked = false;
+        item.data.forEach(function(themeData, i) {
+          inpData[ind].data[i].attr.checked = false;
           if (themeData.value === currentTheme) {
             themeData.attr.checked = true;
           }
@@ -154,6 +152,7 @@ function useInputSelectors(inpData = inputData) {
       }
       itemElem.querySelector('.opt-subtext').innerHTML = label;
     }
+    console.log(inpData)
     if (itemElem) {
       itemElem.onclick = function() {
         var title = itemElem.querySelector('.opt-title').innerText;

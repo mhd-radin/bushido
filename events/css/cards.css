@@ -47,7 +47,7 @@
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%,-50%) scale(1, 0.1);
+  transform: translate(-50%, -50%) scale(1, 0.1);
   font-size: 80px;
   color: #EEE;
   transition: 0.5s all;
@@ -130,7 +130,7 @@
 
 .note-card {
   border-radius: var(--border-radius);
-  color: var(--sec-theme-color);
+  color: var(--apt-sec-color);
   padding: 8px;
   margin: 5px;
   height: max-content;
@@ -142,7 +142,7 @@
   transition: 0.2s all;
 
   opacity: 0;
-  transform: skew(10deg, 10deg);
+  transform: skew(5deg, 5deg);
   filter: blur(5px);
 }
 
@@ -190,14 +190,17 @@
   color: var(--sec-color);
 }
 
-.note-card:hover {
+/* hover animations */
+.note-card {
   background: var(--theme-color-alpha);
 }
 
-.note-card:hover .note-title,
-.note-card:hover .note-subtext {
+.note-card .note-title,
+.note-card .note-subtext {
   color: var(--apt-color);
 }
+
+/* end of hover animations */
 
 .note-buttons button {
   background: var(--theme-color);

@@ -429,3 +429,6 @@
 
 ### D17
 - profile page bug fix
+
+### D18
+- minor changes

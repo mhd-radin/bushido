@@ -42,7 +42,6 @@ function onpageloadin() {
   if (objectParams.email == undefined || objectParams.pw == undefined) {
   } else {
     spinner.showPreloader("Auto signing...");
-    alert(objectParams.email + "-  :  -" + objectParams.pw);
     signIn(objectParams.email, objectParams.pw, true);
   }
 

@@ -27,7 +27,7 @@
   padding-right: 10px;
   display: flex;
   flex-direction: row;
-  border-radius: 20px;
+  border-radius: 40px;
   transition: 0.2s !important;
   cursor: pointer;
 }
@@ -40,6 +40,9 @@
   background: var(--sec-theme-color);
 }
 
+.menu-item.active:focus {
+  background: none;
+}
 .menu-item-text {
   display: none;
 }
@@ -70,7 +73,7 @@
 .menu-item.active .eva,
 .menu-item.preview .eva {
   border-radius: 50%;
-  padding: 5px;
+  padding: 10px;
   background: var(--theme-color-alpha);
 }
 
@@ -101,4 +104,5 @@
   .menu-item.preview {
     margin: 5px;
   }
+  
 }

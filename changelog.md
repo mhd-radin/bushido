@@ -432,3 +432,9 @@
 
 ### D18
 - minor changes
+
+### D19
+- colors updated
+- menubox and navbar ui changed 
+- animation performance improved
+- create pag design bug fix at menubox

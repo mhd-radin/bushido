@@ -152,15 +152,15 @@ input[type="radio"] {
 }
 
 @media screen and (max-width: 650px) {
-  .menu-item.active .menu-item-text {
-    display: none;
-  }
+/*   .menu-item.active .menu-item-text {
+  display: none;
+}
 
-  .menu-item.active {
-    padding: 8px;
-    border: 8px solid var(--bg);
-    border-radius: 50%;
-    transform: translate(0, -30px);
-    display: unset;
-  }
+.menu-item.active {
+  padding: 8px;
+  border: 8px solid var(--bg);
+  border-radius: 50%;
+  transform: translate(0, -30px);
+  display: unset;
+} */
 }

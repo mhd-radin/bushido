@@ -4,10 +4,12 @@ if (document.querySelector('.menubox')) {
     if (menuItem.dataset.url) {
       var url = menuItem.dataset.url
       menuItem.onclick = function() {
-        if (spinner) {
-          spinner.showPreloader()
-        }
-        window.location.href = url;
+        menu.close(document.querySelector('.menu-item.active')).then(function() {
+          if (spinner) {
+            spinner.showPreloader()
+          }
+          window.location.href = url;
+        })
       }
     }
   })
@@ -40,26 +42,14 @@ const menu = {
             targets: menuitemElem,
             duration: 100,
             easing: 'easeOutExpo',
-            width: 30,
+            width: 0,
             padding: 0,
-            backgroundColor: {
-              value: [snapshotStyle.getPropertyValue('background-color'), '#dbdbdb'],
-              duration: 100,
-              easing: 'easeOutExpo'
-            },
+            complete: function (param) {
+              menuitemElem.style.background = 'transparent'
+            }
           }).add({
             targets: menuitemElem.querySelector('.eva'),
             duration: 200,
-            color: {
-              value: [snapshotStyle.getPropertyValue('color'), '#050505'],
-              duration: 100,
-              easing: 'easeOutExpo'
-            },
-            backgroundColor: {
-              value: [snapshotStyle.getPropertyValue('background-color'), '#dbdbdb'],
-              duration: 100,
-              easing: 'easeOutExpo'
-            },
           }).add({
             targets: menuitemElem,
             duration: 100,
@@ -101,7 +91,7 @@ const menu = {
                     "class": 'eva eva-' + itemData.icon
                   }),
                   new TagString('div', true).setAttributes({
-                   "class": 'menu-item-text'
+                    "class": 'menu-item-text'
                   }).child(itemData.name)
                 ].join('')
               )
@@ -113,4 +103,3 @@ const menu = {
     return str;
   }
 }
-

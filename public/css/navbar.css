@@ -40,4 +40,8 @@ nav {
   .nav-right {
     display: none;
   }
+  
+  nav {
+    padding: 17px;
+  }
 }

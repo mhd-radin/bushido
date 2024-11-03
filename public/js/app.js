@@ -41,7 +41,7 @@ const observer = new IntersectionObserver(
         // Add your animation logic here
         entry.target.classList.add("animate-lite");
       }
-      if (entry.intersectionRatio > 0.3) {
+      if (entry.intersectionRatio < 1) {
         // Add your animation logic here
         entry.target.classList.add("animate");
       } else {
@@ -50,7 +50,7 @@ const observer = new IntersectionObserver(
         entry.target.classList.remove("animate-lite")
       }
     });
-  }, { threshold: 0.3 }
+  }, { threshold: 0.1 }
 );
 
 
@@ -76,6 +76,7 @@ const microObserver = new IntersectionObserver(
 
 const app = {
   fisrt_time: localStorage.getItem('first_time'),
+  version: 1,
   lettersToElem(elem) {
     elem.innerHTML = elem.innerHTML.replace(
       /\S/g,
@@ -180,12 +181,12 @@ const app = {
           if (app.getCookie('user') === '' || app.getCookie('user') === null) {
             if (typeof bushido != "undefined" && navigator.onLine) {
               bushido
-                .get("accounts", ''+data.id)
+                .get("accounts", '' + data.id)
                 .then(function(user) {
                   if (user.exists()) {
                     var userData = user.data();
                     app.saveData('user', 'about-user', userData, 'userUrl').then(() => {
-                      app.setCookie('user', 'true' , 60);
+                      app.setCookie('user', 'true', 60);
                       resolve(userData);
                     })
                   } else {
@@ -327,6 +328,63 @@ function handleError(err) {
 
 window.onerror = handleError;
 
+const iconManager = {
+  lucideDictionary: {
+    home: 'house',
+    person: 'user-pen',
+    'color-palette': 'palette',
+    email: 'mail',
+    'person-delete': 'user-round-x',
+    'pin': 'map-pin-house',
+    cube: 'weight',
+    'person-add': 'user-round',
+    'checkmark': 'check',
+    'paper-plane': 'send',
+    'close': 'x',
+    'arrow-right': 'play',
+    use(iconKey) {
+      if (this[iconKey]) {
+        return this[iconKey];
+      } else {
+        return iconKey
+      }
+    },
+  },
+  initLucideIcons() {
+    return new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = 'https://unpkg.com/lucide@latest';
+      script.onload = function() {
+        resolve()
+      }
+      document.body.appendChild(script)
+    })
+  },
+  useLucide() {
+    this.initLucideIcons().then(function() {
+      document.querySelectorAll('.eva').forEach(function(elem) {
+        elem.classList.remove('eva');
+        var evaCls = ''
+        elem.classList.forEach(function(cls) {
+          if (cls.includes('eva')) {
+            evaCls = cls;
+            elem.classList.remove(cls);
+          }
+        })
+
+        var iconKey = evaCls.replace('eva-', '');
+        iconKey = iconKey.replace('-outline', '');
+        elem.dataset.lucide = iconManager.lucideDictionary.use(iconKey)
+        elem.classList.add('eva')
+      })
+
+      lucide.createIcons()
+    })
+  }
+}
+
+iconManager.useLucide()
+
 /* cache 
 if ("caches" in window){
   navigator.serviceWorker.register('../public/csw.js', 
@@ -339,6 +397,24 @@ if ("caches" in window){
 if (!localStorage.getItem('first_time')) {
   localStorage.setItem('first_time', true)
 }
+
+function updateApplicationServer(version = app.version) {
+  bushido.set('application/latest', {
+    version,
+    updatedOn: new Date(),
+  })
+}
+
+function checkApplicationData() {
+  bushido.get('application', 'latest').then(function(snapshot){
+    var data = snapshot.data();
+    if (data.version > app.version){
+      modal.alert('Update Now!', 'Exciting new features and improvements are just a tap away! Update your app now to access the latest updates and enhance your experience!. V'+data.version);
+    }
+  })
+}
+
+checkApplicationData();
 
 var useNetAlert = true;
 setInterval(function() {

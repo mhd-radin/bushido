@@ -76,7 +76,7 @@ const microObserver = new IntersectionObserver(
 
 const app = {
   fisrt_time: localStorage.getItem('first_time'),
-  version: 1,
+  version: 1.0,
   lettersToElem(elem) {
     elem.innerHTML = elem.innerHTML.replace(
       /\S/g,
@@ -382,8 +382,6 @@ const iconManager = {
     })
   }
 }
-
-iconManager.useLucide()
 
 /* cache 
 if ("caches" in window){

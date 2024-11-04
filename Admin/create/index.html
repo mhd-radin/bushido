@@ -41,111 +41,61 @@
   </nav>
 
 
-  <div class="body">
-    <div class="title" id="title">Choose design of card</div>
-    <div class="form" id="form_1">
-      <div class="form-input">
-        <label for="pageCard">
-          <img src="../../assets/sample/page_card.png" alt="">
-          <input type="radio" name="cards" id="pageCard" checked />
-          Share able card with image
-        </label>
+  <div class="body-layout">
+    <div class="slides-list">
+
+      <div class="user-box option" id="create">
+        <div class="user-row">
+          <div class="user-icon">
+            <i class="eva eva-plus-outline"></i>
+          </div>
+          <div class="user-body">
+            <div class="user-name">Create Post</div>
+            <div class="user-subtext">Create new event post</div>
+            <div class="user-right">
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="form-input">
-        <label for="imgCard">
-          <img src="../../assets/sample/image_card.png" alt="">
-          <input type="radio" name="cards" id="imgCard" />
-          Attached on image
-        </label>
+      <div class="user-box option" id="ig">
+        <div class="user-row">
+          <div class="user-icon">
+            <i class="eva eva-code-outline"></i>
+          </div>
+          <div class="user-body">
+            <div class="user-name">Instagram</div>
+            <div class="user-subtext">Create new event post from Instagram</div>
+            <div class="user-right">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="user-box option" id="manage">
+        <div class="user-row">
+          <div class="user-icon">
+            <i class="eva eva-edit-outline"></i>
+          </div>
+          <div class="user-body">
+            <div class="user-name">Manage Posts</div>
+            <div class="user-subtext">Edit & Delete Posts</div>
+            <div class="user-right">
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="body">
+      <div class="create-slide slide">
+        <h3>Create</h3>
+      </div>
+      <div class="ig-slide slide">
+        <h3>Instagram</h3>
+      </div>
+      <div class="manage-slide slide">
+        <h3>Manage</h3>
       </div>
     </div>
-
-    <div class="form" id="form_2">
-      <div class="input-box">
-        <label for="post_title">Title of Post</label>
-        <div class="input-seg">
-          <div class="input-icon">
-            <i class="eva eva-hash-outline"></i>
-          </div>
-          <input type="text" name="post_title" id="post_title" value="" placeholder="Post Title" required />
-        </div>
-      </div>
-      <div class="input-box">
-        <label for="des">Short Description</label>
-        <div class="input-seg">
-          <div class="input-icon">
-            <i class="eva eva-text-outline"></i>
-          </div>
-          <textarea type="number" name="des" id="des" value="" placeholder="short description" required></textarea>
-        </div>
-      </div>
-    </div>
-
-    <div class="form" id="form_3">
-      <div class="form-input">
-        <label for="isImgUrl">
-          <input type="checkbox" name="" id="isImgUrl" checked />
-          Use image from url ( save server storage )
-        </label>
-      </div>
-
-      <div class="input-box">
-        <label for="imgUrl">Image url</label>
-        <div class="input-seg">
-          <div class="input-icon">
-            <i class="eva eva-image-outline"></i>
-          </div>
-          <input type="url" name="" id="imgUrl" value="" placeholder="eg:- https://example.com/image.png" required />
-        </div>
-      </div>
-      <div class="input-box">
-        <label for="imgFile">Or upload your image file</label>
-        <div class="input-seg">
-          <div class="input-icon">
-            <i class="eva eva-upload-outline"></i>
-          </div>
-          <input type="file" name="" id="imgFile" value="" placeholder="" disabled />
-        </div>
-      </div>
-    </div>
-
-    <div class="form" id="form_4">
-      <div class="primary-card">
-        <div class="primary-card-content">
-          <img src="../../assets/bg/boxing-gloves-realistic-composition-with-dark-gradient-background-pair-red-mufflers-hanging-strings-vector-illustration_1284-78726.jpg" alt="" class="primary-card-img" />
-        </div>
-        <div class="primary-card-body">
-          <div class="primary-card-title-tag">
-            <i class="eva eva-done-all"></i>
-            <div class="primary-card-title-tag-text">02:30 PM</div>
-          </div>
-          <div class="primary-card-title">
-            Events of Bushido Fit & Fight Club
-          </div>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel
-            lobortis est, vel condimentum nunc. Donec finibus, sapien vitae
-            ultricies gravida, justo metus fermentum lectus, in convallis arcu
-            nisi non velit. Nam ornare, est vel convallis gravida, felis velit
-            semp
-          </p>
-          <img src="../../assets/logos/bbc192.png" alt="" class="primary-card-logo" />
-        </div>
-        <div class="primary-card-footer">
-          <!-- <button> -->
-          <i class="eva eva-heart-outline"></i>
-          <i class="eva eva-share-outline"></i>
-          <i class="eva eva-message-circle-outline"></i>
-          <i class="eva eva-clock-outline"></i>
-          <!-- </button> -->
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="footer">
-    <button class="sec-btn" id="backBtn">Back</button>
-    <button id="nextBtn">Forward</button>
   </div>
 
   <div class="menubox">

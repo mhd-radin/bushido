@@ -438,3 +438,7 @@
 - menubox and navbar ui changed 
 - animation performance improved
 - create pag design bug fix at menubox
+
+### D20
+- admin create page redesigning started
+- disabled lucide icons

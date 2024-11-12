@@ -442,3 +442,6 @@
 ### D20
 - admin create page redesigning started
 - disabled lucide icons
+
+
+## Recording Stopped at E01

@@ -186,7 +186,7 @@ const app = {
                   if (user.exists()) {
                     var userData = user.data();
                     app.saveData('user', 'about-user', userData, 'userUrl').then(() => {
-                      app.setCookie('user', 'true', 60);
+                      app.setCookie('user', 'true', (60*6));
                       resolve(userData);
                     })
                   } else {

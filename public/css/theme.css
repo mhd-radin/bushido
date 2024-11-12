@@ -21,7 +21,7 @@
 
   --spinner-one: #FDFCFF;
 
-  --nav-bg: #FF1E5F;
+  --nav-bg: #2C3E50;
   --menu-bg: var(--sec-bg);
   --apt-nav-color: #FFF4F4;
   --apt-menu-color: var(--apt-sec-color);
@@ -154,7 +154,7 @@
   --bg: #1E2122;
   --sec-bg: #2B2E2E;
   --apt-sec-color: #f4ecec;
-  --apt-third-color: #fbf7f7;
+  --apt-third-color: #FBF7F7;
   --third-bg: #0E0F12;
   --border-color: #474c53;
   --spinner-one: #FF3F3F;
@@ -183,6 +183,11 @@
   --spinner-one: #FF2222;
   --spinner-two: #FFFFFF;
   --shadow: #1B1E2250;
+ 
+ --border-radius: 0px;
+ --border-radius-md: 0;
+ --border-radius-sm: 0;
+ --curved-radius: 0;
 }
 
 .classic-theme .menubox,

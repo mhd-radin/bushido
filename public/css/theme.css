@@ -16,8 +16,11 @@
   --shadow: #2E2E2E;
   /* other properties */
   --border-radius: 10px;
+  --circle-radius: 50%;
   --curved-radius: 25px;
+  --zero-radius: 10px;
   --border-radius-sm: 5px;
+  --border-radius-md: 15px;
 
   --spinner-one: #FDFCFF;
 
@@ -161,6 +164,13 @@
   --spinner-two: #FFA02D;
   --shadow: #1b1e22;
 
+  --border-radius: 10px;
+  --circle-radius: 50%;
+  --curved-radius: 25px;
+  --zero-radius: 10px;
+  --border-radius-sm: 5px;
+  --border-radius-md: 15px;
+  
   --nav-bg: var(--third-bg);
   --menu-bg: var(--third-bg);
   --apt-nav-color: var(--apt-third-color);
@@ -188,6 +198,7 @@
  --border-radius-md: 0;
  --border-radius-sm: 0;
  --curved-radius: 0;
+ --zero-radius: 0;
 }
 
 .classic-theme .menubox,

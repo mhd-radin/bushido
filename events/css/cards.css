@@ -11,12 +11,6 @@
   width: 289px;
   font-family: "Open Sans";
   height: max-content;
-  opacity: 0;
-  transform: translate(0%) scale(0.8);
-  transition: 0.5s all;
-  filter: blur(5px);
-  /* animation: backInUp 2s 1;
-  animation-play-state: var(--animation-state); */
 }
 
 .image-card.animate-lite {
@@ -47,11 +41,11 @@
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%) scale(1, 0.1);
+  transform: translate(-50%, -50%) scale(1, 1);
   font-size: 80px;
   color: #EEE;
   transition: 0.5s all;
-  opacity: 0.3;
+  opacity: 1;
 }
 
 .image-card.animate .play-icon {

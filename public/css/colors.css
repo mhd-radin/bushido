@@ -16,9 +16,12 @@
   --shadow: #dfdfdf;
   /* other properties */
   --border-radius: 10px;
-  --curved-radius: 25px;
+  --circle-radius: 50%;
+  --curved-radius: 50px;
+  --zero-radius: 10px;
   --border-radius-sm: 5px;
-  
+  --border-radius-md: 15px;
+
   --nav-bg: #FCFCFF;
   --menu-bg: #FCFCFF;
   --apt-nav-color: #4A4A4A;

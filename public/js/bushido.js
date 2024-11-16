@@ -181,7 +181,7 @@ if (bushido){
           bushido.realtime.setup().then(() => {
             const sdk = bushido.realtime.api;
             const db = bushido.realtime.db;
-    
+
             var ref = sdk.ref(db, path);
             sdk.push(ref, (typeof data == 'function' ? data() : data)).then(resolve)
           })
@@ -191,3 +191,13 @@ if (bushido){
   }
 };
 
+class PostData {
+  constructor(title, type, des, thumb_src, source_url, isVideo) {
+    this.title = titel;
+    this.type = type;
+    this.des = des;
+    this.thumb_src = thumb_src;
+    this.source_url = source_url;
+    this.isVideo = isVideo;
+  }
+}

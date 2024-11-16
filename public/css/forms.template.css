@@ -176,11 +176,6 @@ nav {
   font-weight: normal;
 }
 
-input:focus,
-textarea:focus {
-  border-bottom: 0px solid var(--theme-color);
-  background: var(--sec-bg);
-}
 
 .right-elems {
   position: absolute;

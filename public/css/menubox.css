@@ -84,25 +84,26 @@
 @media screen and (min-width: 650px) {
   .menubox {
     position: fixed;
-    right: 0;
-    top: 0;
-    bottom: auto;
-    left: auto;
-    background: transparent;
-    width: 50%;
-    transform: translate(0, 0);
-    justify-content: flex-end;
-    align-items: flex-end;
+    left: 50%;
+    bottom: 3px;
+    background: var(--sec-bg);
+    width: 400px;
+    margin-bottom: 3px;
+    padding: 7px 7px;
+    border-radius: 80px;
+    transform: translate(-50%, -50%);
+    justify-content: center;
+    align-items: center;
     overflow-x: scroll;
   }
 
   .menu-item {
-    margin: auto 5px;
+    /* margin: auto 5px; */
   }
 
   .menu-item.active,
   .menu-item.preview {
-    margin: 5px;
+    /* margin: 5px; */
   }
   
 }

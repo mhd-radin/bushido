@@ -29,6 +29,10 @@ body {
 }
 
 
+.slide {
+  display: none;
+}
+
 @media screen and (max-width: 650px) {
   .slides-list {
     display: block;

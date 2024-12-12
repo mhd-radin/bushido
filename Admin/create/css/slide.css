@@ -1,0 +1,68 @@
+.slide {
+  padding: 5px;
+}
+
+.slide-header {
+  /* padding: 5px; */
+  margin: 10px;
+}
+
+.slide-subtitle {
+  color: var(--theme-color);
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.slide-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.slide-des {
+  font-size: 12px;
+  color: var(--sec-color);
+}
+
+
+.input-seg {
+  margin: 10px;
+  
+}
+
+.input-seg label {
+  font-size: 12px;
+  margin-left: 3px;
+}
+
+.input-seg input, .input-seg textarea, .input-seg select {
+  padding: 8px;
+  margin: 3px;
+  outline: none;
+  border: 1px solid var(--theme-color);
+  border-radius: 8px;
+  resize: vertical;
+  width: 90%;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: var(--third-bg);
+}
+
+.input-seg input:activate(),
+.input-seg textarea:activate() {
+  background: var(--sec-bg);
+}
+
+
+.input-seg textarea {
+  min-height: 100px;
+}
+
+
+.slide button {
+  background: var(--theme-color);
+  margin: 6px;
+  border-radius: 5px;
+  margin-left: 15px;
+  margin-right: 10px;
+}

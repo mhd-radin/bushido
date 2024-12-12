@@ -14,4 +14,9 @@
   --border-color: #747474;
   --spinner-one: #3BAC3B;
   --spinner-two: #50C750;
+
+  --nav-bg: var(--sec-bg);
+  --menu-bg: var(--sec-bg);
+  --apt-nav-color: var(--apt-sec-color);
+  --apt-menu-color: var(--apt-sec-color);
 }

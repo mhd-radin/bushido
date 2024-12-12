@@ -17,7 +17,6 @@ document.querySelectorAll('.option').forEach(function(userItemElem) {
       el.style.display = 'none'
       if (el.classList.contains(userItemElem.id + '-slide')) {
         el.style.display = 'block'
-        alert(4)
       }
     })
   }

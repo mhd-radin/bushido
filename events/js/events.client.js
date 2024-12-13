@@ -4,18 +4,18 @@ app.validUser().catch(() => {
 
 function onpageloadin() {
   const targetElements = document.querySelectorAll(".image-card"); // Element to observe
-  targetElements.forEach(function(targetElement) {
+  targetElements.forEach(function (targetElement) {
     observer.observe(targetElement);
   });
 
-  document.querySelectorAll(".note-card").forEach(function(targetElement) {
+  document.querySelectorAll(".note-card").forEach(function (targetElement) {
     microObserver.observe(targetElement);
   });
 }
 
 var rotate = 0;
 
-document.querySelectorAll(".note-card").forEach(function(elem) {
+document.querySelectorAll(".note-card").forEach(function (elem) {
   function handleMoves(e) {
     let X = 0,
       Y = 0;
@@ -47,36 +47,47 @@ document.querySelectorAll(".note-card").forEach(function(elem) {
   elem.addEventListener("touchend", off);
 });
 
-
-function useImageCard(title, des, source_url, date) {
+function useImageCard(id, title, des, source_url, isVideo) {
   return new TagString(`
-<div class="image-card">
-  <img src="../assets/bg/members.jpg" alt="" class="img-content" />
-  <div class="image-card-body">
-    <div class="image-card-texts">
-      <div class="image-card-title">Bushido members photo</div>
-      <div class="image-card-subtext">
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-        Saepe exercitationem, repellat neque eligendi et deserunt
-        quisquam aliquam nesciunt illum ipsa rerum a nemo debitis.
-        Eum saepe ex modi omnis enim.
-      </div>
-    </div>
-    <div class="image-card-footer">
-      <div class="card-button">
-        <i class="eva eva-heart-outline"></i>
-        <div class="card-btn-text">Like</div>
-      </div>
-      <div class="card-button">
-        <i class="eva eva-message-square-outline"></i>
-        <div class="card-btn-text">Replay</div>
-      </div>
-      <div class="card-button">
-        <i class="eva eva-share-outline"></i>
-        <div class="card-btn-text">Share</div>
-      </div>
-    </div>
-  </div>
-</div>
-`)
+<div class="image-card" id="${id}">
+  <div class="img-container">
+              <img src="${source_url}" alt="" class="img-content" />
+              ${isVideo ? `<i class="play-icon eva eva-arrow-right"></i>` : ""}
+            </div>
+            <div class="image-card-body">
+              <div class="image-card-texts">
+                <div class="image-card-title">${title}</div>
+                <div class="image-card-subtext">
+                  ${des}
+                </div>
+              </div>
+              <div class="image-card-footer">
+                <div class="card-button">
+                  <i class="eva eva-heart-outline"></i>
+                  <div class="card-btn-text">Like</div>
+                </div>
+                <div class="card-button">
+                  <i class="eva eva-message-square-outline"></i>
+                  <div class="card-btn-text">Replay</div>
+                </div>
+                <div class="card-button">
+                  <i class="eva eva-share-outline"></i>
+                  <div class="card-btn-text">Share</div>
+                </div>
+              </div>
+            </div>
+          </div>
+`);
+}
+
+function useEmptyInfoScreen() {
+  var code = `<div class="post-info">
+            <img src="../assets/svg/undraw_no_data_re_kwbl_bl.svg" alt="" srcset="">
+            <p>Could not find any posts or events..!</p>
+          </div>`;
+  document.getElementById("posts").innerHTML = "";
+}
+
+function addPostToBody(tag) {
+  document.getElementById("posts").appendChild(tag.parseElement()[0]);
 }

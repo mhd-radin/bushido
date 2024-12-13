@@ -81,6 +81,14 @@
   background: var(--sec-bg);
 }
 
+.attached-nav {
+  top: 0;
+  height: max-content;
+  right: 0;
+  left: auto !important;
+  transform: translate(0px, 0px) !important;
+}
+
 @media screen and (min-width: 650px) {
   .menubox {
     position: fixed;

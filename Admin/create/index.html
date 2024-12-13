@@ -106,7 +106,7 @@
           </div>
 
           <div class="slide-body">
-            <form action="">
+            <form id="createSubmit">
               <div class="input-seg">
                 <label for="createTitle">Title of post</label>
                 <input
@@ -142,6 +142,16 @@
 
               <div class="input-section" id="createThumbnailSection">
                 <div class="input-seg">
+                  <label for="createImgOpt">Preview of photo</label>
+                  <br />
+                  <img
+                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKgAAACUCAMAAAAwLZJQAAAAIVBMVEX////c5fHf6PLp7vbz9frk6/T2+Pv6+/3s8ff7/f3Y4vCdwvnrAAADPUlEQVR4nO2b25bCIAxFLff2/z94rAIFpFXkhNZZ2W/jUrsHknD1dmMYhmEYhmEYhmEYhmEY5t9jnBRdaGUGaFo5AZDkqgahuaJ+xHNaSE2tgIlO00woConPgCQUXZCigi6hVHhGl3D8MF2Uhp4Xtudb5hDodH2vMU1h/ddojFWFINoZXPMySjRt0S+KzHhR67SYhGtt4OGi7susGC2aVH/dVAYGi6opoalNB4vmRbwlTseKFvOoloeOFS3nJw1fM1ZUF6IN9ZRFq6Ifdr1yWrtibjBWVOWe9Yda/wmdFYUzy9NUrfhJZUhNL1fwbfqO5D8ZPYS6zULUUmnO8k1vbxk+KVHHk5Ii3bY3nTHNk/qe1PXh05ULq2hKKGrnquj6ULtTQIuqcGdx9KJ+V6thzVTdUlHkoq5VdGdLxVCL6lbRcoD1CGJRuzSK7nh6UzpR1Sjq9jyfcnSiuhDN65FVxQ7ya8InSErR6UD0aRVLz+3tHqqjEzWlaNL1cfiJC9G3e6jqRiUqQxu+ispt+BH+pd1EioQmh4vqXdF8OP/QM4IWXRugLlpMO9bdyIOEJxd1e6IvUqLtMAItqndEuzf0waKPeXpFtP/gASyq6qItwThGVFdFEQc5YNGpJgo5cMKKmoqoAfQ7XFRWREEHjVhRXREFARU14kdEfTReX1T/iGjYPrq8aFhVXF40X3yARZGny+E7n6LQCxDr6glGnF6q/E8MwIsFsQl9L0E9+64nZGxbsX7lhhnjPcAQ3bp68a8A00kcPrqNZMvDB77df3AryDs66S59eA2kib1LlIZkrCUOMMkT4As6qeiWo1Y52YVTuHx/km3LIYMfjc2SXFPe+uskr5vACg2nSBzi26k9FKYCngcorCwO4ISU6nsorzZb5CyU7vjzgVmvtkGgD/J7lQe4Lu8fhGA2vVFA3PMp1smOlh1b3qxS+stbzuNr22y+WehRXmg/YL3/0CZ63sBmTVMUjPjRzQHm08I1MOf3mNUnUQDccOhgNkoeR8FyofmMdUcNe7ZdgdqbGJycSjWMkeIlCq4Roa9YlTfsVT0fmDgx0Bfs95z7kODckJ9XMgzDMAzDMAzDMAzDMAxzMn+1eB8gM5MYKgAAAABJRU5ErkJggg=="
+                    alt="not loaded Preview Photo"
+                    id="thumbImagePreview"
+                  />
+                </div>
+
+                <div class="input-seg">
                   <label for="createImgOpt"
                     >Choose option to setup thumbnail</label
                   >
@@ -176,9 +186,7 @@
 
               <div class="input-section" id="createSrcSection">
                 <div class="input-seg">
-                  <label for="createImageSrc"
-                    >Upload post files</label
-                  >
+                  <label for="createImageSrc">Upload post files</label>
                   <input
                     type="file"
                     name="createImageSrc"
@@ -188,7 +196,7 @@
                 </div>
               </div>
 
-              <button id="createSubmit">Submit Post</button>
+              <button type="submit">Submit Post</button>
             </form>
           </div>
         </div>

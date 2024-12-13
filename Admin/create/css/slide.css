@@ -46,6 +46,15 @@
   background: var(--third-bg);
 }
 
+.input-seg img {
+  margin: 3px;
+  border: 2px solid var(--theme-color-alpha);
+  border-radius: 8px;
+  padding: 2px;
+  width: 200px;
+  min-height: 100px;
+}
+
 .input-seg input:activate(),
 .input-seg textarea:activate() {
   background: var(--sec-bg);

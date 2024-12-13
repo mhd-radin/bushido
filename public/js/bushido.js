@@ -191,13 +191,37 @@ if (bushido){
   }
 };
 
+
 class PostData {
-  constructor(title, type, des, thumb_src, source_url, isVideo) {
-    this.title = titel;
-    this.type = type;
+  constructor(title, des, type, imageType, imgUrl, extras) {
+    this.title = title;
     this.des = des;
-    this.thumb_src = thumb_src;
-    this.source_url = source_url;
-    this.isVideo = isVideo;
+    this.type = type;
+    this.imageType = imageType;
+    this.imgUrl = imgUrl;
+    this.extras = extras;
+    this.id =
+      "POST_" +
+      type +
+      "_" +
+      Math.floor(Math.random() * 99999) +
+      "__" +
+      Math.floor(Math.random() * 99999);
+    this.date = new Date();
+  }
+
+  export() {
+    var obj = {
+      title: this.title,
+      des: this.des,
+      type: this.type,
+      imageType: this.imageType,
+      imgUrl: this.imgUrl,
+      extras: this.extras,
+      id: this.id,
+      date: this.date.toString(),
+    };
+
+    return obj;
   }
 }

@@ -244,6 +244,23 @@ body {
   margin-right: 3px;
 }
 
+@media screen and (min-width: 1550px) {
+  .body {
+    position: relative;
+    padding-top: 20px;
+    padding-bottom: 120px;
+    overflow-y: scroll;
+    width: 66%;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 10px);
+  }
+
+  .chat-bubble {
+    min-width: 19vw;
+}
+}
+
 @media screen and (min-width: 650px) {
   .chat-container {
     width: 400px;
@@ -255,6 +272,17 @@ body {
   }
 
   .chat-bubble {
-    min-width: 30vw;
+    min-width: 22vw;
+}
+
+  .body {
+    position: relative;
+    padding-top: 20px;
+    padding-bottom: 120px;
+    overflow-y: scroll;
+    width: 66%;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 10px);
   }
 }

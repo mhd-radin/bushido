@@ -13,11 +13,10 @@ function pageonload() {
     eva.replace();
   }
 
-  document.querySelectorAll("*").forEach(function(elem) {
-    elem.onerror = handleError;
-  });
+  // document.querySelectorAll("*").forEach(function(elem) {
+  //   elem.onerror = handleError;
+  // });
   document.documentElement.style.setProperty("--animation-state", "running");
-
 }
 
 document.body.onload = pageonload;
@@ -47,12 +46,12 @@ const observer = new IntersectionObserver(
       } else {
         // Remove animation if needed when the element goes out of view
         entry.target.classList.remove("animate");
-        entry.target.classList.remove("animate-lite")
+        entry.target.classList.remove("animate-lite");
       }
     });
-  }, { threshold: 0.1 }
+  },
+  { threshold: 0.1 }
 );
-
 
 const microObserver = new IntersectionObserver(
   (entries) => {
@@ -67,15 +66,15 @@ const microObserver = new IntersectionObserver(
       } else {
         // Remove animation if needed when the element goes out of view
         entry.target.classList.remove("animate");
-        entry.target.classList.remove("animate-lite")
+        entry.target.classList.remove("animate-lite");
       }
     });
-  }, { threshold: 0.3 }
+  },
+  { threshold: 0.3 }
 );
 
-
 const app = {
-  fisrt_time: localStorage.getItem('first_time'),
+  fisrt_time: localStorage.getItem("first_time"),
   version: 1.0,
   lettersToElem(elem) {
     elem.innerHTML = elem.innerHTML.replace(
@@ -85,7 +84,7 @@ const app = {
     return elem;
   },
   wordsToElem(elem) {
-    elem.innerHTML = elem.innerHTML.replace(/\b\w+\b/g, function(match) {
+    elem.innerHTML = elem.innerHTML.replace(/\b\w+\b/g, function (match) {
       return `<span class="word">${match}</span>`;
     });
     return elem;
@@ -125,7 +124,7 @@ const app = {
   redirectWithPreloader(path) {
     if (spinner) {
       spinner.showPreloader();
-      setTimeout(function() {
+      setTimeout(function () {
         window.location.href = path;
       }, 800);
     } else {
@@ -149,14 +148,14 @@ const app = {
   // Set a cookie
   setCookie(name, value, minutes) {
     let date = new Date();
-    date.setTime(date.getTime() + (minutes * 60 * 1000)); // Expiry in minutes
+    date.setTime(date.getTime() + minutes * 60 * 1000); // Expiry in minutes
     let expires = "expires=" + date.toUTCString();
     document.cookie = name + "=" + value + ";" + expires + ";path=/";
   },
   getCookie(name) {
     let cname = name + "=";
     let decodedCookie = decodeURIComponent(document.cookie);
-    let cookieArray = decodedCookie.split(';');
+    let cookieArray = decodedCookie.split(";");
     for (let i = 0; i < cookieArray.length; i++) {
       let cookie = cookieArray[i].trim();
       if (cookie.indexOf(cname) === 0) {
@@ -176,33 +175,40 @@ const app = {
 
       app
         .getData("user", "about-user", "userUrl")
-        .then(function(data) {
+        .then(function (data) {
           app.clientID = data.id;
-          if (app.getCookie('user') === '' || app.getCookie('user') === null) {
+          if (app.getCookie("user") === "" || app.getCookie("user") === null) {
             if (typeof bushido != "undefined" && navigator.onLine) {
               bushido
-                .get("accounts", '' + data.id)
-                .then(function(user) {
+                .get("accounts", "" + data.id)
+                .then(function (user) {
                   if (user.exists()) {
                     var userData = user.data();
-                    app.saveData('user', 'about-user', userData, 'userUrl').then(() => {
-                      app.setCookie('user', 'true', (60 * 6));
-                      resolve(userData);
-                    })
+                    app
+                      .saveData("user", "about-user", userData, "userUrl")
+                      .then(() => {
+                        app.setCookie("user", "true", 60 * 6);
+                        resolve(userData);
+                      });
                   } else {
-                    modal.alert('Account Not Available', "We couldn't find the account you are looking for. It may have been removed or banned. Click here to go back to the login page.").then(function() {
-                      handleReject()
-                    })
+                    modal
+                      .alert(
+                        "Account Not Available",
+                        "We couldn't find the account you are looking for. It may have been removed or banned. Click here to go back to the login page."
+                      )
+                      .then(function () {
+                        handleReject();
+                      });
                   }
                 })
-                .catch(function(err) {
+                .catch(function (err) {
                   console.log(err);
                 });
             } else {
               resolve(data);
             }
           } else {
-            resolve(data)
+            resolve(data);
           }
         })
         .catch(handleReject);
@@ -211,7 +217,7 @@ const app = {
   saveData(db, key, data, saveKey, enc = true) {
     return new Promise((resolve, reject) => {
       if ("caches" in window) {
-        caches.open(db).then(function(cache) {
+        caches.open(db).then(function (cache) {
           cache
             .put(
               key,
@@ -223,7 +229,7 @@ const app = {
               reject(err);
             })
             .then(() => {
-              cache.keys(key).then(function(t) {
+              cache.keys(key).then(function (t) {
                 localStorage.setItem(saveKey, t[0].url);
                 resolve();
               });
@@ -247,7 +253,7 @@ const app = {
             .then((cache) => {
               cache
                 .match(localStorage.getItem(saveKey))
-                .then(function(res) {
+                .then(function (res) {
                   if (res) {
                     res
                       .json()
@@ -293,7 +299,7 @@ const themeManager = {
     "classic-theme",
     "dark-theme",
     "greenleaf-theme",
-    "light-theme"
+    "light-theme",
   ],
   setTheme(theme) {
     this.resetTheme();
@@ -330,58 +336,58 @@ window.onerror = handleError;
 
 const iconManager = {
   lucideDictionary: {
-    home: 'house',
-    person: 'user-pen',
-    'color-palette': 'palette',
-    email: 'mail',
-    'person-delete': 'user-round-x',
-    'pin': 'map-pin-house',
-    cube: 'weight',
-    'person-add': 'user-round',
-    'checkmark': 'check',
-    'paper-plane': 'send',
-    'close': 'x',
-    'arrow-right': 'play',
+    home: "house",
+    person: "user-pen",
+    "color-palette": "palette",
+    email: "mail",
+    "person-delete": "user-round-x",
+    pin: "map-pin-house",
+    cube: "weight",
+    "person-add": "user-round",
+    checkmark: "check",
+    "paper-plane": "send",
+    close: "x",
+    "arrow-right": "play",
     use(iconKey) {
       if (this[iconKey]) {
         return this[iconKey];
       } else {
-        return iconKey
+        return iconKey;
       }
     },
   },
   initLucideIcons() {
     return new Promise((resolve, reject) => {
-      var script = document.createElement('script');
-      script.src = 'https://unpkg.com/lucide@latest';
-      script.onload = function() {
-        resolve()
-      }
-      document.body.appendChild(script)
-    })
+      var script = document.createElement("script");
+      script.src = "https://unpkg.com/lucide@latest";
+      script.onload = function () {
+        resolve();
+      };
+      document.body.appendChild(script);
+    });
   },
   useLucide() {
-    this.initLucideIcons().then(function() {
-      document.querySelectorAll('.eva').forEach(function(elem) {
-        elem.classList.remove('eva');
-        var evaCls = ''
-        elem.classList.forEach(function(cls) {
-          if (cls.includes('eva')) {
+    this.initLucideIcons().then(function () {
+      document.querySelectorAll(".eva").forEach(function (elem) {
+        elem.classList.remove("eva");
+        var evaCls = "";
+        elem.classList.forEach(function (cls) {
+          if (cls.includes("eva")) {
             evaCls = cls;
             elem.classList.remove(cls);
           }
-        })
+        });
 
-        var iconKey = evaCls.replace('eva-', '');
-        iconKey = iconKey.replace('-outline', '');
-        elem.dataset.lucide = iconManager.lucideDictionary.use(iconKey)
-        elem.classList.add('eva')
-      })
+        var iconKey = evaCls.replace("eva-", "");
+        iconKey = iconKey.replace("-outline", "");
+        elem.dataset.lucide = iconManager.lucideDictionary.use(iconKey);
+        elem.classList.add("eva");
+      });
 
-      lucide.createIcons()
-    })
-  }
-}
+      lucide.createIcons();
+    });
+  },
+};
 
 /* cache 
 if ("caches" in window){
@@ -392,38 +398,77 @@ if ("caches" in window){
 }
 */
 
-if (!localStorage.getItem('first_time')) {
-  localStorage.setItem('first_time', true)
+if (!localStorage.getItem("first_time")) {
+  localStorage.setItem("first_time", true);
 }
 
 function updateApplicationServer(version = app.version) {
-  bushido.set('application/latest', {
+  bushido.set("application/latest", {
     version,
     updatedOn: new Date(),
-  })
+  });
 }
 
 function checkApplicationData() {
-  bushido.get('application', 'latest').then(function(snapshot) {
+  bushido.get("application", "latest").then(function (snapshot) {
     var data = snapshot.data();
     if (data.version > app.version) {
-      modal.alert('Update Now!', 'Exciting new features and improvements are just a tap away! Update your app now to access the latest updates and enhance your experience!. V' + data.version);
+      modal.alert(
+        "Update Now!",
+        "Exciting new features and improvements are just a tap away! Update your app now to access the latest updates and enhance your experience!. V" +
+          data.version
+      );
     }
-  })
+  });
 }
 
-if (typeof bushido != 'undefined') {
+if (typeof bushido != "undefined") {
   checkApplicationData();
 }
 
 var useNetAlert = true;
-setInterval(function() {
-  if (typeof modal != 'undefined' && modal.alert && navigator.onLine === false && useNetAlert === true) {
-    modal.alert('Network Disconnected', 'No network found. internet connection change detected. check your internet connection')
+let isOnline = true;
+function netAlertify() {
+  if (
+    (typeof modal != "undefined" &&
+      modal.alert &&
+      navigator.onLine === false &&
+      useNetAlert === true) ||
+    (typeof modal != "undefined" &&
+      modal.alert &&
+      isOnline === false &&
+      useNetAlert === true)
+  ) {
+    modal.alert(
+      "Network Disconnected",
+      "No network found. internet connection change detected. check your internet connection"
+    );
     useNetAlert = false;
+    isOnline = false;
   }
 
-  if (navigator.onLine === true && useNetAlert === false) {
+  if (
+    (navigator.onLine === true && useNetAlert === false) ||
+    (isOnline === true && useNetAlert === false)
+  ) {
     useNetAlert = true;
+    isOnline = true;
   }
-}, 2500)
+}
+setInterval(netAlertify, 2500);
+
+window.addEventListener(
+  "online",
+  function (e) {
+    isOnline = true;
+  },
+  false
+);
+
+window.addEventListener(
+  "offline",
+  function (e) {
+    isOnline = false;
+  },
+  false
+);

@@ -1,14 +1,9 @@
 const createSlide = document.getElementById("createSlide");
-const createSlideInputElems = [
-  document.getElementById("createTitle"),
-  document.getElementById("createDes"),
-  document.getElementById("createImgUrl"),
-  document.getElementById("createImgFile"),
-  document.getElementById("createSubmit"),
-];
 
 const createPostTypeOpt = document.getElementById("createPostType");
 const createImgOpt = document.getElementById("createImgOpt");
+const createSubmit = document.getElementById("createSubmit");
+const thumbImagePreview = document.getElementById("thumbImagePreview");
 
 const createThumbnailSection = document.getElementById(
   "createThumbnailSection"
@@ -53,3 +48,104 @@ function updateCreateInputUI() {
 createPostTypeOpt.onchange = updatePostInputUI;
 createImgOpt.onchange = updateCreateInputUI;
 updatePostInputUI();
+
+
+createSubmit.addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  var title = document.getElementById("createTitle");
+  var des = document.getElementById("createDes");
+  var type = document.getElementById("createPostType").value;
+  var imgType = document.getElementById("createImgOpt").value;
+  var thumbUrl = document.getElementById("createImgUrl");
+  var thumbFile = document.getElementById("createImgFile");
+
+  function createPostOnServer(postData) {
+    modal.alert("Creating new post", (divId, buttonId) => {
+      setTimeout(function () {
+        document.getElementById(buttonId).style.display = "none";
+      }, 50);
+
+      bushido
+        .set("posts/" + postData.id, postData.export())
+        .then(function () {
+          document.getElementById(buttonId).click();
+          modal.alert("New post created successfully", "");
+        })
+        .catch(function (err) {
+          document.getElementById(buttonId).click();
+          modal.alert(
+            "Error Creating Post",
+            "faild creating post. chech your internet connection and retry. <br /><br/> ERROR: " +
+              err
+          );
+        });
+    });
+  }
+
+  if (type == "postThumb" || type == "event") {
+    if (imgType == "upload") {
+      modal.alert("Uploading Thumbnail...", (divId, buttonId) => {
+        setTimeout(function () {
+          document.getElementById(buttonId).style.display = "none";
+        }, 50);
+
+        var file = thumbFile.files[0];
+        var reader = new FileReader();
+        reader.onload = function () {
+          var url = reader.result;
+          var fileName = "Thumbnail_" + Math.floor(Math.random() * 99999);
+          bushido
+            .set("base64/" + fileName, {
+              url,
+              type: file.type,
+              date: new Date(),
+              name: fileName,
+            })
+            .then(function () {
+              document.getElementById(buttonId).click();
+              var postData = new PostData(
+                title.value,
+                des.value,
+                type,
+                "file",
+                fileName,
+                {}
+              );
+              createPostOnServer(postData);
+            })
+            .catch(function (err) {
+              document.getElementById(buttonId).click();
+              modal.alert(
+                "Error Uploading File",
+                "faild to upload file. chech your internet connection and retry. <br /><br/> ERROR: " +
+                  err
+              );
+            });
+        };
+        reader.readAsDataURL(file);
+        return '<center><img src="../../assets/spinner/ring-resize.svg" class="svg-mini-loader loader-x2"></img></center>';
+      });
+    } else {
+      var postData = new PostData(
+        title.value,
+        des.value,
+        type,
+        "url",
+        thumbUrl.value,
+        {}
+      );
+      createPostOnServer(postData);
+    }
+  } else {
+    var postData = new PostData(title.value, des.value, type, "url", false, {});
+    createPostOnServer(postData);
+  }
+});
+
+function updateThumbImagePreview() {
+  thumbImagePreview.src = document.getElementById("createImgUrl").value;
+}
+
+document.getElementById("createImgUrl").onchange = updateThumbImagePreview;
+document.getElementById("createImgUrl").onkeyup = updateThumbImagePreview;

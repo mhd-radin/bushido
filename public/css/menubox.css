@@ -85,16 +85,15 @@
   .menubox {
     position: fixed;
     left: 50%;
-    bottom: 3px;
-    background: var(--sec-bg);
+    bottom: -17px;
+    background: var(--third-bg);
     width: 400px;
-    margin-bottom: 3px;
-    padding: 7px 7px;
+    margin-bottom: 0px;
+    padding: 7px 0px;
     border-radius: 80px;
     transform: translate(-50%, -50%);
     justify-content: center;
     align-items: center;
-    overflow-x: scroll;
   }
 
   .menu-item {
@@ -105,5 +104,4 @@
   .menu-item.preview {
     /* margin: 5px; */
   }
-  
 }

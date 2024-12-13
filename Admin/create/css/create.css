@@ -22,12 +22,17 @@ body {
   padding-top: 20px;
   position: relative;
   width: 60%;
-  
-  
+
   padding-bottom: 120px;
   overflow-y: scroll;
 }
 
+.input-section {
+  padding: 14px;
+  margin: 21px;
+  background: var(--sec-bg);
+  border-radius: 10px;
+}
 
 .slide {
   display: none;

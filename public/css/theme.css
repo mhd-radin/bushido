@@ -1,10 +1,10 @@
 .dark-theme {
-  --theme-color: #BB86FC;
-  --sec-theme-color: #6D03DA;
-  --theme-color-alpha: #BB86FC;
+  --theme-color: #bb86fc;
+  --sec-theme-color: #6d03da;
+  --theme-color-alpha: #bb86fc;
   --apt-color: #121212;
   --color: #ffffff;
-  --sec-color: #BCBCBC;
+  --sec-color: #bcbcbc;
   --bg: #1c1c1c;
   --sec-bg: #121212;
   --apt-sec-color: #e0e0e0;
@@ -13,7 +13,7 @@
   --border-color: #ccc;
   --spinner-one: #db3737;
   --spinner-two: #e87e48;
-  --shadow: #2E2E2E;
+  --shadow: #2e2e2e;
   /* other properties */
   --border-radius: 10px;
   --circle-radius: 50%;
@@ -22,11 +22,11 @@
   --border-radius-sm: 5px;
   --border-radius-md: 15px;
 
-  --spinner-one: #FDFCFF;
+  --spinner-one: #fdfcff;
 
-  --nav-bg: #2C3E50;
+  --nav-bg: #2c3e50;
   --menu-bg: var(--sec-bg);
-  --apt-nav-color: #FFF4F4;
+  --apt-nav-color: #fff4f4;
   --apt-menu-color: var(--apt-sec-color);
 }
 
@@ -45,7 +45,7 @@
   --border-color: #474c53;
   --spinner-one: #f74545;
   --spinner-two: #e8ae48;
-  --shadow: #1B1E22;
+  --shadow: #1b1e22;
 
   --nav-bg: var(--third-bg);
   --menu-bg: var(--third-bg);
@@ -54,21 +54,21 @@
 }
 
 .redhouse-theme {
-  --theme-color: #B22222;
-  --sec-theme-color: #DAA520;
-  --theme-color-alpha: #B22222;
-  --apt-color: #F5E1B8;
-  --color: #FFDAB9;
+  --theme-color: #b22222;
+  --sec-theme-color: #daa520;
+  --theme-color-alpha: #b22222;
+  --apt-color: #f5e1b8;
+  --color: #ffdab9;
   --sec-color: #747474;
-  --bg: #3C2B2B;
-  --sec-bg: #2B1B1B;
-  --apt-sec-color: #F5E1B8;
-  --apt-third-color: #FFCC99;
-  --third-bg: #442F2F;
+  --bg: #3c2b2b;
+  --sec-bg: #2b1b1b;
+  --apt-sec-color: #f5e1b8;
+  --apt-third-color: #ffcc99;
+  --third-bg: #442f2f;
   --border-color: #ccc;
   --spinner-one: #db3737;
   --spinner-two: #e87e48;
-  --shadow: #1B1E22;
+  --shadow: #1b1e22;
   /* other properties */
   --border-radius: 10px;
   --circle-radius: 50%;
@@ -84,40 +84,40 @@
 
   /* spinner loader colors */
   --spinner-one: var(--theme-color);
-  --spinner-two: var(--sec-theme-color)
+  --spinner-two: var(--sec-theme-color);
 }
 
 .greenleaf-theme {
   /* Primary Theme Colors */
-  --theme-color: #28A745;
+  --theme-color: #28a745;
   /* Standard green */
   --sec-theme-color: #218838;
   /* Darker green */
   --theme-color-alpha: rgba(40, 167, 69, 0.8);
   /* Green with transparency */
-  --apt-color: #3D704D;
+  --apt-color: #3d704d;
   /* Lighter green for content */
-  --color: #FFFFFF;
+  --color: #ffffff;
   /* White for text */
-  --sec-color: #6C757D;
+  --sec-color: #6c757d;
   /* Gray for secondary elements */
-  --bg: #1C2F21;
+  --bg: #1c2f21;
   /* Dark green background */
-  --sec-bg: #283C30;
+  --sec-bg: #283c30;
   /* Even darker green for secondary background */
-  --apt-sec-color: #4A8F65;
+  --apt-sec-color: #4a8f65;
   /* Lighter dark green for secondary content */
-  --apt-third-color: #66B489;
+  --apt-third-color: #66b489;
   /* Softer green for tertiary elements */
-  --third-bg: #2B4D35;
+  --third-bg: #2b4d35;
   /* Darker green background for specific elements */
-  --border-color: #CCCCCC;
+  --border-color: #cccccc;
   /* Light gray for borders */
   --shadow: rgba(0, 0, 0, 0.1);
   /* Light shadow */
 
   /* Spinner Loader Colors */
-  --spinner-one: #28A745;
+  --spinner-one: #28a745;
   /* Standard green */
   --spinner-two: #218838;
   /* Darker green */
@@ -131,13 +131,13 @@
   --border-radius-md: 12px;
 
   /* Navbar and Menu Box Styling */
-  --nav-bg: #34495E;
+  --nav-bg: #34495e;
   /* Slate gray-blue for navbar */
-  --menu-bg: #2C3E50;
+  --menu-bg: #2c3e50;
   /* Dark blue-gray for menu */
-  --apt-nav-color: #4A8F65;
+  --apt-nav-color: #4a8f65;
   /* Lighter green for active menu items */
-  --apt-menu-color: #FFFFFF;
+  --apt-menu-color: #ffffff;
   /* White for regular menu items */
 
   /* Spinner Loader */
@@ -148,20 +148,20 @@
 }
 
 .darkmoon-theme {
-  --theme-color: #663499;
-  --sec-theme-color: #FFA02D;
-  --theme-color-alpha: #4B2B7D;
+  --theme-color: #45c596;
+  --sec-theme-color: #26986f;
+  --theme-color-alpha: #147753;
   --apt-color: #000;
-  --color: #EEE4E4;
+  --color: #eee4e4;
   --sec-color: #ccbbbb;
-  --bg: #1E2122;
-  --sec-bg: #2B2E2E;
+  --bg: #1e2122;
+  --sec-bg: #2b2e2e;
   --apt-sec-color: #f4ecec;
-  --apt-third-color: #FBF7F7;
-  --third-bg: #0E0F12;
+  --apt-third-color: #fbf7f7;
+  --third-bg: #0e0f12;
   --border-color: #474c53;
-  --spinner-one: #FF3F3F;
-  --spinner-two: #FFA02D;
+  --spinner-one: #ff3f3f;
+  --spinner-two: #ffa02d;
   --shadow: #1b1e22;
 
   --border-radius: 10px;
@@ -170,7 +170,7 @@
   --zero-radius: 10px;
   --border-radius-sm: 5px;
   --border-radius-md: 15px;
-  
+
   --nav-bg: var(--third-bg);
   --menu-bg: var(--third-bg);
   --apt-nav-color: var(--apt-third-color);
@@ -178,27 +178,27 @@
 }
 
 .classic-theme {
-  --theme-color: #398BB2;
-  --sec-theme-color: #163F5F;
-  --theme-color-alpha: #398BB2;
-  --apt-color: #FFFFFF;
+  --theme-color: #398bb2;
+  --sec-theme-color: #163f5f;
+  --theme-color-alpha: #398bb2;
+  --apt-color: #ffffff;
   --color: #212121;
   --sec-color: #242323;
-  --bg: #E7F4FF;
-  --sec-bg: #FFFFFF;
-  --apt-sec-color: #1D1D1D;
+  --bg: #e7f4ff;
+  --sec-bg: #ffffff;
+  --apt-sec-color: #1d1d1d;
   --apt-third-color: #272727;
-  --third-bg: #D9F0FF;
-  --border-color: #474C53;
-  --spinner-one: #FF2222;
-  --spinner-two: #FFFFFF;
-  --shadow: #1B1E2250;
- 
- --border-radius: 0px;
- --border-radius-md: 0;
- --border-radius-sm: 0;
- --curved-radius: 0;
- --zero-radius: 0;
+  --third-bg: #d9f0ff;
+  --border-color: #474c53;
+  --spinner-one: #ff2222;
+  --spinner-two: #ffffff;
+  --shadow: #1b1e2250;
+
+  --border-radius: 0px;
+  --border-radius-md: 0;
+  --border-radius-sm: 0;
+  --curved-radius: 0;
+  --zero-radius: 0;
 }
 
 .classic-theme .menubox,

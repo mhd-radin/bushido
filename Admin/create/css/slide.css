@@ -42,9 +42,7 @@
   border-radius: 8px;
   resize: vertical;
   width: 90%;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
+  color: var(--color);
   background: var(--third-bg);
 }
 

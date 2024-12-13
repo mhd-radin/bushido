@@ -1,0 +1,32 @@
+--theme-color: #0d47a1; /* Dark blue primary color */
+--sec-theme-color: #1976d2; /* Dark blue secondary color */
+--theme-color-alpha: #0d47a1; /* Alpha version of the primary color */
+--apt-color: #e3f2fd; /* Light blue for accent color */
+--color: #bbdefb; /* Lighter blue for general text or elements */
+--sec-color: #747474; /* Neutral grey for secondary text or elements */
+--bg: #1a1a1a; /* Dark background */
+--sec-bg: #121212; /* Slightly lighter dark background */
+--apt-sec-color: #e3f2fd; /* Light blue for accent secondary color */
+--apt-third-color: #81d4fa; /* Lighter blue for accent tertiary color */
+--third-bg: #2a2a2a; /* Slightly lighter dark background for tertiary elements */
+--border-color: #424242; /* Dark grey for borders */
+--spinner-one: #1565c0; /* Dark blue spinner color one */
+--spinner-two: #1e88e5; /* Dark blue spinner color two */
+--shadow: #1b1e22; /* Shadow color */
+
+
+--theme-color: #2e7d32; /* Dark green primary color */
+--sec-theme-color: #4caf50; /* Medium green secondary color */
+--theme-color-alpha: #2e7d32; /* Alpha version of the primary color */
+--apt-color: #e8f5e9; /* Light green for accent color */
+--color: #c8e6c9; /* Lighter green for general text or elements */
+--sec-color: #747474; /* Neutral grey for secondary text or elements */
+--bg: #1a1a1a; /* Dark background */
+--sec-bg: #121212; /* Slightly lighter dark background */
+--apt-sec-color: #e8f5e9; /* Light green for accent secondary color */
+--apt-third-color: #a5d6a7; /* Lighter green for accent tertiary color */
+--third-bg: #2a2a2a; /* Slightly lighter dark background for tertiary elements */
+--border-color: #424242; /* Dark grey for borders */
+--spinner-one: #388e3c; /* Dark green spinner color one */
+--spinner-two: #66bb6a; /* Medium green spinner color two */
+--shadow: #1b1e22; /* Shadow color */

@@ -208,6 +208,8 @@ class PostData {
       "__" +
       Math.floor(Math.random() * 99999);
     this.date = new Date();
+    this.likes = 0;
+    this.shares = 0;
   }
 
   export() {

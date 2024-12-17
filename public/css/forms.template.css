@@ -26,7 +26,7 @@ nav {
 }
 
 .reg-body p {
-  color: var(--theme-color);
+  color: var(--sec-color);
   font-family: "Rubik";
   -webkit-animation: fadeInUp 500ms 1;
   -o-animation: fadeInUp 500ms 1;
@@ -90,7 +90,7 @@ nav {
 .input-icon {
   padding: 3px;
   border: 0px solid transparent;
-  border-bottom: 0px  solid var(--border-color);
+  border-bottom: 0px solid var(--border-color);
   margin-left: 0;
   margin: 3px;
   margin-right: 1px;
@@ -144,7 +144,7 @@ nav {
   padding: 8px 8px;
   border-radius: var(--border-radius-sm);
   border: 0px solid transparent;
-  border-bottom: 0px  solid var(--border-color);
+  border-bottom: 0px solid var(--border-color);
   outline: none;
   background: var(--bg);
   font-weight: 600;
@@ -200,6 +200,12 @@ nav {
   animation-play-state: paused;
 }
 
+
+.subtitle {
+  color: var(--theme-color-alpha);
+  font-size: 13px;
+}
+
 @media screen and (min-width: 650px) {
   .reg-body {
     width: 60%;
@@ -231,11 +237,11 @@ nav {
 
   nav {
     justify-content: center;
-    align-items: center; 
+    align-items: center;
     padding-bottom: 3px;
-    margin-bottom: 5px; 
+    margin-bottom: 5px;
   }
-  
+
   .nav-title {
     font-size: 25pt;
   }

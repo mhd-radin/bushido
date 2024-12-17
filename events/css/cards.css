@@ -81,8 +81,10 @@
   margin-top: 10px;
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   justify-content: center;
+  align-items: stretch;
+  position: relative;
 }
 
 .card-button {
@@ -96,6 +98,7 @@
   cursor: pointer;
   transition: 0.2s all;
   padding-right: 7px;
+  width: 33%;
 }
 
 .card-button .eva {
@@ -210,6 +213,7 @@
   font-size: 12px;
   cursor: pointer;
   transition: 0.2s all;
+  color: var(--apt-color);
 }
 
 .note-buttons button .eva {

@@ -88,63 +88,41 @@
 }
 
 .greenleaf-theme {
-  /* Primary Theme Colors */
-  --theme-color: #28a745;
-  /* Standard green */
-  --sec-theme-color: #218838;
-  /* Darker green */
-  --theme-color-alpha: rgba(40, 167, 69, 0.8);
-  /* Green with transparency */
-  --apt-color: #3d704d;
-  /* Lighter green for content */
-  --color: #ffffff;
-  /* White for text */
-  --sec-color: #6c757d;
-  /* Gray for secondary elements */
-  --bg: #1c2f21;
-  /* Dark green background */
-  --sec-bg: #283c30;
-  /* Even darker green for secondary background */
-  --apt-sec-color: #4a8f65;
-  /* Lighter dark green for secondary content */
-  --apt-third-color: #66b489;
-  /* Softer green for tertiary elements */
-  --third-bg: #2b4d35;
-  /* Darker green background for specific elements */
-  --border-color: #cccccc;
-  /* Light gray for borders */
-  --shadow: rgba(0, 0, 0, 0.1);
-  /* Light shadow */
+  --theme-color: #2e7d32;
+  /* Dark green primary color */
+  --sec-theme-color: #4caf50;
+  /* Medium green secondary color */
+  --theme-color-alpha: #2e7d32;
+  /* Alpha version of the primary color */
+  --apt-color: #e8f5e9;
+  /* Light green for accent color */
+  --color: #c8e6c9;
+  /* Lighter green for general text or elements */
+  --sec-color: #747474;
+  /* Neutral grey for secondary text or elements */
+  --bg: #1a1a1a;
+  /* Dark background */
+  --sec-bg: #121212;
+  /* Slightly lighter dark background */
+  --apt-sec-color: #e8f5e9;
+  /* Light green for accent secondary color */
+  --apt-third-color: #a5d6a7;
+  /* Lighter green for accent tertiary color */
+  --third-bg: #2a2a2a;
+  /* Slightly lighter dark background for tertiary elements */
+  --border-color: #424242;
+  /* Dark grey for borders */
+  --spinner-one: #388e3c;
+  /* Dark green spinner color one */
+  --spinner-two: #66bb6a;
+  /* Medium green spinner color two */
+  --shadow: #1b1e22;
+  /* Shadow color */
 
-  /* Spinner Loader Colors */
-  --spinner-one: #28a745;
-  /* Standard green */
-  --spinner-two: #218838;
-  /* Darker green */
-
-  /* Border Radius for Elements */
-  --border-radius: 8px;
-  --circle-radius: 50%;
-  --curved-radius: 25px;
-  --zero-radius: 8px;
-  --border-radius-sm: 4px;
-  --border-radius-md: 12px;
-
-  /* Navbar and Menu Box Styling */
-  --nav-bg: #34495e;
-  /* Slate gray-blue for navbar */
-  --menu-bg: #2c3e50;
-  /* Dark blue-gray for menu */
-  --apt-nav-color: #4a8f65;
-  /* Lighter green for active menu items */
-  --apt-menu-color: #ffffff;
-  /* White for regular menu items */
-
-  /* Spinner Loader */
-  --spinner-one: var(--theme-color);
-  /* Green for spinner */
-  --spinner-two: var(--sec-theme-color);
-  /* Darker green for spinner */
+  --nav-bg: var(--third-bg);
+  --menu-bg: var(--third-bg);
+  --apt-nav-color: var(--apt-third-color);
+  --apt-menu-color: var(--apt-third-color);
 }
 
 .darkmoon-theme {
@@ -199,6 +177,44 @@
   --border-radius-sm: 0;
   --curved-radius: 0;
   --zero-radius: 0;
+}
+
+.darkblue-theme {
+  --theme-color: #0d47a1;
+  /* Dark blue primary color */
+  --sec-theme-color: #1976d2;
+  /* Dark blue secondary color */
+  --theme-color-alpha: #0d47a1;
+  /* Alpha version of the primary color */
+  --apt-color: #e3f2fd;
+  /* Light blue for accent color */
+  --color: #bbdefb;
+  /* Lighter blue for general text or elements */
+  --sec-color: #747474;
+  /* Neutral grey for secondary text or elements */
+  --bg: #1a1a1a;
+  /* Dark background */
+  --sec-bg: #121212;
+  /* Slightly lighter dark background */
+  --apt-sec-color: #e3f2fd;
+  /* Light blue for accent secondary color */
+  --apt-third-color: #81d4fa;
+  /* Lighter blue for accent tertiary color */
+  --third-bg: #2a2a2a;
+  /* Slightly lighter dark background for tertiary elements */
+  --border-color: #424242;
+  /* Dark grey for borders */
+  --spinner-one: #1565c0;
+  /* Dark blue spinner color one */
+  --spinner-two: #1e88e5;
+  /* Dark blue spinner color two */
+  --shadow: #1b1e22;
+  /* Shadow color */
+
+  --nav-bg: var(--third-bg);
+  --menu-bg: var(--third-bg);
+  --apt-nav-color: var(--apt-third-color);
+  --apt-menu-color: var(--apt-third-color);
 }
 
 .classic-theme .menubox,

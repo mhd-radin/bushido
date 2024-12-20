@@ -122,6 +122,7 @@ function handleFloaterClick() {
                           modal.alert(
                             "Select user to send",
                             (divId, buttonId) => {
+                              var userList = {};
                               modalDivId = divId
                               bushido.getCollection('accounts').then(function(snapshot) {
                                 var arr = bushido.toData(snapshot)
@@ -150,8 +151,32 @@ function handleFloaterClick() {
                                     data.email,
                                     'https://api.dicebear.com/9.x/initials/svg?seed=' + data.fullname + '&radius=40',
                                     userboxUI.input(divId + '_INP')).parseElement()[0];
+
+
                                   elem.appendChild(userItemElem);
+                                  var inpEl =
+                                    document.querySelector("#" + divId + "_INP")
+                                  inpEl.onchange = function() {
+                                    if (inpEl.checked) {
+                                      userList[data.email] = data;
+                                    } else {
+                                      delete userList[data.email]
+                                    }
+                                  }
                                 })
+
+                                var saveFn = document.getElementById(buttonId).onclick;
+                                document.getElementById(buttonId).onclick = function() {
+                                  var dataToSend = {
+                                    title: titleInp.value,
+                                    des: desInp.value,
+                                    category: cateInp.value,
+                                    users: userList,
+                                  }
+
+                                  if (typeof onformend == 'function') { onformend(dataToSend) }
+                                  saveFn()
+                                }
                               })
                               return '<center><img src="../../assets/spinner/ring-resize.svg" class="svg-mini-loader loader-x2"></img></center>'
                             },

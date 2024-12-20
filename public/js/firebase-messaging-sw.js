@@ -24,9 +24,6 @@ onBackgroundMessage(messaging, (payload) => {
 
   let notificationTitle = payload.notification.title;
   let notificationOptions = {
-    body: 'hello'
-  };
-  var vb = {
     body: payload.notification.body,
     icon: payload.notification.icon,
   };

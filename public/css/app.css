@@ -36,6 +36,7 @@ a {
   --root-scroll: 0
 }
 
+
 *:hover::-webkit-scrollbar {
   /* -webkit-appearance: none;
   -moz-appearance: none;
@@ -58,6 +59,10 @@ a {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--theme-color);
+}
+
+:root {
+  overflow: hidden;
 }
 
 .font-raleway {

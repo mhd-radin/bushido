@@ -1,10 +1,10 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-app.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js";
 import {
   getMessaging,
-  onMessage,
-} from "https://www.gstatic.com/firebasejs/10.14.0/firebase-messaging.js";
+  onBackgroundMessage,
+} from "https://www.gstatic.com/firebasejs/10.5.0/firebase-messaging-sw.js";
 
-const firebaseConfig = {
+let firebaseConfig = {
   apiKey: "AIzaSyB_y27g51gE8HwwypZsRExzK8f0HsvEZ6U",
   authDomain: "bushido-2024.firebaseapp.com",
   projectId: "bushido-2024",
@@ -14,14 +14,19 @@ const firebaseConfig = {
   measurementId: "G-PLQBR46HXP",
 };
 
-const app = initializeApp(firebaseConfig);
-const messaging = getMessaging(app);
+console.log('......')
 
-onMessage(messaging, (payload) => {
+let app = initializeApp(firebaseConfig);
+let messaging = getMessaging(app);
+
+onBackgroundMessage(messaging, (payload) => {
   console.log("Received background message ", payload);
 
-  const notificationTitle = payload.notification.title;
-  const notificationOptions = {
+  let notificationTitle = payload.notification.title;
+  let notificationOptions = {
+    body: 'hello'
+  };
+  var vb = {
     body: payload.notification.body,
     icon: payload.notification.icon,
   };

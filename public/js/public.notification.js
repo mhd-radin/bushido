@@ -1,10 +1,12 @@
 // Import Firebase SDK from CDN
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-app.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js";
 import {
   getMessaging,
   onMessage,
   getToken,
-} from "https://www.gstatic.com/firebasejs/10.14.0/firebase-messaging.js";
+} from "https://www.gstatic.com/firebasejs/10.5.0/firebase-messaging.js";
+
+
 
 // Your web app's Firebase configuration
 const firebaseConfig = config.firebaseConfig;
@@ -28,11 +30,14 @@ if ("serviceWorker" in navigator) {
       Notification.requestPermission().then((permission) => {
         if (permission === "granted") {
           // Get the token for the current user
-          getToken(messaging, { vapidKey: config.ENC_KEY })
+          getToken(messaging, { vapidKey: config.FCM_KEY, serviceWorkerRegistration: registration })
             .then((currentToken) => {
               if (currentToken) {
                 // Send the token to your server and update the UI if necessary
                 console.log("Token:", currentToken);
+                modal.alert('FCM Token', currentToken);
+                navigator.clipboard.writeText(currentToken);
+                
               } else {
                 // Show permission request UI
                 console.log(

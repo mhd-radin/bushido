@@ -64,6 +64,10 @@
     height: calc(100vh - 114px);
     overflow-y: scroll;
   }
+
+  .notes {
+    overflow: visible;
+  }
 }
 
 @media (min-width: 650px) {

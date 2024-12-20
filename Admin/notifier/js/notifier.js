@@ -170,7 +170,7 @@ function handleFloaterClick() {
                                   var dataToSend = {
                                     title: titleInp.value,
                                     des: desInp.value,
-                                    category: cateInp.value,
+                                    type: cateInp.value,
                                     users: userList,
                                   }
 

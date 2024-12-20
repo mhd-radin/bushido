@@ -37,14 +37,14 @@ document.querySelectorAll(".note-card").forEach(function (elem) {
     elem.querySelector(".note-ripple").style.transform =
       "translate(40px, 40px) rotate(" + rotate * 100 + "deg)";
   }
-  elem.addEventListener("mousemove", handleMoves);
-  elem.addEventListener("touchmove", handleMoves);
+  // elem.addEventListener("mousemove", handleMoves);
+  // elem.addEventListener("touchmove", handleMoves);
 
-  function off() {
-    elem.querySelector(".note-ripple").style.display = "none";
-  }
-  elem.addEventListener("mouseleave", off);
-  elem.addEventListener("touchend", off);
+  // function off() {
+  //   elem.querySelector(".note-ripple").style.display = "none";
+  // }
+  // elem.addEventListener("mouseleave", off);
+  // elem.addEventListener("touchend", off);
 });
 
 function useImageCard(id, title, des, source_url, isVideo) {

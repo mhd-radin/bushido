@@ -225,3 +225,48 @@
 .note-buttons button:hover {
   background: var(--sec-theme-color);
 }
+
+/* actions card */
+
+.action-card {
+  background: var(--sec-bg);
+  color: var(--color);
+  border: 1px solid var(--third-bg);
+}
+
+.actions-container {
+  display: flex;
+  padding: 3px;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.note-action {
+  display: flex;
+  flex-direction: row;
+  background: var(--third-bg);
+  padding: 8px;
+  font-size: 12px;
+  border-radius: 8px;
+  text-align: center;
+  align-items: center;
+  width: calc(50% - 26px);
+  margin: 5px;
+  justify-content: space-evenly;
+}
+
+.note-action:nth-child(1) {
+  background: #1a5cbe;
+}
+
+.note-action:nth-child(2) {
+  background: #1abe43;
+}
+
+.note-action:nth-child(3) {
+  background: #be1a59;
+}
+
+.note-action:nth-child(4) {
+  background: #be251a;
+}

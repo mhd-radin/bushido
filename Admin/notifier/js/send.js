@@ -43,3 +43,36 @@ function onformend(data) {
     }
   )
 }
+
+/* https://accounts.google.com/o/oauth2/v2/auth?
+ scope=https%3A//www.googleapis.com/auth/drive.metadata.readonly%20https%3A//www.googleapis.com/auth/calendar.readonly&
+ include_granted_scopes=true&
+ response_type=token&
+ state=state_parameter_passthrough_value&
+ redirect_uri=https%3A//oauth2.example.com/code&
+ client_id=client_id */
+
+ function getFragmentProperties(url) {
+  // Extract the fragment part after '#'
+  const fragment = url.split('#')[1];
+  if (!fragment) return null;
+
+  // Parse the fragment string into an object
+  return fragment.split('&').reduce((params, pair) => {
+      const [key, value] = pair.split('=');
+      params[decodeURIComponent(key)] = decodeURIComponent(value);
+      return params;
+  }, {});
+}
+
+// Example usage
+const url = "https://oauth2.example.com/callback#access_token=4/P7q7W91&token_type=Bearer&expires_in=3600";
+const properties = getFragmentProperties(url);
+
+console.log(properties);
+// Output:
+// {
+//   access_token: "4/P7q7W91",
+//   token_type: "Bearer",
+//   expires_in: "3600"
+// }

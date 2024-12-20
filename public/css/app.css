@@ -61,10 +61,6 @@ a {
   background: var(--theme-color);
 }
 
-:root {
-  overflow: hidden;
-}
-
 .font-raleway {
   font-family: "Raleway"
 }

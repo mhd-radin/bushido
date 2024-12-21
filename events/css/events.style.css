@@ -66,6 +66,12 @@
   }
 
   .notes {
+    width: calc(100% - 20px);
+    padding: 10px;
+    overflow: visible;
+  }
+
+  .posts, .contents {
     overflow: visible;
   }
 }

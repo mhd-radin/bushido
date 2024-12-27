@@ -11,13 +11,13 @@
   z-index: 999;
   animation: fadeIn 350ms 1;
   background: var(--bg);
-  font-family: "Poppins";
+  font-family: GLOBAL_FF;
   text-align: center;
 }
 
 .preloader p {
   padding: 20px;
-  font-family: "Rubik";
+  font-family: GLOBAL_FF;
   font-size: 14.5px;
 }
 

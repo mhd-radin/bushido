@@ -4,7 +4,7 @@
 }
 
 .reg-body h2 {
-  font-family: "Poppins";
+  font-family: GLOBAL_FF;
   -webkit-animation: fadeInUp 500ms 1;
   -o-animation: fadeInUp 500ms 1;
   animation: fadeInUp 500ms 1;
@@ -18,7 +18,7 @@
 
 .reg-body p {
   color: var(--theme-color);
-  font-family: "Rubik";
+  font-family: GLOBAL_FF;
   -webkit-animation: fadeInUp 500ms 1;
   -o-animation: fadeInUp 500ms 1;
   animation: fadeInUp 500ms 1;

@@ -40,7 +40,7 @@
 }
 
 .modal-title {
-  font-family: "Poppins";
+  font-family: GLOBAL_FF;
   font-size: 18px;
 }
 
@@ -51,7 +51,7 @@
   margin-bottom: 0px;
   position: relative;
   color: var(--sec-color);
-  font-family: "Open Sans", sans-serif;
+  font-family: GLOBAL_FF, GLOBAL_FF;
   border-radius: 8px;
   overflow: scroll;
   display: inline-block;

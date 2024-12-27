@@ -9,7 +9,7 @@
   padding: 5px;
   margin: 5px;
   width: 289px;
-  font-family: "Open Sans";
+  font-family: GLOBAL_FF;
   /* height: max-content; */
   display: flex;
   flex-direction: column;
@@ -71,7 +71,7 @@
 .image-card-subtext {
   margin: 6px;
   font-size: 13px;
-  font-family: "Open Sans";
+  font-family: GLOBAL_FF;
   max-height: calc(18px * 3);
   overflow: hidden;
   color: var(--sec-color);
@@ -180,7 +180,7 @@
 
 .note-title {
   font-size: 17px;
-  font-family: "Poppins";
+  font-family: GLOBAL_FF;
   font-weight: bold;
   margin: 6px;
   color: var(--apt-third-color);
@@ -188,7 +188,7 @@
 
 .note-subtext {
   font-size: 12px;
-  font-family: "Poppins";
+  font-family: GLOBAL_FF;
   margin: 6px;
   margin-bottom: 8px;
   color: var(--sec-color);

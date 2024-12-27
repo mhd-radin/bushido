@@ -1,7 +1,7 @@
 body,
 input,
 textarea {
-  font-family: "Poppins", "Raleway", sans-serif;
+  font-family: GLOBAL_FF, GLOBAL_FF, GLOBAL_FF;
   background: var(--bg);
   color: var(--color);
 }
@@ -61,7 +61,7 @@ a {
 }
 
 .font-raleway {
-  font-family: "Raleway"
+  font-family: GLOBAL_FF
 }
 
 .letter,

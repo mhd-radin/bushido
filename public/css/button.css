@@ -6,7 +6,7 @@ button {
   border: 0px;
   outline: none;
   transition: 200ms;
-  font-family: "Rubik", "Raleway", "Poppins", "sans-serif";
+  font-family: GLOBAL_FF, GLOBAL_FF, GLOBAL_FF, GLOBAL_FF;
 }
 
 button:hover {

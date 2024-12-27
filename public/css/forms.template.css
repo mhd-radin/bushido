@@ -13,7 +13,7 @@ nav {
 }
 
 .reg-body h2 {
-  font-family: GLOBAL_FF;
+  font-family: var(--global-ff);
   -webkit-animation: fadeInUp 500ms 1;
   -o-animation: fadeInUp 500ms 1;
   animation: fadeInUp 500ms 1;
@@ -27,7 +27,7 @@ nav {
 
 .reg-body p {
   color: var(--sec-color);
-  font-family: GLOBAL_FF;
+  font-family: var(--global-ff);
   -webkit-animation: fadeInUp 500ms 1;
   -o-animation: fadeInUp 500ms 1;
   animation: fadeInUp 500ms 1;
@@ -60,7 +60,7 @@ nav {
 
 .input-box label {
   font-size: 13px;
-  font-family: GLOBAL_FF;
+  font-family: var(--global-ff);
   margin-left: 3px;
   -webkit-animation: fadeInUp 500ms 1;
   -o-animation: fadeInUp 500ms 1;

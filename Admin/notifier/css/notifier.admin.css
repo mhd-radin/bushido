@@ -39,7 +39,7 @@
 }
 
 .notify-body {
-  font-family: GLOBAL_FF;
+  font-family: var(--global-ff);
   padding: 6px;
   width: 75%;
 }

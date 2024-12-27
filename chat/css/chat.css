@@ -39,7 +39,7 @@ body {
   background: var(--sec-bg);
   color: var(--apt-sec-color);
   font-size: 13px;
-  font-family: GLOBAL_FF;
+  font-family: var(--global-ff);
   padding: 8px;
   margin: 5px;
   padding-bottom: 18px;
@@ -84,7 +84,7 @@ body {
   margin: 30px;
   margin-top: 10px;
   padding: 3px 14px;
-  font-family: GLOBAL_FF;
+  font-family: var(--global-ff);
   background: var(--third-bg);
   max-width: 45%;
   border-radius: var(--border-radius-sm);
@@ -135,7 +135,7 @@ body {
   border: 3px solid var(--bg);
   background: var(--sec-bg);
   font-size: 11px;
-  font-family: GLOBAL_FF;
+  font-family: var(--global-ff);
   border-radius: 15px;
   padding: 5px 10px;
   color: var(--theme-color);
@@ -146,7 +146,7 @@ body {
 .chat-bubble .info-chat {
   position: absolute;
   font-size: 10px;
-  font-family: GLOBAL_FF;
+  font-family: var(--global-ff);
   color: var(--sec-color);
   bottom: -25px;
 }
@@ -211,7 +211,7 @@ body {
 }
 
 .chatter textarea {
-  font-family: GLOBAL_FF;
+  font-family: var(--global-ff);
   font-size: 14px;
   background: var(--third-bg);
   color: var(--apt-third-color);

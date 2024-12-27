@@ -43,6 +43,20 @@ const inputData = [{
       value: 'classic',
       attr: {}
   }]
+}, {
+  type: 'select',
+  clkId: 'icon',
+  data: [{
+      title: 'Lucide Icons',
+      value: 'lucide',
+      attr: {
+      }
+  },
+    {
+      title: 'Eva Icons',
+      value: 'eva',
+      attr: {}
+  }]
 }]
 
 function InpDataToOptData(inpData) {
@@ -137,7 +151,9 @@ function useInputSelectors(inpData =
 
     switch (item.clkId) {
       case 'theme':
+      case 'icon':
         if (val) {
+          if (item.clkId == 'theme'){
           themeManager.setTheme(val +
             '-theme')
           themeManager
@@ -146,7 +162,20 @@ function useInputSelectors(inpData =
               'theme').querySelector(
               '.opt-subtext')
             .innerHTML =
-            'current theme is ' + val;
+            'current theme is ' + val;}
+           else if (item.clkId == 'icon'){
+             if (val == 'lucide'){
+               localStorage.setItem('useLucide', true);
+             } else {
+               localStorage.removeItem('useLucide');
+             }
+             
+             modal.alert('Refresh required', (id, bid)=>{
+              // document.getElementById('bid').innerHTML = 'Refresh';
+               return 'Refresh to apply icon set. click the button to refresh page'}).then(function () {
+                  location.reload(true)
+               })
+           }
         }
         break;
       case 'password':
@@ -232,7 +261,7 @@ function useInputSelectors(inpData =
           '.opt-subtext')
         .innerHTML = label;
     }
-    console.log(inpData)
+    
     if (itemElem) {
       itemElem.onclick =
     function() {

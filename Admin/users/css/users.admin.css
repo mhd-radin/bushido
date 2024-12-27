@@ -18,7 +18,7 @@
 .display-box {
   background: var(--sec-bg);
   color: var(--apt-sec-color);
-  font-family: GLOBAL_FF;
+  font-family: var(--global-ff);
   padding: 5px;
   padding-left: 8px;
   font-size: 15px;
@@ -75,7 +75,7 @@
 .info-header .info-email {
   color: var(--sec-color);
   font-size: 12px;
-  font-family: GLOBAL_FF;
+  font-family: var(--global-ff);
   font-weight: 550;
 }
 

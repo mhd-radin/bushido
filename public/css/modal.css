@@ -40,7 +40,7 @@
 }
 
 .modal-title {
-  font-family: GLOBAL_FF;
+  font-family: var(--global-ff);
   font-size: 18px;
 }
 
@@ -51,7 +51,7 @@
   margin-bottom: 0px;
   position: relative;
   color: var(--sec-color);
-  font-family: GLOBAL_FF, GLOBAL_FF;
+  font-family: var(--global-ff), var(--global-ff);
   border-radius: 8px;
   overflow: scroll;
   display: inline-block;

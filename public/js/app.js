@@ -389,6 +389,10 @@ const iconManager = {
   },
 };
 
+if (localStorage.getItem('useLucide')){
+  iconManager.useLucide();
+}
+
 /* cache 
 if ("caches" in window){
   navigator.serviceWorker.register('../public/csw.js', 

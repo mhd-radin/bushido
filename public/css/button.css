@@ -6,7 +6,7 @@ button {
   border: 0px;
   outline: none;
   transition: 200ms;
-  font-family: GLOBAL_FF, GLOBAL_FF, GLOBAL_FF, GLOBAL_FF;
+  font-family: var(--global-ff), var(--global-ff), var(--global-ff), var(--global-ff);
 }
 
 button:hover {

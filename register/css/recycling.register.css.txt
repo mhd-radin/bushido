@@ -4,7 +4,7 @@
 }
 
 .reg-body h2 {
-  font-family: GLOBAL_FF;
+  font-family: var(--global-ff);
   -webkit-animation: fadeInUp 500ms 1;
   -o-animation: fadeInUp 500ms 1;
   animation: fadeInUp 500ms 1;
@@ -18,7 +18,7 @@
 
 .reg-body p {
   color: var(--theme-color);
-  font-family: GLOBAL_FF;
+  font-family: var(--global-ff);
   -webkit-animation: fadeInUp 500ms 1;
   -o-animation: fadeInUp 500ms 1;
   animation: fadeInUp 500ms 1;

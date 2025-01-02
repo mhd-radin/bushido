@@ -207,7 +207,7 @@
 /* end of hover animations */
 
 .note-buttons button {
-  background: var(--theme-color);
+  background: var(--sec-theme-color);
   border-radius: var(--border-radius-sm);
   margin: 4px;
   padding: 9px 13px;
@@ -223,5 +223,72 @@
 }
 
 .note-buttons button:hover {
-  background: var(--sec-theme-color);
+  background: var(--theme-color);
+}
+
+/* actions card */
+
+.action-card {
+  background: var(--third-bg);
+  color: var(--color);
+  border: 1px solid var(--shadow);
+}
+
+.action-card .note-title {
+  color: var(--color);
+}
+
+.actions-container {
+  display: flex;
+  padding: 3px;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.note-action {
+  display: flex;
+  flex-direction: row;
+  background: var(--third-bg);
+  padding: 12px;
+  font-size: 12px;
+  border-radius: 8px;
+  text-align: center;
+  align-items: center;
+  width: calc(50% - 34px);
+  margin: 5px;
+  justify-content: space-evenly;
+  color: #fff;
+}
+
+.note-action .eva {
+  font-size: 23px;
+}
+
+.note-action:nth-child(1) {
+  background: #1a5cbe;
+}
+
+.note-action:nth-child(2) {
+  background: #1abe43;
+}
+
+.note-action:nth-child(3) {
+  background: #be1a59;
+}
+
+.note-action:nth-child(4) {
+  background: #be251a;
+}
+
+
+@media screen and (min-width: 650px) {
+  .note-action {
+    width: calc(100% - 10px);
+  }
+}
+
+@media screen and (min-width: 1080px) {
+  .note-action {
+    width: calc(50% - 34px);
+  }
 }

@@ -49,6 +49,15 @@
   color: var(--theme-color);
 }
 
+.notify-head {
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.notify-text {
+  color: var(--sec-color);
+}
+
 @media (max-width: 650px) {
   .body {
     height: calc(100vh - 115px);

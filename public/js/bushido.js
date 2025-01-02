@@ -193,6 +193,24 @@ if (bushido){
       });
     },
   },
+  convertToArray(obj) {
+    if (Array.isArray(obj)) {
+      return obj.map(item => bushido.convertToArray(item));  // Handle arrays
+    } else if (typeof obj === 'object' && obj !== null) {
+      // If the object contains numeric keys, convert it into an array
+      if (Object.keys(obj).every(key => !isNaN(key))) {
+        return Object.values(obj).map(value => bushido.convertToArray(value));
+      } else {
+        // If the object is not an array-like object, recurse into its properties
+        const result = {};
+        for (let key in obj) {
+          result[key] = bushido.convertToArray(obj[key]);
+        }
+        return result;
+      }
+    }
+    return obj;  // Return the value if it's neither an array nor an object
+  }
 };
 
 class PostData {

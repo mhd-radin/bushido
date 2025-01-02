@@ -36,6 +36,7 @@ a {
   --root-scroll: 0
 }
 
+
 *:hover::-webkit-scrollbar {
   /* -webkit-appearance: none;
   -moz-appearance: none;

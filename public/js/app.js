@@ -74,7 +74,7 @@ const microObserver = new IntersectionObserver(
 );
 
 const app = {
-  fisrt_time: localStorage.getItem("first_time"),
+  first_time_log: localStorage.getItem("first_time"),
   version: 1.0,
   lettersToElem(elem) {
     elem.innerHTML = elem.innerHTML.replace(

@@ -49,8 +49,7 @@ const inputData = [{
   data: [{
       title: 'Lucide Icons',
       value: 'lucide',
-      attr: {
-      }
+      attr: {}
   },
     {
       title: 'Eva Icons',
@@ -106,7 +105,7 @@ function useInputSelectors(inpData =
         data) {
         if (app.clientID) {
           if (data[
-            propertyKey] !==
+              propertyKey] !==
             value) {
             data[propertyKey] =
               value;
@@ -125,10 +124,10 @@ function useInputSelectors(inpData =
                     data,
                     'userUrl')
                   .then(
-                () => {
-                    resolve
-                    ()
-                  })
+                    () => {
+                      resolve
+                        ()
+                    })
               }).catch(reject)
           } else {
             resolve()
@@ -153,29 +152,31 @@ function useInputSelectors(inpData =
       case 'theme':
       case 'icon':
         if (val) {
-          if (item.clkId == 'theme'){
-          themeManager.setTheme(val +
-            '-theme')
-          themeManager
-            .storeCurrentTheme()
-          document.getElementById(
-              'theme').querySelector(
-              '.opt-subtext')
-            .innerHTML =
-            'current theme is ' + val;}
-           else if (item.clkId == 'icon'){
-             if (val == 'lucide'){
-               localStorage.setItem('useLucide', true);
-             } else {
-               localStorage.removeItem('useLucide');
-             }
-             
-             modal.alert('Refresh required', (id, bid)=>{
+          if (item.clkId == 'theme') {
+            themeManager.setTheme(val +
+              '-theme')
+            themeManager
+              .storeCurrentTheme()
+            document.getElementById(
+                'theme').querySelector(
+                '.opt-subtext')
+              .innerHTML =
+              'current theme is ' + val;
+          }
+          else if (item.clkId == 'icon') {
+            if (val == 'lucide') {
+              localStorage.setItem('useLucide', true);
+            } else {
+              localStorage.removeItem('useLucide');
+            }
+
+            modal.alert('Refresh required', (id, bid) => {
               // document.getElementById('bid').innerHTML = 'Refresh';
-               return 'Refresh to apply icon set. click the button to refresh page'}).then(function () {
-                  location.reload(true)
-               })
-           }
+              return 'Refresh to apply icon set. click the button to refresh page'
+            }).then(function() {
+              location.reload(true)
+            })
+          }
         }
         break;
       case 'password':
@@ -193,16 +194,16 @@ function useInputSelectors(inpData =
                 .encrypt(
                   enteredPassword,
                   config.ENC_KEY
-                  ).toString()
+                ).toString()
               updateUserProperty
                 (PropertiesDictionary
                   .use(item
                     .clkId),
                   encrypted)
                 .then(
-              function() {})
+                  function() {})
                 .catch((
-                err) => {
+                  err) => {
                   modal.alert(
                     'ERROR CHANGING PASSWORD: ' +
                     err)
@@ -261,82 +262,82 @@ function useInputSelectors(inpData =
           '.opt-subtext')
         .innerHTML = label;
     }
-    
+
     if (itemElem) {
       itemElem.onclick =
-    function() {
-        var title = itemElem
-          .querySelector(
-            '.opt-title')
-          .innerText;
-        if (item.type ===
-          'select') {
-          modal.optionsPicker(
-              InpDataToOptData(
-                item), true,
-              userboxUI.pickerBox(
-                '#(inputId)',
-                '#(title)', '',
-                true), title)
-            .then(function(val) {
-              handleOutput(val,
-                item)
-            })
-        } else {
+        function() {
+          var title = itemElem
+            .querySelector(
+              '.opt-title')
+            .innerText;
           if (item.type ===
-            'password') {
-            app.validUser().then(
-              function(data) {
-                modal.prompt(
-                    'Enter Your Current Password',
-                    '',
-                    'Current Password',
-                    false,
-                    'password')
-                  .then(
-                    function(
-                      enteredPassword
-                      ) {
-                      if (
-                        enteredPassword ===
-                        CryptoJS
-                        .AES
-                        .decrypt(
-                          data
-                          .password,
-                          config
-                          .ENC_KEY
-                          )
-                        .toString(
-                          CryptoJS
-                          .enc
-                          .Utf8)
-                        ) {
-                        handleOutput
-                          (enteredPassword,
-                            item
-                            )
-                      } else {
-                        modal
-                          .alert(
-                            "Password Mismatch",
-                            'Please re-enter your current password to ensure it matches the one we have on record. Make sure to enter it correctly this time. Check for typos and try again!'
-                            )
-                      }
-                    })
+            'select') {
+            modal.optionsPicker(
+                InpDataToOptData(
+                  item), true,
+                userboxUI.pickerBox(
+                  '#(inputId)',
+                  '#(title)', '',
+                  true), title)
+              .then(function(val) {
+                handleOutput(val,
+                  item)
               })
           } else {
-            modal.prompt(title,
-              item.default,
-              title, false, item
-              .type).then(
-              function(val) {
-                handleOutput(
-                  val, item)
-              })
+            if (item.type ===
+              'password') {
+              app.validUser().then(
+                function(data) {
+                  modal.prompt(
+                      'Enter Your Current Password',
+                      '',
+                      'Current Password',
+                      false,
+                      'password')
+                    .then(
+                      function(
+                        enteredPassword
+                      ) {
+                        if (
+                          enteredPassword ===
+                          CryptoJS
+                          .AES
+                          .decrypt(
+                            data
+                            .password,
+                            config
+                            .ENC_KEY
+                          )
+                          .toString(
+                            CryptoJS
+                            .enc
+                            .Utf8)
+                        ) {
+                          handleOutput
+                            (enteredPassword,
+                              item
+                            )
+                        } else {
+                          modal
+                            .alert(
+                              "Password Mismatch",
+                              'Please re-enter your current password to ensure it matches the one we have on record. Make sure to enter it correctly this time. Check for typos and try again!'
+                            )
+                        }
+                      })
+                })
+            } else {
+              modal.prompt(title,
+                item.default,
+                title, false, item
+                .type).then(
+                function(val) {
+                  handleOutput(
+                    val, item)
+                })
+            }
           }
         }
-      }
     }
   })
 }
@@ -451,8 +452,45 @@ app.validUser().then((user) => {
     isTextarea: false
   });
 
-  useInputSelectors()
+  useInputSelectors();
+
+
+  document.getElementById('deleteAcc').onclick = function() {
+    modal.confirm('Delete account permanently', `delete your account (${user.email}) permanently in server that can't be restored. are you sure to delete your account`).then(function(val) {
+      if (val) {
+        var num = Math.floor(Math.random() * 9999);
+        modal.prompt('Delete Account <br><small>to delete your account write </small>"' + num + '" to confirm', '', 'code').then(function(pass) {
+          if (num == pass) {
+            spinner.showPreloader('Deleting...')
+            bushido.set('accounts/' + user.id, {}).then(function() {
+              localStorage.clear();
+              location.reload();
+            })
+          } else {
+            modal.alert('Delete Cancelled!', '')
+          }
+        })
+      }
+    })
+  }
 }).catch(() => {
   app.redirectWithPreloader(
     '../register')
 })
+
+document.getElementById('about').onclick = function() {
+  modal.alert('About Bushido',
+    `Bushido is an outstanding martial arts and boxing club located in Malappuram, Kerala, focused on helping people grow through combat sports. The club is run by a coach who has won national championships and provides top-notch training in Muay Thai, Boxing, Karate, and more.
+<br/><br/>
+The Bushido software, developed by Muhammed Radin, enriches the experience with daily story videos, photos, updates about events, opportunities for community engagement, and a direct chat option with the coach. Aimed at martial arts fans, Bushido blends traditional training principles with modern technology, creating a lively and connected community.`)
+}
+
+
+document.getElementById('logout').onclick = function() {
+  modal.confirm('Logout Account', 'logout current account. are youe sure Logout?').then(function(val) {
+    if (val) {
+      localStorage.clear();
+      location.reload();
+    }
+  })
+}

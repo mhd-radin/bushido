@@ -34,7 +34,7 @@
 }
 
 .notify-body {
-  font-family: "Nunito";
+  font-family: var(--global-ff);
   padding: 6px;
   width: 75%;
 }

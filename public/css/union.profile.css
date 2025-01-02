@@ -40,7 +40,7 @@
 
 .basic-info-item {
   font-size: 13px;
-  font-family: "Open Sans";
+  font-family: var(--global-ff);
   width: 100%;
   margin: 3px;
 }
@@ -48,7 +48,7 @@
 .basic-info-item:first-child {
   font-size: 19px;
   font-weight: 600;
-  font-family: "Poppins", sans-serif, serif;
+  font-family: var(--global-ff), var(--global-ff), serif;
   margin-top: 4px;
   /* border-bottom: 1px solid var(--border-color); */
 }
@@ -65,7 +65,7 @@
 }
 
 .opt-head {
-  font-family: "Exo", "Poppins", sans-serif;
+  font-family: var(--global-ff), var(--global-ff), var(--global-ff);
   font-weight: 600;
   font-size: 20px;
   padding: 5px;
@@ -116,7 +116,7 @@
 .opt-subtext {
   font-size: 13px;
   color: var(--sec-color);
-  font-family: "Nunito";
+  font-family: var(--global-ff);
 }
 
 .opt-right {

@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+
 .reveal-box {
   @apply w-10 h-[2px] absolute hidden top-[0.6rem] left-[calc(50%-2px)] bg-opacity-90 -translate-x-1/2 bg-slate-800;
 }
+

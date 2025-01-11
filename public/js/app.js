@@ -389,7 +389,7 @@ const iconManager = {
   },
 };
 
-if (localStorage.getItem('useLucide')){
+if (localStorage.getItem("useLucide")) {
   iconManager.useLucide();
 }
 
@@ -476,3 +476,13 @@ window.addEventListener(
   },
   false
 );
+
+function loadModule(src, fn) {
+  const script = document.createElement("script");
+  script.src = src;
+  script.type = "module";
+  script.onload = function () {
+    fn();
+  };
+  document.body.appendChild(script)
+}

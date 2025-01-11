@@ -479,7 +479,7 @@ app.validUser().then((user) => {
 })
 
 document.getElementById('about').onclick = function() {
-  modal.alert('About Bushido',
+  modal.alert('About Bushido', 
     `
     <div class="logo-cont"><img src="../assets/logos/bbc_w.png" class='about-logo'/></div>
     

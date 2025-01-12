@@ -138,7 +138,7 @@
   padding: 8px;
   margin: 5px;
   height: max-content;
-  border: 1px solid var(--theme-color);
+  border: 1px solid var(--theme-color-alpha);
   animation: fadeInUp 1s 1;
   animation-play-state: var(--animation-state);
   position: relative;
@@ -184,13 +184,14 @@
   font-weight: bold;
   margin: 6px;
   color: var(--apt-third-color);
+  margin-bottom: 20px;
 }
 
 .note-subtext {
   font-size: 12px;
   font-family: var(--global-ff);
   margin: 6px;
-  margin-bottom: 8px;
+  margin-bottom: 20px;
   color: var(--sec-color);
 }
 
@@ -207,13 +208,14 @@
 /* end of hover animations */
 
 .note-buttons button {
-  background: var(--sec-theme-color);
+  background: var(--theme-color);
   border-radius: var(--border-radius-sm);
   margin: 4px;
   padding: 9px 13px;
   font-size: 12px;
   cursor: pointer;
   transition: 0.2s all;
+  margin-left: 0;
   color: var(--apt-color);
 }
 
@@ -223,7 +225,7 @@
 }
 
 .note-buttons button:hover {
-  background: var(--theme-color);
+  background: var(--sec-theme-color);
 }
 
 /* actions card */

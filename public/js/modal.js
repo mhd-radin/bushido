@@ -267,4 +267,54 @@ const modal = {
       pickDate(selectBy[index])
     })
   },
+  useDropdown(container, options, pos, onclose) {
+    // Create dropdown container
+    const dropdownModal = document.createElement("div");
+    dropdownModal.className = "dropdown-modal";
+
+    // Populate dropdown with options
+    options.forEach((option) => {
+
+      var iconHtml = '';
+
+      if (option.icon) {
+        const itemIcon = document.createElement('i');
+        itemIcon.className = 'eva eva-' + option.icon;
+        iconHtml = itemIcon.outerHTML;
+      }
+
+      const item = document.createElement("a");
+      item.textContent = option.label;
+      item.href = "#";
+      item.innerHTML = '<div>' + item.innerHTML + '</div>'
+      item.innerHTML = iconHtml + item.innerHTML;
+      item.id = option.id || ""; // Optional id
+      item.onclick = (event) => {
+        event.preventDefault(); // Prevent default link behavior
+        option.clickAction(dropdownModal, () => dropdownModal.remove());
+      };
+      dropdownModal.appendChild(item);
+
+
+    });
+
+    if (pos[0]) dropdownModal.style.left = pos[0]
+    if (pos[1]) dropdownModal.style.top = pos[1]
+    if (pos[2]) dropdownModal.style.right = pos[2]
+    if (pos[3]) dropdownModal.style.bottom = pos[3]
+
+    // Append dropdown to container
+    container.style.position = "relative"; // Ensure the container is positioned
+    container.appendChild(dropdownModal);
+
+    // Close dropdown on outside click
+    const handleOutsideClick = (event) => {
+      if (!dropdownModal.contains(event.target) && event.target !== container) {
+        dropdownModal.remove();
+        if (typeof onclose == 'function') onclose();
+        document.removeEventListener("click", handleOutsideClick);
+      }
+    };
+    document.addEventListener("click", handleOutsideClick);
+  }
 }

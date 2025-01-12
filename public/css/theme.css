@@ -1,7 +1,7 @@
 .dark-theme {
   --theme-color: #bb86fc;
   --sec-theme-color: #6d03da;
-  --theme-color-alpha: #bb86fc;
+  --theme-color-alpha: #C99CFF;
   --apt-color: #121212;
   --color: #ffffff;
   --sec-color: #bcbcbc;
@@ -33,7 +33,7 @@
 .blueocean-theme {
   --theme-color: #40b5db;
   --sec-theme-color: #16595f;
-  --theme-color-alpha: #40b5db;
+  --theme-color-alpha: #56D5FE;
   --apt-color: #000;
   --color: #eee4e4;
   --sec-color: #ccbbbb;
@@ -56,7 +56,7 @@
 .redhouse-theme {
   --theme-color: #b22222;
   --sec-theme-color: #daa520;
-  --theme-color-alpha: #b22222;
+  --theme-color-alpha: #E63B3B;
   --apt-color: #f5e1b8;
   --color: #ffdab9;
   --sec-color: #747474;
@@ -92,7 +92,7 @@
   /* Dark green primary color */
   --sec-theme-color: #4caf50;
   /* Medium green secondary color */
-  --theme-color-alpha: #2e7d32;
+  --theme-color-alpha: #4DC153;
   /* Alpha version of the primary color */
   --apt-color: #e8f5e9;
   /* Light green for accent color */
@@ -158,7 +158,7 @@
 .classic-theme {
   --theme-color: #398bb2;
   --sec-theme-color: #163f5f;
-  --theme-color-alpha: #398bb2;
+  --theme-color-alpha: #4FB4E5;
   --apt-color: #ffffff;
   --color: #212121;
   --sec-color: #242323;
@@ -184,7 +184,7 @@
   /* Dark blue primary color */
   --sec-theme-color: #1976d2;
   /* Dark blue secondary color */
-  --theme-color-alpha: #0d47a1;
+  --theme-color-alpha: #1960CE;
   /* Alpha version of the primary color */
   --apt-color: #e3f2fd;
   /* Light blue for accent color */

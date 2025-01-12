@@ -49,8 +49,7 @@ const observer = new IntersectionObserver(
         entry.target.classList.remove("animate-lite");
       }
     });
-  },
-  { threshold: 0.1 }
+  }, { threshold: 0.1 }
 );
 
 const microObserver = new IntersectionObserver(
@@ -69,8 +68,7 @@ const microObserver = new IntersectionObserver(
         entry.target.classList.remove("animate-lite");
       }
     });
-  },
-  { threshold: 0.3 }
+  }, { threshold: 0.3 }
 );
 
 const app = {
@@ -84,7 +82,7 @@ const app = {
     return elem;
   },
   wordsToElem(elem) {
-    elem.innerHTML = elem.innerHTML.replace(/\b\w+\b/g, function (match) {
+    elem.innerHTML = elem.innerHTML.replace(/\b\w+\b/g, function(match) {
       return `<span class="word">${match}</span>`;
     });
     return elem;
@@ -124,7 +122,7 @@ const app = {
   redirectWithPreloader(path) {
     if (spinner) {
       spinner.showPreloader();
-      setTimeout(function () {
+      setTimeout(function() {
         window.location.href = path;
       }, 800);
     } else {
@@ -175,13 +173,13 @@ const app = {
 
       app
         .getData("user", "about-user", "userUrl")
-        .then(function (data) {
+        .then(function(data) {
           app.clientID = data.id;
           if (app.getCookie("user") === "" || app.getCookie("user") === null) {
             if (typeof bushido != "undefined" && navigator.onLine) {
               bushido
                 .get("accounts", "" + data.id)
-                .then(function (user) {
+                .then(function(user) {
                   if (user.exists()) {
                     var userData = user.data();
                     app
@@ -196,12 +194,12 @@ const app = {
                         "Account Not Available",
                         "We couldn't find the account you are looking for. It may have been removed or banned. Click here to go back to the login page."
                       )
-                      .then(function () {
+                      .then(function() {
                         handleReject();
                       });
                   }
                 })
-                .catch(function (err) {
+                .catch(function(err) {
                   console.log(err);
                 });
             } else {
@@ -217,7 +215,7 @@ const app = {
   saveData(db, key, data, saveKey, enc = true) {
     return new Promise((resolve, reject) => {
       if ("caches" in window) {
-        caches.open(db).then(function (cache) {
+        caches.open(db).then(function(cache) {
           cache
             .put(
               key,
@@ -229,7 +227,7 @@ const app = {
               reject(err);
             })
             .then(() => {
-              cache.keys(key).then(function (t) {
+              cache.keys(key).then(function(t) {
                 localStorage.setItem(saveKey, t[0].url);
                 resolve();
               });
@@ -253,7 +251,7 @@ const app = {
             .then((cache) => {
               cache
                 .match(localStorage.getItem(saveKey))
-                .then(function (res) {
+                .then(function(res) {
                   if (res) {
                     res
                       .json()
@@ -360,18 +358,18 @@ const iconManager = {
     return new Promise((resolve, reject) => {
       var script = document.createElement("script");
       script.src = "https://unpkg.com/lucide@latest";
-      script.onload = function () {
+      script.onload = function() {
         resolve();
       };
       document.body.appendChild(script);
     });
   },
   useLucide() {
-    this.initLucideIcons().then(function () {
-      document.querySelectorAll(".eva").forEach(function (elem) {
+    this.initLucideIcons().then(function() {
+      document.querySelectorAll(".eva").forEach(function(elem) {
         elem.classList.remove("eva");
         var evaCls = "";
-        elem.classList.forEach(function (cls) {
+        elem.classList.forEach(function(cls) {
           if (cls.includes("eva")) {
             evaCls = cls;
             elem.classList.remove(cls);
@@ -389,7 +387,7 @@ const iconManager = {
   },
 };
 
-if (localStorage.getItem('useLucide')){
+if (localStorage.getItem('useLucide')) {
   iconManager.useLucide();
 }
 
@@ -414,13 +412,13 @@ function updateApplicationServer(version = app.version) {
 }
 
 function checkApplicationData() {
-  bushido.get("application", "latest").then(function (snapshot) {
+  bushido.get("application", "latest").then(function(snapshot) {
     var data = snapshot.data();
     if (data.version > app.version) {
       modal.alert(
         "Update Now!",
         "Exciting new features and improvements are just a tap away! Update your app now to access the latest updates and enhance your experience!. V" +
-          data.version
+        data.version
       );
     }
   });
@@ -432,6 +430,7 @@ if (typeof bushido != "undefined") {
 
 var useNetAlert = true;
 let isOnline = true;
+
 function netAlertify() {
   if (
     (typeof modal != "undefined" &&
@@ -463,7 +462,7 @@ setInterval(netAlertify, 2500);
 
 window.addEventListener(
   "online",
-  function (e) {
+  function(e) {
     isOnline = true;
   },
   false
@@ -471,8 +470,28 @@ window.addEventListener(
 
 window.addEventListener(
   "offline",
-  function (e) {
+  function(e) {
     isOnline = false;
   },
   false
 );
+
+
+document.body.oncontextmenu =
+  function rightClickBody(e) {
+    e.preventDefault();
+    var x = e.clientX - document.body.getBoundingClientRect().left
+    var y = e.clientY - document.body.getBoundingClientRect().top
+
+    modal.useDropdown(document.body, [{
+      label: 'Refresh',
+      clickAction: () => {
+        document.body.oncontextmenu = rightClickBody;
+        window.location.reload(true)
+      },
+      icon: 'refresh-outline'
+  }], [(x) + "px", y + 'px'], function(param) {
+      document.body.oncontextmenu = rightClickBody;
+    })
+    document.body.oncontextmenu = null;
+  }

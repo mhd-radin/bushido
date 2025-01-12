@@ -291,18 +291,22 @@ const modal = {
       item.id = option.id || ""; // Optional id
       item.onclick = (event) => {
         event.preventDefault(); // Prevent default link behavior
-        option.clickAction(dropdownModal, () => dropdownModal.remove());
+        option.clickAction(dropdownModal, () => {
+          if (typeof onclose == 'function') onclose();
+          dropdownModal.remove()
+        });
       };
       dropdownModal.appendChild(item);
 
 
     });
 
-    if (pos[0]) dropdownModal.style.left = pos[0]
-    if (pos[1]) dropdownModal.style.top = pos[1]
-    if (pos[2]) dropdownModal.style.right = pos[2]
-    if (pos[3]) dropdownModal.style.bottom = pos[3]
-
+    if (pos) {
+      if (pos[0]) dropdownModal.style.left = pos[0]
+      if (pos[1]) dropdownModal.style.top = pos[1]
+      if (pos[2]) dropdownModal.style.right = pos[2]
+      if (pos[3]) dropdownModal.style.bottom = pos[3]
+    }
     // Append dropdown to container
     container.style.position = "relative"; // Ensure the container is positioned
     container.appendChild(dropdownModal);

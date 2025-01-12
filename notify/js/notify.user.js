@@ -76,7 +76,7 @@ app
           baseElem.appendChild(breaker);
         }
         prevDate = title;
-        var msg = createNotificationBox(data.title, data.des, data.type, dayjs(data.date).format("HH:MM"));
+        var msg = createNotificationBox(data.title, data.des, data.type, dayjs(data.date).format("hh:mm"));
         baseElem.appendChild(msg)
       })
     });

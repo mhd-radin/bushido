@@ -68,8 +68,20 @@ body {
   border-radius: var(--border-radius-sm);
   width: calc(100% - 20px);
   display: flex;
+  flex-direction: column;
   overflow-wrap: anywhere;
-  font-weight: 600;
+  font-weight: 400;
+}
+
+.chat-tags {
+  font-size: 13px;
+  position: absolute;
+  padding: 5px;
+  width: 90%;
+  bottom: 100%;
+  box-shadow: 1px 1px 8px var(--shadow);
+  border-radius: 5px;
+  background: var(--sec-bg);
 }
 
 .breaker-layout {

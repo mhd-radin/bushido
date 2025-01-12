@@ -4,8 +4,8 @@
   color: black;
   text-decoration: none;
   transition: background-color 0.2s;
-  background: var(--sec-bg);
-  color: var(--apt-sec-color);
+  background: var(--third-bg);
+  color: var(--apt-third-color);
   border-radius: 8px;
   display: flex !important;
   flex-direction: row;
@@ -36,6 +36,7 @@
   right: 3px;
   border: 1px solid var(--border-color);
   font-size: 14px;
+  animation: ShowPopup 0.5s 1;
   box-shadow: 1px 1px 1000px 500px #1111118C;
 }
 
@@ -43,4 +44,5 @@
   color: var(--theme-color);
   padding: 5px;
   margin: 2px;
+  margin-right: 5px;
 }

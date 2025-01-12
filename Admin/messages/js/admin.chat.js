@@ -39,7 +39,7 @@ class Message {
     return newOne;
   }
 
-  export() {
+  export () {
     return {
       message_id: this.message_id,
       user_id: this.user_id,
@@ -109,23 +109,23 @@ const messenger = {
         var promises = [
           bushido.realtime.set(
             "chat/" + data.id + "/messages/" + msgID,
-            function () {
+            function() {
               return messageModal.export();
             }
           ),
           bushido.realtime.set(
             "chat/" + data.id + "/unseen_messages/" + msgID,
-            function () {
+            function() {
               return messageModal.export();
             }
           ),
           bushido.realtime.set(
             "chat/" + data.id + "/last_message",
-            function () {
+            function() {
               return messageModal.export();
             }
           ),
-          bushido.realtime.set("chat/" + data.id + "/date", function () {
+          bushido.realtime.set("chat/" + data.id + "/date", function() {
             return messageModal.date;
           }),
         ];
@@ -159,11 +159,11 @@ const messenger = {
           var promises = [
             bushido.realtime.set(
               "chat/" + data.id + "/messages/" + msgID,
-              function () {
+              function() {
                 return messageModal;
               }
             ),
-            bushido.realtime.set("chat/" + data.id + "/date", function () {
+            bushido.realtime.set("chat/" + data.id + "/date", function() {
               return messageModal.date;
             }),
           ];
@@ -213,8 +213,7 @@ const messenger = {
           if (
             messenger.is_first_time == true ||
             messenger.message_started == false
-          ) {
-          } else {
+          ) {} else {
             modal.alert(
               "Something went wrong.!",
               "no data found!. check your internet connection"
@@ -227,6 +226,7 @@ const messenger = {
   },
   addMessage() {},
   structure: {
+    menu_enabled: false,
     createBubble(
       username,
       chat_ID,
@@ -257,6 +257,8 @@ const messenger = {
         </a>`
             : ""
         }
+        ${
+              extraData.html ? extraData.html : '' }
           <b>${username}</b>
           <p>${msgText}</p>
           <div class="time" ${
@@ -314,8 +316,8 @@ const messenger = {
           .querySelector(".body")
           .appendChild(
             messenger.structure
-              .createBreaker(dayjs(textDate).fromNow(), id)
-              .parseElement()[0]
+            .createBreaker(dayjs(textDate).fromNow(), id)
+            .parseElement()[0]
           );
       }
     }
@@ -333,7 +335,22 @@ const messenger = {
     messenger.before_send_time = formattedTime;
     messenger.before_send_msg = msg;
   },
+  setExtraData(data){
+    localStorage.setItem(JSON.stringify(data))
+  },
+  getExtraData() {
+    return localStorage.getItem('ext-chat-cli') ? JSON.parse(localStorage.getItem('ext-chat-cli')) : {}
+  },
+  clearExtraData() {
+    document.querySelector('.chat-tags').innerHTML = '';
+    localStorage.removeItem('ext-chat-cli')
+  },
 };
+
+function addLinkedChatUi(htmlEl, replaceById) {
+  if (document.getElementById(replaceById)) document.getElementById(replaceById).remove();
+  document.querySelector('.chat-tags').append(htmlEl)
+}
 
 function handleItemClick(data) {
   messenger.current_user_data = data;
@@ -348,16 +365,16 @@ function handleItemClick(data) {
 
 bushido.realtime.onSet(
   "chat",
-  function (snapshot) {
+  function(snapshot) {
     //var arr = bushido.toData(snapshot)
     var arr = [];
     var obj = snapshot.val();
-    Object.keys(obj).forEach(function (key) {
+    Object.keys(obj).forEach(function(key) {
       arr.push(obj[key]);
     });
     var elem = document.querySelector(".users-list");
     elem.innerHTML = "";
-    arr.forEach(function (item, index) {
+    arr.forEach(function(item, index) {
       var data = item;
       //.data();
 
@@ -367,15 +384,15 @@ bushido.realtime.onSet(
             data.user_name,
             data.email,
             "https://api.dicebear.com/9.x/initials/svg?seed=" +
-              data.user_name +
-              "&radius=40",
+            data.user_name +
+            "&radius=40",
             data.isAdmin == true ? userboxUI.tag("Admin") : ""
           )
           .parseElement()[0];
         elem.appendChild(userItemElem);
 
-        userItemElem.onclick = function () {
-          document.querySelectorAll(".user-box-active").forEach(function (el) {
+        userItemElem.onclick = function() {
+          document.querySelectorAll(".user-box-active").forEach(function(el) {
             el.classList.remove("user-box-active");
           });
           userItemElem.classList.add("user-box-active");
@@ -388,11 +405,11 @@ bushido.realtime.onSet(
   "collection"
 );
 
-document.getElementById("sendBtn").onclick = function () {
+document.getElementById("sendBtn").onclick = function() {
   document.getElementById("sendBtn").disabled = true;
   var inputValue = document.getElementById("chatInp").value;
   if (inputValue && messenger.current_user_data) {
-    messenger.send(inputValue, messenger.current_user_data).then(function () {
+    messenger.send(inputValue, messenger.current_user_data).then(function() {
       document.getElementById("chatInp").value = "";
       document.getElementById("sendBtn").disabled = false;
     });

@@ -6,20 +6,19 @@ function handleItemClick() {
   }
 }
 
-document.querySelectorAll('.option').forEach(function(userItemElem) {
-  userItemElem.onclick = function() {
-    document.querySelectorAll(".user-box-active").forEach(function(el) {
+document.querySelectorAll(".option").forEach(function (userItemElem) {
+  userItemElem.onclick = function () {
+    document.querySelectorAll(".user-box-active").forEach(function (el) {
       if (el.classList) el.classList.remove("user-box-active");
     });
     userItemElem.classList.add("user-box-active");
-    handleItemClick()
-    document.querySelectorAll('.slide').forEach(function(el) {
-      el.style.display = 'none'
-      if (el.classList.contains(userItemElem.id + '-slide')) {
-        el.style.display = 'block'
+    handleItemClick();
+    document.querySelectorAll(".slide").forEach(function (el) {
+      el.style.display = "none";
+      if (el.classList.contains(userItemElem.id + "-slide")) {
+        el.style.display = "block";
       }
-    })
-  }
-})
-
+    });
+  };
+});
 

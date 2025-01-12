@@ -387,8 +387,9 @@ const iconManager = {
   },
 };
 
-if (localStorage.getItem('useLucide')) {
-  iconManager.useLucide();
+if (localStorage.getItem("useLucide")) {
+
+   iconManager.useLucide();
 }
 
 /* cache 
@@ -477,6 +478,7 @@ window.addEventListener(
 );
 
 
+
 document.body.oncontextmenu =
   function rightClickBody(e) {
     e.preventDefault();
@@ -495,3 +497,14 @@ document.body.oncontextmenu =
     })
     document.body.oncontextmenu = null;
   }
+
+function loadModule(src, fn) {
+  const script = document.createElement("script");
+  script.src = src;
+  script.type = "module";
+  script.onload = function () {
+    fn();
+  };
+  document.body.appendChild(script)
+}
+

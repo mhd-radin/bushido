@@ -49,7 +49,6 @@ createPostTypeOpt.onchange = updatePostInputUI;
 createImgOpt.onchange = updateCreateInputUI;
 updatePostInputUI();
 
-
 createSubmit.addEventListener("submit", function (e) {
   e.preventDefault();
 
@@ -91,39 +90,31 @@ createSubmit.addEventListener("submit", function (e) {
         }, 50);
 
         var file = thumbFile.files[0];
-        var reader = new FileReader();
-        reader.onload = function () {
-          var url = reader.result;
-          var fileName = "Thumbnail_" + Math.floor(Math.random() * 99999);
-          bushido
-            .set("base64/" + fileName, {
-              url,
-              type: file.type,
-              date: new Date(),
-              name: fileName,
-            })
-            .then(function () {
-              document.getElementById(buttonId).click();
-              var postData = new PostData(
-                title.value,
-                des.value,
-                type,
-                "file",
-                fileName,
-                {}
-              );
-              createPostOnServer(postData);
-            })
-            .catch(function (err) {
-              document.getElementById(buttonId).click();
-              modal.alert(
-                "Error Uploading File",
-                "faild to upload file. chech your internet connection and retry. <br /><br/> ERROR: " +
-                  err
-              );
-            });
-        };
-        reader.readAsDataURL(file);
+        useCloud(file)
+          .then(function (res) {
+            if (typeof res == 'string'){
+              res = JSON.parse(res)
+            }
+
+            var postData = new PostData(
+              title.value,
+              des.value,
+              type,
+              "url",
+              res.url,
+              {}
+            );
+            createPostOnServer(postData);
+          })
+          .catch(function (err) {
+            document.getElementById(buttonId).click();
+            modal.alert(
+              "Error Uploading File",
+              "faild to upload file. chech your internet connection and retry. <br /><br/> ERROR: " +
+                err
+            );
+          });
+
         return '<center><img src="../../assets/spinner/ring-resize.svg" class="svg-mini-loader loader-x2"></img></center>';
       });
     } else {

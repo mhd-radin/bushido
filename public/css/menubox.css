@@ -104,6 +104,10 @@
     align-items: center;
   }
 
+  .menubox.attached-nav {
+    padding: 0 0;
+  }
+
   .menu-item {
     /* margin: auto 5px; */
   }

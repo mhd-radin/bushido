@@ -9,5 +9,10 @@ const config = {
     messagingSenderId: "791522022722",
     appId: "1:791522022722:web:7ad2409049a3e9703a24db",
     measurementId: "G-PLQBR46HXP"
+  },
+  cloud: {
+    cloud_name: 'drv6qpv56', 
+    api_key: '296355761444914', 
+    api_secret: 'O8zS8etWMScAq5Bs_XmAK5xda7s'
   }
 }

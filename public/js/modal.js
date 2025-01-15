@@ -253,7 +253,8 @@ const modal = {
           }
         }
 
-        modal.optionsPicker(items, single, customTagstr ? customTagstr : htmlStringModal, data.title ? data.title : 'Pick one').then(function(val) {
+        modal.optionsPicker(items, single, customTagstr ? customTagstr : htmlStringModal, data.title ? data
+          .title : 'Pick one').then(function(val) {
           index += 1;
           selectedValues.push(val)
           if (selectBy[index]) {
@@ -274,31 +275,32 @@ const modal = {
 
     // Populate dropdown with options
     options.forEach((option) => {
+      if (option) {
 
-      var iconHtml = '';
+        var iconHtml = '';
 
-      if (option.icon) {
-        const itemIcon = document.createElement('i');
-        itemIcon.className = 'eva eva-' + option.icon;
-        iconHtml = itemIcon.outerHTML;
+        if (option.icon) {
+          const itemIcon = document.createElement('i');
+          itemIcon.className = 'eva eva-' + option.icon;
+          iconHtml = itemIcon.outerHTML;
+        }
+
+        const item = document.createElement("a");
+        item.textContent = option.label;
+        item.href = "#";
+        item.innerHTML = '<div>' + item.innerHTML + '</div>'
+        item.innerHTML = iconHtml + item.innerHTML;
+        item.id = option.id || ""; // Optional id
+        item.onclick = (event) => {
+          event.preventDefault(); // Prevent default link behavior
+          option.clickAction(dropdownModal, () => {
+            if (typeof onclose == 'function') onclose();
+            dropdownModal.remove()
+          });
+        };
+        dropdownModal.appendChild(item);
+
       }
-
-      const item = document.createElement("a");
-      item.textContent = option.label;
-      item.href = "#";
-      item.innerHTML = '<div>' + item.innerHTML + '</div>'
-      item.innerHTML = iconHtml + item.innerHTML;
-      item.id = option.id || ""; // Optional id
-      item.onclick = (event) => {
-        event.preventDefault(); // Prevent default link behavior
-        option.clickAction(dropdownModal, () => {
-          if (typeof onclose == 'function') onclose();
-          dropdownModal.remove()
-        });
-      };
-      dropdownModal.appendChild(item);
-
-
     });
 
     if (pos) {

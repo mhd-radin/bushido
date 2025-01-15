@@ -444,7 +444,7 @@ const messenger = {
           },
           id: 'replayBtn',
           icon: 'corner-up-right-outline'
-      }, {
+      }, (isMe ? {
           label: 'Delete',
           clickAction: function() {
             modal.confirm('Are you sure did you want to delete it?', 'delete this message for all. click to confirm to delete message').then(function(v) {
@@ -457,7 +457,7 @@ const messenger = {
           },
           id: 'delBtn',
           icon: 'trash-2-outline'
-      }], null, () => {
+      } : null)], null, () => {
           messenger.structure.menu_enabled = false;
         });
         messenger.structure.menu_enabled = true;

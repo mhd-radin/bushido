@@ -21,5 +21,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npx tailwindcss -i ./started/css/get_started.css -o ./started/css/started_output.css --watch"
+  },
+  "dependencies": {
+    "cloudinary": "^2.5.1"
   }
 }

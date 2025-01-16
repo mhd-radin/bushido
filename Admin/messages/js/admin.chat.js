@@ -225,6 +225,33 @@ const messenger = {
     );
   },
   addMessage() {},
+  delete(messageModal) {
+    let data = {
+      id: messageModal.user_id,
+    }
+    let msgID = messageModal.message_id;
+    return new Promise((resolve, reject) => {
+
+      var promises = [
+              bushido.realtime.set(
+          "chat/" + data.id + "/messages/" + msgID,
+          function() {
+            return null;
+          }
+        ),
+              bushido.realtime.set(
+          "chat/" + data.id + "/unseen_messages/" + msgID,
+          null
+        ),
+              bushido.realtime.set(
+          "chat/" + data.id + "/last_message",
+          null
+        )
+            ];
+
+      Promise.all(promises).then(resolve).catch(reject);
+    })
+  },
   structure: {
     menu_enabled: false,
     createBubble(
@@ -331,19 +358,68 @@ const messenger = {
       document.querySelector(".body").appendChild(msgElem);
     }
 
+    document.getElementById(msg.message_id).addEventListener('contextmenu', function(event) {
+      event.preventDefault();
+      if (messenger.structure.menu_enabled == false) {
+        modal.useDropdown(document.getElementById(msg.message_id), [{
+          label: 'Replay',
+          clickAction: function(d, close) {
+            var replayText = 'Replay to @' + msg.user_name + ': ' + msg.message.slice(0, 25) + (msg
+              .message.length > 25 ? '...' : '')
+            messenger.setExtraData({
+              link: '#' + msg.message_id,
+              linkText: replayText
+            })
+            var replayUiEl = new TagString('<div class="chat-linked" id="rplayUi"></div>').child(
+                new TagString((replayText + '<br> <small><strong>Double tap to close</strong></small>')))
+              .parseElement()[0];
+            addLinkedChatUi(replayUiEl, 'rplayUi')
+            replayUiEl.ondblclick = function() {
+              messenger.clearExtraData();
+            }
+            document.getElementById('chatInp').focus();
+            close();
+          },
+          id: 'replayBtn',
+          icon: 'corner-up-right-outline'
+      }, {
+          label: 'Delete',
+          clickAction: function() {
+            modal.confirm('Are you sure did you want to delete it?',
+              'delete this message for all. click to confirm to delete message').then(function(v) {
+              spinner.showPreloader('Deleting...')
+              messenger.delete(new Message(msg.user_id, msg.message, msg.status, msg.user_name, msg
+                .email, msg.phone, msg.message_id)).then(function() {
+                location.reload();
+              })
+            })
+            close()
+          },
+          id: 'delBtn',
+          icon: 'trash-2-outline'
+        }], null, () => {
+          messenger.structure.menu_enabled = false;
+        });
+        messenger.structure.menu_enabled = true;
+      }
+    });
+
     messenger.before_send_by = msg.email;
     messenger.before_send_time = formattedTime;
     messenger.before_send_msg = msg;
   },
-  setExtraData(data){
-    localStorage.setItem(JSON.stringify(data))
+  setExtraData(data) {
+    localStorage.setItem('ext-chat-admin', JSON.stringify(data))
   },
   getExtraData() {
-    return localStorage.getItem('ext-chat-cli') ? JSON.parse(localStorage.getItem('ext-chat-cli')) : {}
+    if (localStorage.getItem('ext-chat-admin')) {
+      return JSON.parse(localStorage.getItem('ext-chat-admin'))
+    }
+    return {}
   },
   clearExtraData() {
     document.querySelector('.chat-tags').innerHTML = '';
-    localStorage.removeItem('ext-chat-cli')
+    localStorage.removeItem('ext-chat-admin')
   },
 };
 
@@ -409,9 +485,23 @@ document.getElementById("sendBtn").onclick = function() {
   document.getElementById("sendBtn").disabled = true;
   var inputValue = document.getElementById("chatInp").value;
   if (inputValue && messenger.current_user_data) {
-    messenger.send(inputValue, messenger.current_user_data).then(function() {
+    var extData = messenger.getExtraData();
+    messenger.send(inputValue, messenger.current_user_data, messenger.id(), extData).then(function() {
       document.getElementById("chatInp").value = "";
       document.getElementById("sendBtn").disabled = false;
     });
+    messenger.clearExtraData()
+
   }
 };
+
+
+// for bottom menu 
+document.querySelector('.footer').addEventListener('contextmenu', function(e) {
+  e.preventDefault();
+  modal.useDropdown(document.querySelector('.chatter'),
+   [{
+      label: 'Import image',
+      icon: 'image-outline'
+   }], [])
+})

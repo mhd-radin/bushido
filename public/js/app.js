@@ -478,26 +478,6 @@ window.addEventListener(
 );
 
 
-
-document.body.oncontextmenu =
-  function rightClickBody(e) {
-    e.preventDefault();
-    var x = e.clientX - document.body.getBoundingClientRect().left
-    var y = e.clientY - document.body.getBoundingClientRect().top
-
-    modal.useDropdown(document.body, [{
-      label: 'Refresh',
-      clickAction: () => {
-        document.body.oncontextmenu = rightClickBody;
-        window.location.reload(true)
-      },
-      icon: 'refresh-outline'
-  }], [(x) + "px", y + 'px'], function(param) {
-      document.body.oncontextmenu = rightClickBody;
-    })
-    document.body.oncontextmenu = null;
-  }
-
 function loadModule(src, fn) {
   const script = document.createElement("script");
   script.src = src;
@@ -507,4 +487,5 @@ function loadModule(src, fn) {
   };
   document.body.appendChild(script)
 }
+
 

@@ -196,22 +196,11 @@ document.getElementById('nextBtn').onclick = function() {
             spinner.changeText('Verified. Connecting to server...');
           }
 
-          bushido.set(('accounts/ADMN_' + Math.floor(Math.random() * 999999)), form_set.data).then(() => {
-            // caches.open('admin').then(function(cache) {
-            //   cache.put('admin-access-key', new Response(JSON.stringify({ key }), {
-            //     headers: { 'Content-type': 'application/json' }
-            //   })).catch((err) => {
-            //     alert(err)
-            //   }).then(() => {
-            //     cache.keys('admin-access-key').then(function(t) {
-            //       localStorage.setItem('adminUrl', t[0].url)
-            //       window.location.href = '../attendance';
-            //     })
-            //   })
-          app.saveData('admin', 'admin-access-key', {key}, 'adminUrl', false).then(()=>{
-            window.location.href = '../attendance';
-            changeTitle('Welcome to Attendance Manager');
-            changeLog('Welcome to Attendance Manager');
+          bushido.set(('accounts/ADMN_8545765435678'), form_set.data).then(() => {
+            app.saveData('admin', 'admin-access-key', { key }, 'adminUrl', false).then(() => {
+              window.location.href = '../attendance';
+              changeTitle('Welcome to Attendance Manager');
+              changeLog('Welcome to Attendance Manager');
             }).catch((err) => {
               alert(err)
             });

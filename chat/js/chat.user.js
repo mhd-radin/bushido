@@ -271,7 +271,7 @@ const messenger = {
                 messenger.join().then(function() {
                   alert();
                 });
-                messenger.send("hi, i am using this software...");
+                messenger.sendBreaker(data.fullname + " joined");
                 messenger.is_first_time = false;
               } else {
                 modal.alert(
@@ -287,7 +287,35 @@ const messenger = {
       .catch(() => {});
   },
   addMessage() {},
+  delete(messageModal) {
+    let data = {
+      id: messageModal.user_id,
+    }
+    let msgID = messageModal.message_id;
+    return new Promise((resolve, reject) => {
+
+      var promises = [
+              bushido.realtime.set(
+          "chat/" + data.id + "/messages/" + msgID,
+          function() {
+            return null;
+          }
+        ),
+              bushido.realtime.set(
+          "chat/" + data.id + "/unseen_messages/" + msgID,
+          null
+        ),
+              bushido.realtime.set(
+          "chat/" + data.id + "/last_message",
+          null
+        )
+            ];
+
+      Promise.all(promises).then(resolve).catch(reject);
+    })
+  },
   structure: {
+    menu_enabled: false,
     createBubble(
       username,
       chat_ID,
@@ -316,6 +344,8 @@ const messenger = {
             </a>`
                 : ""
             }
+             ${
+              extraData.html ? extraData.html : '' }
           <b>${username}</b>
           <p>${msgText}</p>
           <div class="time" ${
@@ -395,20 +425,69 @@ const messenger = {
     // Todo: right click action
     document.getElementById(msg.message_id).addEventListener('contextmenu', function(event) {
       event.preventDefault();
-      modal.useDropdown(document.getElementById(msg.message_id), [{
-        label: 'Share',
-        clickAction: function() {
-          alert()
-        },
-        id: 'shr'
-      }])
+      if (messenger.structure.menu_enabled == false) {
+        modal.useDropdown(document.getElementById(msg.message_id), [{
+          label: 'Replay',
+          clickAction: function(d, close) {
+            var replayText = 'Replay to @' + msg.user_name + ': ' + msg.message.slice(0, 25) + (msg.message.length > 25 ? '...' : '')
+            messenger.setExtraData({
+              link: '#' + msg.message_id,
+              linkText: replayText
+            })
+            var replayUiEl = new TagString('<div class="chat-linked" id="rplayUi"></div>').child(new TagString((replayText + '<br> <small><strong>Double tap to close</strong></small>'))).parseElement()[0];
+            addLinkedChatUi(replayUiEl, 'rplayUi')
+            replayUiEl.ondblclick = function() {
+              messenger.clearExtraData();
+            }
+            document.getElementById('chatInp').focus();
+            close();
+          },
+          id: 'replayBtn',
+          icon: 'corner-up-right-outline'
+      }, (isMe ? {
+          label: 'Delete',
+          clickAction: function() {
+            modal.confirm('Are you sure did you want to delete it?', 'delete this message for all. click to confirm to delete message').then(function(v) {
+              spinner.showPreloader('deleting...')
+              messenger.delete(new Message(msg.user_id, msg.message, msg.status, msg.user_name, msg.email, msg.phone, msg.message_id)).then(function() {
+                location.reload();
+              })
+            })
+            close()
+          },
+          id: 'delBtn',
+          icon: 'trash-2-outline'
+      } : null)], null, () => {
+          messenger.structure.menu_enabled = false;
+        });
+        messenger.structure.menu_enabled = true;
+      }
     });
 
     messenger.before_send_by = msg.email;
     messenger.before_send_time = formattedTime;
     messenger.before_send_msg = msg;
   },
+  setExtraData(data) {
+    localStorage.setItem('ext-chat-cli', JSON.stringify(data))
+  },
+  getExtraData() {
+    if (localStorage.getItem('ext-chat-cli')) {
+      return JSON.parse(localStorage.getItem('ext-chat-cli'))
+    }
+    return {}
+  },
+  clearExtraData() {
+    document.querySelector('.chat-tags').innerHTML = '';
+    localStorage.removeItem('ext-chat-cli')
+  },
 };
+
+
+function addLinkedChatUi(htmlEl, replaceById) {
+  if (document.getElementById(replaceById)) document.getElementById(replaceById).remove();
+  document.querySelector('.chat-tags').append(htmlEl)
+}
 
 var userData = {};
 
@@ -431,6 +510,7 @@ if (document.getElementById("sendBtn")) {
     document.getElementById("chatInp").value = "";
 
     if (inputValue) {
+      var extraDt = messenger.getExtraData();
       var id = messenger.id();
       let msg = new Message(
         userData.id,
@@ -439,8 +519,10 @@ if (document.getElementById("sendBtn")) {
         userData.fullname,
         userData.email,
         userData.phone,
-        id
+        id,
+        extraDt,
       );
+      messenger.clearExtraData();
       let formattedTime = dayjs(new Date(msg.date)).format("hh:mm A");
 
       document
@@ -461,9 +543,20 @@ if (document.getElementById("sendBtn")) {
           .parseElement()[0]
         );
 
-      messenger.send(inputValue, id).then(function() {
+      messenger.send(inputValue, id, extraDt).then(function() {
         document.getElementById("sendBtn").disabled = false;
       });
     }
   };
 }
+
+
+// for bottom menu 
+document.querySelector('.footer').addEventListener('contextmenu', function(e) {
+  e.preventDefault();
+  modal.useDropdown(document.querySelector('.chatter'),
+   [{
+      label: 'Import image',
+      icon: 'image-outline'
+   }], [])
+})

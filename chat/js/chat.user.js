@@ -429,12 +429,15 @@ const messenger = {
         modal.useDropdown(document.getElementById(msg.message_id), [{
           label: 'Replay',
           clickAction: function(d, close) {
-            var replayText = 'Replay to @' + msg.user_name + ': ' + msg.message.slice(0, 25) + (msg.message.length > 25 ? '...' : '')
+            var replayText = 'Replay to @' + msg.user_name + ': ' + msg.message.slice(0, 25) + (msg
+              .message.length > 25 ? '...' : '')
             messenger.setExtraData({
               link: '#' + msg.message_id,
               linkText: replayText
             })
-            var replayUiEl = new TagString('<div class="chat-linked" id="rplayUi"></div>').child(new TagString((replayText + '<br> <small><strong>Double tap to close</strong></small>'))).parseElement()[0];
+            var replayUiEl = new TagString('<div class="chat-linked" id="rplayUi"></div>').child(
+                new TagString((replayText + '<br> <small><strong>Double tap to close</strong></small>')))
+              .parseElement()[0];
             addLinkedChatUi(replayUiEl, 'rplayUi')
             replayUiEl.ondblclick = function() {
               messenger.clearExtraData();
@@ -447,9 +450,11 @@ const messenger = {
       }, (isMe ? {
           label: 'Delete',
           clickAction: function() {
-            modal.confirm('Are you sure did you want to delete it?', 'delete this message for all. click to confirm to delete message').then(function(v) {
+            modal.confirm('Are you sure did you want to delete it?',
+              'delete this message for all. click to confirm to delete message').then(function(v) {
               spinner.showPreloader('deleting...')
-              messenger.delete(new Message(msg.user_id, msg.message, msg.status, msg.user_name, msg.email, msg.phone, msg.message_id)).then(function() {
+              messenger.delete(new Message(msg.user_id, msg.message, msg.status, msg.user_name, msg
+                .email, msg.phone, msg.message_id)).then(function() {
                 location.reload();
               })
             })
@@ -457,8 +462,14 @@ const messenger = {
           },
           id: 'delBtn',
           icon: 'trash-2-outline'
-      } : null)], null, () => {
+        } : null)], null, () => {
+          // when close
           messenger.structure.menu_enabled = false;
+          // validating extra data is empty object
+          var extraDt = messenger.getExtraData();
+          if (extraDt && typeof extraDt == 'object' && Object.keys(extraDt).length > 0) {
+            document.querySelector('.chat-tags').display = 'block'
+          }
         });
         messenger.structure.menu_enabled = true;
       }
@@ -478,6 +489,7 @@ const messenger = {
     return {}
   },
   clearExtraData() {
+    document.querySelector('.chat-tags').display = 'none'
     document.querySelector('.chat-tags').innerHTML = '';
     localStorage.removeItem('ext-chat-cli')
   },

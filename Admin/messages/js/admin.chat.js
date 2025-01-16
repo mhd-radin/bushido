@@ -399,6 +399,11 @@ const messenger = {
           icon: 'trash-2-outline'
         }], null, () => {
           messenger.structure.menu_enabled = false;
+          // validating extra data is empty object
+          var extraDt = messenger.getExtraData();
+          if (extraDt && typeof extraDt == 'object' && Object.keys(extraDt).length > 0) {
+            document.querySelector('.chat-tags').display = 'block'
+          }
         });
         messenger.structure.menu_enabled = true;
       }
@@ -418,6 +423,7 @@ const messenger = {
     return {}
   },
   clearExtraData() {
+    document.querySelector('.chat-tags').display = 'none'
     document.querySelector('.chat-tags').innerHTML = '';
     localStorage.removeItem('ext-chat-admin')
   },

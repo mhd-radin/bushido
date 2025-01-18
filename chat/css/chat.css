@@ -2,10 +2,28 @@ body {
   width: 100%;
 }
 
+.body-layout {
+  display: flex;
+  flex-direction: row;
+}
+
+.users-list {
+  width: 40%;
+  background: var(--third-bg);
+  height: calc(100vh - 58px);
+  border: 1px solid var(--border-color);
+  border-left: 1px solid transparent;
+  border-top: 1px solid transparent;
+  overflow-y: scroll;
+}
+
 .body {
-  /* height: calc(100vh + 78px); */
-  position: relative;
+  max-height: calc(100vh - 200px);
   padding-top: 20px;
+  position: relative;
+  width: 60%;
+
+
   padding-bottom: 120px;
   overflow-y: scroll;
 }
@@ -207,10 +225,10 @@ body {
   color: var(--apt-sec-color);
   position: fixed;
   z-index: 9999;
-  left: 0;
+  right: 0;
   bottom: 0;
   padding: 5px;
-  width: calc(100% - 10px);
+  width: calc(60% - 10px);
   max-height: 100px;
 }
 
@@ -270,7 +288,7 @@ body {
 
   .chat-bubble {
     min-width: 19vw;
-}
+  }
 }
 
 @media screen and (min-width: 650px) {
@@ -285,7 +303,7 @@ body {
 
   .chat-bubble {
     min-width: 22vw;
-}
+  }
 
   .body {
     position: relative;
@@ -296,5 +314,20 @@ body {
     position: absolute;
     left: 50%;
     transform: translate(-50%, 10px);
+  }
+
+
+}
+
+@media screen and (max-width: 650px) {
+  .users-list {
+    display: block;
+    width: 100%;
+  }
+
+  .body,
+  .footer {
+    display: none;
+    width: calc(100% - 10px);
   }
 }

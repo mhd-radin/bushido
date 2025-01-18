@@ -1,10 +1,75 @@
-app.validUser().catch(() => {
-  app.redirectWithPreloader("../register");
-});
-
 function onpageloadin() {
-  document.querySelector(".body").innerHTML = "";
-  messenger.reciveMessages();
+  app.validUser().then((data) => {
+    let userData = data;
+    if (data) {
+      document.querySelector(".body").innerHTML = "";
+
+      var elem = document.querySelector(".users-list");
+      elem.innerHTML = "";
+
+      var arr = [{
+        user_name: 'Bushido Team',
+        email: 'bushidosupport@gmail.com',
+        id: data.id,
+        isAdmin: true
+      }, {
+        user_name: 'Bushido Community',
+        email: 'bushidocommunity@gmail.com',
+        id: 'community_room',
+        isAdmin: false
+      }]
+
+
+      arr.forEach(function(item, index) {
+        var data = item;
+
+
+        var userItemElem = userboxUI
+          .create(
+            data.user_name,
+            data.email,
+            "https://api.dicebear.com/9.x/initials/svg?seed=" +
+            data.user_name +
+            "&radius=40",
+            data.isAdmin == true ? userboxUI.tag("Admin") : ""
+          )
+          .parseElement()[0];
+        elem.appendChild(userItemElem);
+
+        userItemElem.onclick = function() {
+          document.querySelectorAll(".user-box-active").forEach(function(el) {
+            el.classList.remove("user-box-active");
+          });
+          userItemElem.classList.add("user-box-active");
+          messenger.room_id = data.id;
+          handleItemClick(data)
+          messenger.join().then(function(d) {
+            if (d) {
+              messenger.sendBreaker(userData.fullname + ' Joined')
+            }
+            messenger.reciveMessages(data);
+          })
+        };
+
+      });
+
+
+    }
+  }).catch((err) => {
+    alert(err)
+    app.redirectWithPreloader("../register");
+  });
+}
+
+function handleItemClick(data) {
+  messenger.current_user_data = data;
+
+  if (window.innerWidth < 650) {
+    document.querySelector(".users-list").style.display = "none";
+    document.querySelector(".body").style.display = "block";
+    document.querySelector(".footer").style.display = "block";
+    document.scrollingElement.scrollTop = 0;
+  }
 }
 
 dayjs.extend(window.dayjs_plugin_relativeTime);
@@ -94,12 +159,12 @@ const messenger = {
   join() {
     return new Promise((resolve, reject) => {
       app.validUser().then((user) => {
-        if (user.id) {
-          bushido.realtime.get("chat/" + user.id).then(function(snapshot) {
+        if (messenger.room_id) {
+          bushido.realtime.get("chat/" + messenger.room_id).then(function(snapshot) {
             if (!snapshot.exists()) {
               var data = user;
               bushido.realtime
-                .set("chat/" + user.id, {
+                .set("chat/" + messenger.room_id, {
                   messages: [],
                   unseen_messages: [],
                   last_message: {},
@@ -125,10 +190,10 @@ const messenger = {
       app
         .validUser()
         .then((data) => {
-          if (data.id) {
+          if (messenger.room_id) {
             const msgID = id ? id : messenger.id();
             const messageModal = new Message(
-              data.id,
+              messenger.room_id,
               msg,
               "unseen",
               data.fullname,
@@ -148,32 +213,32 @@ const messenger = {
 
             var promises = [
               bushido.realtime.set(
-                "chat/" + data.id + "/messages/" + msgID,
+                "chat/" + messenger.room_id + "/messages/" + msgID,
                 function() {
                   return messageModal.export();
                 }
               ),
               bushido.realtime.set(
-                "chat/" + data.id + "/unseen_messages/" + msgID,
+                "chat/" + messenger.room_id + "/unseen_messages/" + msgID,
                 function() {
                   return messageModal.export();
                 }
               ),
               bushido.realtime.set(
-                "chat/" + data.id + "/last_message",
+                "chat/" + messenger.room_id + "/last_message",
                 function() {
                   return messageModal.export();
                 }
               ),
               bushido.realtime.set(
-                "chat/" + data.id + '/user_id', data.id),
+                "chat/" + messenger.room_id + '/user_id', messenger.room_id),
               bushido.realtime.set(
-                "chat/" + data.id + '/email', data.email),
+                "chat/" + messenger.room_id + '/email', data.email),
                 bushido.realtime.set(
-                "chat/" + data.id + '/user_name', data.fullname),
+                "chat/" + messenger.room_id + '/user_name', data.fullname),
                   bushido.realtime.set(
-                "chat/" + data.id + '/phone', data.phone),
-              bushido.realtime.set("chat/" + data.id + "/date", function() {
+                "chat/" + messenger.room_id + '/phone', data.phone),
+              bushido.realtime.set("chat/" + messenger.room_id + "/date", function() {
                 return messageModal.date;
               }),
             ];
@@ -187,7 +252,7 @@ const messenger = {
   openPanel(code_to_run) {
     return new Promise((resolve, reject) => {
       app.validUser().then((data) => {
-        if (data.id) {
+        if (messenger.room_id) {
           code_to_run(resolve, data);
         }
       });
@@ -195,7 +260,7 @@ const messenger = {
   },
   sendBreaker(breaker_message, id) {
     app.validUser().then((data) => {
-      if (data.id) {
+      if (messenger.room_id) {
         return new Promise((resolve, reject) => {
           const msgID = id ? id : messenger.id() + "__BRKR";
           const messageModal = {
@@ -208,12 +273,12 @@ const messenger = {
 
           var promises = [
             bushido.realtime.set(
-              "chat/" + data.id + "/messages/" + msgID,
+              "chat/" + messenger.room_id + "/messages/" + msgID,
               function() {
                 return messageModal;
               }
             ),
-            bushido.realtime.set("chat/" + data.id + "/date", function() {
+            bushido.realtime.set("chat/" + messenger.room_id + "/date", function() {
               return messageModal.date;
             }),
           ];
@@ -223,68 +288,67 @@ const messenger = {
       }
     });
   },
-  reciveMessages() {
-    app
-      .validUser()
-      .then(function(data) {
-        bushido.realtime.onSet(
-          "chat/" + data.id,
-          (snapshot) => {
-            if (snapshot.exists()) {
-              var msgData = snapshot.val();
-              if (msgData.messages && msgData.unseen_messages) {
-                var msg = msgData.unseen_messages;
+  reciveMessages(data) {
+    data.id = data.user_id;
+    data.fullname = data.user_name;
 
-                messenger.message_started = true;
-                var sortedArr = Object.entries(msgData.messages).sort(
-                  (a, b) => {
-                    var extA = a[1].date;
-                    var extB = b[1].date;
-                    const dateA = new Date(extA);
-                    const dateB = new Date(extB);
+    document.querySelector(".body").innerHTML = "";
+    bushido.realtime.onSet(
+      "chat/" + messenger.room_id,
+      (snapshot) => {
+        if (snapshot.exists()) {
+          var msgData = snapshot.val();
+          if (msgData.messages && msgData.unseen_messages) {
+            var msg = msgData.unseen_messages;
 
-                    return dateB - dateA;
-                  }
-                );
+            messenger.message_started = true;
+            var sortedArr = Object.entries(msgData.messages).sort(
+              (a, b) => {
+                var extA = a[1].date;
+                var extB = b[1].date;
+                const dateA = new Date(extA);
+                const dateB = new Date(extB);
 
-                sortedArr.reverse().forEach((item, index) => {
-                  var item = item[1];
-                  messenger.addToBody(item, data);
-                  if (
-                    item.email == "bushidosupport@gmail.com" ||
-                    item.email != data.email
-                  ) {
-                    bushido.realtime.set(
-                      `chat/${data.id}/messages/${item.message_id}/status`,
-                      "seen"
-                    );
-                  }
-                });
-
-                document.querySelector("html").scrollTop += 9999999;
+                return dateB - dateA;
               }
-            } else {
+            );
+
+            sortedArr.reverse().forEach((item, index) => {
+              var item = item[1];
+              messenger.addToBody(item, data);
               if (
-                messenger.is_first_time == true ||
-                messenger.message_started == false
+                item.email == "bushidosupport@gmail.com" ||
+                item.email != data.email
               ) {
-                messenger.join().then(function() {
-                  alert();
-                });
-                messenger.sendBreaker(data.fullname + " joined");
-                messenger.is_first_time = false;
-              } else {
-                modal.alert(
-                  "Something went wrong.!",
-                  "check your internet connection"
+                bushido.realtime.set(
+                  `chat/${messenger.room_id}/messages/${item.message_id}/status`,
+                  "seen"
                 );
               }
-            }
-          },
-          "doc"
-        );
-      })
-      .catch(() => {});
+            });
+
+            document.querySelector("html").scrollTop += 9999999;
+          }
+        } else {
+          if (
+            messenger.is_first_time == true ||
+            messenger.message_started == false
+          ) {
+            messenger.join().then(function() {
+              alert();
+            });
+            messenger.sendBreaker(data.fullname + " joined");
+            messenger.is_first_time = false;
+          } else {
+            modal.alert(
+              "Something went wrong.!",
+              "check your internet connection"
+            );
+          }
+        }
+      },
+      "doc"
+    );
   },
   addMessage() {},
   delete(messageModal) {
@@ -296,17 +360,17 @@ const messenger = {
 
       var promises = [
               bushido.realtime.set(
-          "chat/" + data.id + "/messages/" + msgID,
+          "chat/" + messenger.room_id + "/messages/" + msgID,
           function() {
             return null;
           }
         ),
               bushido.realtime.set(
-          "chat/" + data.id + "/unseen_messages/" + msgID,
+          "chat/" + messenger.room_id + "/unseen_messages/" + msgID,
           null
         ),
               bushido.realtime.set(
-          "chat/" + data.id + "/last_message",
+          "chat/" + messenger.room_id + "/last_message",
           null
         )
             ];
@@ -376,7 +440,7 @@ const messenger = {
     // console.log(msg.extraData);
 
     let msgElem = null;
-    if (msg.type === "breaker") {
+    if (msg.type == "breaker") {
       msgElem = messenger.structure
         .createBreaker(msg.message, msg.message_id)
         .parseElement()[0];
@@ -396,6 +460,8 @@ const messenger = {
         )
         .parseElement()[0];
     }
+
+    console.log(msgElem.innerHTML)
 
     function dateFormat(date) {
       return dayjs(date).format("DD-MM-YYYY");
@@ -429,12 +495,15 @@ const messenger = {
         modal.useDropdown(document.getElementById(msg.message_id), [{
           label: 'Replay',
           clickAction: function(d, close) {
-            var replayText = 'Replay to @' + msg.user_name + ': ' + msg.message.slice(0, 25) + (msg.message.length > 25 ? '...' : '')
+            var replayText = 'Replay to @' + msg.user_name + ': ' + msg.message.slice(0, 25) + (msg
+              .message.length > 25 ? '...' : '')
             messenger.setExtraData({
               link: '#' + msg.message_id,
               linkText: replayText
             })
-            var replayUiEl = new TagString('<div class="chat-linked" id="rplayUi"></div>').child(new TagString((replayText + '<br> <small><strong>Double tap to close</strong></small>'))).parseElement()[0];
+            var replayUiEl = new TagString('<div class="chat-linked" id="rplayUi"></div>').child(
+                new TagString((replayText + '<br> <small><strong>Double tap to close</strong></small>')))
+              .parseElement()[0];
             addLinkedChatUi(replayUiEl, 'rplayUi')
             replayUiEl.ondblclick = function() {
               messenger.clearExtraData();
@@ -447,18 +516,29 @@ const messenger = {
       }, (isMe ? {
           label: 'Delete',
           clickAction: function() {
-            modal.confirm('Are you sure did you want to delete it?', 'delete this message for all. click to confirm to delete message').then(function(v) {
-              spinner.showPreloader('deleting...')
-              messenger.delete(new Message(msg.user_id, msg.message, msg.status, msg.user_name, msg.email, msg.phone, msg.message_id)).then(function() {
-                location.reload();
-              })
+            modal.confirm('Are you sure did you want to delete it?',
+              'delete this message for all. click to confirm to delete message').then(function(v) {
+              if (v) {
+                spinner.showPreloader('deleting...')
+                messenger.delete(new Message(msg.user_id, msg.message, msg.status, msg.user_name,
+                  msg
+                  .email, msg.phone, msg.message_id)).then(function() {
+                  location.reload();
+                })
+              }
             })
             close()
           },
           id: 'delBtn',
           icon: 'trash-2-outline'
-      } : null)], null, () => {
+        } : null)], null, () => {
+          // when close
           messenger.structure.menu_enabled = false;
+          // validating extra data is empty object
+          var extraDt = messenger.getExtraData();
+          if (extraDt && typeof extraDt == 'object' && Object.keys(extraDt).length > 0) {
+            document.querySelector('.chat-tags').display = 'block'
+          }
         });
         messenger.structure.menu_enabled = true;
       }
@@ -478,6 +558,7 @@ const messenger = {
     return {}
   },
   clearExtraData() {
+    document.querySelector('.chat-tags').display = 'none'
     document.querySelector('.chat-tags').innerHTML = '';
     localStorage.removeItem('ext-chat-cli')
   },
@@ -552,11 +633,13 @@ if (document.getElementById("sendBtn")) {
 
 
 // for bottom menu 
-document.querySelector('.footer').addEventListener('contextmenu', function(e) {
-  e.preventDefault();
-  modal.useDropdown(document.querySelector('.chatter'),
+if (document.querySelector('.footer')) {
+  document.querySelector('.footer').addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+    modal.useDropdown(document.querySelector('.chatter'),
    [{
-      label: 'Import image',
-      icon: 'image-outline'
+        label: 'Import image',
+        icon: 'image-outline'
    }], [])
-})
+  })
+}

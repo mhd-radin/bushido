@@ -90,8 +90,8 @@ a {
   font-size: 35px;
 }
 
-input[type="checkbox"], 
-input[type="radio"]{
+input[type="checkbox"],
+input[type="radio"] {
   min-width: 16px;
   min-height: 16px;
   -webkit-appearance: none;
@@ -110,7 +110,7 @@ input[type="radio"]:checked {
 }
 
 
-.eva:hover ~ .body {
+.eva:hover~.body {
   background: #000 !important;
 }
 
@@ -126,6 +126,7 @@ input[type="radio"]:checked {
     filter: blur(5px);
     opacity: 0;
   }
+
   100% {
     transform: scale(1) translate(0, 0);
     opacity: 1;
@@ -139,6 +140,7 @@ input[type="radio"]:checked {
     opacity: 1;
     filter: blur(5px);
   }
+
   100% {
     transform: scale(0.7) translate(0, 50px);
     opacity: 0;
@@ -147,11 +149,25 @@ input[type="radio"]:checked {
 }
 
 @keyframes prixClipFix {
-  0%   {clip-path:polygon(50% 50%,0 0,0 0,0 0,0 0,0 0)}
-  25%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 0,100% 0,100% 0)}
-  50%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,100% 100%,100% 100%)}
-  75%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 100%)}
-  100% {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 0)}
+  0% {
+    clip-path: polygon(50% 50%, 0 0, 0 0, 0 0, 0 0, 0 0)
+  }
+
+  25% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 0, 100% 0, 100% 0)
+  }
+
+  50% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%)
+  }
+
+  75% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 100%)
+  }
+
+  100% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 0)
+  }
 }
 
 .logo-cont {
@@ -165,3 +181,6 @@ input[type="radio"]:checked {
   margin: 5px;
   padding: 5px;
 }
+
+
+

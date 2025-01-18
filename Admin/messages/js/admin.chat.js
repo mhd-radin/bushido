@@ -387,11 +387,13 @@ const messenger = {
           clickAction: function() {
             modal.confirm('Are you sure did you want to delete it?',
               'delete this message for all. click to confirm to delete message').then(function(v) {
-              spinner.showPreloader('Deleting...')
-              messenger.delete(new Message(msg.user_id, msg.message, msg.status, msg.user_name, msg
-                .email, msg.phone, msg.message_id)).then(function() {
-                location.reload();
-              })
+              if (v) {
+                spinner.showPreloader('Deleting...')
+                messenger.delete(new Message(msg.user_id, msg.message, msg.status, msg.user_name, msg
+                  .email, msg.phone, msg.message_id)).then(function() {
+                  location.reload();
+                })
+              }
             })
             close()
           },
@@ -399,6 +401,11 @@ const messenger = {
           icon: 'trash-2-outline'
         }], null, () => {
           messenger.structure.menu_enabled = false;
+          // validating extra data is empty object
+          var extraDt = messenger.getExtraData();
+          if (extraDt && typeof extraDt == 'object' && Object.keys(extraDt).length > 0) {
+            document.querySelector('.chat-tags').display = 'block'
+          }
         });
         messenger.structure.menu_enabled = true;
       }
@@ -418,6 +425,7 @@ const messenger = {
     return {}
   },
   clearExtraData() {
+    document.querySelector('.chat-tags').display = 'none'
     document.querySelector('.chat-tags').innerHTML = '';
     localStorage.removeItem('ext-chat-admin')
   },

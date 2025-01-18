@@ -1,8 +1,6 @@
-const spinner = {
-  elem: document.querySelector(".preloader"),
-  create(text) {
-    return new TagString(`<div class="preloader">
-<svg class="svgloader" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0%" y="0%" width="100%" height="100%" viewBox="0 0 524.0 524.0" enable-background="new 0 0 524.0 524.0" xml:space="preserve">
+<?xml version="1.0" encoding="utf-8"?>
+<!--?xml version="1.0" encoding="utf-8"?-->
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0%" y="0%" width="100%" height="100%" viewBox="0 0 524.0 524.0" enable-background="new 0 0 524.0 524.0" xml:space="preserve">
 	<path fill="#FF0047" stroke="#FF0000" fill-opacity="1.000" stroke-opacity="1.000" fill-rule="nonzero" stroke-width="1.7831705" stroke-linejoin="miter" stroke-linecap="square" d="M63.06,248.33C91.07,236.18,119.09,224.03,155.94,209.80C192.80,195.58,238.49,179.28,265.98,170.36C293.48,161.44,302.77,159.89,312.07,158.35C327.27,155.90,342.46,153.44,353.11,152.54C363.75,151.63,369.85,152.27,375.94,152.91C351.26,165.85,326.59,178.79,298.57,193.22C270.55,207.65,239.18,223.56,201.48,247.81C163.77,272.06,119.73,304.64,92.97,327.16C66.21,349.67,56.74,362.11,49.30,371.73C41.86,381.35,36.45,388.16,31.63,397.80C26.81,407.44,22.58,419.92,18.34,432.40C46.61,433.05,74.87,433.70,114.53,433.61C154.18,433.52,205.22,432.69,256.27,431.87C269.04,430.82,281.81,429.78,296.18,423.99C310.55,418.21,326.51,407.68,342.47,397.15C349.90,388.91,357.33,380.67,363.36,371.32C369.38,361.98,374.00,351.52,378.62,341.07C379.26,336.09,379.90,331.11,380.10,327.26C380.30,323.40,380.05,320.68,379.80,317.95C379.24,314.76,378.68,311.58,376.52,306.91C374.36,302.23,370.60,296.07,368.01,292.02C365.42,287.98,364.00,286.05,361.45,283.60C358.91,281.14,355.24,278.17,351.86,275.64C348.48,273.12,345.38,271.04,342.77,269.42C340.16,267.80,338.03,266.63,334.22,264.74C330.40,262.84,324.90,260.23,319.40,257.61C335.95,250.34,352.50,243.08,363.40,232.20C374.30,221.32,379.54,206.83,384.78,192.33Q387.62,179.78,387.62,166.68L410.38,157.37L435.24,144.57L511.66,108.57L373.46,135.48C367.35,124.79,361.24,114.09,350.19,106.51C339.13,98.93,323.14,94.46,313.79,91.80C304.45,89.14,301.74,88.28,292.31,87.88C282.87,87.47,266.71,87.52,250.54,87.56L101.01,87.89L63.06,248.33z" class="svg-elem-1"></path>
 	<path fill="#FFFFFF" stroke="#FFFFFF" fill-opacity="0.992" stroke-opacity="1.000" fill-rule="nonzero" stroke-width="1.7831705" stroke-linejoin="miter" stroke-linecap="square" d="M286.89,153.26L286.89,144.67L166.81,144.67L159.04,189.43Q231.18,168.05,286.89,153.26z" class="svg-elem-2"></path>
 	<path fill="#FFFFFF" stroke="#FFFFFF" fill-opacity="1.000" stroke-opacity="1.000" fill-rule="nonzero" stroke-width="1.7831705" stroke-linejoin="miter" stroke-linecap="square" d="M175.42,367.99L179.53,346.30L184.77,326.54L185.89,323.58L187.67,323.00L188.98,322.89L191.30,323.44L193.23,324.04L215.63,333.78L216.09,334.78L215.86,335.63L215.44,339.39L216.31,340.71L219.42,342.34L220.94,343.75L235.00,353.98L235.47,355.39L235.08,357.03L234.07,358.28L232.88,359.09L219.83,371.34L217.77,371.57L216.53,371.53L214.89,370.90L213.74,369.71L207.91,363.45L206.77,364.17L206.48,365.48L205.91,370.05L205.03,371.04L203.82,371.00L200.78,370.94L197.55,370.05L175.70,367.76" class="svg-elem-3"></path>
@@ -13,66 +11,3 @@ const spinner = {
 	<path fill="#FFFFFF" stroke="#FFFFFF" fill-opacity="1.000" stroke-opacity="1.000" fill-rule="nonzero" stroke-width="1.7831705" stroke-linejoin="miter" stroke-linecap="square" d="M263.15,418.00A7.20 6.87 -0.00 1 0 274.07,411.28L244.28,365.72L239.20,362.92L228.40,371.06L234.01,375.45L263.15,418.00z" class="svg-elem-8"></path>
 	<path fill="#FFFFFF" stroke="#FFFFFF" fill-opacity="1.000" stroke-opacity="1.000" fill-rule="nonzero" stroke-width="1.7831705" stroke-linejoin="miter" stroke-linecap="square" d="M198.04,377.29L194.99,386.04L157.04,421.50A8.20 8.05 -0.00 1 1 143.48,412.46L180.63,379.51L181.03,375.45L198.04,377.29z" class="svg-elem-9"></path>
 </svg>
-    <p>${text}</p>
-  </div>`);
-  },
-  showPreloader(text = "") {
-    var self = this;
-    this.elem = document.querySelector(".preloader");
-    if (!this.elem) {
-      var box = this.create(text);
-      var parsedElem = box.parseElement()[0];
-      document.body.appendChild(parsedElem);
-      this.elem = parsedElem;
-    }
-    this.elem.style.display = "flex";
-  },
-  changeText(text) {
-    this.elem.querySelector("p").innerHTML = text;
-  },
-  removePreloader() {
-    // spinnerOneElem
-    this.elem = document.querySelector(".preloader");
-
-    const self = this;
-    return new Promise((resolve) => {
-      if (self.elem) {
-        const spinnerOneElem = getComputedStyle(self.elem, ":after");
-        const spinnerTwoElem = getComputedStyle(self.elem, ":before");
-
-        var elem = self.elem;
-        var a = anime({
-          targets: ".preloader p",
-          duration: 500,
-          opacity: [1, 0],
-          easing: "easeInOutQuad",
-        }).finished.then(() => {
-          anime({
-            targets: ".preloader .loader",
-            easing: "easeInOutQuad",
-            duration: 500,
-            loop: false,
-            opacity: [1, 0],
-            scale: ["1, 1", "0, 0"],
-            delay: (e, i) => 350 * i,
-          });
-
-          anime({
-            targets: ".preloader",
-            easing: "easeInOutQuad",
-            duration: 200,
-            opacity: [1, 0],
-            delay: 500,
-            scaleX: [1, 0.8],
-            scaleY: [1, 0.8],
-          }).finished.then(() => {
-            elem.remove();
-            resolve(0);
-          });
-        });
-      }
-    });
-  },
-};
-
-spinner.showPreloader('Loading');

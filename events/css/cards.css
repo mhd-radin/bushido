@@ -231,9 +231,9 @@
 /* actions card */
 
 .action-card {
-  background: var(--third-bg);
+  background: var(--sec-bg);
   color: var(--color);
-  border: 1px solid var(--shadow);
+  border: 1px solid var(--border);
 }
 
 .action-card .note-title {
@@ -253,11 +253,11 @@
   background: var(--third-bg);
   padding: 12px;
   font-size: 12px;
-  border-radius: 8px;
+  border-radius: 5px;
   text-align: center;
   align-items: center;
   width: calc(50% - 34px);
-  margin: 5px;
+  margin: 2px;
   justify-content: space-evenly;
   color: #fff;
 }
@@ -267,19 +267,21 @@
 }
 
 .note-action:nth-child(1) {
-  background: #1a5cbe;
+  background-image: linear-gradient(to right, #ff3737, #ffa07a);
 }
 
 .note-action:nth-child(2) {
-  background: #1abe43;
+  background-image: linear-gradient(to right, #ffa07a, #ff69b4);
+
 }
 
 .note-action:nth-child(3) {
-  background: #be1a59;
+  background-image: linear-gradient(to right, #4567b7, #7a288a);
+
 }
 
 .note-action:nth-child(4) {
-  background: #be251a;
+  background-image: linear-gradient(to right, #34c759, #0097a7);
 }
 
 

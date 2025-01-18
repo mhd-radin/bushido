@@ -16,6 +16,7 @@ const spinner = {
     <p>${text}</p>
   </div>`);
   },
+  timer: null,
   showPreloader(text = "") {
     var self = this;
     this.elem = document.querySelector(".preloader");
@@ -24,6 +25,16 @@ const spinner = {
       var parsedElem = box.parseElement()[0];
       document.body.appendChild(parsedElem);
       this.elem = parsedElem;
+      
+      spinner.timer = setInterval(function () {
+        document.querySelectorAll('.svgloader, .preloader *').forEach(function (el) {
+          var cs = getComputedStyle(el).getPropertyValue('animation');
+          el.style.animation = 'none'
+          setTimeout(function(){
+          el.style.animation = cs
+          }, 100)
+        })
+      }, 4000)
     }
     this.elem.style.display = "flex";
   },
@@ -75,4 +86,4 @@ const spinner = {
   },
 };
 
-spinner.showPreloader('Loading');
+spinner.showPreloader('');

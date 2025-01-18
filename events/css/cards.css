@@ -205,18 +205,25 @@
   color: var(--apt-color);
 }
 
+.note-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+}
+
 /* end of hover animations */
 
 .note-buttons button {
   background: var(--theme-color);
   border-radius: var(--border-radius-sm);
   margin: 4px;
-  padding: 9px 13px;
+  padding: 13px 18px;
   font-size: 12px;
   cursor: pointer;
   transition: 0.2s all;
   margin-left: 0;
   color: var(--apt-color);
+  border-radius: 30px;
 }
 
 .note-buttons button .eva {

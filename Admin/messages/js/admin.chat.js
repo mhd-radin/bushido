@@ -387,11 +387,13 @@ const messenger = {
           clickAction: function() {
             modal.confirm('Are you sure did you want to delete it?',
               'delete this message for all. click to confirm to delete message').then(function(v) {
-              spinner.showPreloader('Deleting...')
-              messenger.delete(new Message(msg.user_id, msg.message, msg.status, msg.user_name, msg
-                .email, msg.phone, msg.message_id)).then(function() {
-                location.reload();
-              })
+              if (v) {
+                spinner.showPreloader('Deleting...')
+                messenger.delete(new Message(msg.user_id, msg.message, msg.status, msg.user_name, msg
+                  .email, msg.phone, msg.message_id)).then(function() {
+                  location.reload();
+                })
+              }
             })
             close()
           },

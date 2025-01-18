@@ -43,11 +43,11 @@ function onpageloadin() {
           userItemElem.classList.add("user-box-active");
           messenger.room_id = data.id;
           handleItemClick(data)
-          messenger.join().then(function(d){
-            if (d){
-              messenger.sendBreaker(userData.fullname+ ' Joined')
+          messenger.join().then(function(d) {
+            if (d) {
+              messenger.sendBreaker(userData.fullname + ' Joined')
             }
-          messenger.reciveMessages(data);
+            messenger.reciveMessages(data);
           })
         };
 
@@ -440,7 +440,7 @@ const messenger = {
     // console.log(msg.extraData);
 
     let msgElem = null;
-    if (msg.type === "breaker") {
+    if (msg.type == "breaker") {
       msgElem = messenger.structure
         .createBreaker(msg.message, msg.message_id)
         .parseElement()[0];
@@ -460,6 +460,8 @@ const messenger = {
         )
         .parseElement()[0];
     }
+
+    console.log(msgElem.innerHTML)
 
     function dateFormat(date) {
       return dayjs(date).format("DD-MM-YYYY");
@@ -516,11 +518,14 @@ const messenger = {
           clickAction: function() {
             modal.confirm('Are you sure did you want to delete it?',
               'delete this message for all. click to confirm to delete message').then(function(v) {
-              spinner.showPreloader('deleting...')
-              messenger.delete(new Message(msg.user_id, msg.message, msg.status, msg.user_name, msg
-                .email, msg.phone, msg.message_id)).then(function() {
-                location.reload();
-              })
+              if (v) {
+                spinner.showPreloader('deleting...')
+                messenger.delete(new Message(msg.user_id, msg.message, msg.status, msg.user_name,
+                  msg
+                  .email, msg.phone, msg.message_id)).then(function() {
+                  location.reload();
+                })
+              }
             })
             close()
           },

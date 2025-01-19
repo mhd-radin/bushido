@@ -209,6 +209,7 @@
   display: flex;
   flex-direction: row;
   justify-content: end;
+  flex-wrap: wrap;
 }
 
 /* end of hover animations */
@@ -224,6 +225,8 @@
   margin-left: 0;
   color: var(--apt-color);
   border-radius: 30px;
+  display: flex;
+  flex-direction: row;
 }
 
 .note-buttons button .eva {

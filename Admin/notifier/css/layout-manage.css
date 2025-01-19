@@ -1,0 +1,16 @@
+@import url("bot-card.css");
+
+.body {
+  display: none;
+}
+
+.body-sections {
+  display: flex;
+  flex-direction: column
+}
+
+@media screen and (min-width: 650px) {
+  .body-sections {
+    flex-direction: row
+  }
+}

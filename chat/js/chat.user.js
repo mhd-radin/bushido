@@ -288,7 +288,7 @@ const messenger = {
       }
     });
   },
-  reciveMessages(data) {
+  reciveMessages(data, opt = {}) {
     data.id = data.user_id;
     data.fullname = data.user_name;
 
@@ -347,8 +347,13 @@ const messenger = {
           }
         }
       },
-      "doc"
+      opt
     );
+  },
+  refreshMessages(data){
+    this.reciveMessages(data, {
+      onlyOnce: true
+    })
   },
   addMessage() {},
   delete(messageModal) {
@@ -519,11 +524,10 @@ const messenger = {
             modal.confirm('Are you sure did you want to delete it?',
               'delete this message for all. click to confirm to delete message').then(function(v) {
               if (v) {
-                spinner.showPreloader('deleting...')
                 messenger.delete(new Message(msg.user_id, msg.message, msg.status, msg.user_name,
                   msg
                   .email, msg.phone, msg.message_id)).then(function() {
-                  location.reload();
+                  messenger.refreshMessages(msg)
                 })
               }
             })

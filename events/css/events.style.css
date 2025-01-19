@@ -1,3 +1,19 @@
+@import url("linear-layout.css");
+@import url("story-card.css");
+
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.nav-right,
+.nav-left {
+  position: relative;
+  font-size: 25px;
+  color: var(--sec-color);
+}
+
 .body {
   /* padding: 10px;    */
   position: relative;

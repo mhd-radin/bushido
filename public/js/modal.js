@@ -28,7 +28,7 @@ const modal = {
   add(tag) {
     return document.body.appendChild(tag.parseElement()[0])
   },
-  alert(title, body, bodyClass = '') {
+  alert(title, body, bodyClass = '', onload) {
     return new Promise((resolve, reject) => {
 
       var ID = 'ALRT_' + Math.floor(Math.random() * 888);
@@ -44,6 +44,7 @@ const modal = {
 
 
       this.add(tagstr)
+      if (typeof onload === 'function') onload(mainID, ID);
       document.getElementById(ID).onclick = function() {
         if (document.getElementById(mainID)) {
           document.getElementById(mainID).children[0].style.animation = 'ClosePopup 0.5s 1';

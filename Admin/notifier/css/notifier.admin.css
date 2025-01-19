@@ -6,6 +6,7 @@
   height: calc(100vh - 180px);
   padding: 10px;
   overflow-y: scroll;
+  animation: fadeInLeft 0.4s 1;
 }
 
 .breaker {

@@ -93,7 +93,8 @@
   padding: 8px;
 }
 
-.video-card img, .video-card .img-content {
+.video-card img,
+.video-card .img-content {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0
 }
@@ -150,7 +151,7 @@
     min-width: calc(100% - 10px);
     max-width: calc(100% - 10px);
   }
-  
+
   .video-card {
     min-width: calc(100% - 20px);
     max-width: calc(100% - 20px);
@@ -197,7 +198,7 @@
 
 .note-card:nth-child(1) {
   background: url("../../assets/bg/Simple Shiny.svg") center center;
-  background-size: 100%;
+  background-size: 120%;
   color: #fff !important;
 }
 
@@ -353,5 +354,28 @@
 @media screen and (min-width: 1080px) {
   .note-action {
     width: calc(50% - 34px);
+  }
+}
+
+@media screen and (max-width: 650px) {
+
+  .note-action {
+    display: flex;
+    flex-direction: column;
+    background: var(--third-bg);
+    padding: 12px;
+    font-size: 12px;
+    border-radius: 5px;
+    text-align: center;
+    align-items: center;
+    width: calc(50% - 34px);
+    margin: 2px;
+    justify-content: space-evenly;
+    color: #fff;
+  }
+
+  .note-action .eva {
+    font-size: 40px;
+    margin: 5px;
   }
 }

@@ -39,7 +39,7 @@
     </div>
   </nav>
 
-  <div class="body-sections">
+  <div class="body-sections" id="bodySec">
     <div class="bot-card">
       <div class="bot-header">
         <div class="bot-title">WHATSAPP BOT</div>
@@ -61,15 +61,15 @@
 
     <div class="actions">
       <div class="actions-container">
-        <div class="note-action">
+        <div class="note-action" id="showNotifications">
           <i class="eva eva-bell-outline"></i>
           <div class="note-action-text">Notifications</div>
         </div>
-        <div class="note-action">
+        <div class="note-action" id="qrBtn">
           <i class="eva eva-grid-outline"></i>
           <div class="note-action-text">QR Code</div>
         </div>
-        <div class="note-action">
+        <div class="note-action" id="logBtn">
           <i class="eva eva-code-outline"></i>
           <div class="note-action-text">Bot Logs</div>
         </div>
@@ -81,7 +81,7 @@
     </div>
   </div>
 
-  <div class="body">
+  <div class="body" id="body">
     <div class="breaker">
       <div class="breaker-title">Today's Notifications</div>
     </div>
@@ -190,7 +190,10 @@
 
   <!-- cdn scripts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"
+    integrity="sha512-CNgIRecGo7nphbeZ04Sc13ka07paqdeTu0WR1IM4kNcpmBAUSHSQX0FslNhTDadL4O5SAGapGt4FodqL8My0mA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
   <!-- custom scripts -->
   <script src="../../public/js/app.js"></script>
   <script src="../../public/js/tagstring.js"></script>
@@ -202,6 +205,7 @@
   <script src="js/notifier.str.js"></script>
   <script src="js/recive.js"></script>
   <script src="js/send.js"></script>
+  <script src="js/actions.js"></script>
   <script src="../admin.public.all.js"></script>
   <script src="../public.admin.pages.js"></script>
 </body>

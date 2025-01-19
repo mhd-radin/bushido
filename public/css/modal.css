@@ -111,4 +111,8 @@
     width: 350px;
     max-height: 50vh;
   }
+
+  .modal.expanded {
+    max-height: 85vh !important;
+  }
 }

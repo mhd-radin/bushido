@@ -45,20 +45,26 @@
 .story-bottom img {
   width: 34px;
   height: 34px;
+  border-radius: 50%;
 }
 
 .story-about {
-  padding: 3px;
+  padding: 4px;
+  padding-top: 0;
+  padding-bottom: 0;
   display: flex;
-  margin: 3px;
+  margin: 6px;
+  margin-top: 0;
   flex-direction: column;
 }
 
 .story-author {
   font-weight: 600;
+  margin: 0;
 }
 .story-des {
   font-size: 11px;
+  margin: 0;
 }
 
 .story-date {

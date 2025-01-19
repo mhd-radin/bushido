@@ -157,6 +157,18 @@
   }
 }
 
+/* Poster Card */
+.poster-card {
+  min-width: 230px;
+  max-width: 230px;
+  margin: 5px;
+}
+
+.poster-card img {
+  width: 100%;
+  border-radius: 10px;
+}
+
 /* Note Card */
 
 .note-card {

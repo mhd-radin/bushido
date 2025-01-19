@@ -100,6 +100,7 @@ body {
   box-shadow: 1px 1px 8px var(--shadow);
   border-radius: 5px;
   background: var(--sec-bg);
+  display: none;
 }
 
 .breaker-layout {

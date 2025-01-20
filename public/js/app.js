@@ -387,8 +387,9 @@ const iconManager = {
   },
 };
 
-if (localStorage.getItem('useLucide')) {
-  iconManager.useLucide();
+if (localStorage.getItem("useLucide")) {
+
+   iconManager.useLucide();
 }
 
 /* cache 
@@ -475,5 +476,16 @@ window.addEventListener(
   },
   false
 );
+
+
+function loadModule(src, fn) {
+  const script = document.createElement("script");
+  script.src = src;
+  script.type = "module";
+  script.onload = function () {
+    fn();
+  };
+  document.body.appendChild(script)
+}
 
 

@@ -167,7 +167,6 @@ const app = {
     // TODO: make it cookies
     return new Promise((resolve, reject) => {
       function handleReject(err) {
-        localStorage.removeItem("form_set");
         reject(err);
       }
 

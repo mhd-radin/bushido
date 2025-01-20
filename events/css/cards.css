@@ -93,7 +93,8 @@
   padding: 8px;
 }
 
-.video-card img, .video-card .img-content {
+.video-card img,
+.video-card .img-content {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0
 }
@@ -112,10 +113,11 @@
 .card-button {
   background: var(--sec-bg);
   padding: 4px;
-  border-radius: var(--border-radius);
+  padding-left: 6px;
+  border-radius: 20px;
   display: flex;
   flex-direction: row;
-  margin: 2px;
+  margin: 1.5px;
   font-size: 13px;
   cursor: pointer;
   transition: 0.2s all;
@@ -150,11 +152,23 @@
     min-width: calc(100% - 10px);
     max-width: calc(100% - 10px);
   }
-  
+
   .video-card {
     min-width: calc(100% - 20px);
     max-width: calc(100% - 20px);
   }
+}
+
+/* Poster Card */
+.poster-card {
+  min-width: 230px;
+  max-width: 230px;
+  margin: 5px;
+}
+
+.poster-card img {
+  width: 100%;
+  border-radius: 10px;
 }
 
 /* Note Card */
@@ -185,7 +199,7 @@
 
 .note-card:nth-child(1) {
   background: url("../../assets/bg/Simple Shiny.svg") center center;
-  background-size: 100%;
+  background-size: 120%;
   color: #fff !important;
 }
 
@@ -341,5 +355,28 @@
 @media screen and (min-width: 1080px) {
   .note-action {
     width: calc(50% - 34px);
+  }
+}
+
+@media screen and (max-width: 650px) {
+
+  .note-action {
+    display: flex;
+    flex-direction: column;
+    background: var(--third-bg);
+    padding: 12px;
+    font-size: 12px;
+    border-radius: 5px;
+    text-align: center;
+    align-items: center;
+    width: calc(50% - 34px);
+    margin: 2px;
+    justify-content: space-evenly;
+    color: #fff;
+  }
+
+  .note-action .eva {
+    font-size: 40px;
+    margin: 5px;
   }
 }

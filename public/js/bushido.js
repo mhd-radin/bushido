@@ -3,6 +3,7 @@ const bushido = {
   sdk: null,
   db: null,
   firebaseApp: null,
+  BOT_URL_ENDPOINT: "https://wbot-bodg.onrender.com/",
   access() {
     var self = this;
     return new Promise((resolve, reject) => {
@@ -21,7 +22,7 @@ if (bushido){
   bushido.loaded = true;
   }`;
 
-        var timer = setInterval(function () {
+        var timer = setInterval(function() {
           if (bushido.loaded) {
             resolve();
             clearInterval(timer);
@@ -36,7 +37,7 @@ if (bushido){
   },
   set(collection, data, opt) {
     return new Promise((resolve, reject) => {
-      bushido.access().then(function () {
+      bushido.access().then(function() {
         data = typeof data == "function" ? data() : data;
         bushido.sdk
           .setDoc(bushido.sdk.doc(bushido.db, collection), data, opt)
@@ -46,7 +47,7 @@ if (bushido){
   },
   getCollection(collection) {
     return new Promise((resolve, reject) => {
-      bushido.access().then(function () {
+      bushido.access().then(function() {
         bushido.sdk
           .getDocs(bushido.sdk.collection(bushido.db, collection))
           .then(resolve);
@@ -55,7 +56,7 @@ if (bushido){
   },
   get(collection, name) {
     return new Promise((resolve, reject) => {
-      bushido.access().then(function () {
+      bushido.access().then(function() {
         bushido.sdk
           .getDoc(bushido.sdk.doc(bushido.db, collection, name))
           .then(resolve);
@@ -67,12 +68,12 @@ if (bushido){
       var wh = [];
       var ordBy = [];
 
-      bushido.access().then(function () {
-        where.forEach(function (item) {
+      bushido.access().then(function() {
+        where.forEach(function(item) {
           wh.push(bushido.sdk.where(item[0], item[1], item[2]));
         });
 
-        orderBy.forEach(function (item) {
+        orderBy.forEach(function(item) {
           ordBy.push(bushido.sdk.orderBy(item[0], item[1]));
         });
 
@@ -84,21 +85,21 @@ if (bushido){
               ...ordBy
             )
           )
-          .then(function (item) {
+          .then(function(item) {
             resolve(item);
           });
       });
     });
   },
   onSet(ref, handle, type = "collection") {
-    bushido.access().then(function () {
+    bushido.access().then(function() {
       var orgRef = bushido.sdk[type](bushido.db, ref);
       bushido.sdk.onSnapshot(orgRef, handle);
     });
   },
   toData(snapshot) {
     var data = [];
-    snapshot.forEach(function (item) {
+    snapshot.forEach(function(item) {
       data.push(item);
     });
     return data;
@@ -123,7 +124,7 @@ if (bushido){
   bushido.realtime.db = rt.getDatabase(bushido.firebaseApp);
   }`;
 
-          var timer = setInterval(function () {
+          var timer = setInterval(function() {
             if (bushido.realtime.inited) {
               resolve();
               clearInterval(timer);
@@ -195,7 +196,7 @@ if (bushido){
   },
   convertToArray(obj) {
     if (Array.isArray(obj)) {
-      return obj.map(item => bushido.convertToArray(item));  // Handle arrays
+      return obj.map(item => bushido.convertToArray(item)); // Handle arrays
     } else if (typeof obj === 'object' && obj !== null) {
       // If the object contains numeric keys, convert it into an array
       if (Object.keys(obj).every(key => !isNaN(key))) {
@@ -209,7 +210,7 @@ if (bushido){
         return result;
       }
     }
-    return obj;  // Return the value if it's neither an array nor an object
+    return obj; // Return the value if it's neither an array nor an object
   }
 };
 
@@ -235,11 +236,11 @@ class PostData {
     this.comments = 0;
   }
 
-  export() {
+  export () {
     var obj = {};
 
     var self = this;
-    Object.keys(this).forEach(function (key) {
+    Object.keys(this).forEach(function(key) {
       obj[key] = self[key];
     });
 

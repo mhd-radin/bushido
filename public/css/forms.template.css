@@ -12,8 +12,13 @@ nav {
   align-items: start;
 }
 
+.vc {
+  z-index: 9999;
+}
+
 .reg-body h2 {
   font-family: var(--global-ff);
+  font-size: 25px;
   -webkit-animation: fadeInUp 500ms 1;
   -o-animation: fadeInUp 500ms 1;
   animation: fadeInUp 500ms 1;

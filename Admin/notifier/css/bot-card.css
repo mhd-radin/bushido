@@ -1,0 +1,158 @@
+.bot-card {
+  width: 289px;
+  padding: 5px;
+  min-height: 200px;
+  background: var(--theme-color);
+  color: var(--apt-color);
+  margin: 10px;
+  border-radius: 10px;
+  background: url("../../../assets/bg/Wave-grad.svg") center center;
+  background-size: 115%;
+}
+
+.bot-header {
+  padding: 6px;
+  margin: 2px;
+}
+
+.bot-title {
+  font-size: 15px;
+  color: #1976D2;
+  font-weight: 600;
+}
+
+.bot-subtitle {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.bot-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 48px;
+  text-align: center;
+  flex-direction: column;
+  margin: 28px;
+}
+
+.bot-des {
+  font-size: 13px;
+  color: #2F88E1;
+}
+
+.bot-footer {
+  display: flex;
+  flex-direction: row;
+  font-size: 12px;
+  justify-content: space-between;
+  margin: 4px;
+  padding: 5px;
+}
+
+.bot-status {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.green-dot {
+  background: #2D9455;
+  padding: 2px;
+  width: 2px;
+  height: 2px;
+  border: 2px solid #74D399;
+  box-shadow: 0 0 10px 0px #A5FFC8;
+  border-radius: 50%;
+  margin: 7px;
+
+}
+
+@media screen and (max-width: 650px) {
+  .bot-card {
+    width: calc(100% - 25px);
+  }
+}
+
+
+
+/* Action Cards */
+
+.actions {
+  /* display: flex;
+  justify-content: center; */
+}
+
+.action-card {
+  background: var(--sec-bg);
+  color: var(--color);
+  border: 1px solid var(--border);
+}
+
+.action-card .note-title {
+  color: var(--color);
+}
+
+.actions-container {
+  display: flex;
+  padding: 3px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 5px;
+  justify-content: center;
+}
+
+.note-action {
+  display: flex;
+  flex-direction: column;
+  background: var(--third-bg);
+  padding: 12px;
+  font-size: 12px;
+  border-radius: 5px;
+  text-align: center;
+  align-items: center;
+  width: 300px;
+  margin: 2px;
+  justify-content: space-evenly;
+  color: #fff;
+}
+
+.note-action .eva {
+  font-size: 40px;
+  margin: 5px;
+}
+
+.note-action:nth-child(1) {
+  background-image: linear-gradient(to right, #FF3737, #FFA07A);
+}
+
+.note-action:nth-child(2) {
+  background-image: linear-gradient(to right, #FFA07A, #FF69B4);
+
+}
+
+.note-action:nth-child(3) {
+  background-image: linear-gradient(to right, #4567b7, #7a288a);
+
+}
+
+.note-action:nth-child(4) {
+  background-image: linear-gradient(to right, #34c759, #0097a7);
+}
+
+@media screen and (min-width: 650px) {
+  .actions-container {
+    width: 350px;
+  }
+
+  .note-action {
+    width: calc(50% - 44px);
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .note-action {
+    width: calc(50% - 34px);
+  }
+}

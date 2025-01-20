@@ -49,7 +49,9 @@ createPostTypeOpt.onchange = updatePostInputUI;
 createImgOpt.onchange = updateCreateInputUI;
 updatePostInputUI();
 
+
 createSubmit.addEventListener("submit", function (e) {
+
   e.preventDefault();
 
   var title = document.getElementById("createTitle");
@@ -61,22 +63,22 @@ createSubmit.addEventListener("submit", function (e) {
 
   function createPostOnServer(postData) {
     modal.alert("Creating new post", (divId, buttonId) => {
-      setTimeout(function () {
+      setTimeout(function() {
         document.getElementById(buttonId).style.display = "none";
       }, 50);
 
       bushido
         .set("posts/" + postData.id, postData.export())
-        .then(function () {
+        .then(function() {
           document.getElementById(buttonId).click();
           modal.alert("New post created successfully", "");
         })
-        .catch(function (err) {
+        .catch(function(err) {
           document.getElementById(buttonId).click();
           modal.alert(
             "Error Creating Post",
             "faild creating post. chech your internet connection and retry. <br /><br/> ERROR: " +
-              err
+            err
           );
         });
     });
@@ -85,7 +87,7 @@ createSubmit.addEventListener("submit", function (e) {
   if (type == "postThumb" || type == "event") {
     if (imgType == "upload") {
       modal.alert("Uploading Thumbnail...", (divId, buttonId) => {
-        setTimeout(function () {
+        setTimeout(function() {
           document.getElementById(buttonId).style.display = "none";
         }, 50);
 
@@ -123,8 +125,7 @@ createSubmit.addEventListener("submit", function (e) {
         des.value,
         type,
         "url",
-        thumbUrl.value,
-        {}
+        thumbUrl.value, {}
       );
       createPostOnServer(postData);
     }
@@ -134,9 +135,20 @@ createSubmit.addEventListener("submit", function (e) {
   }
 });
 
-function updateThumbImagePreview() {
-  thumbImagePreview.src = document.getElementById("createImgUrl").value;
+function updateThumbImagePreview(e, file) {
+  if (file) {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = function() {
+      thumbImagePreview.src = reader.result
+    }
+  } else {
+    thumbImagePreview.src = document.getElementById("createImgUrl").value;
+  }
 }
 
 document.getElementById("createImgUrl").onchange = updateThumbImagePreview;
 document.getElementById("createImgUrl").onkeyup = updateThumbImagePreview;
+document.getElementById("createImgFile").onchange = function(e) {
+  updateThumbImagePreview(e, document.getElementById("createImgFile").files[0])
+}

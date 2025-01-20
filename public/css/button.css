@@ -4,6 +4,7 @@ button {
   border-radius: var(--border-radius);
   background: var(--theme-color);
   border: 0px;
+    color: var(--apt-color);
   outline: none;
   transition: 200ms;
   font-family: var(--global-ff), var(--global-ff), var(--global-ff), var(--global-ff);

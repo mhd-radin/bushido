@@ -39,8 +39,7 @@ function onpageloadin() {
   });
 
   if (
-    (typeof currentFormSet.completed != "undefined" &&
-      currentFormSet.completed == true) ||
+    (currentFormSet.completed == true) ||
     (localStorage.getItem("form_set") &&
       JSON.parse(localStorage.getItem("form_set")).completed)
   ) {
@@ -143,43 +142,30 @@ function showForm(form) {
 
     var dobInp = document.getElementById('dob');
     dobInp.type = ''
-    dobInp.onclick = function(param) {
-      dobInp.disabled = true
-      modal.datePicker([{
-        format: 'YYYY',
-        type: 'year',
-        subtract: 50,
-        title: 'Pick your year of birth'
-      }, {
-        format: 'MM',
-        type: 'month',
-        subtract: 12,
-        title: 'Pick your month of birth'
-      }, {
-        format: 'DD',
-        type: 'day',
-        subtract: 31,
-        title: 'Pick your day of birth'
-      }], true, dayjs('2020-01-01'), (data) => {
-        if (data.format === 'YYYY') {
-          return userboxUI.pickerBox('#(inputId)', '#(value)', '&(if ("#(format)" == "YYYY"){ ' + dayjs().format("YYYY") + ' - #(value) +" Years old" })&', true)
-        } else if (data.format === 'MM') {
-          const months = [
-  "January", "February", "March", "April", "May", "June",
-  "July", "August", "September", "October", "November", "December"
-];
-          return userboxUI.pickerBox('#(inputId)', months[parseInt(data.value) - 1], '#(value)',  true)
-        } else {
-          return userboxUI.pickerBox('#(inputId)', '#(value)', 'i born on #(value) th day', true)
-        }
-      }).then(function(arr) {
-        dob.value = arr.join('-')
-        dob.type = 'date';
-        dobInp.disabled = false;
-        currentFormSet.set(dobInp.id, dobInp.value);
-        saveForm()
-      })
+
+    function saveCalenderData(date) {
+      dob.value = date;
+      dobInp.disabled = false;
+      currentFormSet.set(dobInp.id, dobInp.value);
+      saveForm()
     }
+
+    const { Calendar } = window.VanillaCalendarPro;
+    let date = ''
+    const calender = new Calendar('#dob', {
+      inputMode: true,
+      input: true,
+      selectedTheme: 'system',
+      positionToInput: 'auto',
+      onClickDate(self, e) {
+        date = self.context.selectedDates[0];
+        dob.value = date;
+      },
+      onHide() {
+        saveCalenderData(date)
+      }
+    })
+    calender.init();
   } else if (form.id === formsID[2]) {
     changeTitle("Begin Your Training at Bushido Boxers Club");
     changeLog("");

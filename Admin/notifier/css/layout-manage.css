@@ -1,0 +1,29 @@
+@import url("bot-card.css");
+
+.body {
+  display: none;
+}
+
+.body-sections {
+  display: flex;
+  flex-direction: column
+}
+
+#qrCodes canvas,
+#qrCodes img {
+  width: 70%;
+  border-radius: 5px;
+}
+
+#botframe {
+  border-radius: 10px;
+  width: 100%;
+  /* height: 200px; */
+  border: 1px solid;
+}
+
+@media screen and (min-width: 650px) {
+  .body-sections {
+    flex-direction: row
+  }
+}

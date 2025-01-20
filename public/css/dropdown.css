@@ -13,6 +13,7 @@
   justify-content: left;
   appearance: none;
   margin: 2px;
+  font-family: var(--global-ff);
 }
 
 .dropdown-modal a:hover {

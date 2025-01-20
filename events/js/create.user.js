@@ -2,7 +2,7 @@ const addPostBtn = document.getElementById('addPost');
 
 addPostBtn.onclick = function () {
   modal.useDropdown(addPostBtn, [{
-    label: 'Add your story',
+    label: 'Add Story',
     icon: 'video-outline',
     clickAction: function () {
       

@@ -42,12 +42,12 @@ function onpageloadin() {
           });
           userItemElem.classList.add("user-box-active");
           messenger.room_id = data.id;
-          handleItemClick(data)
+          handleItemClick(userData)
           messenger.join().then(function(d) {
             if (d) {
               messenger.sendBreaker(userData.fullname + ' Joined')
             }
-            messenger.reciveMessages(data);
+            messenger.reciveMessages(userData);
           })
         };
 

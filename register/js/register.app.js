@@ -155,7 +155,7 @@ function showForm(form) {
     const calender = new Calendar('#dob', {
       inputMode: true,
       input: true,
-      selectedTheme: 'dark',
+      selectedTheme: 'system',
       positionToInput: 'auto',
       onClickDate(self, e) {
         date = self.context.selectedDates[0];

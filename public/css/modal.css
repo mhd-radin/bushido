@@ -112,7 +112,7 @@
     max-height: 50vh;
   }
 
-  .modal.expanded {
+  .modal.expanded, .modal.expanded .modal-body {
     max-height: 85vh !important;
   }
 }

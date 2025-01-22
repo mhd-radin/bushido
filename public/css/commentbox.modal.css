@@ -1,0 +1,74 @@
+.comment-modal {
+  border-radius: 10px;
+  background: var(--third-bg);
+  color: var(--apt-third-color);
+  position: relative;
+  width: calc(100% - 20px);
+  margin-bottom: 10px;
+}
+
+.commentbox-header {
+  background: var(--theme-color);
+  color: var(--apt-color);
+  font-size: 13px;
+  padding: 8px 15px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+
+.commentbox-title {
+  display: inherit;
+  flex-direction: inherit;
+  font-size: 13px;
+  align-items: center;
+}
+
+.commentbox-header .eva {
+  font-size: 22px;
+}
+
+.commentbox-title .eva {
+  margin: 4px;
+  margin-right: 13px;
+}
+
+.user-box {
+  background: var(--third-bg);
+  color: var(--apt-third-color);
+  margin-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.comment-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  background: var(--sec-bg);
+  color: var(--apt-sec-color);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px
+}
+
+.comment-footer input {
+  width: calc(100% - 50px);
+  border: none;
+  outline: none;
+  padding: 5px;
+  background: inherit;
+  color: inherit;
+  margin: 2px;
+}
+
+.comment-footer .eva {
+  padding: 3px;
+  margin: 2px;
+  font-size: 20px;
+  color: var(--theme-color);
+}

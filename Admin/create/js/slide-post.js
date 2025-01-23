@@ -162,10 +162,6 @@ createSubmit.addEventListener("submit", function(e) {
       uploadSourcesFromInp()
     }
   }
-  else {
-    var postData = new PostData(title.value, des.value, type, "url", false, {});
-    createPostOnServer(postData);
-  }
 });
 
 function updateThumbImagePreview(e, file) {

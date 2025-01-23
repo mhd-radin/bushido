@@ -244,8 +244,6 @@ class PostData {
       obj[key] = self[key];
     });
 
-    console.log(obj);
-
     return obj;
   }
 }

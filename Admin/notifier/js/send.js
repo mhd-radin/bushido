@@ -11,7 +11,6 @@ function send(auth, token, notification) {
   xhr.addEventListener("readystatechange", function () {
     if (xhr.DONE === xhr.readyState) {
       var res = xhr.response;
-      console.log(res);
     }
   });
 
@@ -34,7 +33,7 @@ function onformend(data) {
       des: data.des,
     })
     .then(function () {
-      console.log("send success");
+
     });
 
   // send(
@@ -76,7 +75,7 @@ const url =
   "https://oauth2.example.com/callback#access_token=4/P7q7W91&token_type=Bearer&expires_in=3600";
 const properties = getFragmentProperties(url);
 
-console.log(properties);
+
 // Output:
 // {
 //   access_token: "4/P7q7W91",

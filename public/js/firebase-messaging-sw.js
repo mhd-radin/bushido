@@ -14,14 +14,12 @@ let firebaseConfig = {
   measurementId: "G-PLQBR46HXP",
 };
 
-console.log('......')
 
 let app = initializeApp(firebaseConfig);
 let messaging = getMessaging(app);
 
 onBackgroundMessage(messaging, (payload) => {
-  console.log("Received background message ", payload);
-
+  
   let notificationTitle = payload.notification.title;
   let notificationOptions = {
     body: payload.notification.body,

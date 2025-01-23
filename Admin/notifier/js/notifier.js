@@ -136,7 +136,7 @@ function handleFloaterClick() {
 
                                 var selectAllElem = selectAll;
                                 document.getElementById(divId + '_all_user_INP').onchange = function() {
-                                  console.log(55555555)
+                      
                                   elem.querySelectorAll('input').forEach(function(el) {
                                     el.checked = document.getElementById(divId + '_all_user_INP').checked;
                                   })

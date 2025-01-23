@@ -9,7 +9,6 @@ function onpageloadin() {
   dateInp.value = dayjs().format('YYYY-MM-DD');
 
   dateInp.onchange = function(param) {
-    console.log(dateInp.value)
     var dt = dayjs(dateInp.value).format('DD-MM-YYYY');
     if (!app.isDate1Later(dt, dayjs().format('DD-MM-YYYY'))) {
       currentDate = dt;
@@ -90,7 +89,7 @@ function onpageloadin() {
           (date.id.match(/\W/g) && date.data().users)) {
           if (day.format('DD-MM-YYYY') == date.id || i == 0 && isPushed == false) {
             selectedDates.push(date.id);
-            if (i == 0) console.log(date.data().users.length);
+            //if (i == 0)
             attendanceDataLength.push(date.data().users.length);
             isPushed = true;
           }

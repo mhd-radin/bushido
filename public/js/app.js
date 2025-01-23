@@ -199,7 +199,7 @@ const app = {
                   }
                 })
                 .catch(function(err) {
-                  console.log(err);
+                  alert(err)
                 });
             } else {
               resolve(data);

@@ -7,7 +7,6 @@ eventSource.onmessage = (event) => {
 
 
 eventSource.onerror = (err) => {
-  console.log(err)
   console.error("Error with SSE connection");
   write('ERROR SSE!', 'red')
 };

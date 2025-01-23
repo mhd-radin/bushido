@@ -447,13 +447,11 @@ const messenger = {
     },
   },
   addToBody(msg, data, icon = "checkmark", infoAboutMessage = "") {
-    //console.log(msg.email, messenger.before_send_by);
 
     let isMe =
       msg.email == data.email || msg.id == data.id || msg.phone == data.phone;
     let formattedTime = dayjs(new Date(msg.date)).format("hh:mm A");
 
-    // console.log(msg.extraData);
 
     let msgElem = null;
     if (msg.type == "breaker") {
@@ -477,7 +475,6 @@ const messenger = {
         .parseElement()[0];
     }
 
-    console.log(msgElem.innerHTML)
 
     function dateFormat(date) {
       return dayjs(date).format("DD-MM-YYYY");

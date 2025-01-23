@@ -24,8 +24,7 @@ if ("serviceWorker" in navigator) {
         type: 'module'
     })
     .then((registration) => {
-      console.log("Service Worker registered with scope:", registration.scope);
-
+      
       // Request permission to receive notifications
       Notification.requestPermission().then((permission) => {
         if (permission === "granted") {
@@ -38,25 +37,19 @@ if ("serviceWorker" in navigator) {
                 
               } else {
                 // Show permission request UI
-                console.log(
-                  "No registration token available. Request permission to generate one."
-                );
+                
               }
             })
             .catch((err) => {
-              console.log("An error occurred while retrieving token. ", err);
             });
 
           // Listen for messages
           onMessage(messaging, (payload) => {
-            console.log("Message received. ", payload);
           });
         } else {
-          console.log("Notification permission denied.");
         }
       });
     })
     .catch((error) => {
-      console.log("Service Worker registration failed:", error);
     });
 }

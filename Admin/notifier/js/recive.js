@@ -57,7 +57,7 @@ bushido.realtime.onSet("notifications/global", function (snapshot) {
         var breaker = createBreaker(title);
         baseElem.appendChild(breaker);
       }
-      console.log(data.date);
+      
 
       prevDate = title;
       var msg = createNotificationBox(

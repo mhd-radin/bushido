@@ -64,7 +64,6 @@ app
       });
 
       var sorted = notifications.sort((a, b) => new Date(b.date) - new Date(a.date));
-      console.log(sorted);
       
       var prevDate = ''
       var baseElem = document.querySelector(".body");

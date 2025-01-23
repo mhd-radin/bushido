@@ -37,11 +37,17 @@ nav {
   color: var(--sec-color);
 }
 
+.nav-flex {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 @media screen and (min-width: 650px) {
   .nav-right {
     display: none;
   }
-  
+
   nav {
     padding: 17px;
   }

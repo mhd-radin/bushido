@@ -185,17 +185,8 @@
   position: relative;
   overflow: hidden;
   transition: 0.2s all;
-
-  opacity: 0;
-  transform: skew(5deg, 5deg);
-  filter: blur(5px);
 }
 
-.note-card.animate {
-  opacity: 1;
-  transform: skew(0, 0);
-  filter: blur(0);
-}
 
 .note-card:nth-child(1) {
   background: url("../../assets/bg/Simple Shiny.svg") center center;

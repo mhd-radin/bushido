@@ -1,29 +1,40 @@
-const createSlide = document.getElementById("createSlide");
+const createSlide = id("createSlide");
 
-const createPostTypeOpt = document.getElementById("createPostType");
-const createImgOpt = document.getElementById("createImgOpt");
-const createSubmit = document.getElementById("createSubmit");
-const thumbImagePreview = document.getElementById("thumbImagePreview");
+const createPostTypeOpt = id("createPostType");
+const createImgOpt = id("createImgOpt");
+const createSubmit = id("createSubmit");
+const thumbImagePreview = id("thumbImagePreview");
 
-const createThumbnailSection = document.getElementById(
+const createThumbnailSection = id(
   "createThumbnailSection"
 );
-const createSrcSection = document.getElementById("createSrcSection");
+const createSrcSection = id("createSrcSection");
+const createSrcPreview = id("createSrcPreview");
 
 function updatePostInputUI() {
   let value = createPostTypeOpt.value;
+  updateRequireInputs(false)
 
   if (value && value == "postThumb") {
-    document.getElementById("createSrcSection").style.display = "none";
-    document.getElementById("createThumbnailSection").style.display = "block";
+    id("createSrcSection").style.display = "none";
+    id("createThumbnailSection").style.display = "block";
     updateCreateInputUI();
-  } else if (value == "event") {
-    document.getElementById("createSrcSection").style.display = "block";
-    document.getElementById("createThumbnailSection").style.display = "block";
+  } else if (value == "story") {
+    id("createSrcSection").style.display = "block";
+    id("createThumbnailSection").style.display = "none";
+    updateRequireInputs(true);
+  } else if (value == "photo" || value == 'notice') {
+    id("createSrcSection").style.display = "none";
+    id("createThumbnailSection").style.display = "block";
     updateCreateInputUI();
+  } else if (value == "video") {
+    id("createSrcSection").style.display = "block";
+    id("createThumbnailSection").style.display = "block";
+    updateCreateInputUI();
+    updateRequireInputs(true)
   } else {
-    document.getElementById("createSrcSection").style.display = "none";
-    document.getElementById("createThumbnailSection").style.display = "none";
+    id("createSrcSection").style.display = "none";
+    id("createThumbnailSection").style.display = "none";
   }
 }
 
@@ -31,18 +42,22 @@ function updateCreateInputUI() {
   let value = createImgOpt.value;
 
   if (value && value == "upload") {
-    document.getElementById("createImgUrl_seg").style.display = "none";
-    document.getElementById("createImgFile_seg").style.display = "block";
+    id("createImgUrl_seg").style.display = "none";
+    id("createImgFile_seg").style.display = "block";
 
-    document.getElementById("createImgUrl").required = false;
-    document.getElementById("createImgFile").required = true;
+    id("createImgUrl").required = false;
+    id("createImgFile").required = true;
   } else {
-    document.getElementById("createImgUrl_seg").style.display = "block";
-    document.getElementById("createImgFile_seg").style.display = "none";
+    id("createImgUrl_seg").style.display = "block";
+    id("createImgFile_seg").style.display = "none";
 
-    document.getElementById("createImgUrl").required = true;
-    document.getElementById("createImgFile").required = false;
+    id("createImgUrl").required = true;
+    id("createImgFile").required = false;
   }
+}
+
+function updateRequireInputs(sourcesFileInput) {
+  id("createImageSrc").required = sourcesFileInput;
 }
 
 createPostTypeOpt.onchange = updatePostInputUI;
@@ -50,31 +65,54 @@ createImgOpt.onchange = updateCreateInputUI;
 updatePostInputUI();
 
 
-createSubmit.addEventListener("submit", function (e) {
+createSubmit.addEventListener("submit", function(e) {
 
   e.preventDefault();
 
-  var title = document.getElementById("createTitle");
-  var des = document.getElementById("createDes");
-  var type = document.getElementById("createPostType").value;
-  var imgType = document.getElementById("createImgOpt").value;
-  var thumbUrl = document.getElementById("createImgUrl");
-  var thumbFile = document.getElementById("createImgFile");
+  var title = id("createTitle");
+  var des = id("createDes");
+  var type = id("createPostType").value;
+  var imgType = id("createImgOpt").value;
+  var thumbUrl = id("createImgUrl");
+  var thumbFile = id("createImgFile");
+
+  // sorting or setting types as postCollection for server
+  let postCollection = 'posts';
+  switch (type) {
+    case 'postThumb':
+      postCollection = 'posts'
+      break;
+    case 'story':
+      postCollection = 'stories'
+      break;
+    case 'video':
+      postCollection = 'videos'
+      break;
+    case 'photo':
+      postCollection = 'photos'
+      break;
+    case 'notice':
+      postCollection = 'notices'
+      break;
+    default:
+      postCollection = 'posts'
+      break;
+  }
 
   function createPostOnServer(postData) {
     modal.alert("Creating new post", (divId, buttonId) => {
       setTimeout(function() {
-        document.getElementById(buttonId).style.display = "none";
+        id(buttonId).style.display = "none";
       }, 50);
 
       bushido
-        .set("posts/" + postData.id, postData.export())
+        .set(postCollection + "/" + postData.id, postData.export())
         .then(function() {
-          document.getElementById(buttonId).click();
+          id(buttonId).click();
           modal.alert("New post created successfully", "");
         })
         .catch(function(err) {
-          document.getElementById(buttonId).click();
+          id(buttonId).click();
           modal.alert(
             "Error Creating Post",
             "faild creating post. chech your internet connection and retry. <br /><br/> ERROR: " +
@@ -84,52 +122,47 @@ createSubmit.addEventListener("submit", function (e) {
     });
   }
 
-  if (type == "postThumb" || type == "event") {
+  function uploadSourcesFromInp() {
+    let sourceFile = id("createImageSrc").files[0];
+    uploadFile(sourceFile, function(res) {
+      postData.extras.url = res.url;
+      postData.extras.type = sourceFile.type;
+      postData.extras.author = 'Bushido';
+      postData.extras.isAdmin = true;
+      createPostOnServer(postData);
+    })
+  }
+
+  let postData = new PostData(
+    title.value,
+    des.value,
+    type,
+    "url",
+    thumbUrl.value, {}
+  );
+
+  // post
+  if (type == "postThumb" || type == "photo" || type == "notice") {
     if (imgType == "upload") {
-      modal.alert("Uploading Thumbnail...", (divId, buttonId) => {
-        setTimeout(function() {
-          document.getElementById(buttonId).style.display = "none";
-        }, 50);
-
-        var file = thumbFile.files[0];
-        useCloud(file)
-          .then(function (res) {
-            if (typeof res == 'string'){
-              res = JSON.parse(res)
-            }
-
-            var postData = new PostData(
-              title.value,
-              des.value,
-              type,
-              "url",
-              res.url,
-              {}
-            );
-            createPostOnServer(postData);
-          })
-          .catch(function (err) {
-            document.getElementById(buttonId).click();
-            modal.alert(
-              "Error Uploading File",
-              "faild to upload file. chech your internet connection and retry. <br /><br/> ERROR: " +
-                err
-            );
-          });
-
-        return '<center><img src="../../assets/spinner/ring-resize.svg" class="svg-mini-loader loader-x2"></img></center>';
-      });
+      uploadFile(thumbFile.files[0], function(res) {
+        postData.imgUrl = res.url;
+        createPostOnServer(postData);
+      })
     } else {
-      var postData = new PostData(
-        title.value,
-        des.value,
-        type,
-        "url",
-        thumbUrl.value, {}
-      );
       createPostOnServer(postData);
     }
-  } else {
+  }
+  else if (type == "video" || type == "story") {
+    if (thumbFile.files.length > 0 && imgType == "upload") {
+      uploadFile(thumbFile.files[0], function(res) {
+        postData.imgUrl = res.url;
+        uploadSourcesFromInp();
+      })
+    } else if (thumbFile.files.length > 0) {
+      uploadSourcesFromInp()
+    }
+  }
+  else {
     var postData = new PostData(title.value, des.value, type, "url", false, {});
     createPostOnServer(postData);
   }
@@ -137,18 +170,28 @@ createSubmit.addEventListener("submit", function (e) {
 
 function updateThumbImagePreview(e, file) {
   if (file) {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = function() {
-      thumbImagePreview.src = reader.result
-    }
+    var src = window.URL.createObjectURL(file);
+    thumbImagePreview.src = src
   } else {
-    thumbImagePreview.src = document.getElementById("createImgUrl").value;
+    thumbImagePreview.src = id("createImgUrl").value;
   }
 }
 
-document.getElementById("createImgUrl").onchange = updateThumbImagePreview;
-document.getElementById("createImgUrl").onkeyup = updateThumbImagePreview;
-document.getElementById("createImgFile").onchange = function(e) {
-  updateThumbImagePreview(e, document.getElementById("createImgFile").files[0])
+
+function updateSourcesPreview(e, file) {
+  if (file) {
+    var src = window.URL.createObjectURL(file);
+    createSrcPreview.type = file.type;
+    createSrcPreview.src = src;
+  }
+}
+
+id("createImgUrl").onchange = updateThumbImagePreview;
+id("createImgUrl").onkeyup = updateThumbImagePreview;
+id("createImgFile").onchange = function(e) {
+  updateThumbImagePreview(e, id("createImgFile").files[0])
+}
+
+id("createImageSrc").onchange = function(e) {
+  updateSourcesPreview(e, id("createImageSrc").files[0])
 }

@@ -1,8 +1,14 @@
+.post-session {
+  display: none;
+  animation: ShowPopup 0.6s 1;
+}
+
 .postbody {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: flex-start;
+  animation: ShowPopup 0.6s 1;
 }
 
 .post-item-container {
@@ -73,5 +79,8 @@
     flex-direction: column;
     justify-content: start
   }
-
+  
+ .post-session {
+  animation: fadeInLeft 0.6s 1;
+}
 }

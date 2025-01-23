@@ -30,7 +30,7 @@
 
 <body>
 
-  <div class="main-session" style="display: none">
+  <div class="main-session" style="display">
     <nav>
       <div class="nav-left">
         <div id="addPost" class="eva eva-plus-circle-outline"></div>
@@ -59,7 +59,7 @@
                 <i class="eva eva-shield-outline"></i>
                 <div class="note-action-text">Security</div>
               </div>
-              <div class="note-action">
+              <div class="note-action" onclick="document.querySelector('.main-session').style.display = 'none';document.querySelector('.post-session').style.display = 'block'">
                 <i class="eva eva-phone-outline"></i>
                 <div class="note-action-text">Contact</div>
               </div>
@@ -463,7 +463,7 @@
   <script src="../public/js/modal.js"></script>
   <script src="../chat/js/chat.user.js"></script>
   <script src="js/events.client.js"></script>
-  <script src="js/events.app7.js"></script>
+  <script src="js/events.app.js"></script>
   <script src="js/create.user.js"></script>
 
   <script src="../public/js/basic.notification.js"></script>

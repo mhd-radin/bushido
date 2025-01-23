@@ -26,7 +26,9 @@ const modal = {
     return new TagString(`<button class="${className}" id="${id}">${body}</button>`)
   },
   add(tag) {
-    return document.body.appendChild(tag.parseElement()[0])
+    var el = tag.parseElement()[0];
+    document.body.appendChild(el);
+    return el;
   },
   alert(title, body, bodyClass = '', onload) {
     return new Promise((resolve, reject) => {
@@ -43,8 +45,9 @@ const modal = {
       );
 
 
-      this.add(tagstr)
-      if (typeof onload === 'function') onload(mainID, ID);
+      this.add(tagstr).onload = function() {
+        if (typeof onload === 'function') onload(mainID, ID);
+      }
       document.getElementById(ID).onclick = function() {
         if (document.getElementById(mainID)) {
           document.getElementById(mainID).children[0].style.animation = 'ClosePopup 0.5s 1';

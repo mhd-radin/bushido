@@ -489,3 +489,14 @@ function loadModule(src, fn) {
 }
 
 
+function id(elementId){
+  return document.getElementById(elementId+'');
+}
+
+function q(q){
+  return document.querySelector(q+'');
+}
+
+function qa(q) {
+  return document.querySelectorAll(q + '');
+}

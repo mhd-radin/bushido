@@ -46,7 +46,8 @@
   background: var(--third-bg);
 }
 
-.input-seg img {
+.input-seg img,
+.input-seg embed {
   margin: 3px;
   border: 2px solid var(--theme-color-alpha);
   border-radius: 8px;

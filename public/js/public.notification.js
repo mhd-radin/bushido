@@ -34,8 +34,6 @@ if ("serviceWorker" in navigator) {
             .then((currentToken) => {
               if (currentToken) {
                 // Send the token to your server and update the UI if necessary
-                console.log("Token:", currentToken);
-                modal.alert('FCM Token', currentToken);
                 navigator.clipboard.writeText(currentToken);
                 
               } else {

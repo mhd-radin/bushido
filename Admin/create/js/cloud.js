@@ -1,13 +1,17 @@
-function useCloud(file, onupload = function (){}, preset = 'thumbs') {
+function useCloud(file, onupload = function() {}, preset = 'thumbs', cloud = config.cloud.cloud_name) {
   return new Promise((resolve, reject) => {
     const formData = new FormData();
     formData.append("file", file);
     formData.append("upload_preset", preset);
 
+    if (!cloud || typeof cloud == 'undefined') {
+      cloud = config.cloud.cloud_name
+    }
+
     const xhr = new XMLHttpRequest();
     xhr.open(
       "POST",
-      `https://api.cloudinary.com/v1_1/${config.cloud.cloud_name}/image/upload`,
+      `https://api.cloudinary.com/v1_1/${cloud}/image/upload`,
       true
     );
 
@@ -28,5 +32,31 @@ function useCloud(file, onupload = function (){}, preset = 'thumbs') {
     };
 
     xhr.send(formData)
+  });
+}
+
+function uploadFile(thumbnailFile, then, cloudPreset, cloudName) {
+  modal.alert("Uploading Thumbnail...", (divId, buttonId) => {
+    var file = thumbnailFile;
+    useCloud(file, () => {}, cloudPreset, cloudName)
+      .then(function(res) {
+        if (typeof res == 'string') {
+          res = JSON.parse(res)
+        }
+
+        if (typeof then == 'function') then(res);
+      })
+      .catch(function(err) {
+        id(buttonId).click();
+        modal.alert(
+          "Error Uploading File",
+          "faild to upload file. chech your internet connection and retry. <br /><br/> ERROR: " +
+          err
+        );
+      });
+
+    return '<center><img src="../../assets/spinner/ring-resize.svg" class="svg-mini-loader loader-x2"></img></center>';
+  }, '', function() {
+    id(buttonId).style.display = "none";
   });
 }

@@ -5,7 +5,18 @@ function onpageloadin() {
       document.querySelector(".body").innerHTML = "";
 
       var elem = document.querySelector(".users-list");
-      elem.innerHTML = "";
+      // warning temporarily
+      // defualt is ''
+      elem.innerHTML = `
+          <div class="note-card">
+            <div class="note-ripple"></div>
+            <div class="note-title">Warning!</div>
+            <div class="note-subtext">
+              Sorry, in this chat page some issues found about chat. that will fix on next updation. let's co-operate.
+            </div>
+            <div class="note-buttons">
+            </div>
+          </div>`;
 
       var arr = [{
         user_name: 'Bushido Team',

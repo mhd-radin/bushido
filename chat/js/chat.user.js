@@ -501,10 +501,10 @@ const messenger = {
       document.querySelector(".body").appendChild(msgElem);
     }
 
-    // Todo: right click action
+    // right click action
     document.getElementById(msg.message_id).addEventListener('contextmenu', function(event) {
       event.preventDefault();
-      if (messenger.structure.menu_enabled == false) {
+      if (messenger.structure.menu_enabled == false && msg.type === "msg") {
         modal.useDropdown(document.getElementById(msg.message_id), [{
           label: 'Replay',
           clickAction: function(d, close) {
@@ -651,8 +651,12 @@ if (document.querySelector('.footer')) {
     e.preventDefault();
     modal.useDropdown(document.querySelector('.chatter'),
    [{
-        label: 'Import image',
-        icon: 'image-outline'
+        label: 'Coming Soon',
+        icon: '',
+        clickAction: () => {},
+   }, {
+        label: 'Pre-release Version',
+        clickAction: () => {}
    }], [])
   })
 }

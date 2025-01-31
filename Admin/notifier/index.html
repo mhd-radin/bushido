@@ -32,10 +32,13 @@
 
 <body>
 
-  <nav>
+  <nav class="nav-flex">
+    <div class="nav-left">
+      <a class="eva eva-person-outline" href="../profile"></a>
+    </div>
     <div class="nav-title"><b>Bushido</b> Notifier</div>
     <div class="nav-right">
-      <i class="eva eva-code-outline"></i>
+      <i class="eva eva-home-outline" onclick="app.redirectWithPreloader('../profile')"></i>
     </div>
   </nav>
 
@@ -46,12 +49,12 @@
         <div class="bot-subtitle">Bushido Bot Service</div>
       </div>
       <div class="bot-body">
-        <div class="bot-msg-count">289+</div>
-        <div class="bot-des">Messages are sent</div>
+        <div class="bot-msg-count" id="sentCount">289+</div>
+        <div class="bot-des" id="statusInfo">Messages are sent</div>
       </div>
       <div class="bot-footer">
-        <div class="bot-cli">Client logged</div>
-        <div class="bot-status">
+        <div class="bot-cli" id="cliInfo">Client logged</div>
+        <div class="bot-status" id="activeInfo">
           <div class="green-dot"></div>
           Active
         </div>
@@ -193,7 +196,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"
     integrity="sha512-CNgIRecGo7nphbeZ04Sc13ka07paqdeTu0WR1IM4kNcpmBAUSHSQX0FslNhTDadL4O5SAGapGt4FodqL8My0mA=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    
+
   <!-- custom scripts -->
   <script src="../../public/js/app.js"></script>
   <script src="../../public/js/tagstring.js"></script>
@@ -203,6 +206,7 @@
   <script src="../../public/js/user.structure.js"></script>
   <script src="js/notifier.js"></script>
   <script src="js/notifier.str.js"></script>
+  <script src="js/botinfo.js"></script>
   <script src="js/recive.js"></script>
   <script src="js/send.js"></script>
   <script src="js/actions.js"></script>

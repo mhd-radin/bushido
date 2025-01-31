@@ -37,15 +37,32 @@ nav {
   color: var(--sec-color);
 }
 
+.nav-left {
+  font-size: 25px;
+  color: var(--sec-color);
+  margin-right: 15px;
+}
+
 .nav-flex {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 }
 
-@media screen and (min-width: 650px) {
+.nav-flex .nav-right {
+  position: relative;
+}
+
+@media screen and (min-width: 400px) {
   .nav-right {
-    display: none;
+    position: absolute !important;
+    right: 10px;
+  }
+
+  .nav-flex {
+    justify-content: start;
+    min-width: calc(100vw - 10px);
   }
 
   nav {

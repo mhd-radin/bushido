@@ -4,18 +4,18 @@ app.validUser().catch(() => {
 
 function onpageloadin() {
   const targetElements = document.querySelectorAll(".image-card"); // Element to observe
-  targetElements.forEach(function (targetElement) {
+  targetElements.forEach(function(targetElement) {
     observer.observe(targetElement);
   });
 
-  document.querySelectorAll(".note-card").forEach(function (targetElement) {
+  document.querySelectorAll(".note-card").forEach(function(targetElement) {
     microObserver.observe(targetElement);
   });
 }
 
 var rotate = 0;
 
-document.querySelectorAll(".note-card").forEach(function (elem) {
+document.querySelectorAll(".note-card").forEach(function(elem) {
   function handleMoves(e) {
     let X = 0,
       Y = 0;
@@ -90,4 +90,16 @@ function useEmptyInfoScreen() {
 
 function addPostToBody(tag) {
   document.getElementById("posts").appendChild(tag.parseElement()[0]);
+}
+
+
+
+function clearLinearContents(linearBoxElemQuery, defaultChildHtml = '', styleDisplay = 'none') {
+  document.querySelector(linearBoxElemQuery + ' .linear-contents').innerHTML = defaultChildHtml;
+  document.querySelector(linearBoxElemQuery).style.display = styleDisplay;
+}
+
+function appendToLinearContents(linearBoxElemQuery, child, styleDisplay = 'block') {
+  document.querySelector(linearBoxElemQuery).style.display = styleDisplay;
+  document.querySelector(linearBoxElemQuery + ' .linear-contents').appendChild(child);
 }

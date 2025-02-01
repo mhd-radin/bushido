@@ -1,7 +1,7 @@
-bushido.getCollection("posts").then(function (snapshot) {
+bushido.getCollection("posts").then(function(snapshot) {
   var arr = bushido.toData(snapshot);
   useEmptyInfoScreen();
-  arr.forEach(function (dt, index) {
+  arr.forEach(function(dt, index) {
     var data = dt.data();
     var thumbImg = data.imgUrl;
 
@@ -19,7 +19,7 @@ bushido.getCollection("posts").then(function (snapshot) {
     if (data.imageType == "file") {
       thumbImg =
         "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAAtJREFUGFdjYAACAAAFAAGq1chRAAAAAElFTkSuQmCC";
-      bushido.get("base64", data.imgUrl).then(function (snapshot) {
+      bushido.get("base64", data.imgUrl).then(function(snapshot) {
         var imgData = snapshot.data();
         thumbImg = imgData.url;
         document.getElementById(data.id).querySelector("img").src = thumbImg;
@@ -28,5 +28,91 @@ bushido.getCollection("posts").then(function (snapshot) {
     } else {
       addPost();
     }
+  });
+});
+
+function cloudinaryTransform(url, transformations = {}) {
+  const urlParts = url.split("/upload/");
+  if (urlParts.length !== 2) return console.error("Invalid Cloudinary URL");
+
+  const transformString = Object.entries(transformations)
+    .map(([key, value]) => `${key}_${value}`)
+    .join(",");
+
+  return `${urlParts[0]}/upload/${transformString}/${urlParts[1]}`;
+}
+
+
+
+
+/// story 
+bushido.getCollection("stories").then(function(snapshot) {
+  var arr = bushido.toData(snapshot);
+  clearLinearContents('.stories-box');
+  arr.forEach(function(dt, index) {
+    var data = dt.data();
+    var thumbImg = ((data.imgUrl == '' || !data.imgUrl) ? cloudinaryTransform(data.extras.url, {
+      so: 2,
+      dpr: 'auto',
+      c: "fill",
+      f: "jpg"
+    }) : data.imgUrl);
+
+    function addStory() {
+      var tagstring = CardStructure.story.create(
+        data.id,
+        thumbImg,
+        data.extras.author,
+        data.des,
+        app.avatarUrl(data.extras.author),
+        'Demoo Time Todo');
+      appendToLinearContents('.stories-box', tagstring.parseElement()[0])
+    }
+
+    addStory();
+  });
+});
+
+
+/// video 
+bushido.getCollection("videos").then(function(snapshot) {
+  var arr = bushido.toData(snapshot);
+  clearLinearContents('.videos-box');
+  arr.forEach(function(dt, index) {
+    var data = dt.data();
+    var thumbImg = ((data.imgUrl == '' || !data.imgUrl) ? cloudinaryTransform(data.extras.url, {
+      so: 2,
+      dpr: 'auto',
+      c: "fill",
+      f: "jpg"
+    }) : data.imgUrl);
+
+    function add() {
+      var tagstring = CardStructure.video.create(
+        data.id, thumbImg, data.title, data.des);
+      appendToLinearContents('.videos-box', tagstring.parseElement()[0])
+    }
+
+    add();
+  });
+});
+
+
+
+
+/// poster
+bushido.getCollection("photos").then(function(snapshot) {
+  var arr = bushido.toData(snapshot);
+  clearLinearContents('.posters-box');
+  arr.forEach(function(dt, index) {
+    var data = dt.data();
+    var thumbImg = data.imgUrl;
+
+    function add() {
+      var tagstring = CardStructure.createPoster(data.id, thumbImg);
+      appendToLinearContents('.posters-box', tagstring.parseElement()[0])
+    }
+
+    add();
   });
 });

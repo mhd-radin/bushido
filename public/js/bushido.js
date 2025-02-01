@@ -213,7 +213,7 @@ if (bushido){
     return obj; // Return the value if it's neither an array nor an object
   }
 };
-
+ 
 class PostData {
   constructor(title, des, type, imageType, imgUrl, extras) {
     this.title = title;

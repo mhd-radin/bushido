@@ -22,6 +22,7 @@ function updatePostInputUI() {
   } else if (value == "story") {
     id("createSrcSection").style.display = "block";
     id("createThumbnailSection").style.display = "none";
+    disableThumbnailInputs()
     updateRequireInputs(true);
   } else if (value == "photo" || value == 'notice') {
     id("createSrcSection").style.display = "none";
@@ -30,7 +31,7 @@ function updatePostInputUI() {
   } else if (value == "video") {
     id("createSrcSection").style.display = "block";
     id("createThumbnailSection").style.display = "block";
-    updateCreateInputUI();
+    disableThumbnailInputs();
     updateRequireInputs(true)
   } else {
     id("createSrcSection").style.display = "none";
@@ -56,6 +57,11 @@ function updateCreateInputUI() {
   }
 }
 
+function disableThumbnailInputs() {
+  id("createImgUrl").required = false;
+  id("createImgFile").required = false;
+}
+
 function updateRequireInputs(sourcesFileInput) {
   id("createImageSrc").required = sourcesFileInput;
 }
@@ -66,7 +72,6 @@ updatePostInputUI();
 
 
 createSubmit.addEventListener("submit", function(e) {
-
   e.preventDefault();
 
   var title = id("createTitle");
@@ -93,9 +98,6 @@ createSubmit.addEventListener("submit", function(e) {
       break;
     case 'notice':
       postCollection = 'notices'
-      break;
-    default:
-      postCollection = 'posts'
       break;
   }
 
@@ -129,6 +131,7 @@ createSubmit.addEventListener("submit", function(e) {
       postData.extras.type = sourceFile.type;
       postData.extras.author = 'Bushido';
       postData.extras.isAdmin = true;
+      postData.extras.isLive = false;
       createPostOnServer(postData);
     })
   }
@@ -153,12 +156,15 @@ createSubmit.addEventListener("submit", function(e) {
     }
   }
   else if (type == "video" || type == "story") {
+    // if thumbnail file found on input
     if (thumbFile.files.length > 0 && imgType == "upload") {
       uploadFile(thumbFile.files[0], function(res) {
         postData.imgUrl = res.url;
         uploadSourcesFromInp();
       })
-    } else if (thumbFile.files.length > 0) {
+    } 
+    // if thumbnail not found on input
+    else {
       uploadSourcesFromInp()
     }
   }

@@ -45,9 +45,9 @@ const modal = {
       );
 
 
-      this.add(tagstr).onload = function() {
-        if (typeof onload === 'function') onload(mainID, ID);
-      }
+      this.add(tagstr)
+
+      if (typeof onload === 'function') onload(mainID, ID);
       document.getElementById(ID).onclick = function() {
         if (document.getElementById(mainID)) {
           document.getElementById(mainID).children[0].style.animation = 'ClosePopup 0.5s 1';

@@ -31,11 +31,16 @@
 <body>
 
   <div class="main-session" style="display">
-    <nav>
+    <nav class="nav-flex">
       <div class="nav-left">
         <div id="addPost" class="eva eva-plus-circle-outline"></div>
       </div>
-      <div class="nav-title"><b>Bushido</b></div>
+      <!--div class="nav-title">
+        <b>Bushido</b>
+      </div-->
+      <div class="nav-title-image">
+        <img src="../assets/logos/bbc_blBDe.png" alt="" class="logo-theme-replace">
+      </div>
       <div class="nav-right">
         <i class="eva eva-refresh-outline"></i>
       </div>
@@ -81,6 +86,21 @@
               <button>
                 <i class="eva eva-external-link-outline"></i>
                 <span>Contact</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="note-card">
+            <div class="note-ripple"></div>
+            <div class="note-title">Bushido App Launch - 2025</div>
+            <div class="note-subtext">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid molestiae, placeat officiis mollitia
+              corrupti necessitatibus?
+            </div>
+            <div class="note-buttons">
+              <button>
+                <i class="eva eva-external-link-outline"></i>
+                <span>Try It</span>
               </button>
             </div>
           </div>
@@ -351,7 +371,7 @@
   <div class="post-session" id="postsession">
     <nav>
       <div class="nav-left">
-        <div id="addPost" class="eva eva-arrow-left"></div>
+        <div id="closePostViewer" class="eva eva-arrow-left"></div>
       </div>
       <div class="nav-title"><b>Bushido</b></div>
       <div class="nav-right">
@@ -363,7 +383,7 @@
         <div class="image-card video-card">
           <div class="img-container">
             <video src="../assets/bg/Marimayam _ Ep 328 - Health through wealth I Mazhavil Manorama.mp4" alt=""
-              class="img-content" controls poster="../assets/bg/Simple Shiny.svg"></video>
+              class="img-content" id="postPlayer" poster="../assets/bg/Simple Shiny.svg"></video>
             <i class="play-icon eva eva-arrow-right"></i>
           </div>
           <div class="image-card-body">

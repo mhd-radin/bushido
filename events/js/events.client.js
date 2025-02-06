@@ -89,7 +89,7 @@ function useEmptyInfoScreen() {
 }
 
 function addPostToBody(tag) {
-  document.getElementById("posts").appendChild(tag.parseElement()[0]);
+  document.getElementById("posts").appendChild(tag);
 }
 
 
@@ -102,4 +102,36 @@ function clearLinearContents(linearBoxElemQuery, defaultChildHtml = '', styleDis
 function appendToLinearContents(linearBoxElemQuery, child, styleDisplay = 'block') {
   document.querySelector(linearBoxElemQuery).style.display = styleDisplay;
   document.querySelector(linearBoxElemQuery + ' .linear-contents').appendChild(child);
+}
+
+
+
+function addInfoToPost() {
+  // Tab to edit
+}
+
+function updatePostViewer(postData, type, show = false) {
+  q('.postbody .img-content').src = (postData.extras.url || postData.imgUrl);
+  q('.postbody .img-content').poster = postData.imgUrl;
+  q('.postbody .image-card-title').innerHTML = postData.title;
+  q('.postbody .image-card-subtext').innerHTML = postData.des;
+  //q('.postbody .img-content').type = (postData.extras.type || 'image/jpeg');
+
+  if (show) {
+    q('.post-session').style.display = 'block';
+    q('.main-session').style.display = 'none';
+  } else {
+    q('.post-session').style.display = 'none';
+    q('.main-session').style.display = 'block';
+  }
+}
+
+id('closePostViewer').onclick = function() {
+  q('.post-session').style.display = 'none';
+  q('.main-session').style.display = 'block';
+}
+
+
+id('postPlayer').ontoggle = function (i) {
+  alert(i)
 }

@@ -481,7 +481,7 @@ app.validUser().then((user) => {
 document.getElementById('about').onclick = function() {
   modal.alert('About Bushido', 
     `
-    <div class="logo-cont"><img src="../assets/logos/bbc_w.png" class='about-logo'/></div>
+    <div class="logo-cont"><img src="../assets/logos/bbc_cf.png" class='about-logo'/></div>
     
     Bushido is an outstanding martial arts and boxing club located in Malappuram, Kerala, focused on helping people grow through combat sports. The club is run by a coach who has won national championships and provides top-notch training in Muay Thai, Boxing, Karate, and more.
 <br/><br/>

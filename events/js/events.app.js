@@ -12,8 +12,13 @@ bushido.getCollection("posts").then(function(snapshot) {
         data.des,
         thumbImg,
         false
-      );
+      ).parseElement()[0];
       addPostToBody(tagstring);
+
+      var elem = tagstring;
+      elem.onclick = function() {
+        updatePostViewer(data, '', 'block')
+      }
     }
 
     if (data.imageType == "file") {
@@ -58,18 +63,22 @@ bushido.getCollection("stories").then(function(snapshot) {
       f: "jpg"
     }) : data.imgUrl);
 
-    function addStory() {
-      var tagstring = CardStructure.story.create(
+    function add() {
+      var tagstring = (CardStructure.story.create(
         data.id,
         thumbImg,
         data.extras.author,
         data.des,
         app.avatarUrl(data.extras.author),
-        'Demoo Time Todo');
-      appendToLinearContents('.stories-box', tagstring.parseElement()[0])
+        'Demoo Time Todo').parseElement()[0]);
+      appendToLinearContents('.stories-box', tagstring)
+      return tagstring;
     }
 
-    addStory();
+    var elem = add();
+    elem.onclick = function() {
+      updatePostViewer(data, '', 'block')
+    }
   });
 });
 
@@ -88,12 +97,16 @@ bushido.getCollection("videos").then(function(snapshot) {
     }) : data.imgUrl);
 
     function add() {
-      var tagstring = CardStructure.video.create(
-        data.id, thumbImg, data.title, data.des);
-      appendToLinearContents('.videos-box', tagstring.parseElement()[0])
+      var tagstring = (CardStructure.video.create(
+        data.id, thumbImg, data.title, data.des).parseElement()[0]);
+      appendToLinearContents('.videos-box', tagstring);
+      return tagstring;
     }
 
-    add();
+    var elem = add();
+    elem.onclick = function() {
+      updatePostViewer(data, '', 'block')
+    }
   });
 });
 

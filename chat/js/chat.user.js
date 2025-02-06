@@ -1,5 +1,6 @@
 function onpageloadin() {
   app.validUser().then((data) => {
+    alert('loaded')
     let userData = data;
     if (data) {
       document.querySelector(".body").innerHTML = "";
@@ -39,9 +40,9 @@ function onpageloadin() {
           .create(
             data.user_name,
             data.email,
-            "https://api.dicebear.com/9.x/initials/svg?seed=" +
+            (data.isAdmin == true ? "..//assets/logos/bbc256.png" : "https://api.dicebear.com/9.x/initials/svg?seed=" +
             data.user_name +
-            "&radius=40",
+            "&radius=40"),
             data.isAdmin == true ? userboxUI.tag("Admin") : ""
           )
           .parseElement()[0];

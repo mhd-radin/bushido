@@ -38,7 +38,7 @@ if (bushido){
   set(collection, data, opt) {
     return new Promise((resolve, reject) => {
       bushido.access().then(function() {
-        data = typeof data == "function" ? data() : data;
+        data = typeof data == "function" ? data(sdk) : data;
         bushido.sdk
           .setDoc(bushido.sdk.doc(bushido.db, collection), data, opt)
           .then(resolve);

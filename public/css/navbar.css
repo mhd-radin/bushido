@@ -16,6 +16,7 @@ nav {
 
 .nav-title {
   font-size: 25px;
+  margin-left: 10px;
 }
 
 .nav-title {
@@ -54,6 +55,14 @@ nav {
   position: relative;
 }
 
+
+.nav-center {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
 @media screen and (min-width: 400px) {
   .nav-right {
     position: absolute !important;
@@ -61,8 +70,12 @@ nav {
   }
 
   .nav-flex {
-    justify-content: start;
+    justify-content: flex-start;
     min-width: calc(100vw - 10px);
+  }
+  
+  .nav-center {
+    justify-content: flex-start;
   }
 
   nav {

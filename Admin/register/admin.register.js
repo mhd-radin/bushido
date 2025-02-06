@@ -44,7 +44,8 @@ function onpageloadin() {
         var elemStyle = window.getComputedStyle(elem, null);
         var currentDelay = elemStyle.getPropertyValue('animation-delay');
 
-        elem.style.animationDelay = ((parseInt(currentDelay.replace('s', '')) * 1000) + (delayScale * eIndex) + 'ms');
+        elem.style.animationDelay = ((parseInt(currentDelay.replace('s', '')) * 1000) + (delayScale * eIndex) +
+          'ms');
         elem.style.animationPlayState = 'running';
       })
     }
@@ -164,25 +165,21 @@ document.getElementById('nextBtn').onclick = function() {
   var form_set = new FormSet('default');
   var name = document.getElementById('fullname'),
     adminKeyInp = document.getElementById('key'),
-    password = document.getElementById('password');
 
   if (!name.value) {
-    changeLog('name input is blank.')
+    changeLog('name input is blank.');
   } else if (!adminKeyInp.value) {
-    changeLog('admin key is wrong.')
-  } else if (!password.value) {
-    changeLog('personal password input is blank');
+    changeLog('admin key is wrong.');
   } else {
     form_set.set('fullname', name.value);
     form_set.set('adminKey', adminKeyInp.value);
-    var encrypted = CryptoJS.AES.encrypt(password.value, config.ENC_KEY).toString();
-    form_set.set('password', encrypted);
-
+    
     if (typeof spinner != 'undefined') {
       spinner.showPreloader('Verifying...');
     }
     bushido.useQuery('adminKey', [
-      ['key', '==', adminKeyInp.value]
+      ['key', '==', adminKeyInp.value],
+      ['fullname', '==', name.value],
       ]).then(function(snapshot) {
       var data = bushido.toData(snapshot);
       if (data.length == 0) {
@@ -190,7 +187,9 @@ document.getElementById('nextBtn').onclick = function() {
       } else {
         var obj = data[0].data()
         if (obj.key == adminKeyInp.value) {
-          const key = 'ADMN_' + Math.floor(Math.random() * 9999) + '_AG' + (['ABV', 'AKC', 'ZSO', 'KML', 'OPT'][Math.floor(Math.random() * 5)]) + '_AWq67/' + (['Uwes5', 'Ksn74', 'amFw8n', 'Wesy6', '7she73'][Math.floor(Math.random() * 5)]);
+          const key = 'ADMN_' + Math.floor(Math.random() * 9999) + '_AG' + (['ABV', 'AKC', 'ZSO', 'KML', 'OPT'][
+            Math.floor(Math.random() * 5)]) + '_AWq67/' + (['Uwes5', 'Ksn74', 'amFw8n', 'Wesy6', '7she73'][Math
+            .floor(Math.random() * 5)]);
 
           if (typeof spinner != 'undefined') {
             spinner.changeText('Verified. Connecting to server...');

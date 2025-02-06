@@ -290,19 +290,37 @@ const app = {
 
 const themeManager = {
   currentTheme: "blueocean-theme",
-  themes: [
-    "darkmoon-theme",
-    "blueocean-theme",
-    "redhouse-theme",
-    "classic-theme",
-    "dark-theme",
-    "greenleaf-theme",
-    "light-theme",
-  ],
+  themes: {
+    "darkmoon-theme": "dark",
+    "blueocean-theme": "dark",
+    "redhouse-theme": "dark",
+    "classic-theme": "light",
+    "dark-theme": "dark",
+    "darkblue-theme": "dark",
+    "greenleaf-theme": "dark",
+    "light-theme": "light",
+  },
+  replaceLogoByTheme() {
+    qa('.logo-theme-replace').forEach((e) => {
+      switch (themeManager.getThemeRule(themeManager.currentTheme)) {
+        case 'dark':
+          e.src = e.src.replace('BD', 'WG');
+          break;
+
+        case 'light':
+          e.src = e.src.replace('WG', 'BD');
+          break;
+      }
+    })
+  },
+  getThemeRule(theme) {
+    return themeManager.themes[theme];
+  },
   setTheme(theme) {
     this.resetTheme();
     document.body.classList.add(theme);
     this.currentTheme = theme;
+    this.replaceLogoByTheme();
   },
   resetTheme() {
     document.body.classList.forEach((item) => {
@@ -389,7 +407,7 @@ const iconManager = {
 
 if (localStorage.getItem("useLucide")) {
 
-   iconManager.useLucide();
+  iconManager.useLucide();
 }
 
 /* cache 
@@ -482,19 +500,19 @@ function loadModule(src, fn) {
   const script = document.createElement("script");
   script.src = src;
   script.type = "module";
-  script.onload = function () {
+  script.onload = function() {
     fn();
   };
   document.body.appendChild(script)
 }
 
 
-function id(elementId){
-  return document.getElementById(elementId+'');
+function id(elementId) {
+  return document.getElementById(elementId + '');
 }
 
-function q(q){
-  return document.querySelector(q+'');
+function q(q) {
+  return document.querySelector(q + '');
 }
 
 function qa(q) {

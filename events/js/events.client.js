@@ -110,6 +110,17 @@ function addInfoToPost() {
   // Tab to edit
 }
 
+
+function postCommentWithCurrentUser(postData) {
+  let inp = id('commentInp');
+  if (inp.value) {
+    app.validUser().then(function(userData) {
+      let comment = new commenter.Comment(postData, userData, inp.value);
+      commenter.postComment(comment.export());
+    })
+  }
+}
+
 function updatePostViewer(postData, type, show = false) {
   q('.postbody .img-content').src = (postData.extras.url || postData.imgUrl);
   q('.postbody .img-content').poster = postData.imgUrl;
@@ -120,9 +131,15 @@ function updatePostViewer(postData, type, show = false) {
   if (show) {
     q('.post-session').style.display = 'block';
     q('.main-session').style.display = 'none';
+
+    commenter.getComments(postData.id);
+    id('commentBtn').onclick = function() {
+      postCommentWithCurrentUser(postData);
+    }
   } else {
     q('.post-session').style.display = 'none';
     q('.main-session').style.display = 'block';
+    id('commentBtn').onclick = function() {}
   }
 }
 
@@ -132,6 +149,6 @@ id('closePostViewer').onclick = function() {
 }
 
 
-id('postPlayer').ontoggle = function (i) {
+id('postPlayer').ontoggle = function(i) {
   alert(i)
 }

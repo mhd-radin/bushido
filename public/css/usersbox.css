@@ -40,6 +40,7 @@
 
 .user-icon img {
   width: 30px;
+  border-radius: 50%
 }
 
 .user-body {

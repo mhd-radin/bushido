@@ -121,6 +121,17 @@ function postCommentWithCurrentUser(postData) {
   }
 }
 
+
+function updateLikeBtn(isLiked, likeCount = '') {
+  if (isLiked) {
+    q('#likeBtn .eva').classList.replace('eva-heart-outline', 'eva-heart')
+    q('#likeBtn .card-btn-text').innerHTML = likeCount + ' Likes';
+  } else {
+    q('#likeBtn .eva').classList.replace('eva-heart', 'eva-heart-outline')
+    q('#likeBtn .card-btn-text').innerHTML = ' Like';
+  }
+}
+
 function updatePostViewer(postData, type, show = false) {
   q('.postbody .img-content').src = (postData.extras.url || postData.imgUrl);
   q('.postbody .img-content').poster = postData.imgUrl;
@@ -136,10 +147,65 @@ function updatePostViewer(postData, type, show = false) {
     id('commentBtn').onclick = function() {
       postCommentWithCurrentUser(postData);
     }
+
+
+    let collection = PostData.getColl(postData.type);
+
+    app.validUser().then(function(data) {
+      updatePostOpt(data, postData.id, {
+        collType: collection,
+        togglable: false,
+        name: 'veiws'
+      })
+
+      function checkLikeStatus() {
+        bushido.get('likes', postData.id).then(function(snapshot) {
+          let arr = snapshot.data().contents;
+          if (arr.indexOf(data.id) != -1) {
+            q('#likeBtn .eva').className = 'eva eva-heart-outline'
+            updateLikeBtn(true, arr.length)
+          } else {
+            q('#likeBtn .eva').className = 'eva eva-heart'
+            updateLikeBtn(false)
+          }
+        })
+      }
+
+      checkLikeStatus()
+
+
+      id('likeBtn').onclick = function() {
+        q('#likeBtn .eva').className = 'eva eva-clock-outline'
+        updatePostOpt(data, postData.id, {
+          collType: collection,
+          togglable: true,
+          name: 'likes'
+        }).then(function(e, e1) {
+          checkLikeStatus()
+        })
+      }
+
+      id('shareBtn').onclick = function(l) {
+        if ('share' in navigator) {
+          navigator.share({
+            title: postData.title + ' • Bushido',
+            text: postData.des,
+            url: 'https://mhd-radin.github.io/bushido?post=' + postData.id
+          }).then(function() {
+            updatePostOpt(data, postData.id, {
+              collType: collection,
+              togglable: false,
+              name: 'shares'
+            })
+          })
+        }
+      }
+    })
   } else {
     q('.post-session').style.display = 'none';
     q('.main-session').style.display = 'block';
     id('commentBtn').onclick = function() {}
+    id('likeBtn').onclick = function() {}
   }
 }
 

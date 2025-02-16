@@ -82,24 +82,8 @@ createSubmit.addEventListener("submit", function(e) {
   var thumbFile = id("createImgFile");
 
   // sorting or setting types as postCollection for server
-  let postCollection = 'posts';
-  switch (type) {
-    case 'postThumb':
-      postCollection = 'posts'
-      break;
-    case 'story':
-      postCollection = 'stories'
-      break;
-    case 'video':
-      postCollection = 'videos'
-      break;
-    case 'photo':
-      postCollection = 'photos'
-      break;
-    case 'notice':
-      postCollection = 'notices'
-      break;
-  }
+  let postCollection = PostData.getColl(type);
+  
 
   function createPostOnServer(postData) {
     modal.alert("Creating new post", (divId, buttonId) => {

@@ -91,10 +91,11 @@ if (bushido){
       });
     });
   },
-  onSet(ref, handle, type = "collection") {
+  onSet(ref, handle, type = "collection", setup) {
     bushido.access().then(function() {
       var orgRef = bushido.sdk[type](bushido.db, ref);
-      bushido.sdk.onSnapshot(orgRef, handle);
+      let unsub = bushido.sdk.onSnapshot(orgRef, handle);
+      if (typeof setup == 'function') setup(unsub);
     });
   },
   toData(snapshot) {
@@ -213,7 +214,7 @@ if (bushido){
     return obj; // Return the value if it's neither an array nor an object
   }
 };
- 
+
 class PostData {
   constructor(title, des, type, imageType, imgUrl, extras) {
     this.title = title;
@@ -246,4 +247,27 @@ class PostData {
 
     return obj;
   }
+}
+
+PostData.getColl = function(type) {
+  let postCollection = 'posts'
+  switch (type) {
+    case 'postThumb':
+      postCollection = 'posts'
+      break;
+    case 'story':
+      postCollection = 'stories'
+      break;
+    case 'video':
+      postCollection = 'videos'
+      break;
+    case 'photo':
+      postCollection = 'photos'
+      break;
+    case 'notice':
+      postCollection = 'notices'
+      break;
+  }
+
+  return postCollection
 }

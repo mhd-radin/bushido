@@ -25,6 +25,8 @@ const commenter = {
       }
     }, {
       merge: true
+    }).then(function () {
+      commenter.getComments(commentData.postId)
     })
   },
   clearComments() {

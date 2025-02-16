@@ -86,4 +86,4 @@ const spinner = {
   },
 };
 
-//spinner.showPreloader('');
+spinner.showPreloader('');

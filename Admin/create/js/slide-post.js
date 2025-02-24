@@ -95,7 +95,9 @@ createSubmit.addEventListener("submit", function(e) {
         .set(postCollection + "/" + postData.id, postData.export())
         .then(function() {
           id(buttonId).click();
-          modal.alert("New post created successfully", "");
+          modal.alert("New post created successfully", "Post created successfully. click continue to go back").then(function () {
+            closeAllSlides();
+          })
         })
         .catch(function(err) {
           id(buttonId).click();
@@ -105,6 +107,8 @@ createSubmit.addEventListener("submit", function(e) {
             err
           );
         });
+        
+        return `Wait few seconds to create post.`
     });
   }
 

@@ -17,7 +17,7 @@ bushido.getCollection("posts").then(function(snapshot) {
 
       var elem = tagstring;
       elem.onclick = function() {
-        updatePostViewer(data, '', 'block')
+        searchOnURL(data.id);
       }
     }
 
@@ -69,7 +69,7 @@ bushido.getCollection("stories").then(function(snapshot) {
         thumbImg,
         data.extras.author,
         data.des,
-        app.avatarUrl(data.extras.author),
+        (data.avatar || app.avatarUrl(data.extras.author)),
         'Demoo Time Todo').parseElement()[0]);
       appendToLinearContents('.stories-box', tagstring)
       return tagstring;
@@ -77,7 +77,7 @@ bushido.getCollection("stories").then(function(snapshot) {
 
     var elem = add();
     elem.onclick = function() {
-      updatePostViewer(data, '', 'block')
+      searchOnURL(data.id);
     }
   });
 });
@@ -105,7 +105,7 @@ bushido.getCollection("videos").then(function(snapshot) {
 
     var elem = add();
     elem.onclick = function() {
-      updatePostViewer(data, '', 'block')
+      searchOnURL(data.id);
     }
   });
 });

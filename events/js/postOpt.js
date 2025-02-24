@@ -5,7 +5,7 @@ function updatePostOpt(userData, postId, opt = {
 }) {
   return new Promise(function(resolve, reject) {
     let optName = opt.name;
-    bushido.useQuery(optName, [['contents', 'array-contains', userData.id]]).then(function(snapshot) {
+    bushido.useQuery(optName, [['contents', 'array-contains', userData.id], ['postId', '==', postId]]).then(function(snapshot) {
       let fisrtItem = bushido.toData(snapshot)[0];
       
       if (fisrtItem && fisrtItem.exists()) {
@@ -14,7 +14,6 @@ function updatePostOpt(userData, postId, opt = {
         }
       } else {
         addPostOpt(postId, userData.id, opt.name, opt.collType).then(resolve).catch(reject);
-        alert()
       }
     })
   })
@@ -35,7 +34,7 @@ function addPostOpt(postId, userid, optName, collType) {
         }).then(function() {
           // adding doc
           bushido.set(optName + '/' + postId, function(sdk) {
-            return { contents: sdk.arrayUnion(userid) }
+            return { contents: sdk.arrayUnion(userid), postId, optName, collType }
           }, {
             merge: true
           }).then(resolve).catch(reject)
@@ -61,7 +60,7 @@ function decreasePostOpt(postId, userid, optName, collType) {
         }).then(function() {
           // adding doc
           bushido.set(optName + '/' + postId, function(sdk) {
-            return { contents: sdk.arrayRemove(userid) }
+            return { contents: sdk.arrayRemove(userid), postId, optName, collType }
           }, {
             merge: true
           }).then(resolve).catch(reject)

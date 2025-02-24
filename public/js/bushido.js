@@ -271,3 +271,9 @@ PostData.getColl = function(type) {
 
   return postCollection
 }
+
+PostData.extractParams = function extractParams(str) {
+  const regex = /^POST_(.*?)_(\d+)__(\d+)$/;
+  const match = str.match(regex);
+  return match.slice(1);
+}

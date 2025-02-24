@@ -130,7 +130,12 @@
 
 .danger-opt-item{
   background: #F35959;
-  color: #fff;
+  color: #fff !important;
+}
+
+
+.danger-opt-item * {
+  color: #fff !important;
 }
 
 @media (max-width: 1000px) {
@@ -167,7 +172,7 @@
 
 .danger-opt-item:hover, .danger-opt-item:hover * {
   background: #FF7979;
-  color: #fff;
+  color: #fff !important;
 }
 
 @media (max-width: 650px) {

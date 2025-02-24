@@ -142,6 +142,7 @@ class FormSet {
       this.set('isPermanent', true)
     }
     this.completed = completed;
+    this.set('avatar', 'https://mhd-radin.github.io/bushido/assets/logos/bbc256.png')
   }
 
   set(key, name) {
@@ -164,7 +165,7 @@ class FormSet {
 document.getElementById('nextBtn').onclick = function() {
   var form_set = new FormSet('default');
   var name = document.getElementById('fullname'),
-    adminKeyInp = document.getElementById('key'),
+    adminKeyInp = document.getElementById('key');
 
   if (!name.value) {
     changeLog('name input is blank.');
@@ -173,7 +174,7 @@ document.getElementById('nextBtn').onclick = function() {
   } else {
     form_set.set('fullname', name.value);
     form_set.set('adminKey', adminKeyInp.value);
-    
+
     if (typeof spinner != 'undefined') {
       spinner.showPreloader('Verifying...');
     }

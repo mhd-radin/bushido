@@ -170,6 +170,27 @@ input[type="radio"]:checked {
   }
 }
 
+.skeleton {
+  background: var(--bg);
+  color: var(--bg);
+  padding: 2px;
+  border-radius: 8px;
+}
+
+.skeleton-sec {
+  background: var(--sec-bg);
+  color: var(--sec-bg);
+  padding: 2px;
+  border-radius: 8px;
+}
+
+.skeleton-third {
+  background: var(--third-bg);
+  color: var(--third-bg);
+  padding: 2px;
+  border-radius: 8px;
+}
+
 .logo-cont {
   display: flex;
   justify-content: center;
@@ -182,5 +203,26 @@ input[type="radio"]:checked {
   padding: 5px;
 }
 
+.show-screen {
+  display: block;
+}
+
+.hide-screen {
+  display: none;
+}
+
+.screen-anim-left {
+  animation: slideInLeft 1s 1;
+}
 
 
+@media screen and (max-width: 600px) {
+  .show-screen-mobile {
+    display: block !important;
+  }
+
+  .hide-screen-mobile {
+    display: none !important;
+  }
+
+}

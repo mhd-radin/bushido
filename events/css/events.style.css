@@ -116,3 +116,11 @@ nav {
     height: calc(100vh - 68px);
   }
 }
+
+.showPostSession .main-session {
+  display: none;
+}
+
+.showPostSession .post-session {
+  display: block;
+}

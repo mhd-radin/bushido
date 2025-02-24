@@ -467,9 +467,7 @@ bushido.realtime.onSet(
           .create(
             data.user_name,
             data.email,
-            "https://api.dicebear.com/9.x/initials/svg?seed=" +
-            data.user_name +
-            "&radius=40",
+            (data.avatar ? data.avatar : app.avatarUrl(data.fullname, 'initials', '&radius=40')),
             data.isAdmin == true ? userboxUI.tag("Admin") : ""
           )
           .parseElement()[0];

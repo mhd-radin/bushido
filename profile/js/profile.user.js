@@ -365,8 +365,8 @@ app.validUser().then((user) => {
   if (document.getElementById(
       'avatar')) {
     document.getElementById(
-        'avatar').src = app
-      .avatarUrl(user.fullname);
+        'avatar').src = (user.avatar || app
+      .avatarUrl(user.fullname));
   }
 
 

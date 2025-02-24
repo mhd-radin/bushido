@@ -47,6 +47,8 @@
   margin: 8px;
   animation: fadeInRight 1s 1; 
   position: relative;
+  margin: 0;
+  padding: 0;
   margin-bottom: 50px;
   /* overflow: scroll; */
   /* max-height: calc(100vh - 120px); */

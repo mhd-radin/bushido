@@ -27,7 +27,7 @@ function onpageloadin() {
       elem.appendChild(userboxUI.create(
         data.fullname,
         (data.isAdmin == true ? 'Special Access' : data.email),
-        'https://api.dicebear.com/9.x/initials/svg?seed=' + data.fullname + '&radius=40',
+        (data.avatar ? data.avatar : app.avatarUrl(data.fullname, 'initials', '&radius=40')),
         (data.isAdmin == true ? userboxUI.tag('Admin') : userboxUI.input(item.id))).setOptions({
         id: item.id
       }).parseElement()[0])

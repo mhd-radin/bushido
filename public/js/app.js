@@ -323,7 +323,7 @@ const themeManager = {
     this.replaceLogoByTheme();
   },
   resetTheme() {
-    document.body.classList.forEach((item) => {
+    Object.keys(this.themes).forEach((item) => {
       document.body.classList.remove(item);
     });
   },
@@ -346,6 +346,7 @@ themeManager.useStoredTheme();
 
 function handleError(err) {
   alert(err);
+  console.log(err)
 }
 
 window.onerror = handleError;

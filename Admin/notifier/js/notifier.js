@@ -130,7 +130,7 @@ function handleFloaterClick() {
                                 var selectAll = userboxUI.create(
                                   'Select All',
                                   'Send notification to all users',
-                                  'https://api.dicebear.com/9.x/initials/svg?seed=ALL&radius=40',
+                                  app.avatarUrl('ALL', 'initials', '&radius=50'),
                                   userboxUI.input(divId + '_all_user_INP')).parseElement()[0];
                                 elem.innerHTML = selectAll.innerHTML;
 
@@ -149,7 +149,7 @@ function handleFloaterClick() {
                                   var userItemElem = userboxUI.create(
                                     data.fullname,
                                     data.email,
-                                    'https://api.dicebear.com/9.x/initials/svg?seed=' + data.fullname + '&radius=40',
+                                    (data.avatar ? data.avatar : app.avatarUrl(data.fullname, 'initials', '&radius=40')),
                                     userboxUI.input(divId + '_INP')).parseElement()[0];
 
 

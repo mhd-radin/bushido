@@ -8,7 +8,7 @@ function onpageloadin() {
       var userItemElem = userboxUI.create(
         data.fullname,
         (data.isAdmin == true ? 'Special Access' : data.email),
-        'https://api.dicebear.com/9.x/initials/svg?seed=' + data.fullname + '&radius=40',
+        (data.avatar ? data.avatar : app.avatarUrl(data.fullname, 'initials', '&radius=40')),
         (data.isAdmin == true ? userboxUI.tag('Admin') : '')).parseElement()[0];
       elem.appendChild(userItemElem);
       userItemElem.onclick = function() {
@@ -21,27 +21,73 @@ function onpageloadin() {
 
 function createUserInfo(name, email, body) {
   return new TagString(`
-  <div class="info-header">
-          <img src="https://api.dicebear.com/9.x/initials/svg?seed=${name}&radius=40" alt="" />
-          <h2 class="info-name">${name}</h2>
-          <p class="info-email">${email}</p>
+<div class="profile-box">
+  <div class="avatar-container">
+    <div class="avatar-img">
+      <img id="avatar" src="${(avatar ? avatar : app.avatarUrl(name, 'initials', '&radius=50'))}" alt="" class="avatar-photo" />
+    </div>
+    <div class="basic-info-box">
+      <div class="basic-info-item" id="titleName">${name}</div>
+      <div class="basic-info-item" id="titleEmail">${email}</div>
+    </div>
+  </div>
+</div>
+
+<div class="edit-box">
+  <div class="opt-layout">
+    <div class="opt-head">About</div>
+    <div class="opt-body">
+      ${body}
+    </div>
+  </div>
+
+  <div class="opt-layout">
+    <div class="opt-head">Actions</div>
+    <div class="opt-body">
+      
+      
+      <div class="opt-item" onclick="closeAboutUserPanel()">
+        <i class="eva eva-log-out-outline opt-item-icon"></i>
+        <div class="opt-text-body">
+          <div class="opt-title">Close tab</div>
+          <div class="opt-subtext">Back to users list</div>
         </div>
-        <div class="info-body">
-          ${body}
+        <div class="opt-right">
+          <i class="eva eva-chevron-left"></i>
         </div>
-        <div class="info-right-foot">
-          <button class="sec-btn" onclick="closeAboutUserPanel()">Close</button>
-          <button>Update</button>
+      </div>
+      
+      
+      <div class="opt-item danger-opt-item" id="deleteAcc">
+        <i class="eva eva-person-delete-outline opt-item-icon"></i>
+        <div class="opt-text-body">
+          <div class="opt-title">Delete Account</div>
+          <div class="opt-subtext">Remove account from server</div>
         </div>
-  `)
+        <div class="opt-right">
+          <i class="eva eva-chevron-right"></i>
+        </div>
+      </div>
+      
+      
+    </div>
+  </div>
+</div>
+
+`)
 }
 
-function createUserInfoProp(text, icon, right = '') {
-  return new TagString(`<div class="info-prop">
-            <i class="eva eva-${icon}-outline"></i>
-            <span>${text}</span>
-            <span class="info-right">${right}</span>
-          </div>`)
+function createUserInfoProp(text, subtext, icon, right = '') {
+  return new TagString(`<div class="opt-item">
+  <i class="eva eva-${icon}-outline opt-item-icon"></i>
+  <div class="opt-text-body">
+    <div class="opt-title">${text}</div>
+    <div class="opt-subtext">${subtext}</div>
+  </div>
+  <div class="opt-right">
+    ${right}
+  </div>
+</div>`)
 }
 
 const iconKeys = {
@@ -64,38 +110,39 @@ var infoUserElem = document.querySelector('.info-user');
 
 function openAboutUserPanel(item) {
   var data = item.data()
+  window.location.href = '#' + (data.id || data.fullname);
   var elem = document.querySelector('.info-user');
   if (elem) {
-    if (window.innerWidth < 650) {
-      elem.style.display = 'block';
-      document.scrollingElement.scrollTop = 0;
-      userslistElem.style.display = 'none'
-      bodyHeaderElem.style.display = 'none'
-    }
+
+    infoUserElem.classList.toggle('show-screen-mobile', true);
+    document.scrollingElement.scrollTop = 0;
+    userslistElem.classList.toggle('hide-screen-mobile', true);
+    bodyHeaderElem.classList.toggle('hide-screen-mobile', true);
+
     var pr = '';
     Object.keys(data).forEach(function(key) {
-      if (key == 'password' || key == "adminKey") {
-
-      } else {
+      if (key == 'password' ||
+        key == "adminKey") {} else {
         var rightStr = '';
         if (key == 'isPermanent') {
-          rightStr = new TagString('<input type="checkbox" />').setAttributes({
+          rightStr = new TagString('<input type ="checkbox"/>').setAttributes({
             id: 'isPermanent'
           })
         }
-        pr += createUserInfoProp(key + '  : ' + data[key], iconKeys[key], rightStr)
+        pr += createUserInfoProp(key, data[key], iconKeys[key], rightStr)
       }
     })
-    elem.innerHTML = createUserInfo(data.fullname, data.email, pr)
+    elem.innerHTML = createUserInfo(data.fullname, data.email, pr, data.avatar)
   }
 }
 
 
 function closeAboutUserPanel() {
-  if (window.innerWidth < 650) {
-    infoUserElem.style.display = 'none';
-    document.scrollingElement.scrollTop = 0;
-    userslistElem.style.display = 'block'
-    bodyHeaderElem.style.display = 'block'
-  }
+  infoUserElem.classList.toggle('show-screen-mobile', false);
+  document.scrollingElement.scrollTop = 0;
+  userslistElem.classList.toggle('hide-screen-mobile', false);
+  bodyHeaderElem.classList.toggle('hide-screen-mobile', false);
+}
+window.onhashchange = function(h) {
+  if (!window.location.hash) { closeAboutUserPanel() }
 }

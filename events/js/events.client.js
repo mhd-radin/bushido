@@ -132,7 +132,12 @@ function updateLikeBtn(isLiked, likeCount = '') {
   }
 }
 
-function updatePostViewer(postData, type, show = false) {
+function searchOnURL(postId) {
+  let idParams = PostData.extractParams(postId);
+  window.location.search = '?tp=' + idParams[0] + '&pp=' + idParams[1] + '&sp=' + idParams[2]
+}
+
+function updatePostViewer(postData, show = false) {
   q('.postbody .img-content').src = (postData.extras.url || postData.imgUrl);
   q('.postbody .img-content').poster = postData.imgUrl;
   q('.postbody .image-card-title').innerHTML = postData.title;
@@ -140,8 +145,8 @@ function updatePostViewer(postData, type, show = false) {
   //q('.postbody .img-content').type = (postData.extras.type || 'image/jpeg');
 
   if (show) {
-    q('.post-session').style.display = 'block';
-    q('.main-session').style.display = 'none';
+    document.body.classList.toggle('showPostSession', true);
+    commenter.clearComments(true)
 
     commenter.getComments(postData.id);
     id('commentBtn').onclick = function() {
@@ -161,7 +166,8 @@ function updatePostViewer(postData, type, show = false) {
       function checkLikeStatus() {
         bushido.get('likes', postData.id).then(function(snapshot) {
           let arr = snapshot.data().contents;
-          if (arr.indexOf(data.id) != -1) {
+          console.log(snapshot.data())
+          if (arr && arr.length > 0 && arr.indexOf(data.id) != -1) {
             q('#likeBtn .eva').className = 'eva eva-heart-outline'
             updateLikeBtn(true, arr.length)
           } else {
@@ -202,19 +208,40 @@ function updatePostViewer(postData, type, show = false) {
       }
     })
   } else {
-    q('.post-session').style.display = 'none';
-    q('.main-session').style.display = 'block';
+    document.body.classList.toggle('showPostSession', false);
     id('commentBtn').onclick = function() {}
     id('likeBtn').onclick = function() {}
   }
 }
 
 id('closePostViewer').onclick = function() {
-  q('.post-session').style.display = 'none';
-  q('.main-session').style.display = 'block';
+  window.location.search = ''
 }
 
+function updateFromURL() {
+  var search = window.location.search;
+  let params = new URLSearchParams(search);
+  let [tp, pp, sp] = [params.get('tp'), params.get('pp'), params.get('sp')];
 
-id('postPlayer').ontoggle = function(i) {
-  alert(i)
+  if (search && tp && pp && sp) {
+    let id = 'POST_' + tp + '_' + pp + '__' + sp;
+    document.body.classList.toggle('showPostSession', true);
+    bushido.get(PostData.getColl(tp), id).then(function(snapshot) {
+      let postData = snapshot.data()
+      if (snapshot.exists() && postData) {
+        updatePostViewer(postData, 'block')
+      } else {
+        modal.alert("Post Unavailable (404 Error)",
+          "Unfortunately, the post you're looking for has been deleted, moved, or never existed.").then(
+          function() {
+            window.location.search = ""
+          })
+      }
+    })
+  } else {
+    document.body.classList.toggle('showPostSession', false);
+  }
 }
+
+window.addEventListener('popstate', updateFromURL);
+updateFromURL()

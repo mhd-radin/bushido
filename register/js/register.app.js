@@ -87,6 +87,8 @@ class FormSet {
 
   set(key, name) {
     this.data[key] = name;
+    
+    if (key == 'fullname') this.set('avatar', app.avatarUrl(name, 'initials', '&radius=50'))
   }
 
   get(key) {

@@ -25,54 +25,54 @@ var db = "admin",
   key = "admin-access-key";
 
 new Promise((resolve, reject) => {
-  if ("caches" in window) {
-    if (localStorage.getItem(saveKey)) {
-      caches
-        .open(db)
-        .then((cache) => {
-          cache
-            .match(localStorage.getItem(saveKey))
-            .then(function (res) {
-              if (res) {
-                res
-                  .json()
-                  .then((obj) => {
-                    if (obj) {
-                      resolve(obj);
-                    } else {
-                      reject("404: user not found");
-                    }
-                  })
-                  .catch((err) => reject(err));
-              } else {
-                reject("404: user not found");
-              }
-            })
-            .catch((err) => reject(err));
-        })
-        .catch((err) => reject(err));
+    if ("caches" in window) {
+      if (localStorage.getItem(saveKey)) {
+        caches
+          .open(db)
+          .then((cache) => {
+            cache
+              .match(localStorage.getItem(saveKey))
+              .then(function(res) {
+                if (res) {
+                  res
+                    .json()
+                    .then((obj) => {
+                      if (obj) {
+                        resolve(obj);
+                      } else {
+                        reject("404: user not found");
+                      }
+                    })
+                    .catch((err) => reject(err));
+                } else {
+                  reject("404: user not found");
+                }
+              })
+              .catch((err) => reject(err));
+          })
+          .catch((err) => reject(err));
+      } else {
+        reject("404: no data found");
+      }
     } else {
-      reject("404: no data found");
+      if (localStorage.getItem(db + "_" + key)) {
+        var data = localStorage.getItem(db + "_" + key);
+        // var decrypted = CryptoJS.AES.decrypt(data, saveKey).toString(
+        //   CryptoJS.enc.Utf8
+        // );
+        resolve(JSON.parse(data));
+      } else {
+        reject("404: no data found");
+      }
     }
-  } else {
-    if (localStorage.getItem(db + "_" + key)) {
-      var data = localStorage.getItem(db + "_" + key);
-      // var decrypted = CryptoJS.AES.decrypt(data, saveKey).toString(
-      //   CryptoJS.enc.Utf8
-      // );
-      resolve(JSON.parse(data));
-    } else {
-      reject("404: no data found");
-    }
-  }
-})
-  .then(function (data) {
+  })
+  .then(function(data) {
     if (localStorage.getItem("adminKey") === data.key) {
       // continues
     } else {
       handleLogin("key not match");
     }
   })
-  .catch(function (e) {
+  .catch(function(e) {
     handleLogin("not found url");
   });

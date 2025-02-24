@@ -1,6 +1,5 @@
 function onpageloadin() {
   app.validUser().then((data) => {
-    alert('loaded')
     let userData = data;
     if (data) {
       document.querySelector(".body").innerHTML = "";
@@ -11,9 +10,9 @@ function onpageloadin() {
       elem.innerHTML = `
           <div class="note-card">
             <div class="note-ripple"></div>
-            <div class="note-title">Warning!</div>
+            <div class="note-title">WARNING: Temporary Chat Issues!</div>
             <div class="note-subtext">
-              Sorry, in this chat page some issues found about chat. that will fix on next updation. let's co-operate.
+              Apologies for the inconvenience. We've identified some issues with our chat feature on this page, which will be resolved in our next update. Thank you for your cooperation and understanding.
             </div>
             <div class="note-buttons">
             </div>
@@ -39,8 +38,8 @@ function onpageloadin() {
         var userItemElem = userboxUI
           .create(
             data.user_name,
-            data.email,
-            (data.isAdmin == true ? "..//assets/logos/bbc256.png" : "https://api.dicebear.com/9.x/initials/svg?seed=" +
+            (data.isAdmin == true ? "Bushido Official Account" : data.email),
+            (data.isAdmin == true ? "../assets/logos/bbc256.png" : "https://api.dicebear.com/9.x/initials/svg?seed=" +
             data.user_name +
             "&radius=40"),
             data.isAdmin == true ? userboxUI.tag("Admin") : ""
@@ -347,7 +346,7 @@ const messenger = {
             messenger.message_started == false
           ) {
             messenger.join().then(function() {
-              alert();
+              // joined then
             });
             messenger.sendBreaker(data.fullname + " joined");
             messenger.is_first_time = false;

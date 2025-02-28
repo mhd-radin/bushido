@@ -36,10 +36,11 @@ addPostBtn.onclick = function() {
     clickAction: function() {
       modal.prompt('Add story title', '', 'Story title here').then(function(title) {
         modal.prompt('Add story description', '', 'Story description here', true).then(function(des) {
-          modal.prompt('Add story video file', '', 'Story title here', false, 'file').then(function(files) {
+          modal.prompt('Add story video file', '', 'Story title here', false, 'file').then(function(
+            files) {
             let file = files[0];
-            
-            
+
+
             console.log(file)
             if (title && des && file) {
               app.validUser().then(function(user) {
@@ -50,6 +51,8 @@ addPostBtn.onclick = function() {
                   postData.extras.author = user.fullname;
                   postData.extras.isAdmin = false;
                   postData.extras.isLive = false;
+                  postData.extras.authorID = user.id;
+
                   createPostOnServer(postData, PostData.getColl('story'));
                 })
               })
@@ -61,4 +64,3 @@ addPostBtn.onclick = function() {
     id: 'addPostDdown'
   }], ['0'])
 }
-

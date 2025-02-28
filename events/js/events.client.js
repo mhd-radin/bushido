@@ -174,8 +174,15 @@ function updatePostViewer(postData, show = false) {
       updatePostOpt(data, postData.id, {
         collType: collection,
         togglable: false,
-        name: 'veiws'
+        name: 'watched'
       })
+      
+      let authorID = postData.extras.authorID;
+      if ( authorID && data.id === authorID){
+        id('deleteBtn').style.display = 'flex'
+      } else {
+        id('deleteBtn').style.display = 'none'
+      }
 
       function checkLikeStatus() {
         bushido.get('likes', postData.id).then(function(snapshot) {
@@ -205,6 +212,19 @@ function updatePostViewer(postData, show = false) {
         }).then(function(e, e1) {
           checkLikeStatus()
         })
+      }
+      
+      id('deleteBtn').onclick = function () {
+        if (authorID && data.id === authorID && confirm('Are you sure to delete the story permanently')){
+          Promise.all([bushido.set(collection+'/'+postData.id, null),
+          bushido.set('likes/'+postData.id, null),
+          bushido.set('shares/'+postData.id, null),
+          bushido.set('watched/'+postData.id, null)]).then(function () {
+            modal.alert('Story deleted!', '').then(function () {
+              window.location.search = ''
+            })
+          })
+        }
       }
 
       id('shareBtn').onclick = function(l) {

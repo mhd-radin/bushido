@@ -120,6 +120,7 @@ createSubmit.addEventListener("submit", function(e) {
       postData.extras.author = 'Bushido';
       postData.extras.isAdmin = true;
       postData.extras.isLive = false;
+      postData.extras.authorID = "ADMN_8545765435678";
       createPostOnServer(postData);
     })
   }

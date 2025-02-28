@@ -133,6 +133,16 @@
   justify-content: center;
 }
 
+.card-button.danger {
+  background: #FFC3B9;
+  border: #FF5031;
+  color: #DE4F37;
+}
+
+#deleteBtn {
+  display: none;
+}
+
 .card-btn-text {
   margin: 3px auto;
   padding: 3px;

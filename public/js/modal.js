@@ -131,8 +131,8 @@ const modal = {
           document.getElementById(mainID).children[0].style.animation = 'ClosePopup 0.5s 1';
           document.getElementById(mainID).children[0].onanimationend = function() {
             var value = document.getElementById(ID + 'INP').value;
+            resolve((type == 'file' ? document.getElementById(ID + 'INP').files : value))
             document.getElementById(mainID).remove()
-            resolve(value)
           }
         }
       }
@@ -143,8 +143,8 @@ const modal = {
           document.getElementById(mainID).children[0].style.animation = 'ClosePopup 0.5s 1';
           document.getElementById(mainID).children[0].onanimationend = function() {
             var value = document.getElementById(ID + 'INP').value;
+            resolve((type == 'file' ? document.getElementById(ID + 'INP').files : value))
             document.getElementById(mainID).remove()
-            resolve(value)
           }
         }
       }

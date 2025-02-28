@@ -19,7 +19,7 @@ function onpageloadin() {
   })
 }
 
-function createUserInfo(name, email, body) {
+function createUserInfo(name, email, body, avatar) {
   return new TagString(`
 <div class="profile-box">
   <div class="avatar-container">
@@ -122,7 +122,7 @@ function openAboutUserPanel(item) {
     var pr = '';
     Object.keys(data).forEach(function(key) {
       if (key == 'password' ||
-        key == "adminKey") {} else {
+        key == "adminKey" || key == 'avatar') {} else {
         var rightStr = '';
         if (key == 'isPermanent') {
           rightStr = new TagString('<input type ="checkbox"/>').setAttributes({

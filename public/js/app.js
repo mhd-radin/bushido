@@ -184,7 +184,7 @@ const app = {
                     app
                       .saveData("user", "about-user", userData, "userUrl")
                       .then(() => {
-                        app.setCookie("user", "true", 60 * 6);
+                        app.setCookie("user", "true", 1);
                         resolve(userData);
                       });
                   } else {
@@ -213,7 +213,7 @@ const app = {
   },
   saveData(db, key, data, saveKey, enc = true) {
     return new Promise((resolve, reject) => {
-      if ("caches" in window) {
+      if ("caches" in window ) {
         caches.open(db).then(function(cache) {
           cache
             .put(
@@ -327,14 +327,14 @@ const themeManager = {
       document.body.classList.remove(item);
     });
   },
-  useStoredTheme() {
-    if (localStorage.getItem("app-theme")) {
+  useStoredTheme(id='') {
+    if (localStorage.getItem("app-theme"+id)) {
       this.resetTheme();
-      this.setTheme(localStorage.getItem("app-theme"));
+      this.setTheme(localStorage.getItem("app-theme"+id));
     }
   },
-  storeCurrentTheme() {
-    localStorage.setItem("app-theme", this.currentTheme);
+  storeCurrentTheme(id = '') {
+    localStorage.setItem("app-theme"+id, this.currentTheme);
   },
 };
 

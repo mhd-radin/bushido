@@ -215,6 +215,12 @@ if (bushido){
   }
 };
 
+
+function getFileType(file) {
+  if (!file || !file.type) return null;
+  return file.type.startsWith("video/") ? "video" : file.type.startsWith("image/") ? "image" : null;
+}
+
 class PostData {
   constructor(title, des, type, imageType, imgUrl, extras) {
     this.title = title;
@@ -230,7 +236,7 @@ class PostData {
       Math.floor(Math.random() * 99999) +
       "__" +
       Math.floor(Math.random() * 99999);
-    this.date = new Date();
+    this.date = new Date().toString();
     this.likes = 0;
     this.shares = 0;
     this.watched = 0;

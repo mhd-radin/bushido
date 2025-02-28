@@ -35,10 +35,7 @@ function useCloud(file, onupload = function() {}, preset = 'thumbs', cloud = con
   });
 }
 
-function getFileType(file) {
-  if (!file || !file.type) return null;
-  return file.type.startsWith("video/") ? "video" : file.type.startsWith("image/") ? "image" : null;
-}
+
 
 function uploadFile(thumbnailFile, then, cloudPreset, cloudName) {
   modal.alert(("Uploading " + getFileType(thumbnailFile) + "..."), (divId, buttonId) => {
@@ -46,7 +43,13 @@ function uploadFile(thumbnailFile, then, cloudPreset, cloudName) {
     setTimeout(function() {
       id(buttonId).style.display = "none";
     }, 50);
-    useCloud(file, () => {}, cloudPreset, cloudName)
+    let progress = 0
+    useCloud(file, (e, prg) => {
+      progress = prg;
+      if (id("modalPrg")){
+        id("modalPrg").innerHTML = prg+"% Uploaded"
+      }
+    }, cloudPreset, cloudName)
       .then(function(res) {
         if (typeof res == 'string') {
           res = JSON.parse(res)
@@ -64,7 +67,7 @@ function uploadFile(thumbnailFile, then, cloudPreset, cloudName) {
         );
       });
 
-    return '<center><img src="../../assets/spinner/ring-resize.svg" class="svg-mini-loader loader-x2"></img></center>';
+    return '<center><img src="../../assets/spinner/ring-resize.svg" class="svg-mini-loader loader-x2"></img><p id="modalPrg">0% Uploaded</p></center>';
   }, '', function(divId, buttonId) {
     id(buttonId).style.display = "none";
   });

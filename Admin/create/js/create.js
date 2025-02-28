@@ -31,5 +31,5 @@ function closeAllSlides() {
     el.style.display = "none";
   })
   
-  handleItemClick('block', 'none');
+  handleItemClick('flex', 'none');
 }

@@ -47,8 +47,8 @@ const commenter = {
                     alt="" class="user-image">
                 </div>
                 <div class="user-body">
-                  <div class="user-name">Loading Comments</div>
-                  <div class="user-subtext">We're working on loading comments for you. If this takes too long, please
+                  <div class="user-name">Looking for comments</div>
+                  <div class="user-subtext">We're working on Looking for comments for you. If this takes too long, please
                     check your internet connection and try again.</div>
                   <div class="user-right">
                     <i class="eva eva-reload-outline"></i>

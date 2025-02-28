@@ -2,6 +2,8 @@ app.validUser().catch(() => {
   app.redirectWithPreloader("../register");
 });
 
+dayjs.extend(window.dayjs_plugin_relativeTime);
+
 function onpageloadin() {
   const targetElements = document.querySelectorAll(".image-card"); // Element to observe
   targetElements.forEach(function(targetElement) {
@@ -141,7 +143,19 @@ function updatePostViewer(postData, show = false) {
   q('.postbody .img-content').src = (postData.extras.url || postData.imgUrl);
   q('.postbody .img-content').poster = postData.imgUrl;
   q('.postbody .image-card-title').innerHTML = postData.title;
-  q('.postbody .image-card-subtext').innerHTML = postData.des;
+  q('.postbody .image-card-subtext').innerHTML = postData.des +
+    `<br><div>${dayjs(postData.date).fromNow()}</div>`;
+  console.log(postData)
+
+  let fileMediaType = getFileType(postData.extras)
+
+  if (fileMediaType === 'video') {
+    id('postPlayer').controls = true;
+  } else {
+    // q('.img-content').tagName = 'video';
+    id('postPlayer').controls = false;
+  }
+
   //q('.postbody .img-content').type = (postData.extras.type || 'image/jpeg');
 
   if (show) {
@@ -165,14 +179,16 @@ function updatePostViewer(postData, show = false) {
 
       function checkLikeStatus() {
         bushido.get('likes', postData.id).then(function(snapshot) {
-          let arr = snapshot.data().contents;
-          console.log(snapshot.data())
-          if (arr && arr.length > 0 && arr.indexOf(data.id) != -1) {
-            q('#likeBtn .eva').className = 'eva eva-heart-outline'
-            updateLikeBtn(true, arr.length)
-          } else {
-            q('#likeBtn .eva').className = 'eva eva-heart'
-            updateLikeBtn(false)
+          if (snapshot.exists()) {
+            let arr = snapshot.data().contents;
+            console.log(snapshot.data())
+            if (arr && arr.length > 0 && arr.indexOf(data.id) != -1) {
+              q('#likeBtn .eva').className = 'eva eva-heart-outline'
+              updateLikeBtn(true, arr.length)
+            } else {
+              q('#likeBtn .eva').className = 'eva eva-heart'
+              updateLikeBtn(false)
+            }
           }
         })
       }

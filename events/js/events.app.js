@@ -70,7 +70,7 @@ bushido.getCollection("stories").then(function(snapshot) {
         data.extras.author,
         data.des,
         (data.avatar || app.avatarUrl(data.extras.author)),
-        'Demoo Time Todo').parseElement()[0]);
+        dayjs(data.date).fromNow()).parseElement()[0]);
       appendToLinearContents('.stories-box', tagstring)
       return tagstring;
     }

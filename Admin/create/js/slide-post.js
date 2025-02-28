@@ -96,7 +96,7 @@ createSubmit.addEventListener("submit", function(e) {
         .then(function() {
           id(buttonId).click();
           modal.alert("New post created successfully", "Post created successfully. click continue to go back").then(function () {
-            closeAllSlides();
+            location.reload()
           })
         })
         .catch(function(err) {

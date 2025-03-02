@@ -155,8 +155,8 @@ function showForm(form) {
     changeLog("");
 
     var dobInp = document.getElementById('dob');
-    dobInp.type = ''
-    dobInp.disabled = true;
+    dobInp.type = 'date'
+    dobInp.disabled = false;
 
     function saveCalenderData(date) {
       dob.value = date;
@@ -171,7 +171,7 @@ function showForm(form) {
       inputMode: true,
       input: true,
       selectedTheme: 'system',
-      positionToInput: 'center',
+      positionToInput: 'auto',
       onClickDate(self, e) {
         date = self.context.selectedDates[0];
         dob.value = date;
@@ -180,7 +180,7 @@ function showForm(form) {
         saveCalenderData(date)
       }
     })
-    calender.init();
+    //calender.init();
   } else if (form.id === formsID[2]) {
     changeTitle("Begin Your Training at Bushido Boxers Club");
     changeLog("");

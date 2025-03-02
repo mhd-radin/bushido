@@ -100,6 +100,25 @@ const app = {
       dt.getFullYear()
     );
   },
+  sendWhatsappMsg(phNumber, msg) {
+    return new Promise((resolve, reject) => {
+
+      let xhr = new XMLHttpRequest();
+      xhr.open("POST", "https://wbot-bodg.onrender.com/send/" + phNumber);
+      xhr.setRequestHeader("Content-Type", "application/json");
+      xhr.addEventListener("readystatechange", () => {
+        if (xhr.readyState == xhr.DONE) {
+          resolve(xhr);
+        }
+      });
+
+      xhr.send(
+        JSON.stringify({
+          msg,
+        })
+      );
+    })
+  },
   parseDate(dateStr) {
     const [day, month, year] = dateStr.split("-").map(Number);
     return new Date(year, month - 1, day);
@@ -213,7 +232,7 @@ const app = {
   },
   saveData(db, key, data, saveKey, enc = true) {
     return new Promise((resolve, reject) => {
-      if ("caches" in window ) {
+      if ("caches" in window) {
         caches.open(db).then(function(cache) {
           cache
             .put(
@@ -327,14 +346,14 @@ const themeManager = {
       document.body.classList.remove(item);
     });
   },
-  useStoredTheme(id='') {
-    if (localStorage.getItem("app-theme"+id)) {
+  useStoredTheme(id = '') {
+    if (localStorage.getItem("app-theme" + id)) {
       this.resetTheme();
-      this.setTheme(localStorage.getItem("app-theme"+id));
+      this.setTheme(localStorage.getItem("app-theme" + id));
     }
   },
   storeCurrentTheme(id = '') {
-    localStorage.setItem("app-theme"+id, this.currentTheme);
+    localStorage.setItem("app-theme" + id, this.currentTheme);
   },
 };
 

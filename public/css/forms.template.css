@@ -146,7 +146,8 @@ nav {
 }
 
 .form input,
-.form textarea {
+.form textarea,
+.form select {
   padding: 8px 8px;
   border-radius: var(--border-radius-sm);
   border: 0px solid transparent;

@@ -64,6 +64,18 @@ function onpageloadin() {
       });
   }
 
+  app.validUser().then(function() {
+    modal
+      .alert(
+        "Registration found.",
+        "you also registered on Bushido. so site will be redirect to default page",
+        ""
+      )
+      .then(() => {
+        window.location.href = '../events';
+      })
+  }).catch((err)=>{})
+
   //menu.close(document.querySelector('.menubox .menu-item'), 'preview')
 }
 
@@ -87,7 +99,7 @@ class FormSet {
 
   set(key, name) {
     this.data[key] = name;
-    
+
     if (key == 'fullname') this.set('avatar', app.avatarUrl(name, 'initials', '&radius=50'))
   }
 
@@ -115,7 +127,7 @@ if (localStorage.getItem("form_set")) {
 
 showForm(document.getElementById(currentFormSet.state));
 
-document.querySelectorAll("input, textarea").forEach((input, index) => {
+document.querySelectorAll("input, textarea, select").forEach((input, index) => {
   input.onchange = function(e) {
     currentFormSet.set(input.id, input.value);
     saveForm();
@@ -144,6 +156,7 @@ function showForm(form) {
 
     var dobInp = document.getElementById('dob');
     dobInp.type = ''
+    dobInp.disabled = true;
 
     function saveCalenderData(date) {
       dob.value = date;
@@ -158,7 +171,7 @@ function showForm(form) {
       inputMode: true,
       input: true,
       selectedTheme: 'system',
-      positionToInput: 'auto',
+      positionToInput: 'center',
       onClickDate(self, e) {
         date = self.context.selectedDates[0];
         dob.value = date;
@@ -249,6 +262,8 @@ function changeState(nextState) {
         email = document.getElementById("email"),
         phone = document.getElementById("phone");
 
+      const phoneRegExp = /^\+(?:[0-9]{1,3})?\s?(?:\([0-9]{3}\)|[0-9]{3})\s?[0-9]{3}\s?[0-9]{4}$/;
+
       if (!fullname.value) {
         changeLog("Name input is blank, please fill the form correctly");
       } else if (!email.value) {
@@ -261,11 +276,12 @@ function changeState(nextState) {
         changeLog(
           "Invalid email, email format incorrect or contains space. ( eg:- example@gmail.com )"
         );
-      } else if (!phone.value) {
+      } else if (!phone.value || !phoneRegExp.test(phone.value)) {
         changeLog(
-          "Phone number input is blank, please fill the form correctly"
+          "Phone number input is blank or invalid, please fill the form correctly."
         );
       } else {
+        phone.value = phone.value.replace('+', '').replaceAll(" ", "");
         email.value = email.value.replaceAll(" ", "");
         changeLog("Checking availability, please wait...");
         if (typeof spinner != "undefined") {
@@ -279,13 +295,32 @@ function changeState(nextState) {
               data.push(item);
             });
             if (data.length == 0) {
-              spinner.removePreloader().then(function() {
-                closeForm(function() {
-                  currentFormSet.state = nextState;
-                  saveForm();
-                  showForm(document.getElementById(nextState));
-                });
-              });
+              modal.confirm('Confirm your whatsapp number?', 'Verify your WhatsApp phone number is <strong>' + phone
+                .value + '</strong>. we will send verification code to your WhatsApp').then((isPhoneRight) => {
+                if (isPhoneRight) {
+                  spinner.changeText('Sending code...')
+                  let randomCode = Math.floor(Math.random() * 999999)
+                  app.sendWhatsappMsg(phone.value, 'Bushido verification code: *' +
+                    randomCode + '*').then(function() {
+                    modal.prompt('Verfication Code', '', 'CODE HERE').then((userEnteredCode) => {
+                      if (userEnteredCode == randomCode) {
+                        spinner.removePreloader().then(function() {
+                          closeForm(function() {
+                            currentFormSet.state = nextState;
+                            saveForm();
+                            showForm(document.getElementById(nextState));
+                          })
+                        })
+                      } else {
+                        modal.alert('Code Mismatch!', 'Your entered code is wrong!')
+                        spinner.removePreloader()
+                      }
+                    });
+                  })
+                } else {
+                  window.location.reload();
+                }
+              })
             } else {
               spinner.removePreloader().then(function() {
                 changeLog("Not available this email or phone!");
@@ -296,13 +331,18 @@ function changeState(nextState) {
       break;
     case formsID[1]:
       var password = document.getElementById("password"),
-        dob = document.getElementById("dob");
+        dob = document.getElementById("dob"),
+        gender = document.getElementById('gender');
 
 
       if (!password.value) {
         changeLog("Password input is blank, please fill the form correctly");
       } else if (password.value.length <= 7) {
         changeLog("Password require minimum 8 letters");
+      } else if (!gender.value) {
+        changeLog(
+          "Gender input is blank, please fill the form correctly"
+        );
       } else if (!dob.value) {
         changeLog(
           "Date of birth input is blank, please fill the form correctly"

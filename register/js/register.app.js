@@ -74,7 +74,7 @@ function onpageloadin() {
       .then(() => {
         window.location.href = '../events';
       })
-  }).catch((err)=>{})
+  }).catch((err) => {})
 
   //menu.close(document.querySelector('.menubox .menu-item'), 'preview')
 }
@@ -154,13 +154,44 @@ function showForm(form) {
     changeTitle("Step Into the Ring with Bushido Boxers Club.");
     changeLog("");
 
+    var genInp = document.getElementById('gender');
+
+    function selectGender() {
+      modal.optionsPicker(
+          [{
+            inputId: 'male',
+            attr: {
+              checked: true
+            },
+            value: 'male',
+            title: 'Male',
+            subTitle: 'He/His'
+          }, {
+            inputId: 'female',
+            attr: {},
+            value: 'female',
+            title: 'Female',
+            subTitle: 'She/Her'
+          }], true,
+          userboxUI.pickerBox(
+            '#(inputId)',
+            '#(title)', '#(subTitle)',
+            true), 'Select your gender')
+        .then(function(val) {
+          genInp.value = val;
+          currentFormSet.set('gender', val);
+          saveForm()
+        })
+    }
+    genInp.onfocus = selectGender;
+    genInp.onclick = selectGender;
+
     var dobInp = document.getElementById('dob');
-    dobInp.type = 'date'
-    dobInp.disabled = false;
+    dobInp.type = ''
+    dobInp.readonly = true;
 
     function saveCalenderData(date) {
       dob.value = date;
-      dobInp.disabled = false;
       currentFormSet.set(dobInp.id, dobInp.value);
       saveForm()
     }
@@ -172,6 +203,7 @@ function showForm(form) {
       input: true,
       selectedTheme: 'system',
       positionToInput: 'auto',
+      displayDateMax: '2020-01-01',
       onClickDate(self, e) {
         date = self.context.selectedDates[0];
         dob.value = date;
@@ -180,7 +212,7 @@ function showForm(form) {
         saveCalenderData(date)
       }
     })
-    //calender.init();
+    calender.init();
   } else if (form.id === formsID[2]) {
     changeTitle("Begin Your Training at Bushido Boxers Club");
     changeLog("");
@@ -254,6 +286,32 @@ function changeTitle(msg) {
   });
 }
 
+
+function getPhoneNumberErrorMessage(phoneNumber) {
+  const trimmedPhoneNumber = phoneNumber.trim();
+  
+  if (!trimmedPhoneNumber.startsWith('+')) {
+    return 'Phone number must start with a "+" symbol.';
+  }
+  
+  const phoneNumberWithoutPlus = trimmedPhoneNumber.substring(1);
+  const parts = phoneNumberWithoutPlus.replace(/[\(\)\s]/g, '').match(/.{1,3}/g);
+  
+  if (!parts) {
+    return 'Invalid phone number format. Please use a valid international phone number format.';
+  }
+  
+  if (parts.length < 3 || parts.length > 4) {
+    return 'Invalid phone number format. Please use a valid international phone number format.';
+  }
+  
+  if (parts.some(part => part.length < 1 || part.length > 3 || !/^\d+$/.test(part))) {
+    return 'Invalid phone number format. Please use a valid international phone number format.';
+  }
+  
+  return 'Invalid phone number format. Please use a valid international phone number format.';
+}
+
 function changeState(nextState) {
   var currentState = currentFormSet.state;
   switch (currentState) {
@@ -278,7 +336,7 @@ function changeState(nextState) {
         );
       } else if (!phone.value || !phoneRegExp.test(phone.value)) {
         changeLog(
-          "Phone number input is blank or invalid, please fill the form correctly."
+          getPhoneNumberErrorMessage(phone.value)
         );
       } else {
         phone.value = phone.value.replace('+', '').replaceAll(" ", "");
@@ -295,13 +353,16 @@ function changeState(nextState) {
               data.push(item);
             });
             if (data.length == 0) {
-              modal.confirm('Confirm your whatsapp number?', 'Verify your WhatsApp phone number is <strong>' + phone
-                .value + '</strong>. we will send verification code to your WhatsApp').then((isPhoneRight) => {
+              modal.confirm(
+              "WhatsApp Notification Consent and Verification", 
+              ["By clicking, you agree to receive WhatsApp notifications from us. You can unsubscribe at any time by replying \"STOP\". We won't share your number with third parties. You hold us harmless for any claims related to these notifications.",
+               "Confirm your WhatsApp phone number:",
+               '<strong>+' + phone.value + '</strong>',
+               "We will send a verification code to this number to complete the registration process."].join("<br/><br/>")).then((isPhoneRight) => {
                 if (isPhoneRight) {
                   spinner.changeText('Sending code...')
                   let randomCode = Math.floor(Math.random() * 999999)
-                  app.sendWhatsappMsg(phone.value, 'Bushido verification code: *' +
-                    randomCode + '*').then(function() {
+                  app.sendWhatsappMsg(phone.value, "*Bushido* Verification Code: *"+randomCode+"*. Enter this code to complete your registration. If you didn't request this code, please ignore this message.").then(function() {
                     modal.prompt('Verfication Code', '', 'CODE HERE').then((userEnteredCode) => {
                       if (userEnteredCode == randomCode) {
                         spinner.removePreloader().then(function() {

@@ -97,6 +97,15 @@
   border: 2px solid var(--theme-color);
 }
 
+.vc {
+  position: fixed !important;
+  top: 50% !important;
+  left: 50% !important;
+  transition: 0.5s !important;
+  transform: translate(-50%, -50%) !important;
+  box-shadow: 0 0 1000px 1000px #11111150 !important;
+}
+
 .modal-bottom {
   /*top: auto;
   bottom: 85px;
@@ -112,7 +121,8 @@
     max-height: 50vh;
   }
 
-  .modal.expanded, .modal.expanded .modal-body {
+  .modal.expanded,
+  .modal.expanded .modal-body {
     max-height: 85vh !important;
   }
 }

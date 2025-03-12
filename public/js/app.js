@@ -538,3 +538,16 @@ function q(q) {
 function qa(q) {
   return document.querySelectorAll(q + '');
 }
+
+function getPublicIdFromVideoUrl(videoUrl) {
+  // Regex to match the Cloudinary video URL structure
+  const baseUrlPattern = /https?:\/\/res\.cloudinary\.com\/[^\/]+\/video\/upload\/(v\d+\/)?/;
+
+  // Remove the base URL and version number
+  const publicIdWithExtension = videoUrl.replace(baseUrlPattern, '');
+
+  // Remove the file extension (e.g., .mp4, .webm)
+  const publicId = publicIdWithExtension.replace(/\.[^/.]+$/, '');
+
+  return publicId;
+}

@@ -132,6 +132,12 @@ createSubmit.addEventListener("submit", function(e) {
     "url",
     thumbUrl.value, {}
   );
+  
+  
+  // set expire products
+  if (type == "story") {
+    postData.expireAt = PostData.calculateExpireTime(24);
+  }
 
   // post
   if (type == "postThumb" || type == "photo" || type == "notice") {

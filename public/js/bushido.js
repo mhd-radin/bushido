@@ -45,6 +45,16 @@ if (bushido){
       });
     });
   },
+  delete(collection) {
+    return new Promise((resolve, reject) => {
+      bushido.access().then(function() {
+        bushido.sdk
+          .deleteDoc(bushido.sdk.doc(bushido.db, collection))
+          .then(resolve)
+          .catch(reject);
+      });
+    });
+  },
   getCollection(collection) {
     return new Promise((resolve, reject) => {
       bushido.access().then(function() {
@@ -241,6 +251,7 @@ class PostData {
     this.shares = 0;
     this.watched = 0;
     this.comments = 0;
+    this.expireAt = false;
   }
 
   export () {
@@ -282,4 +293,47 @@ PostData.extractParams = function extractParams(str) {
   const regex = /^POST_(.*?)_(\d+)__(\d+)$/;
   const match = str.match(regex);
   return match.slice(1);
+}
+
+// Method to calculate expiration time
+PostData.calculateExpireTime = function calculateExpireTime(hours) {
+  const currentTime = Date.now(); // Current time in milliseconds
+  const expireTime = currentTime + hours * 60 * 60 * 1000; // Add hours in milliseconds
+  return expireTime; // Return the expiration time
+}
+
+// Unified function to check if expired
+PostData.isExpired = function isExpired(expireTimeOrCreatedAt, duration) {
+  let expireTime;
+
+  // Case 1: If duration is provided, calculate expireTime from createdAt
+  if (duration !== undefined) {
+    const createdAt = new Date(expireTimeOrCreatedAt).getTime(); // Convert createdAt to timestamp
+    expireTime = createdAt + duration * 60 * 60 * 1000; // Add duration in milliseconds
+  }
+  // Case 2: If duration is not provided, assume expireTimeOrCreatedAt is the expireTime
+  else {
+    expireTime = expireTimeOrCreatedAt; // Use the provided expireTime directly
+  }
+
+  // Check if current time is greater than or equal to expireTime
+  const currentTime = Date.now();
+  return currentTime >= expireTime;
+}
+
+PostData.deletePostFromServer = function(postId, postUrl, postType, postFileType = 'video') {
+  return new Promise((resolve, reject) => {
+
+    let publicID = getPublicIdFromVideoUrl(postUrl);
+    deleteVideoFromCloudinary(publicID, postFileType).then(function() {
+      Promise.all(
+        [bushido.delete((PostData.getColl(postType) + '/' + postId)),
+          bushido.delete('likes/' + postId),
+          bushido.delete('shares/' + postId),
+          bushido.delete('watched/' + postId)]
+      ).then(resolve).catch(reject)
+    }).catch(function(err) {
+      console.log(err)
+    })
+  })
 }

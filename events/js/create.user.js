@@ -52,7 +52,7 @@ addPostBtn.onclick = function() {
                   postData.extras.isAdmin = false;
                   postData.extras.isLive = false;
                   postData.extras.authorID = user.id;
-
+                  postData.expireAt = PostData.calculateExpireTime(24);
                   createPostOnServer(postData, PostData.getColl('story'));
                 })
               })

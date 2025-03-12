@@ -56,28 +56,37 @@ bushido.getCollection("stories").then(function(snapshot) {
   clearLinearContents('.stories-box');
   arr.forEach(function(dt, index) {
     var data = dt.data();
-    var thumbImg = ((data.imgUrl == '' || !data.imgUrl) ? cloudinaryTransform(data.extras.url, {
-      so: 2,
-      dpr: 'auto',
-      c: "fill",
-      f: "jpg"
-    }) : data.imgUrl);
+    console.log(data)
 
-    function add() {
-      var tagstring = (CardStructure.story.create(
-        data.id,
-        thumbImg,
-        data.extras.author,
-        data.des,
-        (data.avatar || app.avatarUrl(data.extras.author)),
-        dayjs(data.date).fromNow()).parseElement()[0]);
-      appendToLinearContents('.stories-box', tagstring)
-      return tagstring;
-    }
+    if (!PostData.isExpired((data.expireAt || data.date), (data.expireAt ? data.expireAt : 24))) {
+      var thumbImg = ((data.imgUrl == '' || !data.imgUrl) ? (cloudinaryTransform(data.extras.url, {
+        so: 2,
+        dpr: 'auto',
+        c: "fill",
+        f: "jpg"
+      })) : data.imgUrl);
+      console.log(thumbImg)
 
-    var elem = add();
-    elem.onclick = function() {
-      searchOnURL(data.id);
+      function add() {
+        var tagstring = (CardStructure.story.create(
+          data.id,
+          thumbImg,
+          data.extras.author,
+          data.des,
+          (data.avatar || app.avatarUrl(data.extras.author)),
+          dayjs(data.date).fromNow()).parseElement()[0]);
+        appendToLinearContents('.stories-box', tagstring)
+        return tagstring;
+      }
+
+      var elem = add();
+      elem.onclick = function() {
+        searchOnURL(data.id);
+      }
+    } else {
+      PostData.deletePostFromServer(data.id, data.extras.url, data.type, 'video').then(function () {
+        window.location.search = ''
+      })
     }
   });
 });

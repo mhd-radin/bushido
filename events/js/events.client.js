@@ -176,9 +176,9 @@ function updatePostViewer(postData, show = false) {
         togglable: false,
         name: 'watched'
       })
-      
+
       let authorID = postData.extras.authorID;
-      if ( authorID && data.id === authorID){
+      if (authorID && data.id === authorID) {
         id('deleteBtn').style.display = 'flex'
       } else {
         id('deleteBtn').style.display = 'none'
@@ -213,17 +213,10 @@ function updatePostViewer(postData, show = false) {
           checkLikeStatus()
         })
       }
-      
-      id('deleteBtn').onclick = function () {
-        if (authorID && data.id === authorID && confirm('Are you sure to delete the story permanently')){
-          Promise.all([bushido.set(collection+'/'+postData.id, null),
-          bushido.set('likes/'+postData.id, null),
-          bushido.set('shares/'+postData.id, null),
-          bushido.set('watched/'+postData.id, null)]).then(function () {
-            modal.alert('Story deleted!', '').then(function () {
-              window.location.search = ''
-            })
-          })
+
+      id('deleteBtn').onclick = function() {
+        if (authorID && data.id === authorID && confirm('Are you sure to delete the story permanently')) {
+          PostData.deletePostFromServer(postData.id, postData.extras.url, postData.type, 'video')
         }
       }
 
@@ -232,7 +225,7 @@ function updatePostViewer(postData, show = false) {
           navigator.share({
             title: postData.title + ' • Bushido',
             text: postData.des,
-            url: 'https://mhd-radin.github.io/bushido?post=' + postData.id
+            url: window.location.href,
           }).then(function() {
             updatePostOpt(data, postData.id, {
               collType: collection,

@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="../public.admin.css" />
   <link rel="stylesheet" href="css/create.css" />
   <link rel="stylesheet" href="css/slide.css" />
+  <link rel="stylesheet" href="css/manage.css" />
   <link rel="stylesheet" href="../../events/css/cards.css" />
 
   <script src="../valid.admin.js"></script>
@@ -23,6 +24,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/aes.min.js"
     integrity="sha512-UOtWWEXoMk1WLeC873Gmrkb2/dZMwvN1ViM9C1mNvNmQSeXpEr8sRzXLmUSha1X4x5V892uFmEjiZzUsYiHYiw=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/relativeTime.js"></script>
+
   <script src="../../local.config.js"></script>
   <script src="../../public/js/bushido.js"></script>
   <script src="https://unpkg.com/eva-icons"></script>
@@ -179,7 +183,35 @@
           <div class="slide-des">Edit ( Coming soon ) and Delete stories, posts, events, noitces and videos</div>
         </div>
         <div class="slide-body">
-          Tables Here
+          <div class="manage-list">
+
+
+            <div class="manage-post">
+              <img src="../../assets/bg/members.jpg" alt="">
+              <div class="manage-middle bold-font">Post Title is here after after you can useit as 40 members
+                <div class="post-tags">
+                  <div class="post-tag red-tag">
+                    <i class="eva eva-radio-button-on"></i>
+                    <span>Live</span>
+                  </div>
+                  <div class="post-tag green-tag">
+                    <i class="eva eva-radio-button-on"></i>
+                    <span>Live</span>
+                  </div>
+                  <div class="post-tag red-tag">
+                    <i class="eva eva-radio-button-on"></i>
+                    <span>Live</span>
+                  </div>
+                </div>
+              </div>
+              <div class="manage-right">
+                <i class="eva eva-trash-2-outline"></i>
+              </div>
+            </div>
+
+
+
+          </div>
         </div>
       </div>
     </div>
@@ -221,6 +253,7 @@
   <script src="js/cloud.js"></script>
   <script src="js/create.js"></script>
   <script src="js/slide-post.js"></script>
+  <script src="js/manage-post.js"></script>
   <script src="../admin.public.all.js"></script>
   <script src="../public.admin.pages.js"></script>
 </body>

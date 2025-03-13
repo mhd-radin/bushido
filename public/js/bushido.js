@@ -321,11 +321,13 @@ PostData.isExpired = function isExpired(expireTimeOrCreatedAt, duration) {
   return currentTime >= expireTime;
 }
 
-PostData.deletePostFromServer = function(postId, postUrl, postType, postFileType = 'video') {
+PostData.deletePostFromServer = function(postId, postUrl, postType, postFileType = ['video']) {
   return new Promise((resolve, reject) => {
 
-    let publicID = getPublicIdFromVideoUrl(postUrl);
-    deleteVideoFromCloudinary(publicID, postFileType).then(function() {
+    Promise.all(postUrl.map(function(v, i) {
+      let publicID = getPublicIdFromVideoUrl(postUrl[i]);
+      return deleteVideoFromCloudinary(publicID, postFileType[i]);
+    })).then(function() {
       Promise.all(
         [bushido.delete((PostData.getColl(postType) + '/' + postId)),
           bushido.delete('likes/' + postId),

@@ -209,7 +209,7 @@
 }
 
 .note-card * {
-  z-index: 99;
+  /* z-index: 99; */
 }
 
 .note-ripple {
@@ -307,12 +307,14 @@
   padding: 3px;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
 .note-action {
   display: flex;
   flex-direction: row;
-  background: var(--third-bg);
+  background: #FFFFFF42;
   padding: 12px;
   font-size: 12px;
   border-radius: 5px;
@@ -327,7 +329,7 @@
 .note-action .eva {
   font-size: 23px;
 }
-
+/*
 .note-action:nth-child(1) {
   background-image: linear-gradient(to right, #ff3737, #ffa07a);
 }
@@ -345,7 +347,7 @@
 .note-action:nth-child(4) {
   background-image: linear-gradient(to right, #34c759, #0097a7);
 }
-
+*/
 
 @media screen and (min-width: 650px) {
   .note-action {
@@ -364,7 +366,6 @@
   .note-action {
     display: flex;
     flex-direction: column;
-    background: var(--third-bg);
     padding: 12px;
     font-size: 12px;
     border-radius: 5px;
@@ -380,4 +381,39 @@
     font-size: 40px;
     margin: 5px;
   }
+}
+
+/* Tags */
+
+.post-tags {
+  display: flex;flex-direction: row;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
+
+.post-tag {
+  padding: 3px 5px;
+  background: var(--bg);
+  color: var(--color);
+  display: flex;
+  flex-direction: row;
+  border-radius: 5px;
+  font-size: 11px;
+  align-items: center;
+  margin: 2px;
+}
+
+.post-tag * {
+  margin: 2px;
+}
+
+.red-tag {
+  background: #FFF3F0;
+  color: #DE295E;
+}
+
+.green-tag {
+  background: #EAFFF0;
+  color: #2FBC55;
 }

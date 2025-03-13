@@ -36,16 +36,6 @@ bushido.getCollection("posts").then(function(snapshot) {
   });
 });
 
-function cloudinaryTransform(url, transformations = {}) {
-  const urlParts = url.split("/upload/");
-  if (urlParts.length !== 2) return console.error("Invalid Cloudinary URL");
-
-  const transformString = Object.entries(transformations)
-    .map(([key, value]) => `${key}_${value}`)
-    .join(",");
-
-  return `${urlParts[0]}/upload/${transformString}/${urlParts[1]}`;
-}
 
 
 
@@ -56,7 +46,7 @@ bushido.getCollection("stories").then(function(snapshot) {
   clearLinearContents('.stories-box');
   arr.forEach(function(dt, index) {
     var data = dt.data();
-    console.log(data)
+    alert(PostData.isExpired((data.expireAt || data.date), (data.expireAt ? data.expireAt : 24)))
 
     if (!PostData.isExpired((data.expireAt || data.date), (data.expireAt ? data.expireAt : 24))) {
       var thumbImg = ((data.imgUrl == '' || !data.imgUrl) ? (cloudinaryTransform(data.extras.url, {
@@ -84,12 +74,13 @@ bushido.getCollection("stories").then(function(snapshot) {
         searchOnURL(data.id);
       }
     } else {
-      PostData.deletePostFromServer(data.id, data.extras.url, data.type, 'video').then(function () {
+      PostData.deletePostFromServer(data.id, [data.extras.url], data.type, ['video']).then(function() {
         window.location.search = ''
       })
     }
   });
 });
+
 
 
 /// video 
@@ -108,7 +99,21 @@ bushido.getCollection("videos").then(function(snapshot) {
     function add() {
       var tagstring = (CardStructure.video.create(
         data.id, thumbImg, data.title, data.des).parseElement()[0]);
+       
       appendToLinearContents('.videos-box', tagstring);
+
+      if (data.extras.url && (data.extras.url.includes('.m3u8') || data.extras.url.includes('.m3u') || data
+          .extras.url.includes('#live'))) {
+        tagstring = (CardStructure.video.create(
+          data.id, thumbImg, data.title, data.des, [['radio-button-on', 'Live', 'red-tag']]).parseElement()[0]);
+
+
+        if (!q('.streams-box')) {
+          CardStructure.addLinearBox('streams', 'Live Streams')
+        }
+
+        appendToLinearContents('.streams-box', tagstring);
+      }
       return tagstring;
     }
 

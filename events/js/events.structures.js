@@ -24,13 +24,31 @@ const CardStructure = {
       });
     }
   },
+  addLinearBox(id, name){
+    q('.main-session .contents').appendChild(new TagString(
+      `   <div class="linear-box ${id}-box">
+            <div class="linear-head">
+              ${name}
+            </div>
+            <div class="linear-contents">
+              
+            </div>
+          </div>`
+      ).parseElement()[0])
+  },
   video: {
-    create(id, thumb, title, des) {
+    create(id, thumb, title, des, tags) {
       return (new TagString(`
 <div class="image-card video-card">
   <div class="img-container">
     <img src="${thumb}" alt="" class="img-content" />
     <i class="play-icon eva eva-arrow-right"></i>
+    ${(Array.isArray(tags) ? `<div class="post-tags">
+                    ${(tags.map((arr)=> `<div class="post-tag ${arr[2]}">
+                      <i class="eva eva-${arr[0]}"></i>
+                      <span>${arr[1]}</span>
+                    </div>`)).join('')}
+                  </div>` : '')}
   </div>
   <div class="image-card-body">
     <div class="image-card-texts">

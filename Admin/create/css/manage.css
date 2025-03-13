@@ -1,0 +1,86 @@
+.manage-list {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  overflow: scroll;
+  max-height: 90vh;
+}
+
+.manage-post {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background: var(--sec-bg);
+  color: var(--apt-sec-color);
+  border-radius: 10px;
+  margin: 6px;
+  position: relative;
+  min-height: 60px;
+}
+
+.manage-post img {
+  width: 130px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.manage-middle {
+  font-size: 14px;
+  text-align: start;
+  display: flex;
+  font-weight: 600;
+  justify-content: flex-start;
+  margin: 8px;
+  padding: 2px;
+  padding-bottom: 40px;
+}
+
+.manage-right {
+  margin: 6px;
+}
+
+.manage-right .eva {
+  padding: 5px;
+  font-size: 20px;
+  color: #FF0C3C;
+}
+
+.post-tags {
+  display: flex;
+  flex-direction: row;
+  /* position: absolute; 
+  right: 10px;
+  bottom: 10px; */
+}
+
+.post-tag {
+  padding: 3px 5px;
+  background: var(--bg);
+  color: var(--color);
+  display: flex;
+  flex-direction: row;
+  border-radius: 5px;
+  font-size: 11px;
+  align-items: center;
+  margin: 2px;
+}
+
+.post-tag * {
+  margin: 2px;
+}
+
+.red-tag {
+  background: #FFF3F0;
+  color: #DE295E;
+}
+
+.green-tag {
+  background: #EAFFF0;
+  color: #2FBC55;
+}
+
+hr {
+  width: 99%;
+  border: 1px solid var(--border-color);
+  background: var(--border-color);
+}

@@ -526,6 +526,17 @@ function loadModule(src, fn) {
   document.body.appendChild(script)
 }
 
+function cloudinaryTransform(url, transformations = {}) {
+  const urlParts = url.split("/upload/");
+  if (urlParts.length !== 2) return console.error("Invalid Cloudinary URL");
+
+  const transformString = Object.entries(transformations)
+    .map(([key, value]) => `${key}_${value}`)
+    .join(",");
+
+  return `${urlParts[0]}/upload/${transformString}/${urlParts[1]}`;
+}
+
 
 function id(elementId) {
   return document.getElementById(elementId + '');

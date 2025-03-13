@@ -216,7 +216,7 @@ function updatePostViewer(postData, show = false) {
 
       id('deleteBtn').onclick = function() {
         if (authorID && data.id === authorID && confirm('Are you sure to delete the story permanently')) {
-          PostData.deletePostFromServer(postData.id, postData.extras.url, postData.type, 'video')
+          PostData.deletePostFromServer(postData.id, [postData.extras.url], postData.type, ['video'])
         }
       }
 

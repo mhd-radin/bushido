@@ -167,6 +167,15 @@ function updatePostViewer(postData, show = false) {
       postCommentWithCurrentUser(postData);
     }
 
+    if (postData.extras.url && (postData.extras.url.includes('.m3u8') || postData.extras.url.includes('.m3u') || postData
+        .extras.url.includes('#live'))) {
+      if (Hls.isSupported()) {
+        var hls = new Hls();
+        hls.loadSource(postData.extras.url);
+        hls.attachMedia(q('.postbody .img-content'));
+      }
+    }
+
 
     let collection = PostData.getColl(postData.type);
 

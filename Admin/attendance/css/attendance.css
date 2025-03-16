@@ -78,7 +78,7 @@
   padding: 4px;
 }
 
-@media screen and (min-width: 650px ) {
+@media screen and (min-width: 600.0px ) {
   .body {
     padding-bottom: 10px;
   }

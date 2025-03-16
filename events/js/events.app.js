@@ -97,22 +97,21 @@ bushido.getCollection("videos").then(function(snapshot) {
     }) : data.imgUrl);
 
     function add() {
-      var tagstring = (CardStructure.video.create(
-        data.id, thumbImg, data.title, data.des).parseElement()[0]);
+      let isLive = (data.extras.url.includes('.m3u8') || data.extras.url.includes('.m3u') || data
+  .extras.url.includes('#live'));
+      const tagstring = (CardStructure.video.create(
+        data.id, thumbImg, data.title, data.des, (isLive ? [['radio-button-on', 'Live', 'red-tag']] : undefined)).parseElement()[0]);
        
       appendToLinearContents('.videos-box', tagstring);
 
-      if (data.extras.url && (data.extras.url.includes('.m3u8') || data.extras.url.includes('.m3u') || data
-          .extras.url.includes('#live'))) {
-        tagstring = (CardStructure.video.create(
-          data.id, thumbImg, data.title, data.des, [['radio-button-on', 'Live', 'red-tag']]).parseElement()[0]);
-
-
+      if (data.extras.url && isLive) {
         if (!q('.streams-box')) {
           CardStructure.addLinearBox('streams', 'Live Streams')
         }
+        
+        document.createElement('div').cloneNode
 
-        appendToLinearContents('.streams-box', tagstring);
+        appendToLinearContents('.streams-box', tagstring.cloneNode(true));
       }
       return tagstring;
     }

@@ -173,6 +173,8 @@ function handleFloaterClick() {
                                     type: cateInp.value,
                                     users: userList,
                                   }
+                                  
+                                  
 
                                   if (typeof onformend == 'function') { onformend(dataToSend) }
                                   saveFn()

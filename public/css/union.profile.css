@@ -175,7 +175,7 @@
   color: #fff !important;
 }
 
-@media (max-width: 650px) {
+@media (max-width: 600.0px) {
   .opt-item {
     width: calc(100% - 25px);
   }

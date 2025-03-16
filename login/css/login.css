@@ -195,7 +195,7 @@
   animation-play-state: paused;
 }
 
-@media screen and (min-width: 650px) {
+@media screen and (min-width: 600.0px) {
   .reg-body {
     width: 60%;
     position: fixed;

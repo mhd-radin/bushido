@@ -172,11 +172,11 @@
   --spinner-two: #ffffff;
   --shadow: #1b1e2250;
 
-  --border-radius: 0px;
-  --border-radius-md: 0;
-  --border-radius-sm: 0;
-  --curved-radius: 0;
-  --zero-radius: 0;
+  --border-radius: 10px;
+  --circle-radius: 50%;
+  --curved-radius: 25px;
+  --zero-radius: 10px;
+  --border-radius-sm: 5px;
 }
 
 .darkblue-theme {

@@ -63,7 +63,7 @@ function useImageCard(id, title, des, source_url, isVideo) {
                   ${des}
                 </div>
               </div>
-              <div class="image-card-footer">
+              <!--div class="image-card-footer">
                 <div class="card-button">
                   <i class="eva eva-heart-outline"></i>
                   <div class="card-btn-text">Like</div>
@@ -76,7 +76,7 @@ function useImageCard(id, title, des, source_url, isVideo) {
                   <i class="eva eva-share-outline"></i>
                   <div class="card-btn-text">Share</div>
                 </div>
-              </div>
+              </div-->
             </div>
           </div>
 `);
@@ -145,7 +145,7 @@ function updatePostViewer(postData, show = false) {
   q('.postbody .image-card-title').innerHTML = postData.title;
   q('.postbody .image-card-subtext').innerHTML = postData.des +
     `<br><div>${dayjs(postData.date).fromNow()}</div>`;
-  console.log(postData)
+
 
   let fileMediaType = getFileType(postData.extras)
 
@@ -167,14 +167,26 @@ function updatePostViewer(postData, show = false) {
       postCommentWithCurrentUser(postData);
     }
 
-    if (postData.extras.url && (postData.extras.url.includes('.m3u8') || postData.extras.url.includes('.m3u') || postData
+    let tags = []
+
+
+    if (postData.extras.url && (postData.extras.url.includes('.m3u8') || postData.extras.url.includes('.m3u') ||
+        postData
         .extras.url.includes('#live'))) {
+          tags.push(['radio-button-on', 'Live', 'red-tag'])
       if (Hls.isSupported()) {
         var hls = new Hls();
         hls.loadSource(postData.extras.url);
         hls.attachMedia(q('.postbody .img-content'));
       }
     }
+    
+    const TAGSOUTPUT =  tags.map((arr) => `<div class="post-tag ${arr[2]}">
+                      <i class="eva eva-${arr[0]}"></i>
+                      <span>${arr[1]}</span>
+                    </div>`).join('')
+
+    id('postTagView').innerHTML = TAGSOUTPUT;
 
 
     let collection = PostData.getColl(postData.type);
@@ -249,6 +261,7 @@ function updatePostViewer(postData, show = false) {
     document.body.classList.toggle('showPostSession', false);
     id('commentBtn').onclick = function() {}
     id('likeBtn').onclick = function() {}
+    id('postTagView').innerHTML = ''
   }
 }
 

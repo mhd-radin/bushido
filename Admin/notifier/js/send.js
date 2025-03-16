@@ -25,6 +25,8 @@ function send(auth, token, notification) {
 }
 
 function onformend(data) {
+  console.log(data);
+  return;
   bushido.realtime
     .set("notifications/global/" + Math.floor(Math.random() * 999999), {
       date: new Date().toString(),
@@ -33,7 +35,7 @@ function onformend(data) {
       des: data.des,
     })
     .then(function () {
-
+      
     });
 
   // send(

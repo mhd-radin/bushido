@@ -9,17 +9,16 @@ function createActiveInfoDot(isRed, text) {
 
 function getInfo() {
   const xhr = new XMLHttpRequest();
-  xhr.open('GET', 'https://wbot-bodg.onrender.io/status');
+  xhr.open('GET', 'https://wbot-bodg.onrender.com/status');
   xhr.addEventListener('readystatechange', () => {
     if (xhr.readyState === xhr.DONE) {
+
       if (xhr.status == 200) {
-        var res = xhr.response;
-        if (typeof res === 'string') {
-          res = JSON.parse(res);
-        }
+        var res = JSON.parse(xhr.response);
+        console.log(res)
 
         if (res.isClientLogged === true) {
-          handleBotStatus(res.sentCount + '+', 'Messages are sent', true, true)
+          handleBotStatus(res.sendCount + '+', 'Messages are sent', true, true)
         } else {
           handleBotStatus('Warning', 'No client logged', false, true)
         }
@@ -34,13 +33,13 @@ function getInfo() {
 function handleBotStatus(sentCountInfo, sentDes, cliInfo = true, active) {
   var cliText = '';
   var activeText = '';
-  if (cli === true) {
+  if (cli) {
     cliText = 'Client Logged'
   } else {
     cliText = 'No Client Found!'
   }
 
-  if (active === true) {
+  if (active == true) {
     activeText = 'Active'
   } else {
     activeText = 'No Service'

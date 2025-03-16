@@ -58,41 +58,41 @@
             <div class="actions-container">
               <div class="note-action">
                 <i class="eva eva-settings-outline"></i>
-                <div class="note-action-text">Customize</div>
+                <div class="note-action-text" onclick="location.href = '../profile'">Customize</div>
               </div>
               <div class="note-action">
                 <i class="eva eva-person-outline"></i>
-                <div class="note-action-text">Profile</div>
+                <div class="note-action-text" onclick="location.href = '../profile'">Profile</div>
               </div>
               <div class="note-action">
                 <i class="eva eva-shield-outline"></i>
-                <div class="note-action-text">Security</div>
+                <div class="note-action-text" onclick="location.href = '../profile'">Security</div>
               </div>
               <div class="note-action"
-                onclick="document.querySelector('.main-session').style.display = 'none';document.querySelector('.post-session').style.display = 'block'">
+                onclick="location.href = '../profile'">
                 <i class="eva eva-phone-outline"></i>
                 <div class="note-action-text">Contact</div>
               </div>
             </div>
           </div>
 
-          <div class="note-card">
-            <div class="note-ripple"></div>
-            <div class="note-title">Any doubts about your game?</div>
-            <div class="note-subtext">
-              Join the Bushido community to chat, clear your doubts, and explore more. Check it out now!
-            </div>
-            <div class="note-buttons">
-              <button>
-                <i class="eva eva-message-circle-outline"></i>
-                <span>Chat Now</span>
-              </button>
-              <button>
-                <i class="eva eva-external-link-outline"></i>
-                <span>Contact</span>
-              </button>
-            </div>
-          </div>
+<!--           <div class="note-card">
+  <div class="note-ripple"></div>
+  <div class="note-title">Any doubts about your game?</div>
+  <div class="note-subtext">
+    Join the Bushido community to chat, clear your doubts, and explore more. Check it out now!
+  </div>
+  <div class="note-buttons">
+    <button>
+      <i class="eva eva-message-circle-outline"></i>
+      <span>Chat Now</span>
+    </button>
+    <button>
+      <i class="eva eva-external-link-outline"></i>
+      <span>Contact</span>
+    </button>
+  </div>
+</div> -->
 
 
           <div class="note-card">
@@ -358,10 +358,10 @@
       <i class="eva eva-compass-outline"></i>
       <div class="menu-item-text">Events</div>
     </div>
-    <div class="menu-item" data-url="../chat">
-      <i class="eva eva-message-circle-outline"></i>
-      <div class="menu-item-text">Messages</div>
-    </div>
+<!--     <div class="menu-item" data-url="../chat">
+  <i class="eva eva-message-circle-outline"></i>
+  <div class="menu-item-text">Messages</div>
+</div> -->
     <div class="menu-item" data-url="../notify">
       <i class="eva eva-bell-outline"></i>
       <div class="menu-item-text">Notifications</div>
@@ -391,7 +391,6 @@
               class="img-content" id="postPlayer" controls poster="../assets/bg/Simple Shiny.svg">
             </video>
 
-
           </div>
           <div class="image-card-body">
             <div class="image-card-texts">
@@ -406,7 +405,8 @@
                   Eum saepe ex modi omnis enim.
                 </div>
                 <br>
-              </div>
+                
+              </div><div id="postTagView"></div>
             </div>
             <div class="image-card-footer">
               <div class="card-button" id="likeBtn">

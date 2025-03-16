@@ -50,7 +50,7 @@ app
   .validUser()
   .then((userData) => {
     var promises = [
-      bushido.realtime.get("notifications/" + userData.id),
+      bushido.realtime.get("notifications/" + userData.phone),
       bushido.realtime.get("notifications/global"),
     ];
 

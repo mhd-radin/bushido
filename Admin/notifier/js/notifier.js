@@ -122,35 +122,71 @@ function handleFloaterClick() {
                           modal.alert(
                             "Select user to send",
                             (divId, buttonId) => {
-                              var userList = {};
+
                               modalDivId = divId
                               bushido.getCollection('accounts').then(function(snapshot) {
-                                var arr = bushido.toData(snapshot)
-                                var elem = document.getElementById(divId).querySelector('.modal-body');
-                                var selectAll = userboxUI.create(
-                                  'Select All',
-                                  'Send notification to all users',
-                                  app.avatarUrl('ALL', 'initials', '&radius=50'),
-                                  userboxUI.input(divId + '_all_user_INP')).parseElement()[0];
-                                elem.innerHTML = selectAll.innerHTML;
-
-                                var selectAllElem = selectAll;
-                                document.getElementById(divId + '_all_user_INP').onchange = function() {
-                      
-                                  elem.querySelectorAll('input').forEach(function(el) {
-                                    el.checked = document.getElementById(divId + '_all_user_INP').checked;
-                                  })
+                                var arr = bushido.toData(snapshot);
+                                
+                                let dataToSend = {
+                                  title: titleInp.value,
+                                  des: desInp.value,
+                                  type: cateInp.value,
+                                  users: [],
+                                  global: true
                                 }
-                                elem.innerHTML += '<hr />'
+
+                                var elem = document.getElementById(divId).querySelector(
+                                  '.modal-body');
+                                let listOpt = ([{
+                                  inputId: 'sall',
+                                  title: 'Select All',
+                                  subtitle: 'Send to all users',
+                                  attr: {},
+                                  value: 'ALL_USER',
+                                  avatar: (app.avatarUrl('AU',
+                                    'initials', '&radius=40'))
+                                    }]).concat(arr.map((data) => {
+                                  let v = data.data();
+                                  if (!v.isAdmin) {
+                                    dataToSend.users.push(v.phone);
+                                    
+                                    return {
+                                      inputId: v.id,
+                                      title: v.fullname,
+                                      subtitle: v.email,
+                                      attr: {},
+                                      value: v.phone,
+                                      avatar: (v.avatar ? v.avatar : app.avatarUrl(v
+                                        .fullname,
+                                        'initials', '&radius=40'))
+                                    }
+                                  }
+                                }));
 
 
-                                arr.forEach(function(item, index) {
+
+                                modal.optionsPicker(
+                                  listOpt.filter(Boolean),
+                                  false, userboxUI.create(
+                                    "#(title)",
+                                    "#(subtitle)",
+                                    "#(avatar)",
+                                    userboxUI.input("#(inputId)")), 'Select users to send').then((
+                                  users) => {
+                                    
+                                  if (!users.includes('ALL_USER')) {
+                                    dataToSend.users = users;
+                                    dataToSend.global = true;
+                                  }
+                                  
+                                  console.log(dataToSend)
+                                  if (typeof onformend == 'function') { onformend(dataToSend) }
+                                  document.getElementById(buttonId).click();
+                                })
+
+                                /*arr.forEach(function(item, index) {
                                   var data = item.data();
-                                  var userItemElem = userboxUI.create(
-                                    data.fullname,
-                                    data.email,
-                                    (data.avatar ? data.avatar : app.avatarUrl(data.fullname, 'initials', '&radius=40')),
-                                    userboxUI.input(divId + '_INP')).parseElement()[0];
+                                  var userItemElem = 7. parseElement()[0];
 
 
                                   elem.appendChild(userItemElem);
@@ -163,24 +199,14 @@ function handleFloaterClick() {
                                       delete userList[data.email]
                                     }
                                   }
-                                })
+                                })*/
 
-                                var saveFn = document.getElementById(buttonId).onclick;
-                                document.getElementById(buttonId).onclick = function() {
-                                  var dataToSend = {
-                                    title: titleInp.value,
-                                    des: desInp.value,
-                                    type: cateInp.value,
-                                    users: userList,
-                                  }
-                                  
-                                  
 
-                                  if (typeof onformend == 'function') { onformend(dataToSend) }
-                                  saveFn()
-                                }
+                                
+                                  
+                                
                               })
-                              return '<center><img src="../../assets/spinner/ring-resize.svg" class="svg-mini-loader loader-x2"></img></center>'
+                              return '<center><img src="../../assets/spinner/ring-resize.svg" class="svg-mini-loader loader-x2"></img><p id="loaderlog">Connecting...</p></center>'
                             },
                             ""
                           );

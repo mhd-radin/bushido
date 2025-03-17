@@ -133,6 +133,29 @@ function openAboutUserPanel(item) {
       }
     })
     elem.innerHTML = createUserInfo(data.fullname, data.email, pr, data.avatar)
+    
+    let user = data;
+    document.getElementById('deleteAcc').onclick = function() {
+      modal.confirm('Delete account permanently',
+        `delete your account (${user.email}) permanently in server that can't be restored. are you sure to delete your account`
+      ).then(function(val) {
+        if (val) {
+          var num = Math.floor(Math.random() * 9999);
+          modal.prompt('Delete Account <br><small>to delete your account write </small>"' + num +
+            '" to confirm', '', 'code').then(function(pass) {
+            if (num == pass) {
+              spinner.showPreloader('Deleting...')
+              bushido.delete('accounts/' + user.id).then(function() {
+                localStorage.clear();
+                location.reload();
+              })
+            } else {
+              modal.alert('Delete Cancelled!', '')
+            }
+          })
+        }
+      })
+    }
   }
 }
 

@@ -189,7 +189,7 @@
   padding: 8px;
   margin: 5px;
   height: max-content;
-  border: 1px solid var(--theme-color-alpha);
+  border: 1px solid var(--sec-bg);
   animation: fadeInUp 1s 1;
   animation-play-state: var(--animation-state);
   position: relative;
@@ -248,14 +248,15 @@
 }
 
 /* hover animations */
-.note-card {
-  background: var(--theme-color-alpha);
+.note-card{
+  background: var(--sec-bg);
 }
 
 .note-card .note-title,
 .note-card .note-subtext {
-  color: var(--apt-color);
+  color: var(--apt-sec-color);
 }
+
 
 .note-buttons {
   display: flex;
@@ -267,7 +268,7 @@
 /* end of hover animations */
 
 .note-buttons button {
-  background: var(--theme-color);
+  background: var(--third-bg);
   border-radius: var(--border-radius-sm);
   margin: 4px;
   padding: 13px 18px;
@@ -275,7 +276,7 @@
   cursor: pointer;
   transition: 0.2s all;
   margin-left: 0;
-  color: var(--apt-color);
+  color: var(--apt-third-color);
   border-radius: 30px;
   display: flex;
   flex-direction: row;

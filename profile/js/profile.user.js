@@ -458,15 +458,14 @@ app.validUser().then((user) => {
   document.getElementById('deleteAcc').onclick = function() {
     modal.confirm('Delete account permanently',
       `delete your account (${user.email}) permanently in server that can't be restored. are you sure to delete your account`
-      ).then(function(val) {
+    ).then(function(val) {
       if (val) {
         var num = Math.floor(Math.random() * 9999);
         modal.prompt('Delete Account <br><small>to delete your account write </small>"' + num +
           '" to confirm', '', 'code').then(function(pass) {
           if (num == pass) {
             spinner.showPreloader('Deleting...')
-            bushido.set('accounts/' + user.id, {}).then(function() {
-              localStorage.clear();
+            bushido.delete('accounts/' + user.id).then(function() {
               location.reload();
             })
           } else {
@@ -489,7 +488,7 @@ document.getElementById('about').onclick = function() {
     Bushido is an outstanding martial arts and boxing club located in Malappuram, Kerala, focused on helping people grow through combat sports. The club is run by a coach who has won national championships and provides top-notch training in Muay Thai, Boxing, Karate, and more.
 <br/><br/>
 The Bushido software, developed by <strong><a href="tel:8078496988">Muhammed Radin</a></strong>, enriches the experience with daily story videos, photos, updates about events, opportunities for community engagement, and a direct chat option with the coach. Aimed at martial arts fans, Bushido blends traditional training principles with modern technology, creating a lively and connected community.`
-    )
+  )
 }
 
 

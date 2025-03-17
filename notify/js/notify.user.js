@@ -1,4 +1,4 @@
-var notifications = [];
+let notifications = [];
 
 dayjs.extend(window.dayjs_plugin_relativeTime);
 

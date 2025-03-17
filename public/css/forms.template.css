@@ -212,7 +212,7 @@ nav {
   font-size: 13px;
 }
 
-@media screen and (min-width: 600.0px) {
+@media screen and (min-width: 500.0px) {
   .reg-body {
     width: 60%;
     position: fixed;
@@ -233,7 +233,7 @@ nav {
   }
 }
 
-@media screen and (max-width: 600.0px) {
+@media screen and (max-width: 500.0px) {
   body {
     padding-bottom: 10px;
     /* padding-top: 0;

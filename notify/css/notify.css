@@ -58,7 +58,7 @@
   color: var(--sec-color);
 }
 
-@media (max-width: 600.0px) {
+@media (max-width: 500.0px) {
   .body {
     height: calc(100vh - 115px);
   }

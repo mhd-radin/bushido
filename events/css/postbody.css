@@ -59,7 +59,7 @@ body *::-webkit-scrollbar {
 }
 
 
-@media (max-width: 600.0px) {
+@media (max-width: 500.0px) {
   .postbody .image-card {
     min-width: calc(100% - 10px);
     max-width: calc(100% - 10px);

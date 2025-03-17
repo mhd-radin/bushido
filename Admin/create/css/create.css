@@ -38,7 +38,7 @@ body {
   display: none;
 }
 
-@media screen and (max-width: 600.0px) {
+@media screen and (max-width: 500.0px) {
   .slides-list {
     display: block;
     width: 100%;

@@ -292,7 +292,7 @@ body {
   }
 }
 
-@media screen and (min-width: 600.0px) {
+@media screen and (min-width: 500.0px) {
   .chat-container {
     width: 400px;
     min-width: 400px;
@@ -320,7 +320,7 @@ body {
 
 }
 
-@media screen and (max-width: 600.0px) {
+@media screen and (max-width: 500.0px) {
   .users-list {
     display: block;
     width: 100%;

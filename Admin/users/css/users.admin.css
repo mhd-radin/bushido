@@ -134,7 +134,7 @@
 
 
 
-@media screen and (min-width: 600.0px) {
+@media screen and (min-width: 500.0px) {
   .bodybox {
     display: flex;
     flex-direction: row;

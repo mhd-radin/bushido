@@ -46,16 +46,14 @@ bushido.getCollection("stories").then(function(snapshot) {
   clearLinearContents('.stories-box');
   arr.forEach(function(dt, index) {
     var data = dt.data();
-    alert(PostData.isExpired((data.expireAt || data.date), (data.expireAt ? data.expireAt : 24)))
 
-    if (!PostData.isExpired((data.expireAt || data.date), (data.expireAt ? data.expireAt : 24))) {
+    if (!PostData.isExpired(data.date, 24)) {
       var thumbImg = ((data.imgUrl == '' || !data.imgUrl) ? (cloudinaryTransform(data.extras.url, {
         so: 2,
         dpr: 'auto',
         c: "fill",
         f: "jpg"
       })) : data.imgUrl);
-      console.log(thumbImg)
 
       function add() {
         var tagstring = (CardStructure.story.create(
@@ -98,17 +96,18 @@ bushido.getCollection("videos").then(function(snapshot) {
 
     function add() {
       let isLive = (data.extras.url.includes('.m3u8') || data.extras.url.includes('.m3u') || data
-  .extras.url.includes('#live'));
+        .extras.url.includes('#live'));
       const tagstring = (CardStructure.video.create(
-        data.id, thumbImg, data.title, data.des, (isLive ? [['radio-button-on', 'Live', 'red-tag']] : undefined)).parseElement()[0]);
-       
+        data.id, thumbImg, data.title, data.des, (isLive ? [['radio-button-on', 'Live', 'red-tag']] :
+          undefined)).parseElement()[0]);
+
       appendToLinearContents('.videos-box', tagstring);
 
       if (data.extras.url && isLive) {
         if (!q('.streams-box')) {
           CardStructure.addLinearBox('streams', 'Live Streams')
         }
-        
+
         document.createElement('div').cloneNode
 
         appendToLinearContents('.streams-box', tagstring.cloneNode(true));

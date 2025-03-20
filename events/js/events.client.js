@@ -141,13 +141,15 @@ function searchOnURL(postId) {
 
 function updatePostViewer(postData, show = false) {
   q('.postbody .img-content').src = (postData.extras.url || postData.imgUrl);
-  q('.postbody .img-content').poster = postData.imgUrl;
+  q('.postbody .img-content').poster = (postData.imgUrl || postData.extras.url);
   q('.postbody .image-card-title').innerHTML = postData.title;
   q('.postbody .image-card-subtext').innerHTML = postData.des +
     `<br><div>${dayjs(postData.date).fromNow()}</div>`;
 
 
   let fileMediaType = getFileType(postData.extras)
+  
+  console.log(fileMediaType, postData.extras.url)
 
   if (fileMediaType === 'video') {
     id('postPlayer').controls = true;
@@ -173,15 +175,15 @@ function updatePostViewer(postData, show = false) {
     if (postData.extras.url && (postData.extras.url.includes('.m3u8') || postData.extras.url.includes('.m3u') ||
         postData
         .extras.url.includes('#live'))) {
-          tags.push(['radio-button-on', 'Live', 'red-tag'])
+      tags.push(['radio-button-on', 'Live', 'red-tag'])
       if (Hls.isSupported()) {
         var hls = new Hls();
         hls.loadSource(postData.extras.url);
         hls.attachMedia(q('.postbody .img-content'));
       }
     }
-    
-    const TAGSOUTPUT =  tags.map((arr) => `<div class="post-tag ${arr[2]}">
+
+    const TAGSOUTPUT = tags.map((arr) => `<div class="post-tag ${arr[2]}">
                       <i class="eva eva-${arr[0]}"></i>
                       <span>${arr[1]}</span>
                     </div>`).join('')

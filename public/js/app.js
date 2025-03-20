@@ -13,9 +13,9 @@ function pageonload() {
     eva.replace();
   }
 
-  // document.querySelectorAll("*").forEach(function(elem) {
-  //   elem.onerror = handleError;
-  // });
+   document.querySelectorAll("*").forEach(function(elem) {
+    elem.onerror = handleError;
+  });
   document.documentElement.style.setProperty("--animation-state", "running");
 }
 

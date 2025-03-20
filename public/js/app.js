@@ -364,8 +364,7 @@ if (typeof eva != "undefined") {
 themeManager.useStoredTheme();
 
 function handleError(err) {
-  alert(err);
-  console.log(err)
+  
 }
 
 window.onerror = handleError;

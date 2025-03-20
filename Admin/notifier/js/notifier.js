@@ -126,13 +126,15 @@ function handleFloaterClick() {
                               modalDivId = divId
                               bushido.getCollection('accounts').then(function(snapshot) {
                                 var arr = bushido.toData(snapshot);
-                                
+
+
                                 let dataToSend = {
                                   title: titleInp.value,
                                   des: desInp.value,
                                   type: cateInp.value,
                                   users: [],
-                                  global: true
+                                  global: false,
+                                  usersObjArr: []
                                 }
 
                                 var elem = document.getElementById(divId).querySelector(
@@ -149,13 +151,14 @@ function handleFloaterClick() {
                                   let v = data.data();
                                   if (!v.isAdmin) {
                                     dataToSend.users.push(v.phone);
-                                    
+                                    dataToSend.usersObjArr.push(v);
+
                                     return {
                                       inputId: v.id,
                                       title: v.fullname,
                                       subtitle: v.email,
                                       attr: {},
-                                      value: v.phone,
+                                      value: v,
                                       avatar: (v.avatar ? v.avatar : app.avatarUrl(v
                                         .fullname,
                                         'initials', '&radius=40'))
@@ -173,13 +176,16 @@ function handleFloaterClick() {
                                     "#(avatar)",
                                     userboxUI.input("#(inputId)")), 'Select users to send').then((
                                   users) => {
-                                    
+                                  dataToSend.global = true;
+
+
                                   if (!users.includes('ALL_USER')) {
-                                    dataToSend.users = users;
-                                    dataToSend.global = true;
+                                    dataToSend.users = users.map((u) => u.phone);
+                                    dataToSend.global = false;
+                                    dataToSend.usersObjArr = users;
                                   }
+
                                   
-                                  console.log(dataToSend)
                                   if (typeof onformend == 'function') { onformend(dataToSend) }
                                   document.getElementById(buttonId).click();
                                 })
@@ -202,9 +208,9 @@ function handleFloaterClick() {
                                 })*/
 
 
-                                
-                                  
-                                
+
+
+
                               })
                               return '<center><img src="../../assets/spinner/ring-resize.svg" class="svg-mini-loader loader-x2"></img><p id="loaderlog">Connecting...</p></center>'
                             },

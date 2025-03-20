@@ -25,20 +25,35 @@ function send(auth, token, notification) {
 }
 
 function onformend(data) {
-  
+
   function forward() {
     modal.alert('Sending messages', function(main, btn) {
 
       let sended = 0;
 
-      data.users.forEach(function(ph) {
-        app.sendWhatsappMsg(ph.replace('+', ''), ("*" + data.title + "* \n\n" + data.des)).then(() => {
+      data.users.forEach(function(ph, i) {
+        
+        // use a variable for fix replace issue and notify page
+        let title = data.title.replace('@username', data.usersObjArr[i].fullname);
+        let des = data.des.replace('@username', data.usersObjArr[i].fullname);
+
+        title = title.replace('@phone', ph);
+        des = des.replace('@phone', ph);
+
+        title = title.replace('@email', data.usersObjArr[i].email);
+        des = des.replace('@email', data.usersObjArr[i].email);
+
+        title = title.replace('@address', data.usersObjArr[i].address);
+        des = des.replace('@address', data.usersObjArr[i].address);
+
+        console.log(title, des)
+        app.sendWhatsappMsg(ph.replace('+', ''), ("*" + title + "* \n\n" + des)).then(() => {
           bushido.realtime
             .set("notifications/" + ph + "/" + Math.floor(Math.random() * 999999), {
               date: new Date().toString(),
               type: data.type,
-              title: data.title,
-              des: data.des,
+              title: title,
+              des: des,
             })
             .then(function() {
               sended += 1;
@@ -58,7 +73,7 @@ function onformend(data) {
     })
   }
 
-  if (data.global) {
+  if (Boolean(data.global)) {
     bushido.realtime
       .set("notifications/global/" + Math.floor(Math.random() * 999999), {
         date: new Date().toString(),

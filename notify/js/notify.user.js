@@ -69,13 +69,27 @@ app
       var baseElem = document.querySelector(".body");
       baseElem.innerHTML = ''
       sorted.forEach(function (data){
-        var title = dayjs(data.date).fromNow();
-        if (prevDate != title){
-          var breaker = createBreaker(title)
+        var brtitle = dayjs(data.date).fromNow();
+        if (prevDate != brtitle){
+          var breaker = createBreaker(brtitle)
           baseElem.appendChild(breaker);
         }
-        prevDate = title;
-        var msg = createNotificationBox(data.title, data.des, data.type, dayjs(data.date).format("hh:mm"));
+        prevDate = brtitle;
+        
+        let title = data.title.replace('@username', userData.fullname);
+        let des = data.des.replace('@username', userData.fullname);
+
+        title = title.replace('@phone', userData.phone);
+        des = des.replace('@phone', userData.phone);
+
+        title = title.replace('@email', userData.email);
+        des = des.replace('@email', userData.email);
+
+        title = title.replace('@address', userData.address);
+        des = des.replace('@address', userData.address);
+
+        
+        var msg = createNotificationBox(title, des, data.type, dayjs(data.date).format("hh:mm"));
         baseElem.appendChild(msg)
       })
     });

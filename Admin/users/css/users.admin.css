@@ -2,6 +2,7 @@
   padding: 10px;
   padding-bottom: 80px;
   height: calc(100vh - 180px);
+  height: calc(100dvh - 180px);
   overflow-y: scroll;
 }
 
@@ -142,6 +143,7 @@
 
   .body {
     height: calc(100vh - 20px);
+    height: calc(100dvh - 20px);
   }
 
   .mobile-off {
@@ -158,6 +160,7 @@
     width: 45%;
     overflow: scroll;
     max-height: calc(100vh - 200px);
+    max-height: calc(100dvh - 200px);
   }
 
   .info-user {
@@ -166,6 +169,7 @@
     background: var(--sec-bg);
     color: var(--apt-sec-color);
     max-height: calc(100vh - 200px);
+    max-height: calc(100dvh - 200px);
     overflow: scroll;
   }
 }

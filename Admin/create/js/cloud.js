@@ -25,7 +25,6 @@ function useCloud(file, onupload = function() {}, preset = 'thumbs', cloud = con
     xhr.onload = () => {
       if (xhr.status === 200) {
         const response = JSON.parse(xhr.responseText);
-        console.log(response)
         response.url = convertToHttps(response.url)
         resolve(response);
       } else {

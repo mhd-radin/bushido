@@ -1098,6 +1098,7 @@ video {
 
 .h-\[95vh\] {
   height: 95vh;
+  height: 95dvh;
 }
 
 .w-\[200px\] {

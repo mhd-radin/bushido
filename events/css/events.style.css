@@ -67,6 +67,7 @@ nav {
   align-items: center;
   text-align: center;
   height: 70vh;
+  height: 70dvh;
 }
 
 .post-info p {
@@ -82,6 +83,7 @@ nav {
 @media (max-width: 500.0px) {
   .body {
     height: calc(100vh - 114px);
+    height: calc(100dvh - 114px);
     overflow-y: scroll;
   }
 
@@ -106,6 +108,7 @@ nav {
   .notes {
     width: calc(23% - 10px);
     height: calc(100vh - 68px);
+    height: calc(100dvh - 68px);
     border-left: 1px solid var(--border-color);
   }
 
@@ -115,6 +118,7 @@ nav {
 
   .posts {
     height: calc(100vh - 68px);
+    height: calc(100dvh - 68px);
   }
 }
 

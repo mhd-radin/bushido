@@ -4,6 +4,7 @@
 
 .body {
   height: calc(100vh - 180px);
+  height: calc(100dvh - 180px);
   padding: 10px;
   overflow-y: scroll;
   animation: fadeInLeft 0.4s 1;
@@ -124,6 +125,7 @@
   z-index: 9999;
   width: 100%;
   height: 100vh;
+  height: 100dvh;
   animation: layIn 1250ms 1;
   display: flex;
   justify-content: center;

@@ -1,5 +1,6 @@
 .body {
   height: calc(100vh - 10px);
+  height: calc(100dvh - 10px);
   overflow-y: scroll;
 }
 
@@ -61,5 +62,6 @@
 @media (max-width: 500.0px) {
   .body {
     height: calc(100vh - 115px);
+    height: calc(100dvh - 115px);
   }
 }

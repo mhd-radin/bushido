@@ -110,6 +110,7 @@
     left: 0px;
     width: calc(100% - 0px);
     height: 80vh;
+    height: 80dvh;
     justify-content: space-evenly;
     color: var(--tw-color-slate-100);
     border-bottom-left-radius: 20px;

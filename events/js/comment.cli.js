@@ -28,9 +28,19 @@ const commenter = {
   },
   postComment(commentData) {
     bushido.set('comments/' + commentData.postId, function(sdk) {
-      
       return {
         comments: sdk.arrayUnion(commentData)
+      }
+    }, {
+      merge: true
+    }).then(function() {
+      commenter.getComments(commentData.postId)
+    })
+  },
+  removeComment(commentData) {
+    bushido.set('comments/' + commentData.postId, function(sdk) {
+      return {
+        comments: sdk.arrayRemove(commentData)
       }
     }, {
       merge: true

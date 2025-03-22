@@ -89,7 +89,7 @@
           <div class="opt-item" id="password">
             <i class="eva eva-person-outline opt-item-icon"></i>
             <div class="opt-text-body">
-              <div class="opt-title">Password</div>
+              <div class="opt-title">Password ( Click to change )</div>
               <div class="opt-subtext">
                 &#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;
               </div>
@@ -103,21 +103,12 @@
       <div class="opt-layout">
         <div class="opt-head">Actions</div>
         <div class="opt-body">
-          <div class="opt-item">
+
+          <div class="opt-item" onclick="localStorage.clear();location.reload()">
             <i class="eva eva-log-out-outline opt-item-icon"></i>
             <div class="opt-text-body">
               <div class="opt-title">Log Out</div>
               <div class="opt-subtext">Log out current account</div>
-            </div>
-            <div class="opt-right">
-              <i class="eva eva-chevron-right"></i>
-            </div>
-          </div>
-          <div class="opt-item danger-opt-item">
-            <i class="eva eva-person-delete-outline opt-item-icon"></i>
-            <div class="opt-text-body">
-              <div class="opt-title">Delete Account</div>
-              <div class="opt-subtext">Remove your account from server</div>
             </div>
             <div class="opt-right">
               <i class="eva eva-chevron-right"></i>
@@ -163,6 +154,7 @@
   <script src="../../public/js/menubox.js"></script>
   <script src="../../public/js/modal.js"></script>
   <script src="../../public/js/user.structure.js"></script>
+  <script src="js/admin.profile.js"></script>
   <script src="../admin.public.all.js"></script>
   <script src="../public.admin.pages.js"></script>
 </body>

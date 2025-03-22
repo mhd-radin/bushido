@@ -457,7 +457,9 @@ function checkApplicationData() {
         "Update Now!",
         "Exciting new features and improvements are just a tap away! Update your app now to access the latest updates and enhance your experience!. V" +
         data.version
-      );
+      ).then(function () {
+        location.reload(true);
+      })
     }
   });
 }

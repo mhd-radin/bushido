@@ -14,5 +14,6 @@ const config = {
     cloud_name: 'drv6qpv56', 
     api_key: '296355761444914', 
     api_secret: 'O8zS8etWMScAq5Bs_XmAK5xda7s'
-  }
+  },
+  jobKey: "pn00fnfC/zTOpnvhA6C0HQpxumlPGBt7abhoGNCkYFg="
 }

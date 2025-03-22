@@ -339,3 +339,80 @@ PostData.deletePostFromServer = function(postId, postUrl, postType, postFileType
     })
   })
 }
+
+async function createCronJob(apiKey, targetUrl, schedule, extendedData, requestMethod) {
+  const url = 'https://api.cron-job.org/jobs';
+
+  const cronJobData = {
+    job: {
+      url: targetUrl, // URL to be called
+      enabled: true, // Enable the cron job
+      saveResponses: true, // Save responses for debugging
+      schedule: schedule, // Schedule configuration
+      extendedData: extendedData, // Extended data (headers, method, body, etc.)
+      requestMethod,
+    }
+  };
+
+  const headers = {
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${apiKey}`
+  };
+
+  try {
+    const response = await fetch(url, {
+      method: 'PUT',
+      headers: headers,
+      body: JSON.stringify(cronJobData)
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    console.log('Cron job created successfully:', data);
+    return data;
+  } catch (error) {
+    console.error('Error creating cron job:', error);
+    return;
+  }
+}
+
+const MONTH_SCHEDULE = {
+    timezone: "UTC", // Timezone for the schedule
+    expiresAt: 0, // 0 means the job never expires
+    hours: [10], // At 10:00 UTC
+    mdays: [1], // On the 1st day of the month
+    minutes: [0], // At 0 minutes
+    months: [-1], // Every month
+    wdays: [-1] // Every day of the week (ignored when mdays is specified)
+};
+
+/* for tutorial
+const apiKey = 'your_api_key_here';
+const targetUrl = 'https://your-api.com/webhook';
+
+const schedule = {
+  timezone: "UTC",
+  expiresAt: 0,
+  hours: [15], // 3:00 PM UTC
+  mdays: [-1],
+  minutes: [0],
+  months: [-1],
+  wdays: [-1]
+};
+
+const extendedData = {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    "X-Custom-Header": "custom_value"
+  },
+  body: JSON.stringify({
+    event: "daily_report",
+    userId: 12345
+  })
+};
+*/
+

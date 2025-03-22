@@ -289,26 +289,26 @@ function changeTitle(msg) {
 
 function getPhoneNumberErrorMessage(phoneNumber) {
   const trimmedPhoneNumber = phoneNumber.trim();
-  
+
   if (!trimmedPhoneNumber.startsWith('+')) {
     return 'Phone number must start with a "+" symbol.';
   }
-  
+
   const phoneNumberWithoutPlus = trimmedPhoneNumber.substring(1);
   const parts = phoneNumberWithoutPlus.replace(/[\(\)\s]/g, '').match(/.{1,3}/g);
-  
+
   if (!parts) {
     return 'Invalid phone number format. Please use a valid international phone number format.';
   }
-  
+
   if (parts.length < 3 || parts.length > 4) {
     return 'Invalid phone number format. Please use a valid international phone number format.';
   }
-  
+
   if (parts.some(part => part.length < 1 || part.length > 3 || !/^\d+$/.test(part))) {
     return 'Invalid phone number format. Please use a valid international phone number format.';
   }
-  
+
   return 'Invalid phone number format. Please use a valid international phone number format.';
 }
 
@@ -354,15 +354,18 @@ function changeState(nextState) {
             });
             if (data.length == 0) {
               modal.confirm(
-              "WhatsApp Notification Consent and Verification", 
+                "WhatsApp Notification Consent and Verification",
               ["By clicking, you agree to receive WhatsApp notifications from us. You can unsubscribe at any time by replying \"STOP\". We won't share your number with third parties. You hold us harmless for any claims related to these notifications.",
                "Confirm your WhatsApp phone number:",
                '<strong>+' + phone.value + '</strong>',
-               "We will send a verification code to this number to complete the registration process."].join("<br/><br/>")).then((isPhoneRight) => {
+               "We will send a verification code to this number to complete the registration process."].join("<br/><br/>")
+                ).then((isPhoneRight) => {
                 if (isPhoneRight) {
                   spinner.changeText('Sending code...')
                   let randomCode = Math.floor(Math.random() * 999999)
-                  app.sendWhatsappMsg(phone.value, "*Bushido* Verification Code: *"+randomCode+"*. Enter this code to complete your registration. If you didn't request this code, please ignore this message.").then(function() {
+                  app.sendWhatsappMsg(phone.value, "*Bushido* Verification Code: *" + randomCode +
+                    "*. Enter this code to complete your registration. If you didn't request this code, please ignore this message."
+                    ).then(function() {
                     modal.prompt('Verfication Code', '', 'CODE HERE').then((userEnteredCode) => {
                       if (userEnteredCode == randomCode) {
                         spinner.removePreloader().then(function() {
@@ -473,16 +476,28 @@ function changeState(nextState) {
           .then(function() {
             spinner.changeText("Server connected successfully...");
             currentFormSet.completed = true;
-            saveForm();
-            setTimeout(function() {
-              spinner.changeText("Signing your account");
-              window.location.href =
-                "../login/?email=" +
-                currentFormSet.get("email") +
-                "&pw=" +
-                currentFormSet.get("password") +
-                "&enc=true";
-            }, 500);
+
+            createCronJob(config.jobKey, 'https://wbot-bodg.onrender.com/send/' + currentFormSet.phone,
+              MONTH_SCHEDULE, {
+                body: JSON.stringify({
+                  msg: "Hey! Just a reminder that your monthly *Bushido Boxers Club* fee of *₹1000* is due. Thanks!"
+                }),
+                headers: {
+                  "Content-Type": "application/json",
+                },
+              }, 'POST').then(() => {
+              saveForm();
+              setTimeout(function() {
+                spinner.changeText("Signing your account");
+                window.location.href =
+                  "../login/?email=" +
+                  currentFormSet.get("email") +
+                  "&pw=" +
+                  currentFormSet.get("password") +
+                  "&enc=true";
+              }, 500);
+            })
+
           });
       }
       break;

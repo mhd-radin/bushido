@@ -25,7 +25,6 @@ function addPostOpt(postId, userid, optName, collType) {
     bushido.get(collType, postId).then(function(snapshot) {
       if (snapshot.exists()) {
         let data = snapshot.data();
-        console.log(data[optName])
         // property updation
         bushido.set(collType + '/' + postId, {
         [optName]: (data[optName] + 1)

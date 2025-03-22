@@ -35,30 +35,37 @@ addPostBtn.onclick = function() {
     icon: 'video-outline',
     clickAction: function() {
       modal.prompt('Add story title', '', 'Story title here').then(function(title) {
-        modal.prompt('Add story description', '', 'Story description here', true).then(function(des) {
-          modal.prompt('Add story video file', '', 'Story title here', false, 'file').then(function(
-            files) {
-            let file = files[0];
+        if (title) {
+          modal.prompt('Add story description', '', 'Story description here', true).then(function(des) {
+            if (des) {
+              modal.prompt('Add story video file', '', 'Story title here', false, 'file').then(
+                function(
+                  files) {
+
+                  let file = files[0];
 
 
-            console.log(file)
-            if (title && des && file) {
-              app.validUser().then(function(user) {
-                let postData = new PostData(title, des, 'story', 'url', "", {})
-                uploadFile(file, function(res) {
-                  postData.extras.url = res.url;
-                  postData.extras.type = file.type;
-                  postData.extras.author = user.fullname;
-                  postData.extras.isAdmin = false;
-                  postData.extras.isLive = false;
-                  postData.extras.authorID = user.id;
-                  postData.expireAt = PostData.calculateExpireTime(24);
-                  createPostOnServer(postData, PostData.getColl('story'));
-                })
-              })
+                  
+                  if (title && des && file) {
+                    app.validUser().then(function(user) {
+                      let postData = new PostData(title, des, 'story', 'url', "", {})
+                      uploadFile(file, function(res) {
+                        postData.extras.url = res.url;
+                        postData.extras.type = file.type;
+                        postData.extras.author = user.fullname;
+                        postData.extras.isAdmin = false;
+                        postData.extras.isLive = false;
+                        postData.extras.authorID = user.id;
+                        postData.expireAt = PostData.calculateExpireTime(24);
+                        createPostOnServer(postData, PostData.getColl('story'));
+                      })
+                    })
+                  }
+                }
+              )
             }
           })
-        })
+        }
       })
     },
     id: 'addPostDdown'

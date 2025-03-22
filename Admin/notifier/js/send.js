@@ -46,8 +46,8 @@ function onformend(data) {
         title = title.replace('@address', data.usersObjArr[i].address);
         des = des.replace('@address', data.usersObjArr[i].address);
 
-        console.log(title, des)
-        app.sendWhatsappMsg(ph.replace('+', ''), ("*" + title + "* \n\n" + des)).then(() => {
+        
+        app.sendWhatsappMsg(ph.replace('+', ''), ("" + title + "\n\n" + des)).then(() => {
           bushido.realtime
             .set("notifications/" + ph + "/" + Math.floor(Math.random() * 999999), {
               date: new Date().toString(),

@@ -28,7 +28,7 @@ const commenter = {
   },
   postComment(commentData) {
     bushido.set('comments/' + commentData.postId, function(sdk) {
-      console.log(sdk.arrayUnion)
+      
       return {
         comments: sdk.arrayUnion(commentData)
       }

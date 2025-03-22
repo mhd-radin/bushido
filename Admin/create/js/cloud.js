@@ -25,6 +25,8 @@ function useCloud(file, onupload = function() {}, preset = 'thumbs', cloud = con
     xhr.onload = () => {
       if (xhr.status === 200) {
         const response = JSON.parse(xhr.responseText);
+        console.log(response)
+        response.url = convertToHttps(response.url)
         resolve(response);
       } else {
         reject(xhr.statusText);
@@ -33,6 +35,16 @@ function useCloud(file, onupload = function() {}, preset = 'thumbs', cloud = con
 
     xhr.send(formData)
   });
+}
+
+function convertToHttps(url) {
+    // Check if the URL starts with 'http://'
+    if (url.startsWith('http://')) {
+        // Replace 'http://' with 'https://'
+        return url.replace('http://', 'https://');
+    }
+    // If the URL already starts with 'https://' or doesn't start with 'http://', return it as is
+    return url;
 }
 
 async function deleteVideoFromCloudinary(publicId, fileType =  'video') {

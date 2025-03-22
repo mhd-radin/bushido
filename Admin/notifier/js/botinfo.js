@@ -15,7 +15,7 @@ function getInfo() {
 
       if (xhr.status == 200) {
         var res = JSON.parse(xhr.response);
-        console.log(res)
+        
 
         if (res.isClientLogged === true) {
           handleBotStatus(res.sendCount + '+', 'Messages are sent', true, true)

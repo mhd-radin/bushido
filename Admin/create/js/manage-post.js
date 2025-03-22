@@ -1,5 +1,4 @@
 function createManagePost(postData, tags) {
-  console.log(postData)
   var thumbImg = ((postData.imgUrl == '' || !postData.imgUrl) ? cloudinaryTransform(postData.extras.url, {
     so: 2,
     dpr: 'auto',
@@ -61,7 +60,7 @@ function handlePosts(snapshot) {
               sources.push(postData.imgUrl)
               fileTypes.push('image', 'video')
             }
-            console.log(sources)
+            
             PostData.deletePostFromServer(postData.id, sources, postData.type,
               fileTypes).then(function() {
               alert('Deleted');

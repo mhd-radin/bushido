@@ -149,8 +149,7 @@ function updatePostViewer(postData, show = false) {
 
   let fileMediaType = getFileType(postData.extras)
   
-  console.log(fileMediaType, postData.extras.url)
-
+  
   if (fileMediaType === 'video') {
     id('postPlayer').controls = true;
   } else {
@@ -211,7 +210,7 @@ function updatePostViewer(postData, show = false) {
         bushido.get('likes', postData.id).then(function(snapshot) {
           if (snapshot.exists()) {
             let arr = snapshot.data().contents;
-            console.log(snapshot.data())
+            
             if (arr && arr.length > 0 && arr.indexOf(data.id) != -1) {
               q('#likeBtn .eva').className = 'eva eva-heart-outline'
               updateLikeBtn(true, arr.length)

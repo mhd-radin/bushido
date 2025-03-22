@@ -60,7 +60,7 @@ bushido.getCollection("stories").then(function(snapshot) {
           data.id,
           thumbImg,
           data.extras.author,
-          data.des,
+          data.title,
           (data.avatar || app.avatarUrl(data.extras.author)),
           dayjs(data.date).fromNow()).parseElement()[0]);
         appendToLinearContents('.stories-box', tagstring)

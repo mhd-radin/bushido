@@ -116,7 +116,7 @@ function uploadFile(thumbnailFile, then, cloudPreset, cloudName) {
         );
       });
 
-    return '<center><img src="../../assets/spinner/ring-resize.svg" class="svg-mini-loader loader-x2"></img><p id="modalPrg">0% Uploaded</p></center>';
+    return '<center><img src="https://raw.githubusercontent.com/muhammed-radin/bushido/0192bf3e7505b510fb2177da8f2b355a97a3c06d/assets/spinner/ring-resize.svg" class="svg-mini-loader loader-x2"></img><p id="modalPrg">0% Uploaded</p></center>';
   }, '', function(divId, buttonId) {
     id(buttonId).style.display = "none";
   });

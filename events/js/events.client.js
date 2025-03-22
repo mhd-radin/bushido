@@ -246,7 +246,7 @@ function updatePostViewer(postData, show = false) {
         if ('share' in navigator) {
           navigator.share({
             title: postData.title + ' • Bushido',
-            text: postData.des,
+            text: postData.title + ' • Bushido',
             url: window.location.href,
           }).then(function() {
             updatePostOpt(data, postData.id, {

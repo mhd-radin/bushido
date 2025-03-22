@@ -36,8 +36,9 @@ addPostBtn.onclick = function() {
     clickAction: function() {
       modal.prompt('Add story title', '', 'Story title here').then(function(title) {
         if (title) {
-          modal.prompt('Add story description', '', 'Story description here', true).then(function(des) {
-            if (des) {
+          /*modal.prompt('Add story description', '', 'Story description here', true).then(function(des) {
+            if (des) {*/
+            let des = "Bushido Daily Story";
               modal.prompt('Add story video file', '', 'Story title here', false, 'file').then(
                 function(
                   files) {
@@ -63,8 +64,8 @@ addPostBtn.onclick = function() {
                   }
                 }
               )
-            }
-          })
+            /*}
+          })*/
         }
       })
     },

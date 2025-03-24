@@ -1,3 +1,5 @@
+const config = process.env.KEY;
+
 const bushido = {
   loaded: false,
   sdk: null,

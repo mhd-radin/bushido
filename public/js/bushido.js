@@ -1,4 +1,4 @@
-const config = process.env.KEY;
+const config = JSON.parse(process.env.KEY);
 
 const bushido = {
   loaded: false,

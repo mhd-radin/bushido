@@ -1,5 +1,4 @@
-const config = API_KEY;
-alert(API_KEY)
+const config = JSON.parse(process.env.KEY);
 
 const bushido = {
   loaded: false,

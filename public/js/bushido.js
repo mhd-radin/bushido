@@ -1,4 +1,5 @@
 const config = API_KEY;
+alert(API_KEY)
 
 const bushido = {
   loaded: false,

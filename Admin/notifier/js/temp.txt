@@ -1,0 +1,12 @@
+`<i class="close-btn eva eva-close-outline"></i>
+<div class="form-center">
+  <p>Choose an Category</p>
+  <select name="cate" id="cate">
+    <option value="cate">Information</option>
+    <option value="cate">About Payment</option>
+    <option value="cate">Request</option>
+    <option value="cate">Warning</option>
+    <option value="cate">Emergency</option>
+    <option value="cate">Events</option>
+  </select>
+</div>`;

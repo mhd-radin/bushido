@@ -1,0 +1,99 @@
+.user-box {
+  background: var(--bg);
+  /* border-radius: 8px; */
+  border-radius: 0;
+  padding: 3px;
+  font-size: 13px;
+  margin-bottom: 2px;
+  overflow-wrap: break-word;
+}
+
+.user-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.user-icon {
+  padding: 10px;
+}
+
+.user-tag, .user-tag-num {
+  border: 2px solid;
+  color: var(--theme-color);
+  padding: 3px 9px;
+  border-radius: 20px
+}
+
+.user-tag-num {
+  font-size: 12px;
+  border-radius: 50%;
+}
+
+.user-tag-icon {
+  color: var(--theme-color);
+  padding: 3px 5px
+}
+
+.user-right .eva {
+  font-size: 20px;
+}
+
+.user-icon img {
+  width: 30px;
+  border-radius: 50%
+}
+
+.user-body {
+  padding: 10px;
+  position: relative;
+  width: calc(100% - 80px);
+  transition: 0.2s;
+  scroll-behavior: smooth;
+}
+
+.user-name {
+  font-size: 15px;
+  width: 70%;
+  overflow: hidden;
+}
+
+.user-subtext {
+  font-size: 12px;
+  color: var(--sec-color);
+  font-family: var(--global-ff);
+  width: 70%;
+  overflow-wrap: break-word;
+}
+
+.user-right {
+  position: absolute;
+  right: 0px;
+  top: 12px;
+}
+
+.users-name {
+  width: 60%;
+}
+
+.user-box:last-child {
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.user-box:first-child {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.user-box:hover, .user-box-active {
+  background: var(--sec-bg);
+  color: var(--apt-sec-color);
+}
+
+label.user-box {
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}

@@ -1,0 +1,84 @@
+nav {
+  background: var(--nav-bg);
+  color: var(--apt-nav-color);
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  padding-left: 15px;
+  /* position: relative; */
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  justify-content: space-between;
+}
+
+.nav-title {
+  font-size: 25px;
+  margin-left: 10px;
+}
+
+.nav-title {
+  color: var(--color);
+}
+
+.nav-title b {
+  color: var(--spinner-one);
+}
+
+.nav-title-image img {
+  width: 160px;
+}
+
+.nav-right {
+  position: absolute;
+  right: 10px;
+  font-size: 25px;
+  color: var(--sec-color);
+}
+
+.nav-left {
+  font-size: 25px;
+  color: var(--sec-color);
+  margin-right: 15px;
+}
+
+.nav-flex {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-flex .nav-right {
+  position: relative;
+}
+
+
+.nav-center {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (min-width: 400px) {
+  .nav-right {
+    position: absolute !important;
+    right: 10px;
+  }
+
+  .nav-flex {
+    justify-content: flex-start;
+    min-width: calc(100vw - 10px);
+  }
+  
+  .nav-center {
+    justify-content: flex-start;
+  }
+
+  nav {
+    padding: 17px;
+  }
+}

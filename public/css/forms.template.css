@@ -1,0 +1,260 @@
+.reg-body {
+  padding: 20px;
+  margin: 5px;
+  padding-bottom: 140px;
+  margin-top: 20px;
+}
+
+nav {
+  background: var(--bg) !important;
+  padding: 20px;
+  display: flex;
+  justify-content: start;
+  align-items: start;
+}
+
+.vc {
+  z-index: 9999;
+}
+
+.reg-body h2 {
+  font-family: var(--global-ff);
+  font-size: 25px;
+  -webkit-animation: fadeInUp 500ms 1;
+  -o-animation: fadeInUp 500ms 1;
+  animation: fadeInUp 500ms 1;
+  -webkit-animation-timing-function: ease-out;
+  -moz-animation-timing-function: ease-out;
+  -o-animation-timing-function: ease-out;
+  animation-timing-function: ease-out;
+
+  animation-play-state: paused;
+}
+
+.reg-body p {
+  color: var(--sec-color);
+  font-family: var(--global-ff);
+  -webkit-animation: fadeInUp 500ms 1;
+  -o-animation: fadeInUp 500ms 1;
+  animation: fadeInUp 500ms 1;
+  -webkit-animation-delay: 00ms;
+  -moz-animation-delay: 00ms;
+  -o-animation-delay: 00ms;
+  animation-delay: 00ms;
+  font-size: 14px;
+
+  -webkit-animation-timing-function: ease-out;
+  -moz-animation-timing-function: ease-out;
+  -o-animation-timing-function: ease-out;
+  animation-timing-function: ease-out;
+
+  animation-play-state: paused;
+}
+
+.form {
+  padding: 10px;
+  margin: 5px;
+}
+
+.input-box {
+  margin: 5px;
+  margin-top: 12px;
+  padding: 3px;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-box label {
+  font-size: 13px;
+  font-family: var(--global-ff);
+  margin-left: 3px;
+  margin-bottom: 5px;
+  -webkit-animation: fadeInUp 500ms 1;
+  -o-animation: fadeInUp 500ms 1;
+  animation: fadeInUp 500ms 1;
+  -webkit-animation-delay: 00ms;
+  -moz-animation-delay: 00ms;
+  -o-animation-delay: 00ms;
+  animation-delay: 00ms;
+
+  -webkit-animation-timing-function: ease-out;
+  -moz-animation-timing-function: ease-out;
+  -o-animation-timing-function: ease-out;
+  animation-timing-function: ease-out;
+
+  animation-play-state: paused;
+}
+
+.input-seg {
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+  padding: 0;
+  border-radius: 8px;
+  background: var(--sec-bg);
+}
+
+.input-icon {
+  padding: 3px;
+  border: 0px solid transparent;
+  border-bottom: 0px solid var(--border-color);
+  margin-left: 0;
+  margin: 3px;
+  margin-right: 1px;
+  right: 0;
+  border-radius: 0px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  max-height: 35px;
+
+  -webkit-animation: fadeInRight 700ms 1;
+  -o-animation: fadeInRight 700ms 1;
+  animation: fadeInRight 700ms 1;
+  -webkit-animation-delay: 0ms;
+  -moz-animation-delay: 0ms;
+  -o-animation-delay: 0ms;
+  animation-delay: 0ms;
+
+  -webkit-animation-timing-function: ease-out;
+  -moz-animation-timing-function: ease-out;
+  -o-animation-timing-function: ease-out;
+  animation-timing-function: ease-out;
+
+  animation-play-state: paused;
+}
+
+.input-icon .eva {
+  margin: 0 auto;
+  font-size: 20px;
+  padding: 2px 6px;
+  width: max-content;
+  color: var(--theme-color);
+
+  -webkit-animation: fadeIn 1000ms 1;
+  -o-animation: fadeIn 1000ms 1;
+  animation: fadeIn 1000ms 1;
+  -webkit-animation-delay: 0ms;
+  -moz-animation-delay: 0ms;
+  -o-animation-delay: 0ms;
+  animation-delay: 0ms;
+
+  -webkit-animation-timing-function: ease-out;
+  -moz-animation-timing-function: ease-out;
+  -o-animation-timing-function: ease-out;
+  animation-timing-function: ease-out;
+
+  animation-play-state: paused;
+}
+
+.form input,
+.form textarea,
+.form select {
+  padding: 8px 8px;
+  border-radius: var(--border-radius-sm);
+  border: 0px solid transparent;
+  border-bottom: 0px solid var(--border-color);
+  outline: none;
+  background: var(--sec-bg);
+  font-weight: 600;
+  color: var(--sec-color);
+  margin: 3px;
+  width: calc(80%);
+  margin-left: 0;
+
+  -webkit-animation: fadeInUp 500ms 1;
+  -o-animation: fadeInUp 500ms 1;
+  animation: fadeInUp 500ms 1;
+  -webkit-animation-delay: 0ms;
+  -moz-animation-delay: 0ms;
+  -o-animation-delay: 0ms;
+  animation-delay: 0ms;
+
+  -webkit-animation-timing-function: ease-out;
+  -moz-animation-timing-function: ease-out;
+  -o-animation-timing-function: ease-out;
+  animation-timing-function: ease-out;
+
+  animation-play-state: paused;
+}
+
+.form input::placeholder,
+.form textarea::placeholder {
+  font-weight: normal;
+}
+
+
+.right-elems {
+  position: absolute;
+  right: 40px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+
+  -webkit-animation: backInUp 700ms 1;
+  -o-animation: backInUp 700ms 1;
+  animation: backInUp 700ms 1;
+  -webkit-animation-delay: 0ms;
+  -moz-animation-delay: 0ms;
+  -o-animation-delay: 0ms;
+  animation-delay: 0ms;
+
+  -webkit-animation-timing-function: ease-out;
+  -moz-animation-timing-function: ease-out;
+  -o-animation-timing-function: ease-out;
+  animation-timing-function: ease-out;
+
+  animation-play-state: paused;
+}
+
+
+.subtitle {
+  color: var(--sec-color);
+  font-size: 13px;
+}
+
+@media screen and (min-width: 500.0px) {
+  .reg-body {
+    width: 60%;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding-bottom: 15px;
+  }
+
+  .right-elems {
+    right: 90px;
+  }
+}
+
+@media screen and (min-width: 950px) {
+  .reg-body {
+    width: 43%;
+  }
+}
+
+@media screen and (max-width: 500.0px) {
+  body {
+    padding-bottom: 10px;
+    /* padding-top: 0;
+    margin-top: 0; */
+    height: calc(100vh - 80px);
+    height: calc(100dvh - 80px);
+  }
+
+  nav {
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 3px;
+    margin-bottom: 5px;
+  }
+
+  .nav-title {
+    font-size: 25pt;
+  }
+
+  .reg-body {
+    /* margin-top: 0px;
+    padding-top: 6px; */
+  }
+}

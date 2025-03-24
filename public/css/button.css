@@ -1,0 +1,26 @@
+button {
+  margin: 5px;
+  padding: 13px 23px;
+  border-radius: var(--border-radius);
+  background: var(--theme-color);
+  border: 0px;
+    color: var(--apt-color);
+  outline: none;
+  transition: 200ms;
+  font-family: var(--global-ff), var(--global-ff), var(--global-ff), var(--global-ff);
+}
+
+button:hover {
+  background: var(--sec-theme-color);
+}
+
+.sec-btn {
+  background: var(--sec-bg);
+  color: var(--color);
+}
+
+.sec-btn:hover {
+  background: var(--third-bg);
+  color: var(--apt-third-color);
+}
+

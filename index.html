@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bushido Fit & Fight Club | Get Started</title>
+  <link rel="shortcut icon" type="image/png" href="assets/logos/bbc256.png" />
+
+  <!-- Meta Tags -->
+  <!-- Primary Meta Tags -->
+  <meta name="title" content="Bushido Fit & Fight Club | Get Started" />
+  <meta name="description"
+    content="Join Bushido Boxers Club and elevate your boxing skills with expert training, unbeatable camaraderie, and a path to peak performance. Your journey to becoming a top-tier boxer starts here!" />
+  <meta name="keywords"
+    content="bushido, boxers club, boxing, karate, website, bushido boxers club, bbc, BBC, fighters club, fitness, fit, Bushido Fit & Fight Club | Get Started" />
+  <meta name="robots" content="index, follow" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="language" content="English" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:site_name" content="Bushido Fit & Fight Club | Get Started" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://mhd-radin.github.io/bushido" />
+  <meta property="og:title" content="Bushido Fit & Fight Club | Get Started" />
+  <meta property="og:description"
+    content="Join Bushido Boxers Club and elevate your boxing skills with expert training, unbeatable camaraderie, and a path to peak performance. Your journey to becoming a top-tier boxer starts here!" />
+  <meta property="og:image" content="assets/logos/bbc192.png" />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://mhd-radin.github.io/bushido" />
+  <meta property="twitter:title" content="Bushido Fit & Fight Club | Get Started" />
+  <meta property="twitter:description"
+    content="Join Bushido Boxers Club and elevate your boxing skills with expert training, unbeatable camaraderie, and a path to peak performance. Your journey to becoming a top-tier boxer starts here!" />
+  <meta property="twitter:image" content="assets/logos/bbc256.png" />
+
+  <!-- Mata Languages -->
+  <meta property="og:locale" content="en_GB" />
+
+  <!-- custom css -->
+  <link rel="stylesheet" href="started/css/animation.css" />
+  <link rel="stylesheet" href="public/css/link.css" />
+  <link rel="stylesheet" href="./cdn_modules/animate.css@4.1.1/animate.min.css">
+  <!-- <link rel="stylesheet" href="started/css/get_started.css" /> -->
+
+  <!-- Tailwind CSS -->
+  <link rel="stylesheet" href="started/css/started_output.css" />
+  <link rel="stylesheet" href="started/css/nav_started.css" />
+  <link rel="stylesheet" href="started/css/session.css">
+  <!-- <script type="module" src="lib/Tailwind CSS.js"></script> -->
+</head>
+
+<body>
+  <div class="nav flex flex-row text-left max-sm:sticky bg-slate-100 w-max rounded-full align-middle justify-center">
+    <div class="logo hidden">
+      <img src="assets/logos/bbc_WG.png" alt="" />
+    </div>
+    <div class="nav-btn sm:hidden">
+      <ion-icon name="menu-outline"></ion-icon>
+    </div>
+    <div class="nav-contents flex flex-row">
+      <div class="nav-item" onclick="location.href = './events'">
+        Events
+        <div class="reveal-box"></div>
+      </div>
+      <div class="nav-item" onclick="location.href = './events'">
+        Fighters
+        <div class="reveal-box"></div>
+      </div>
+      <div class="nav-item" onclick="location.href = './events'">
+        Service
+        <div class="reveal-box"></div>
+      </div>
+      <div class="nav-item active" onclick="location.href = './login'">
+        log In
+        <div class="shadow-point ml-2 rounded-full">
+          <div class="green-point bg-green-500 border-3 rounded-full"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="session-image">
+
+  </div>
+  <div
+    class="session bg-slate-200 rounded-b-2xl h-[95vh] absolute top-0 max-sm:top-[65px] left-1 flex flex-col justify-end max-sm:justify-start">
+    <div class="about-container m-20 max-sm:m-[2rem] max-sm:relative">
+      <img src="assets/logos/bbc_BD.png" alt="" class="about-logo w-[200px] m-1 my-10 max-sm:hidden">
+      <div
+        class="about-des text-2xl text-slate-500 max-sm:text-slate-400 font-medium w-[calc(100%-170px)] max-sm:text-[20px] max-sm:font-semibold max-sm:w-[calc(100%-20px)] max-sm:text-wrap">
+        Unlock your strength and discipline at <span class="text-gray-950 max-sm:text-red-500">Bushido, a martial arts
+          club where Muaythai and Boxing meet.</span> Train with experts, push your limits, and transform your body and
+        mind. Get started today!
+      </div>
+      <button
+        class="flex flex-row justify-around max-sm:bg-white text-white max-sm:text-slate-950 max-sm:hover:bg-slate-300 align-middle p-3 px-3 mt-[50px] mb-1 bg-darkblue-700 w-[200px] hover:bg-darkblue-500"
+        onclick="location.href = './register'">
+        Register Now
+        <ion-icon name="chevron-forward"
+          class="p-1 max-sm:bg-white rounded-full bg-darkblue-500 text-inherit"></ion-icon>
+      </button>
+    </div>
+  </div>
+
+  <!-- https://www.raising-standards.com/ -->
+  <script src="public/js/app.js"></script>
+  <script>
+    app
+      .validUser()
+      .then(() => {
+        window.location.href = './events'
+      })
+      .catch();
+  </script>
+
+  <!-- cdn scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <!-- custom scripts -->
+  <script src="public/js/tagstring.js"></script>
+  <script src="public/js/spinner_ui.js"></script>
+  <script src="started/js/get_started.js"></script>
+  <script src="started/js/nav.js"></script>
+</body>
+
+</html>

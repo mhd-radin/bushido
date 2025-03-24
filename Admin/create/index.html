@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin Create | Bushido Fit & Fight Club - Admin</title>
+
+  <link rel="shortcut icon" type="image/png" href="../../assets/logos/bbc256.png" />
+  <!-- custom css -->
+  <link rel="stylesheet" href="../../public/css/link.css" />
+  <link rel="stylesheet" href="../public.admin.css" />
+  <link rel="stylesheet" href="css/create.css" />
+  <link rel="stylesheet" href="css/slide.css" />
+  <link rel="stylesheet" href="css/manage.css" />
+  <link rel="stylesheet" href="../../events/css/cards.css" />
+
+  <script src="../valid.admin.js"></script>
+  <!-- min required scripts & css -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"
+    integrity="sha512-a+SUDuwNzXDvz4XrIcXHuCf089/iJAoN4lmrXJg18XnduKK6YlDHNRalv4yd1N40OKI80tFidF+rqTFKGPoWFQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/aes.min.js"
+    integrity="sha512-UOtWWEXoMk1WLeC873Gmrkb2/dZMwvN1ViM9C1mNvNmQSeXpEr8sRzXLmUSha1X4x5V892uFmEjiZzUsYiHYiw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/relativeTime.js"></script>
+
+  <script src="../../local.config.js"></script>
+  <script src="../../public/js/bushido.js"></script>
+  <script src="https://unpkg.com/eva-icons"></script>
+  <link rel="stylesheet" href="https://unpkg.com/eva-icons@1.1.3/style/eva-icons.css" />
+</head>
+
+<body>
+
+
+  <nav class="nav-flex">
+    <div class="nav-left">
+      <a class="eva eva-person-outline" href="../profile"></a>
+    </div>
+    <div class="nav-title"><b>Bushido</b> Post</div>
+    <div class="nav-right">
+      <i class="eva eva-home-outline" onclick="app.redirectWithPreloader('../profile')"></i>
+    </div>
+  </nav>
+
+  <div class="body-layout">
+    <div class="slides-list">
+      <div class="user-box option" id="create">
+        <div class="user-row">
+          <div class="user-icon">
+            <i class="eva eva-plus-outline"></i>
+          </div>
+          <div class="user-body">
+            <div class="user-name">Create Post</div>
+            <div class="user-subtext">Create new event post</div>
+            <div class="user-right"></div>
+          </div>
+        </div>
+      </div>
+      <div class="user-box option" id="ig">
+        <div class="user-row">
+          <div class="user-icon">
+            <i class="eva eva-code-outline"></i>
+          </div>
+          <div class="user-body">
+            <div class="user-name">Instagram</div>
+            <div class="user-subtext">
+              Create new event post from Instagram
+            </div>
+            <div class="user-right"></div>
+          </div>
+        </div>
+      </div>
+      <div class="user-box option" id="manage">
+        <div class="user-row">
+          <div class="user-icon">
+            <i class="eva eva-edit-outline"></i>
+          </div>
+          <div class="user-body">
+            <div class="user-name">Manage Posts</div>
+            <div class="user-subtext">Edit & Delete Posts</div>
+            <div class="user-right"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="body">
+      <div class="create-slide slide" id="createSlide">
+        <div class="slide-header">
+          <div class="slide-subtitle">CREATE</div>
+          <div class="slide-title">New Post</div>
+          <div class="slide-des">
+            create new custom posts or events on bushido.
+          </div>
+        </div>
+
+        <div class="slide-body">
+          <form id="createSubmit">
+            <div class="input-seg">
+              <label for="createTitle">Title of post</label>
+              <input type="text" name="createTitle" id="createTitle" value="" placeholder="Title" required />
+            </div>
+
+            <div class="input-seg">
+              <label for="createDes">Description</label>
+              <textarea name="createDes" id="createDes" value="" placeholder="Description" minlength="10"
+                required></textarea>
+            </div>
+
+            <div class="input-seg">
+              <label for="createPostType">Choose post type</label>
+              <select name="createPostType" id="createPostType">
+                <option value="postThumb">Post with Thumbnail</option>
+                <option value="story">Story</option>
+                <option value="photo">Photo ( Event )</option>
+                <option value="video">Video</option>
+                <option value="notice">Notice</option>
+              </select>
+            </div>
+
+            <div class="input-section" id="createThumbnailSection">
+              <div class="input-seg">
+                <label for="createImgOpt">Preview of photo</label>
+                <br />
+                <img
+                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKgAAACUCAMAAAAwLZJQAAAAIVBMVEX////c5fHf6PLp7vbz9frk6/T2+Pv6+/3s8ff7/f3Y4vCdwvnrAAADPUlEQVR4nO2b25bCIAxFLff2/z94rAIFpFXkhNZZ2W/jUrsHknD1dmMYhmEYhmEYhmEYhmEY5t9jnBRdaGUGaFo5AZDkqgahuaJ+xHNaSE2tgIlO00woConPgCQUXZCigi6hVHhGl3D8MF2Uhp4Xtudb5hDodH2vMU1h/ddojFWFINoZXPMySjRt0S+KzHhR67SYhGtt4OGi7susGC2aVH/dVAYGi6opoalNB4vmRbwlTseKFvOoloeOFS3nJw1fM1ZUF6IN9ZRFq6Ifdr1yWrtibjBWVOWe9Yda/wmdFYUzy9NUrfhJZUhNL1fwbfqO5D8ZPYS6zULUUmnO8k1vbxk+KVHHk5Ii3bY3nTHNk/qe1PXh05ULq2hKKGrnquj6ULtTQIuqcGdx9KJ+V6thzVTdUlHkoq5VdGdLxVCL6lbRcoD1CGJRuzSK7nh6UzpR1Sjq9jyfcnSiuhDN65FVxQ7ya8InSErR6UD0aRVLz+3tHqqjEzWlaNL1cfiJC9G3e6jqRiUqQxu+ispt+BH+pd1EioQmh4vqXdF8OP/QM4IWXRugLlpMO9bdyIOEJxd1e6IvUqLtMAItqndEuzf0waKPeXpFtP/gASyq6qItwThGVFdFEQc5YNGpJgo5cMKKmoqoAfQ7XFRWREEHjVhRXREFARU14kdEfTReX1T/iGjYPrq8aFhVXF40X3yARZGny+E7n6LQCxDr6glGnF6q/E8MwIsFsQl9L0E9+64nZGxbsX7lhhnjPcAQ3bp68a8A00kcPrqNZMvDB77df3AryDs66S59eA2kib1LlIZkrCUOMMkT4As6qeiWo1Y52YVTuHx/km3LIYMfjc2SXFPe+uskr5vACg2nSBzi26k9FKYCngcorCwO4ISU6nsorzZb5CyU7vjzgVmvtkGgD/J7lQe4Lu8fhGA2vVFA3PMp1smOlh1b3qxS+stbzuNr22y+WehRXmg/YL3/0CZ63sBmTVMUjPjRzQHm08I1MOf3mNUnUQDccOhgNkoeR8FyofmMdUcNe7ZdgdqbGJycSjWMkeIlCq4Roa9YlTfsVT0fmDgx0Bfs95z7kODckJ9XMgzDMAzDMAzDMAzDMAxzMn+1eB8gM5MYKgAAAABJRU5ErkJggg=="
+                  alt="not loaded Preview Photo" id="thumbImagePreview" />
+              </div>
+
+              <div class="input-seg">
+                <label for="createImgOpt">Choose option to setup thumbnail</label>
+                <select name="createImgOpt" id="createImgOpt">
+                  <option value="url">From URL ( Save server space )</option>
+                  <option value="upload">Upload photo</option>
+                </select>
+              </div>
+
+              <div class="input-seg" id="createImgUrl_seg">
+                <label for="createImgUrl">Thumbnail Photo Link</label>
+                <input type="url" name="createImgUrl" id="createImgUrl" placeholder="Paste your URL here!" />
+              </div>
+
+              <div class="input-seg" id="createImgFile_seg">
+                <label for="createImgFile">Upload File ( Upload small size photo to load fastily )</label>
+                <input type="file" name="createImgFile" id="createImgFile" accept="image/*" />
+              </div>
+            </div>
+
+            <div class="input-section" id="createSrcSection">
+              <div class="input-seg">
+                <label for="createImgOpt">Preview</label>
+                <br />
+                <embed src="" alt="not loaded Preview Photo" id="createSrcPreview" />
+              </div>
+
+              <div class="input-seg">
+                <label for="createImageSrc">Upload post files</label>
+                <input type="file" name="createImageSrc" id="createImageSrc" />
+              </div>
+            </div>
+
+            <button type="submit">Submit Post</button>
+          </form>
+        </div>
+      </div>
+      <div class="ig-slide slide">
+        <div class="slide-header">
+          <div class="slide-subtitle">INSTAGRAM - COMING SOON</div>
+          <div class="slide-title">Add Instagram Posts</div>
+          <div class="slide-des">
+            create new posts or events from bushido instagram page. this
+            feature coming soon!
+          </div>
+        </div>
+      </div>
+      <div class="manage-slide slide">
+        <div class="slide-header">
+          <div class="slide-subtitle">MANAGE</div>
+          <div class="slide-title">Posts</div>
+          <div class="slide-des">Edit ( Coming soon ) and Delete stories, posts, events, noitces and videos</div>
+        </div>
+        <div class="slide-body">
+          <div class="manage-list">
+
+
+            <div class="manage-post">
+              <img src="../../assets/bg/members.jpg" alt="">
+              <div class="manage-middle bold-font">Post Title is here after after you can useit as 40 members
+                <div class="post-tags">
+                  <div class="post-tag red-tag">
+                    <i class="eva eva-radio-button-on"></i>
+                    <span>Live</span>
+                  </div>
+                  <div class="post-tag green-tag">
+                    <i class="eva eva-radio-button-on"></i>
+                    <span>Live</span>
+                  </div>
+                  <div class="post-tag red-tag">
+                    <i class="eva eva-radio-button-on"></i>
+                    <span>Live</span>
+                  </div>
+                </div>
+              </div>
+              <div class="manage-right">
+                <i class="eva eva-trash-2-outline"></i>
+              </div>
+            </div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="menubox">
+    <div class="menu-item" data-url="../users">
+      <i class="eva eva-person-outline"></i>
+      <div class="menu-item-text">Users</div>
+    </div>
+    <div class="menu-item" data-url="../attendance">
+      <i class="eva eva-calendar-outline"></i>
+      <div class="menu-item-text">Date</div>
+    </div>
+    <div class="menu-item active" data-url="./">
+      <i class="eva eva-plus-outline"></i>
+      <div class="menu-item-text">Post</div>
+    </div>
+    <div class="menu-item" data-url="../notifier">
+      <i class="eva eva-bell-outline"></i>
+      <div class="menu-item-text">Notifier</div>
+    </div>
+    <div class="menu-item" data-url="../messages">
+      <i class="eva eva-message-circle-outline"></i>
+      <div class="menu-item-text">Chat</div>
+    </div>
+  </div>
+
+  <!-- cdn scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+
+  <!-- custom scripts -->
+  <script src="../../public/js/app.js"></script>
+  <script src="../../public/js/tagstring.js"></script>
+  <script src="../../public/js/spinner_ui.js"></script>
+  <script src="../../public/js/menubox.js"></script>
+  <script src="../../public/js/modal.js"></script>
+  <script src="../../public/js/user.structure.js"></script>
+  <script src="js/cloud.js"></script>
+  <script src="js/create.js"></script>
+  <script src="js/slide-post.js"></script>
+  <script src="js/manage-post.js"></script>
+  <script src="../admin.public.all.js"></script>
+  <script src="../public.admin.pages.js"></script>
+</body>
+
+</html>

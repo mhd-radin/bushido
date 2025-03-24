@@ -1,0 +1,22 @@
+:root {
+  --theme-color: #3BAC3B;
+  --sec-theme-color: #E8C33C;
+  --theme-color-alpha: #6EE86E;
+  --apt-color: #fff;
+  --color: #FFFFFF;
+  --shadow: #1C1C1C;
+  --sec-color: #C4C4C4;
+  --bg: #272727;
+  --sec-bg: #4A4A4A;
+  --apt-sec-color: #FFFFFF;
+  --apt-third-color: #FFFFFF;
+  --third-bg: #1D1C1C;
+  --border-color: #747474;
+  --spinner-one: #3BAC3B;
+  --spinner-two: #50C750;
+
+  --nav-bg: var(--sec-bg);
+  --menu-bg: var(--sec-bg);
+  --apt-nav-color: var(--apt-sec-color);
+  --apt-menu-color: var(--apt-sec-color);
+}

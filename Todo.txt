@@ -1,0 +1,2 @@
+remove demo mode 
+scroll bug fix

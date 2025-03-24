@@ -1,0 +1,242 @@
+.dark-theme {
+  --theme-color: #bb86fc;
+  --sec-theme-color: #6d03da;
+  --theme-color-alpha: #C99CFF;
+  --apt-color: #121212;
+  --color: #ffffff;
+  --sec-color: #bcbcbc;
+  --bg: #1c1c1c;
+  --sec-bg: #121212;
+  --apt-sec-color: #e0e0e0;
+  --apt-third-color: #b0b0b0;
+  --third-bg: #2e2e2e;
+  --border-color: #ccc;
+  --spinner-one: #db3737;
+  --spinner-two: #e87e48;
+  --shadow: #2e2e2e;
+  /* other properties */
+  --border-radius: 10px;
+  --circle-radius: 50%;
+  --curved-radius: 25px;
+  --zero-radius: 10px;
+  --border-radius-sm: 5px;
+  --border-radius-md: 15px;
+
+  --spinner-one: #fdfcff;
+
+  --nav-bg: #2c3e50;
+  --menu-bg: var(--sec-bg);
+  --apt-nav-color: #fff4f4;
+  --apt-menu-color: var(--apt-sec-color);
+}
+
+.blueocean-theme {
+  --theme-color: #40b5db;
+  --sec-theme-color: #16595f;
+  --theme-color-alpha: #56D5FE;
+  --apt-color: #000;
+  --color: #eee4e4;
+  --sec-color: #ccbbbb;
+  --bg: #26393e;
+  --sec-bg: #376266;
+  --apt-sec-color: #f4ecec;
+  --apt-third-color: #fbf7f7;
+  --third-bg: #0d101e;
+  --border-color: #474c53;
+  --spinner-one: #f74545;
+  --spinner-two: #e8ae48;
+  --shadow: #1b1e22;
+
+  --nav-bg: var(--third-bg);
+  --menu-bg: var(--third-bg);
+  --apt-nav-color: var(--apt-third-color);
+  --apt-menu-color: var(--apt-third-color);
+}
+
+.redhouse-theme {
+  --theme-color: #b22222;
+  --sec-theme-color: #daa520;
+  --theme-color-alpha: #E63B3B;
+  --apt-color: #f5e1b8;
+  --color: #ffdab9;
+  --sec-color: #747474;
+  --bg: #3c2b2b;
+  --sec-bg: #2b1b1b;
+  --apt-sec-color: #f5e1b8;
+  --apt-third-color: #ffcc99;
+  --third-bg: #442f2f;
+  --border-color: #ccc;
+  --spinner-one: #db3737;
+  --spinner-two: #e87e48;
+  --shadow: #1b1e22;
+  /* other properties */
+  --border-radius: 10px;
+  --circle-radius: 50%;
+  --curved-radius: 25px;
+  --zero-radius: 10px;
+  --border-radius-sm: 5px;
+  --border-radius-md: 15px;
+
+  --nav-bg: var(--sec-bg);
+  --menu-bg: var(--sec-bg);
+  --apt-nav-color: var(--apt-sec-color);
+  --apt-menu-color: var(--apt-sec-color);
+
+  /* spinner loader colors */
+  --spinner-one: var(--theme-color);
+  --spinner-two: var(--sec-theme-color);
+}
+
+.greenleaf-theme {
+  --theme-color: #2e7d32;
+  /* Dark green primary color */
+  --sec-theme-color: #4caf50;
+  /* Medium green secondary color */
+  --theme-color-alpha: #4DC153;
+  /* Alpha version of the primary color */
+  --apt-color: #e8f5e9;
+  /* Light green for accent color */
+  --color: #c8e6c9;
+  /* Lighter green for general text or elements */
+  --sec-color: #747474;
+  /* Neutral grey for secondary text or elements */
+  --bg: #1a1a1a;
+  /* Dark background */
+  --sec-bg: #121212;
+  /* Slightly lighter dark background */
+  --apt-sec-color: #e8f5e9;
+  /* Light green for accent secondary color */
+  --apt-third-color: #a5d6a7;
+  /* Lighter green for accent tertiary color */
+  --third-bg: #2a2a2a;
+  /* Slightly lighter dark background for tertiary elements */
+  --border-color: #424242;
+  /* Dark grey for borders */
+  --spinner-one: #388e3c;
+  /* Dark green spinner color one */
+  --spinner-two: #66bb6a;
+  /* Medium green spinner color two */
+  --shadow: #1b1e22;
+  /* Shadow color */
+
+  --nav-bg: var(--third-bg);
+  --menu-bg: var(--third-bg);
+  --apt-nav-color: var(--apt-third-color);
+  --apt-menu-color: var(--apt-third-color);
+}
+
+.darkmoon-theme {
+  --theme-color: #45c596;
+  --sec-theme-color: #26986f;
+  --theme-color-alpha: #147753;
+  --apt-color: #000;
+  --color: #eee4e4;
+  --sec-color: #ccbbbb;
+  --bg: #1e2122;
+  --sec-bg: #2b2e2e;
+  --apt-sec-color: #f4ecec;
+  --apt-third-color: #fbf7f7;
+  --third-bg: #0e0f12;
+  --border-color: #474c53;
+  --spinner-one: #ff3f3f;
+  --spinner-two: #ffa02d;
+  --shadow: #1b1e22;
+
+  --border-radius: 10px;
+  --circle-radius: 50%;
+  --curved-radius: 25px;
+  --zero-radius: 10px;
+  --border-radius-sm: 5px;
+  --border-radius-md: 15px;
+
+  --nav-bg: var(--third-bg);
+  --menu-bg: var(--third-bg);
+  --apt-nav-color: var(--apt-third-color);
+  --apt-menu-color: var(--apt-third-color);
+}
+
+.classic-theme {
+  --theme-color: #398bb2;
+  --sec-theme-color: #163f5f;
+  --theme-color-alpha: #4FB4E5;
+  --apt-color: #ffffff;
+  --color: #212121;
+  --sec-color: #242323;
+  --bg: #e7f4ff;
+  --sec-bg: #ffffff;
+  --apt-sec-color: #1d1d1d;
+  --apt-third-color: #272727;
+  --third-bg: #d9f0ff;
+  --border-color: #474c53;
+  --spinner-one: #ff2222;
+  --spinner-two: #ffffff;
+  --shadow: #1b1e2250;
+
+  --border-radius: 10px;
+  --circle-radius: 50%;
+  --curved-radius: 25px;
+  --zero-radius: 10px;
+  --border-radius-sm: 5px;
+}
+
+.darkblue-theme {
+  --theme-color: #0d47a1;
+  /* Dark blue primary color */
+  --sec-theme-color: #1976D2;
+  /* Dark blue secondary color */
+  --theme-color-alpha: #1960CE;
+  /* Alpha version of the primary color */
+  --apt-color: #e3f2fd;
+  /* Light blue for accent color */
+  --color: #bbdefb;
+  /* Lighter blue for general text or elements */
+  --sec-color: #747474;
+  /* Neutral grey for secondary text or elements */
+  --bg: #1a1a1a;
+  /* Dark background */
+  --sec-bg: #121212;
+  /* Slightly lighter dark background */
+  --apt-sec-color: #e3f2fd;
+  /* Light blue for accent secondary color */
+  --apt-third-color: #81d4fa;
+  /* Lighter blue for accent tertiary color */
+  --third-bg: #2a2a2a;
+  /* Slightly lighter dark background for tertiary elements */
+  --border-color: #424242;
+  /* Dark grey for borders */
+  --spinner-one: #1565c0;
+  /* Dark blue spinner color one */
+  --spinner-two: #1e88e5;
+  /* Dark blue spinner color two */
+  --shadow: #1b1e22;
+  /* Shadow color */
+
+  --nav-bg: var(--third-bg);
+  --menu-bg: var(--third-bg);
+  --apt-nav-color: var(--apt-third-color);
+  --apt-menu-color: var(--apt-third-color);
+}
+
+.classic-theme .menubox,
+.classic-theme nav {
+  background: var(--theme-color);
+  color: var(--apt-color) !important;
+}
+
+.classic-theme .nav-title {
+  color: var(--apt-color);
+}
+
+.classic-theme nav b {
+  color: var(--spinner-two);
+}
+
+.classic-theme .menubox .active {
+  background: var(--bg);
+  color: var(--color);
+}
+
+.classic-theme .menubox .active .eva {
+  background: var(--sec-bg);
+  color: var(--apt-sec-color);
+}

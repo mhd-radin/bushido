@@ -1,0 +1,125 @@
+.body {
+  height: calc(100vh - 180px);
+  height: calc(100dvh - 180px);
+  overflow-y: scroll;
+}
+
+.menubox {
+  display: flex;
+  flex-direction: row;
+  background: var(--menu-bg);
+  color: var(--apt-menu-color);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: calc(100% - 60px);
+  padding: 6px 30px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.menubox,
+.menubox * {
+  /* border: 1px solid red; */
+  transition: 0.2s;
+}
+
+.menu-item {
+  margin: 3px auto;
+  padding: 4px;
+  padding-left: 10px;
+  padding-right: 10px;
+  display: flex;
+  flex-direction: row;
+  border-radius: 40px;
+  transition: 0.2s !important;
+  cursor: pointer;
+}
+
+.menu-item:hover {
+  color: var(--sec-color);
+}
+
+.menu-item.active:hover {
+  background: var(--sec-theme-color);
+}
+
+.menu-item.active:focus {
+  background: none;
+}
+.menu-item-text {
+  display: none;
+}
+
+.menu-item .eva {
+  font-size: 20px;
+}
+
+.menu-item.active {
+  background: var(--sec-bg);
+  color: var(--theme-color);
+  padding-left: 5px;
+}
+
+.menu-item.preview {
+  background: var(--sec-bg);
+  color: var(--apt-sec-color);
+  padding-left: 5px;
+}
+
+.menu-item.active .menu-item-text,
+.menu-item.preview .menu-item-text {
+  display: block;
+  font-size: 12px;
+  margin: auto 5px;
+}
+
+.menu-item.active .eva,
+.menu-item.preview .eva {
+  border-radius: 50%;
+  padding: 10px;
+  background: var(--sec-bg);
+}
+
+.menu-item.preview .eva {
+  background: var(--sec-bg);
+}
+
+.attached-nav {
+  top: 0;
+  height: max-content;
+  right: 0;
+  left: auto !important;
+  transform: translate(0px, 0px) !important;
+}
+
+@media screen and (min-width: 500.0px) {
+  .menubox {
+    position: fixed;
+    left: 50%;
+    bottom: -17px;
+    background: var(--third-bg);
+    width: 400px;
+    margin-bottom: 0px;
+    padding: 7px 0px;
+    border-radius: 80px;
+    transform: translate(-50%, -50%);
+    justify-content: center;
+    align-items: center;
+  }
+
+  .menubox.attached-nav {
+    padding: 0 0;
+  }
+
+  .menu-item {
+    /* margin: auto 5px; */
+  }
+
+  .menu-item.active,
+  .menu-item.preview {
+    /* margin: 5px; */
+  }
+}

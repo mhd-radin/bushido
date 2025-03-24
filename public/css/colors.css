@@ -1,0 +1,29 @@
+:root {
+  --theme-color: #4A90E2;
+  --sec-theme-color: #30A78D;
+  --theme-color-alpha: #59A3FB;
+  --apt-color: #FFFFFF;
+  --color: #1E3A56;
+  --sec-color: #747474;
+  --bg: #FFFFFF;
+  --sec-bg: #F0F4F8;
+  --apt-sec-color: #2B2B2B;
+  --apt-third-color: #33475B;
+  --third-bg: #E3EAF0;
+  --border-color: #ccc;
+  --spinner-one: #db3737;
+  --spinner-two: #e87e48;
+  --shadow: #dfdfdf;
+  /* other properties */
+  --border-radius: 10px;
+  --circle-radius: 50%;
+  --curved-radius: 50px;
+  --zero-radius: 10px;
+  --border-radius-sm: 5px;
+  --border-radius-md: 15px;
+
+  --nav-bg: #FCFCFF;
+  --menu-bg: #FCFCFF;
+  --apt-nav-color: #4A4A4A;
+  --apt-menu-color: #4A4A4A;
+}

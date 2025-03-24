@@ -1,0 +1,15 @@
+body {
+    font-size: 15pt;
+    background: #111;
+}
+
+pre {
+  margin: 0;
+  padding: 5px;
+  overflow: scroll;
+  font-size: 14px;
+}
+
+code {
+  font-family: 'Courier New', Courier, monospace;
+}

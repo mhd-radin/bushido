@@ -1,4 +1,4 @@
-/*const config = {
+const config = {
   FCM_KEY: 'BDAxbWE--q8hHkKSus9Bd47ijSG07V_RhL4HmzbrQN0CpEP4L_Hx6SJsfQ75SHmesXWZq7_NIt0X4vRrkR75_yw',
   ENC_KEY: 'BasEw47ChKo56F8j06C5dg2w#4/257dDr4r6yR',
   firebaseConfig: {
@@ -16,6 +16,4 @@
     api_secret: 'O8zS8etWMScAq5Bs_XmAK5xda7s'
   },
   jobKey: "pn00fnfC/zTOpnvhA6C0HQpxumlPGBt7abhoGNCkYFg="
-}*/
-
-
+}

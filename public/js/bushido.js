@@ -1,5 +1,3 @@
-const config = JSON.parse(window.env.KEY);
-
 const bushido = {
   loaded: false,
   sdk: null,

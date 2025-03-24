@@ -1,3 +1,5 @@
+const config = API_KEY;
+
 const bushido = {
   loaded: false,
   sdk: null,

@@ -1,5 +1,6 @@
 function onpageloadin() {
   dayjs.extend(window.dayjs_plugin_weekday);
+  dayjs.extend(window.dayjs_plugin_relativeTime);
 
   var attendanceData = [
 
@@ -7,6 +8,7 @@ function onpageloadin() {
   let currentDate = dayjs().format('DD-MM-YYYY');
   let dateInp = document.getElementById('date');
   dateInp.value = dayjs().format('YYYY-MM-DD');
+  updateAttendanceList(currentDate);
 
   dateInp.onchange = function(param) {
     var dt = dayjs(dateInp.value).format('DD-MM-YYYY');
@@ -16,6 +18,8 @@ function onpageloadin() {
       modal.alert('Invalid Date Used!', 'selected date too early. check and confirm', '');
       dateInp.value = dayjs().format('YYYY-MM-DD');
     }
+
+    updateAttendanceList(currentDate)
   }
 
   bushido.getCollection('accounts').then(function(snapshot) {
@@ -28,12 +32,19 @@ function onpageloadin() {
         data.fullname,
         (data.isAdmin == true ? 'Special Access' : data.email),
         (data.avatar ? data.avatar : app.avatarUrl(data.fullname, 'initials', '&radius=40')),
-        (data.isAdmin == true ? userboxUI.tag('Admin') : userboxUI.input(item.id))).setOptions({
+        (data.isAdmin == true ? userboxUI.tag('Admin') : userboxUI.input(item.id).setAttributes(
+        {
+          "data-name": data.fullname,
+          "data-email": data.email,
+          "data-phone": data.phone,
+          "data-avatar": data.avatar,
+        }))).setOptions({
         id: item.id
       }).parseElement()[0])
     })
 
-    document.getElementById('userTotalInfo').innerHTML = 'no one registered ( Total: ' + arr.length + ', Registered: 0 )'
+    document.getElementById('userTotalInfo').innerHTML = 'no one registered ( Total: ' + arr.length +
+      ', Registered: 0 )'
   });
 
 
@@ -48,14 +59,22 @@ function onpageloadin() {
           id: elem.id,
           value: input.checked,
           date: currentDate,
+          fullname: input.dataset.name,
+          email: input.dataset.email,
+          phone: input.dataset.phone,
+          avatar: input.dataset.avatar,
         })
       }
     })
 
-    bushido.set('attendance/' + currentDate, { users: attendanceData })
+
+    bushido.set('attendance/' + currentDate, { users: attendanceData }).then(function() {
+      document.querySelector(".svg-mini-loader").style.display = 'none'
+    })
   }
 
   bushido.onSet('attendance', function(snapshot) {
+    updateAttendanceList(currentDate)
     var arr = bushido.toData(snapshot);
     arr.sort((a, b) => {
       const [dayA, monthA, yearA] = a.id.split('-').map(Number);
@@ -167,6 +186,36 @@ function onpageloadin() {
       }
     }
   });
+}
+
+function clearAttendanceList() {
+  id('atdnceUserslist').innerHTML = `<centre class="bold-font">No attendance marked</centre>`
+}
+
+function updateAttendanceList(date) {
+  clearAttendanceList();
+  id('attendanceDate').innerHTML = 'of ' + date;
+  bushido.get('attendance', date).then(function(snapshot) {
+    if (snapshot.exists()) {
+      let users = snapshot.data().users;
+
+      id("atdnceUserslist").innerHTML = ""
+      if (users && users.length > 0) {
+        let body = id("atdnceUserslist");
+        users.forEach(function(item, index) {
+          var data = item;
+          body.appendChild(userboxUI.create(
+            data.fullname,
+            (data.email),
+            (data.avatar ? data.avatar : app.avatarUrl(data.fullname, 'initials', '&radius=40')),
+            "...").setOptions({
+            id: item.id
+          }).parseElement()[0])
+        })
+
+      } else clearAttendanceList()
+    } else clearAttendanceList()
+  }).catch(clearAttendanceList)
 }
 
 

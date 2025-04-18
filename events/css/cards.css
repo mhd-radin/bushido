@@ -100,8 +100,8 @@
   border-bottom-right-radius: 0;
 }
 
-.video-card .img-content {
-  max-height: 300px;
+.video-card .img-container {
+  height: 300px;
   overflow: hidden;
   display: flex;
   justify-content: center;

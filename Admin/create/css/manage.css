@@ -1,10 +1,11 @@
 .manage-list {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   overflow: scroll;
   max-height: 90vh;
   max-height: 90dvh;
+  width: calc(100% - 10px);
 }
 
 .manage-post {
@@ -84,4 +85,5 @@ hr {
   width: 99%;
   border: 1px solid var(--border-color);
   background: var(--border-color);
+  opacity: 0.5;
 }

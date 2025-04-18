@@ -102,6 +102,7 @@ bushido.getCollection("videos").then(function(snapshot) {
           undefined)).parseElement()[0]);
 
       appendToLinearContents('.videos-box', tagstring);
+      addPostToBody(tagstring.cloneNode(true));
 
       if (data.extras.url && isLive) {
         if (!q('.streams-box')) {

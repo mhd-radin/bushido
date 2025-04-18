@@ -108,6 +108,11 @@
   align-items: center
 }
 
+
+.post-session  .video-card .img-container {
+  height: max-content;
+}
+
 .image-card img, .image-card video {
   background: var(--sec-bg);
   border-radius: 10px;

@@ -51,7 +51,7 @@ app
   .then((userData) => {
     var promises = [
       bushido.realtime.get("notifications/" + userData.phone),
-      bushido.realtime.get("notifications/global"),
+      //bushido.realtime.get("notifications/global"),
     ];
 
     Promise.all(promises).then(function (output) {

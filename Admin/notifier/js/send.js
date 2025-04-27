@@ -73,7 +73,8 @@ function onformend(data) {
     })
   }
 
-  if (Boolean(data.global)) {
+  if (false) {
+    // temporary: closed
     bushido.realtime
       .set("notifications/global/" + Math.floor(Math.random() * 999999), {
         date: new Date().toString(),

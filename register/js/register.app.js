@@ -366,7 +366,7 @@ function changeState(nextState) {
                   app.sendWhatsappMsg(phone.value, "*Bushido* Verification Code: *" + randomCode +
                     "*. Enter this code to complete your registration. If you didn't request this code, please ignore this message."
                     ).then(function() {
-                    modal.prompt('Verfication Code', 'use demo code is 10108080', 'CODE HERE').then((userEnteredCode) => {
+                    modal.prompt('Verfication Code', 'this software currently not active. so use demo code is 10108080. WhatsApp bot is sleeping - development mode', 'CODE HERE').then((userEnteredCode) => {
                       if (userEnteredCode == randomCode || userEnteredCode == "10108080") {
                         spinner.removePreloader().then(function() {
                           closeForm(function() {
